@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+# Prerequisites for working with this gem in console
+require 'bundler/setup'
+require 'ach_client'
+require 'pry'
+
+# Start a console session using pry
+Pry.start
