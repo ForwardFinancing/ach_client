@@ -32,11 +32,16 @@ Gem::Specification.new do |spec|
     'lib'
   ]
 
+  spec.add_dependency 'activesupport'
+  spec.add_dependency 'savon'
   spec.add_development_dependency 'bundler', '~> 1.12'
   spec.add_development_dependency 'codeclimate-test-reporter'
-  spec.add_development_dependency 'minitest', '~> 5'
   spec.add_development_dependency 'minitest-reporters'
+  spec.add_development_dependency 'minitest', '~> 5'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rake', '~> 10'
   spec.add_development_dependency 'simplecov'
+  spec.add_development_dependency 'vcr'
+  spec.add_development_dependency 'webmock'
+  spec.add_development_dependency 'yard'
 end

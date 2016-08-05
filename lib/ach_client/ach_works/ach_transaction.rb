@@ -1,0 +1,87 @@
+module AchClient
+  class AchWorks
+
+    # AchWorks implementation for AchTransaction
+    class AchTransaction < Abstract::AchTransaction
+
+      ##
+      # @param super [Array] args from parent class
+      # @param ach_id [String] string to use as front_end_trace
+      def self.arguments
+        super + [:ach_id]
+      end
+
+      attr_reader :ach_id
+
+      ##
+      # @return [Hash] turns this transaction into a hash that can be sent to
+      # AchWorks
+      def to_hash
+        {
+          SSS: AchClient::AchWorks.s_s_s,
+          LocID: AchClient::AchWorks.loc_i_d,
+          FrontEndTrace: front_end_trace,
+          CustomerName: merchant_name,
+          CustomerRoutingNo: routing_number.to_s,
+          CustomerAcctNo: account_number.to_s,
+          OriginatorName: 'TBD',
+          TransactionCode: 'WEB', # CHECK THIS
+          CustTransType: customer_transaction_type,
+          CustomerID: 'TBD',
+          CustomerAcctType: customer_account_type,
+          TransAmount: amount,
+          CheckOrTransDate: Date.today, # Does this need to be read from ACH record
+          EffectiveDate: Date.today, # Should be same or greater than above (probably same)
+          Memo: memo,
+          OpCode: 'S', # Check this
+          AccountSet: '1'
+        }
+      end
+
+      # AchWorks Ach needs a "FrontEndTrace", for each ACH transaction.
+      # These can be used to track the processing of the ACH after it has been
+      # submitted.
+      # You can use the id of your Ach record
+      # It should be unique per ACH
+      # The consumer is responsible for ensuring the uniqueness of this value
+      # @return [String] the 12 char front end trace
+      def front_end_trace
+        # I want to stop this before it goes through because AchWorks might
+        # just truncate the value, which could result in lost Achs.
+        if ach_id.length > 11
+          raise 'AchWorks requires a FrontEndTrace of 12 chars or less'
+        else
+          # The front end trace MUST NOT start with a W.
+          # Our front end trace starts with a Z.
+          # The letter Z is not the letter W.
+          "Z#{ach_id}"
+        end
+      end
+
+      private
+
+      def customer_account_type
+        case self.account_type.to_s
+        when 'AccountTypes::Checking'
+          'C'
+        when 'AccountTypes::Savings'
+          'S'
+        else
+          raise 'account_type must be an instance of AccountType'
+        end
+      end
+
+      # Converts debit or credit to string expected by ACHWorks
+      def customer_transaction_type
+        case transaction_type.to_s
+        when 'TransactionTypes::Credit'
+          'C'
+        when 'TransactionTypes::Debit'
+          'D'
+        else
+          raise 'transaction_type must be an instance of TransactionType'
+        end
+      end
+    end
+  end
+end

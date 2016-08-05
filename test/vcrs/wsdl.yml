@@ -1,0 +1,645 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://tstsvr.achworks.com/dnet/achws.asmx?wsdl
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - HTTPClient/1.0 (2.7.1, ruby 2.3.1 (2016-04-26))
+      Accept:
+      - "*/*"
+      Date:
+      - Wed, 10 Aug 2016 16:47:56 GMT
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 10 Aug 2016 16:48:40 GMT
+      Server:
+      - Apache
+      X-Aspnet-Version:
+      - 2.0.50727
+      Cache-Control:
+      - private, max-age=0
+      Content-Length:
+      - '47097'
+      Content-Type:
+      - text/xml; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\"
+        xmlns:tm=\"http://microsoft.com/wsdl/mime/textMatching/\" xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\"
+        xmlns:mime=\"http://schemas.xmlsoap.org/wsdl/mime/\" xmlns:tns=\"http://achworks.com/\"
+        xmlns:s=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://schemas.xmlsoap.org/wsdl/soap12/\"
+        xmlns:http=\"http://schemas.xmlsoap.org/wsdl/http/\" targetNamespace=\"http://achworks.com/\"
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">\r\n  <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">ACHWorksWS (ACHWorks-SOAP
+        4.0) is a web service (web API) by &lt;a href=\"http://www.achworks.com\"&gt;ACHWorks&lt;/a&gt;
+        that provides a complete solution for Automated Clearing House (ACH) operations:
+        \ Sending transactions and getting status of returns and settlements.  The
+        complete API Guide can be downloaded &lt;a href=\"http://www.achworks.com/files/achworkssoapver4guide.pdf\"&gt;here&lt;/a&gt;.
+        \  Please &lt;a href=\"http://www.achworks.com/contactus\"&gt;contact us&lt;/a&gt;
+        for more information. Last updated on: 05/17/2013. Release Version 4.0.10HA</wsdl:documentation>\r\n
+        \ <wsdl:types>\r\n    <s:schema elementFormDefault=\"qualified\" targetNamespace=\"http://achworks.com/\">\r\n
+        \     <s:element name=\"ConnectionCheck\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:complexType name=\"CompanyInfo\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SSS\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"LocID\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Company\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyKey\" type=\"s:string\"
+        />\r\n        </s:sequence>\r\n      </s:complexType>\r\n      <s:element
+        name=\"ConnectionCheckResponse\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ConnectionCheckResult\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"CheckCompanyStatus\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"CheckCompanyStatusResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CheckCompanyStatusResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SendACHTrans\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"InpCompanyInfo\"
+        type=\"tns:CompanyInfo\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"InpACHTransRecord\" type=\"tns:ACHTransRecord\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:complexType name=\"ACHTransRecord\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SSS\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"LocID\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"FrontEndTrace\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"OriginatorName\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"TransactionCode\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CustTransType\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerID\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerName\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CustomerRoutingNo\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CustomerAcctNo\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerAcctType\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"TransAmount\"
+        type=\"s:double\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CheckOrCustID\" type=\"s:string\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"CheckOrTransDate\" type=\"s:dateTime\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"EffectiveDate\" type=\"s:dateTime\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Memo\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"OpCode\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AccountSet\" type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:element name=\"SendACHTransResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SendACHTransResult\" type=\"tns:TransResult\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:complexType name=\"TransResult\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SSS\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"LocID\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Status\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Details\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CallMethod\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"CallDateTime\"
+        type=\"s:dateTime\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"FileName\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"FrontEndTrace\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"TotalNumErrors\" type=\"s:int\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Errors\" type=\"tns:ArrayOfString\"
+        />\r\n        </s:sequence>\r\n      </s:complexType>\r\n      <s:complexType
+        name=\"ArrayOfString\">\r\n        <s:sequence>\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"unbounded\" name=\"string\" nillable=\"true\" type=\"s:string\"
+        />\r\n        </s:sequence>\r\n      </s:complexType>\r\n      <s:element
+        name=\"SendACHTransBatch\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"InpCompanyInfo\"
+        type=\"tns:CompanyInfo\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"InpACHFile\" type=\"tns:ACHFile\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:complexType name=\"ACHFile\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SSS\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"LocID\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ACHFileName\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"TotalNumRecords\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"TotalDebitRecords\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"TotalDebitAmount\" type=\"s:double\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"TotalCreditRecords\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"TotalCreditAmount\"
+        type=\"s:double\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ACHRecords\" type=\"tns:ArrayOfACHTransRecord\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:complexType name=\"ArrayOfACHTransRecord\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"unbounded\"
+        name=\"ACHTransRecord\" nillable=\"true\" type=\"tns:ACHTransRecord\" />\r\n
+        \       </s:sequence>\r\n      </s:complexType>\r\n      <s:element name=\"SendACHTransBatchResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SendACHTransBatchResult\" type=\"tns:TransResult\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SendACHTransBatchBin\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"InpBinFile\" type=\"s:base64Binary\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SendACHTransBatchBinResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SendACHTransBatchBinResult\" type=\"tns:TransResult\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"SendIATACHTransBatch\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"InpACHFile\"
+        type=\"tns:IATACHFile\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:complexType name=\"IATACHFile\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SSS\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"LocID\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ACHFileName\" type=\"s:string\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"TotalNumRecords\" type=\"s:int\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"TotalDebitRecords\" type=\"s:int\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"TotalDebitAmount\"
+        type=\"s:double\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"TotalCreditRecords\" type=\"s:int\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"TotalCreditAmount\" type=\"s:double\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"IATOptions\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"IATACHRecords\"
+        type=\"tns:ArrayOfIATACHTransRecord\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"ArrayOfIATACHTransRecord\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"unbounded\" name=\"IATACHTransRecord\"
+        nillable=\"true\" type=\"tns:IATACHTransRecord\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:complexType name=\"IATACHTransRecord\">\r\n
+        \       <s:sequence>\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SSS\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"LocID\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"FrontEndTrace\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"OriginatorName\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"TransactionCode\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CustTransType\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerID\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerName\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CustomerRoutingNo\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CustomerAcctNo\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerAcctType\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerAddress\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CustomerBank\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CustomerBankAddress\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerBenef\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerBenefAddress\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"TransAmount\" type=\"s:double\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CheckOrCustID\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"CheckOrTransDate\" type=\"s:dateTime\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"EffectiveDate\"
+        type=\"s:dateTime\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Memo\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"OpCode\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"AccountSet\" type=\"s:string\" />\r\n
+        \       </s:sequence>\r\n      </s:complexType>\r\n      <s:element name=\"SendIATACHTransBatchResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SendIATACHTransBatchResult\" type=\"tns:TransResult\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetACHReturns\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"InpCompanyInfo\"
+        type=\"tns:CompanyInfo\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetACHReturnsResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetACHReturnsResult\" type=\"tns:ACHReturns\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"ACHReturns\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SSS\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"LocID\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Status\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Details\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"TotalNumRecords\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"ReturnDateFrom\" nillable=\"true\" type=\"s:dateTime\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"ReturnDateTo\" nillable=\"true\" type=\"s:dateTime\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"TotalNumErrors\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Errors\" type=\"tns:ArrayOfString\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ACHReturnRecords\" type=\"tns:ArrayOfACHReturnRecord\"
+        />\r\n        </s:sequence>\r\n      </s:complexType>\r\n      <s:complexType
+        name=\"ArrayOfACHReturnRecord\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"unbounded\" name=\"ACHReturnRecord\" nillable=\"true\"
+        type=\"tns:ACHReturnRecord\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"ACHReturnRecord\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SSS\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"LocID\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SourceFile\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"FrontEndTrace\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ResponseCode\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CustTransType\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BackEndSN\" type=\"s:string\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CustomerName\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"TransAmount\" nillable=\"true\" type=\"s:double\"
+        />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"EffectiveDate\"
+        nillable=\"true\" type=\"s:dateTime\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"ActionDate\" nillable=\"true\" type=\"s:dateTime\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ActionDetail\"
+        type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:element name=\"GetACHReturnsHist\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"ReturnDateFrom\" type=\"s:dateTime\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"ReturnDateTo\"
+        type=\"s:dateTime\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetACHReturnsHistResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetACHReturnsHistResult\" type=\"tns:ACHReturns\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetACHReturnsRC\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"InpResponseCode\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetACHReturnsRCResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"GetACHReturnsRCResult\" type=\"tns:ACHReturns\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetACHReturnsHistRC\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"ReturnDateFrom\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"ReturnDateTo\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"InpResponseCode\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetACHReturnsHistRCResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetACHReturnsHistRCResult\" type=\"tns:ACHReturns\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetACHReturnsBin\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"InpReturnFormat\" type=\"tns:ReturnsFormat\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:simpleType name=\"ReturnsFormat\">\r\n        <s:restriction base=\"s:string\">\r\n
+        \         <s:enumeration value=\"ByRecord\" />\r\n          <s:enumeration
+        value=\"ByFile\" />\r\n        </s:restriction>\r\n      </s:simpleType>\r\n
+        \     <s:element name=\"GetACHReturnsBinResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"GetACHReturnsBinResult\" type=\"s:base64Binary\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetACHReturnsHistBin\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"ReturnDateFrom\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"ReturnDateTo\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"InpReturnFormat\" type=\"tns:ReturnsFormat\" />\r\n
+        \         </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"GetACHReturnsHistBinResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"GetACHReturnsHistBinResult\" type=\"s:base64Binary\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetResultFile\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"ResultDateFrom\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"ResultDateTo\" type=\"s:dateTime\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"GetResultFileResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetResultFileResult\" type=\"tns:ResultFile\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"ResultFile\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SSS\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"LocID\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Status\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Details\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"TotalResultRecords\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"ResultDateFrom\" nillable=\"true\" type=\"s:dateTime\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"ResultDateTo\" nillable=\"true\" type=\"s:dateTime\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"TransResults\"
+        type=\"tns:ArrayOfTransResult\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"ArrayOfTransResult\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"unbounded\" name=\"TransResult\"
+        nillable=\"true\" type=\"tns:TransResult\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:element name=\"GetErrorFile\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"ErrorDateFrom\" type=\"s:dateTime\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"ErrorDateTo\"
+        type=\"s:dateTime\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"GetErrorFileResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"GetErrorFileResult\" type=\"tns:ErrorFile\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"ErrorFile\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SSS\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"LocID\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Status\" type=\"s:string\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Details\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"TotalErrorRecords\"
+        type=\"s:int\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"ErrorDateFrom\" nillable=\"true\" type=\"s:dateTime\" />\r\n          <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"ErrorDateTo\" nillable=\"true\" type=\"s:dateTime\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ErrorRecords\"
+        type=\"tns:ArrayOfErrorRecord\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:complexType name=\"ArrayOfErrorRecord\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"unbounded\" name=\"ErrorRecord\"
+        nillable=\"true\" type=\"tns:ErrorRecord\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:complexType name=\"ErrorRecord\">\r\n        <s:sequence>\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SSS\" type=\"s:string\"
+        />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"LocID\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CallMethod\" type=\"s:string\" />\r\n          <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"CallDateTime\" type=\"s:dateTime\" />\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"FileName\" type=\"s:string\" />\r\n
+        \         <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"FrontEndTrace\"
+        type=\"s:string\" />\r\n          <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"TotalNumErrors\" type=\"s:int\" />\r\n          <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Errors\" type=\"tns:ArrayOfString\" />\r\n        </s:sequence>\r\n
+        \     </s:complexType>\r\n      <s:element name=\"ViewACHTransBatch\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"InpACHFileName\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"ViewACHTransBatchResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ViewACHTransBatchResult\" type=\"tns:ACHFile\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"DeleteACHTransBatch\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"InpCompanyInfo\" type=\"tns:CompanyInfo\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"InpACHFileName\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"DeleteACHTransBatchResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"DeleteACHTransBatchResult\" type=\"tns:TransResult\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n    </s:schema>\r\n  </wsdl:types>\r\n
+        \ <wsdl:message name=\"ConnectionCheckSoapIn\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:ConnectionCheck\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"ConnectionCheckSoapOut\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:ConnectionCheckResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"CheckCompanyStatusSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CheckCompanyStatus\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"CheckCompanyStatusSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:CheckCompanyStatusResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SendACHTransSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SendACHTrans\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"SendACHTransSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:SendACHTransResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"SendACHTransBatchSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:SendACHTransBatch\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SendACHTransBatchSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SendACHTransBatchResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SendACHTransBatchBinSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SendACHTransBatchBin\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"SendACHTransBatchBinSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SendACHTransBatchBinResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SendIATACHTransBatchSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SendIATACHTransBatch\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"SendIATACHTransBatchSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SendIATACHTransBatchResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetACHReturnsSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetACHReturns\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"GetACHReturnsSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:GetACHReturnsResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"GetACHReturnsHistSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:GetACHReturnsHist\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetACHReturnsHistSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetACHReturnsHistResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetACHReturnsRCSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetACHReturnsRC\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetACHReturnsRCSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetACHReturnsRCResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetACHReturnsHistRCSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetACHReturnsHistRC\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetACHReturnsHistRCSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetACHReturnsHistRCResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetACHReturnsBinSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetACHReturnsBin\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetACHReturnsBinSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetACHReturnsBinResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetACHReturnsHistBinSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetACHReturnsHistBin\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"GetACHReturnsHistBinSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetACHReturnsHistBinResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetResultFileSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetResultFile\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"GetResultFileSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:GetResultFileResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"GetErrorFileSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:GetErrorFile\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"GetErrorFileSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:GetErrorFileResponse\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"ViewACHTransBatchSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:ViewACHTransBatch\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"ViewACHTransBatchSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:ViewACHTransBatchResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"DeleteACHTransBatchSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DeleteACHTransBatch\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"DeleteACHTransBatchSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DeleteACHTransBatchResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:portType name=\"ACHWorksWSSoap\">\r\n    <wsdl:operation
+        name=\"ConnectionCheck\">\r\n      <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Checks
+        validity of user/company information</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:ConnectionCheckSoapIn\" />\r\n      <wsdl:output message=\"tns:ConnectionCheckSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"CheckCompanyStatus\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Checks
+        status of user/company account</wsdl:documentation>\r\n      <wsdl:input message=\"tns:CheckCompanyStatusSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:CheckCompanyStatusSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"SendACHTrans\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Sends single ACH transaction
+        record</wsdl:documentation>\r\n      <wsdl:input message=\"tns:SendACHTransSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:SendACHTransSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"SendACHTransBatch\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Sends multiple ACH transaction
+        records</wsdl:documentation>\r\n      <wsdl:input message=\"tns:SendACHTransBatchSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:SendACHTransBatchSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"SendACHTransBatchBin\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Sends multiple ACH transaction
+        records in a binary encoded file</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:SendACHTransBatchBinSoapIn\" />\r\n      <wsdl:output message=\"tns:SendACHTransBatchBinSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"SendIATACHTransBatch\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Sends
+        multiple IAT ACH transaction records</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:SendIATACHTransBatchSoapIn\" />\r\n      <wsdl:output message=\"tns:SendIATACHTransBatchSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetACHReturns\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Gets
+        returns and deletes from server</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetACHReturnsSoapIn\" />\r\n      <wsdl:output message=\"tns:GetACHReturnsSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetACHReturnsHist\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Gets
+        returns from given date range</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetACHReturnsHistSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetACHReturnsHistSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetACHReturnsRC\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Gets returns per entered responsecode
+        and deletes from server</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetACHReturnsRCSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetACHReturnsRCSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"GetACHReturnsHistRC\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Gets returns per entered response
+        code from given date range</wsdl:documentation>\r\n      <wsdl:input message=\"tns:GetACHReturnsHistRCSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:GetACHReturnsHistRCSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"GetACHReturnsBin\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Gets
+        binary return files and deletes from server</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetACHReturnsBinSoapIn\" />\r\n      <wsdl:output message=\"tns:GetACHReturnsBinSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetACHReturnsHistBin\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Gets
+        binary return files from given date range</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetACHReturnsHistBinSoapIn\" />\r\n      <wsdl:output message=\"tns:GetACHReturnsHistBinSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetResultFile\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Gets
+        result records at specified date range</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetResultFileSoapIn\" />\r\n      <wsdl:output message=\"tns:GetResultFileSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"GetErrorFile\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Gets
+        error records at specified date range</wsdl:documentation>\r\n      <wsdl:input
+        message=\"tns:GetErrorFileSoapIn\" />\r\n      <wsdl:output message=\"tns:GetErrorFileSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"ViewACHTransBatch\">\r\n
+        \     <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">View
+        or Read an ACH Batch File</wsdl:documentation>\r\n      <wsdl:input message=\"tns:ViewACHTransBatchSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:ViewACHTransBatchSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"DeleteACHTransBatch\">\r\n      <wsdl:documentation
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">Delete or Stop an ACH Batch
+        File</wsdl:documentation>\r\n      <wsdl:input message=\"tns:DeleteACHTransBatchSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:DeleteACHTransBatchSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n  </wsdl:portType>\r\n  <wsdl:binding name=\"ACHWorksWSSoap\"
+        type=\"tns:ACHWorksWSSoap\">\r\n    <soap:binding transport=\"http://schemas.xmlsoap.org/soap/http\"
+        />\r\n    <wsdl:operation name=\"ConnectionCheck\">\r\n      <soap:operation
+        soapAction=\"http://achworks.com/ConnectionCheck\" style=\"document\" />\r\n
+        \     <wsdl:input>\r\n        <soap:body use=\"literal\" />\r\n      </wsdl:input>\r\n
+        \     <wsdl:output>\r\n        <soap:body use=\"literal\" />\r\n      </wsdl:output>\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"CheckCompanyStatus\">\r\n
+        \     <soap:operation soapAction=\"http://achworks.com/CheckCompanyStatus\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SendACHTrans\">\r\n      <soap:operation soapAction=\"http://achworks.com/SendACHTrans\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SendACHTransBatch\">\r\n      <soap:operation soapAction=\"http://achworks.com/SendACHTransBatch\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SendACHTransBatchBin\">\r\n      <soap:operation soapAction=\"http://achworks.com/SendACHTransBatchBin\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SendIATACHTransBatch\">\r\n      <soap:operation soapAction=\"http://achworks.com/SendIATACHTransBatch\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetACHReturns\">\r\n      <soap:operation soapAction=\"http://achworks.com/GetACHReturns\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetACHReturnsHist\">\r\n      <soap:operation soapAction=\"http://achworks.com/GetACHReturnsHist\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetACHReturnsRC\">\r\n      <soap:operation soapAction=\"http://achworks.com/GetACHReturnsRC\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetACHReturnsHistRC\">\r\n      <soap:operation soapAction=\"http://achworks.com/GetACHReturnsHistRC\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetACHReturnsBin\">\r\n      <soap:operation soapAction=\"http://achworks.com/GetACHReturnsBin\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetACHReturnsHistBin\">\r\n      <soap:operation soapAction=\"http://achworks.com/GetACHReturnsHistBin\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetResultFile\">\r\n      <soap:operation soapAction=\"http://achworks.com/GetResultFile\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetErrorFile\">\r\n      <soap:operation soapAction=\"http://achworks.com/GetErrorFile\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ViewACHTransBatch\">\r\n      <soap:operation soapAction=\"http://achworks.com/ViewACHTransBatch\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteACHTransBatch\">\r\n      <soap:operation soapAction=\"http://achworks.com/DeleteACHTransBatch\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:binding name=\"ACHWorksWSSoap12\" type=\"tns:ACHWorksWSSoap\">\r\n
+        \   <soap12:binding transport=\"http://schemas.xmlsoap.org/soap/http\" />\r\n
+        \   <wsdl:operation name=\"ConnectionCheck\">\r\n      <soap12:operation soapAction=\"http://achworks.com/ConnectionCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"CheckCompanyStatus\">\r\n      <soap12:operation soapAction=\"http://achworks.com/CheckCompanyStatus\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SendACHTrans\">\r\n      <soap12:operation soapAction=\"http://achworks.com/SendACHTrans\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SendACHTransBatch\">\r\n      <soap12:operation soapAction=\"http://achworks.com/SendACHTransBatch\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SendACHTransBatchBin\">\r\n      <soap12:operation soapAction=\"http://achworks.com/SendACHTransBatchBin\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SendIATACHTransBatch\">\r\n      <soap12:operation soapAction=\"http://achworks.com/SendIATACHTransBatch\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetACHReturns\">\r\n      <soap12:operation soapAction=\"http://achworks.com/GetACHReturns\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetACHReturnsHist\">\r\n      <soap12:operation soapAction=\"http://achworks.com/GetACHReturnsHist\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetACHReturnsRC\">\r\n      <soap12:operation soapAction=\"http://achworks.com/GetACHReturnsRC\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetACHReturnsHistRC\">\r\n      <soap12:operation soapAction=\"http://achworks.com/GetACHReturnsHistRC\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetACHReturnsBin\">\r\n      <soap12:operation soapAction=\"http://achworks.com/GetACHReturnsBin\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetACHReturnsHistBin\">\r\n      <soap12:operation soapAction=\"http://achworks.com/GetACHReturnsHistBin\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetResultFile\">\r\n      <soap12:operation soapAction=\"http://achworks.com/GetResultFile\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"GetErrorFile\">\r\n      <soap12:operation soapAction=\"http://achworks.com/GetErrorFile\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ViewACHTransBatch\">\r\n      <soap12:operation soapAction=\"http://achworks.com/ViewACHTransBatch\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteACHTransBatch\">\r\n      <soap12:operation soapAction=\"http://achworks.com/DeleteACHTransBatch\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:service name=\"ACHWorksWS\">\r\n    <wsdl:documentation xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">ACHWorksWS
+        (ACHWorks-SOAP 4.0) is a web service (web API) by &lt;a href=\"http://www.achworks.com\"&gt;ACHWorks&lt;/a&gt;
+        that provides a complete solution for Automated Clearing House (ACH) operations:
+        \ Sending transactions and getting status of returns and settlements.  The
+        complete API Guide can be downloaded &lt;a href=\"http://www.achworks.com/files/achworkssoapver4guide.pdf\"&gt;here&lt;/a&gt;.
+        \  Please &lt;a href=\"http://www.achworks.com/contactus\"&gt;contact us&lt;/a&gt;
+        for more information. Last updated on: 05/17/2013. Release Version 4.0.10HA</wsdl:documentation>\r\n
+        \   <wsdl:port name=\"ACHWorksWSSoap\" binding=\"tns:ACHWorksWSSoap\">\r\n
+        \     <soap:address location=\"http://tstsvr.achworks.com/dnet/achws.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"ACHWorksWSSoap12\" binding=\"tns:ACHWorksWSSoap12\">\r\n
+        \     <soap12:address location=\"http://tstsvr.achworks.com/dnet/achws.asmx\"
+        />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 16:47:57 GMT
+recorded_with: VCR 3.0.3
