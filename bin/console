@@ -3,7 +3,15 @@
 # Prerequisites for working with this gem in console
 require 'bundler/setup'
 require 'ach_client'
-require 'pry'
+
+
+# Initialize constants to test values so we don't have to repeat this every
+# time we run a console session
+AchClient::AchWorks.company_key = 'SASD%!%$DGLJGWYRRDGDDUDFDESDHDD'
+AchClient::AchWorks.company = 'MYCOMPANY'
+AchClient::AchWorks.loc_i_d = '9505'
+AchClient::AchWorks.s_s_s = 'TST'
+AchClient::AchWorks.wsdl = 'http://tstsvr.achworks.com/dnet/achws.asmx?wsdl'
 
 # Start a console session using pry
 Pry.start
