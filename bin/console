@@ -3,7 +3,7 @@
 # Prerequisites for working with this gem in console
 require 'bundler/setup'
 require 'ach_client'
-
+require 'pry'
 
 # Initialize constants to test values so we don't have to repeat this every
 # time we run a console session
