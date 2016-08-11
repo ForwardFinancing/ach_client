@@ -130,8 +130,8 @@ class AchBatchTest < MiniTest::Test
         CustomerID: 'TBD',
         CustomerAcctType: 'C',
         TransAmount: BigDecimal.new('575.45').to_s,
-        CheckOrTransDate: Date.today,
-        EffectiveDate: Date.today,
+        CheckOrTransDate: '2016-08-11T00:00:00.00000+00:00',
+        EffectiveDate: '2016-08-11T00:00:00.00000+00:00',
         Memo: '????',
         OpCode: 'S',
         AccountSet: '1'
@@ -149,8 +149,8 @@ class AchBatchTest < MiniTest::Test
         CustomerID: 'TBD',
         CustomerAcctType: 'C',
         TransAmount: BigDecimal.new('575.45').to_s,
-        CheckOrTransDate: Date.today,
-        EffectiveDate: Date.today,
+        CheckOrTransDate: '2016-08-11T00:00:00.00000+00:00',
+        EffectiveDate: '2016-08-11T00:00:00.00000+00:00',
         Memo: '????',
         OpCode: 'S',
         AccountSet: '1'

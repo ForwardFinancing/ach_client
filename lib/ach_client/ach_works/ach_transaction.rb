@@ -30,8 +30,8 @@ module AchClient
           CustomerID: 'TBD',
           CustomerAcctType: customer_account_type,
           TransAmount: amount,
-          CheckOrTransDate: Date.today, # Does this need to be read from ACH record
-          EffectiveDate: Date.today, # Should be same or greater than above (probably same)
+          CheckOrTransDate: DateFormatter.format(Date.today), # Does this need to be read from ACH record
+          EffectiveDate: DateFormatter.format(Date.today), # Should be same or greater than above (probably same)
           Memo: memo,
           OpCode: 'S', # Check this
           AccountSet: '1'
