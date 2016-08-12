@@ -8,9 +8,17 @@ end
 
 CodeClimate::TestReporter.start
 
+# Freeze time so we don't have to worry about Time.now relativity
+require 'timecop'
+Timecop.freeze(DateTime.parse('2016-08-11T10:13:05-04:00'))
+
+# Everything happens synchronously
+require 'sucker_punch/testing/inline'
+
 require 'ach_client'
 require 'minitest/autorun'
 require 'minitest/mock'
+require 'pry'
 
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new
 

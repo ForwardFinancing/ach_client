@@ -66,17 +66,32 @@ AchClient::AchWorks.s_s_s = 'TST'
 AchClient::AchWorks.wsdl = 'http://tstsvr.achworks.com/dnet/achws.asmx?wsdl'
 ```
 
-## Documentation
+#### Logging
 
-View them at https://forwardfinancing.github.io/ach_client/doc/AchClient/AchWorks.html
+For record keeping purposes, there is a log provider that allows you to hook
+into all requests sent to AchWorks and send them to your logging service.
 
-Uses yardocs. Run `yard doc && open docs/index.html` to generate and view docs.
+The default log provider is the NullLogProvider, which does not log requests.
 
-To update the docs, checkout the `gh-pages` branch.
-Then run `yard doc` and push your changes up.
-The `gh-pages` has the doc directory included in source control. It should
-never be merged.
+```ruby
+# No logging
+AchClient::AchWorks::Logging.log_provider = AchClient::AchWorks::Logging::NullLogProvider
 
+# Log to stdout
+AchClient::AchWorks::Logging.log_provider = AchClient::AchWorks::Logging::StdoutLogProvider
+
+# Log to wherever you want by creating your own LogProvider class
+# and overriding #send_logs
+class MyCustomLogger < AchClient::AchWorks::Logging::LogProvider
+  # This method takes a log body and a log name
+  def self.send_logs(body:, name:)
+    # Do whatever you want, like send the log data to S3, or whatever
+    #   logging service you choose
+  end
+end
+AchClient::AchWorks::Logging.log_provider = MyCustomLogger
+
+```
 
 ## Development
 
@@ -87,6 +102,17 @@ Then, run `rake test` to run the tests.
 You can also run `bin/console` for an interactive prompt that
 will allow you to experiment.
 
+
+### Documentation
+
+View them at https://forwardfinancing.github.io/ach_client/doc/AchClient/AchWorks.html
+
+Uses yardocs. Run `yard doc && open docs/index.html` to generate and view docs.
+
+To update the docs, checkout the `gh-pages` branch.
+Then run `yard doc` and push your changes up.
+The `gh-pages` has the doc directory included in source control. It should
+never be merged.
 
 ## Contributing
 

@@ -32,6 +32,8 @@ module AchClient
         # Lets us use symbols as keys without Savon changing the case
         # { 'Key' => 'Value' } == { Key: 'Value' }
         convert_request_keys_to :none
+
+        pretty_print_xml true
       end
     end
   end
