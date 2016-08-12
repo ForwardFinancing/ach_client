@@ -93,18 +93,6 @@ AchClient::AchWorks::Logging.log_provider = MyCustomLogger
 
 ```
 
-## Documentation
-
-View them at https://forwardfinancing.github.io/ach_client/doc/AchClient/AchWorks.html
-
-Uses yardocs. Run `yard doc && open docs/index.html` to generate and view docs.
-
-To update the docs, checkout the `gh-pages` branch.
-Then run `yard doc` and push your changes up.
-The `gh-pages` has the doc directory included in source control. It should
-never be merged.
-
-
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies.
@@ -114,6 +102,17 @@ Then, run `rake test` to run the tests.
 You can also run `bin/console` for an interactive prompt that
 will allow you to experiment.
 
+
+### Documentation
+
+View them at https://forwardfinancing.github.io/ach_client/doc/AchClient/AchWorks.html
+
+Uses yardocs. Run `yard doc && open docs/index.html` to generate and view docs.
+
+To update the docs, checkout the `gh-pages` branch.
+Then run `yard doc` and push your changes up.
+The `gh-pages` has the doc directory included in source control. It should
+never be merged.
 
 ## Contributing
 

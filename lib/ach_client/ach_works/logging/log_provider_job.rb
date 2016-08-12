@@ -12,7 +12,11 @@ module AchClient
           # Savon logger does a nice job of XML pretty print
           # Takes: message, list of filters, pretty print boolean
           AchClient::AchWorks::Logging.log_provider.send_logs(
-            body: Savon::LogMessage.new(xml, [], true),
+            body: Savon::LogMessage.new(
+              xml,
+              AchClient::AchWorks::Logging.log_filters,
+              true
+            ),
             name: name
           )
         end

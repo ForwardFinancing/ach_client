@@ -26,8 +26,20 @@ module AchClient
            log_provider < AchClient::AchWorks::Logging::LogProvider
           self._log_provider_type = log_provider
         else
-          raise 'Must be a subclass of AchClient::AchWorks::Logging::LogProvider'
+          raise 'Must be subclass of AchClient::AchWorks::Logging::LogProvider'
         end
+      end
+
+      # @return [Array<String>] List of XML nodes to scrub
+      class_attribute :_log_filters
+
+      # @return [Array<String>] List of XML nodes to scrub
+      def self.log_filters
+        self._log_filters || []
+      end
+
+      def self.log_filters=(filters)
+        self._log_filters = filters
       end
     end
   end
