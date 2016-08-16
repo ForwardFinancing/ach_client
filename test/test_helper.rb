@@ -38,6 +38,7 @@ require 'vcr'
 VCR.configure do |config|
   config.cassette_library_dir = 'test/vcrs'
   config.hook_into :webmock
+  config.ignore_hosts 'codeclimate.com'
 end
 
 # Savon makes a request for the WSDL and caches it when the first request is
