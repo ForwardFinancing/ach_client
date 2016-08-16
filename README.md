@@ -54,6 +54,47 @@ batch.send_batch
 This string can be used to track the transaction later (not yet implemented)
 
 
+### Checking Transaction status
+
+AchWorks requires you to provide a "FrontEndTrace" when you send your
+transaction, but does not let you query by front_end_trace when checking status.
+You can only query for the most recent statuses, and those within a given date
+range.
+
+See the AchStatusChecker class for more details.
+
+To check statuses:
+
+```ruby
+  # Build a status checker with your company details:
+  status_checker = AchClient::AchWorks::AchStatusChecker.new(
+    company_info: AchClient::AchWorks::InputCompanyInfo.build
+  )
+
+  # Check the most recent transactions
+  status_checker.most_recent
+
+  # Check the transactions with a date range
+  status_checker.in_range(start_date: 1.week.ago, end_date: Date.today)
+```
+
+Both of these methods return a `Hash` with the "FrontEndTrace" as the keys and
+instances of AchClient::AchResponse as values.
+
+### Responses
+
+There are a number of response states that can result from checking on the
+status of your ACH transactions.
+
+- `SettledAchResponse`: The transaction went through. :tada:
+- `ProcessingAchResponse`: The transaction hasn't gone through yet. Patience.
+- `ReturnedAchResponse`: The transaction was returned cause something went
+wrong. Check the return code on the response object for details
+- `CorrectedAchResponse`: The transaction received a correction because some
+information has changed. Check the return code on the response object for
+details on what happened. Check the corrections hash on the response object for
+the new attributes
+
 ### AchWorks
 
 Some settings need to be configured first for using AchWorks provider:

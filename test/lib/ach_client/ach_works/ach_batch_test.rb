@@ -213,12 +213,12 @@ class AchBatchTest < MiniTest::Test
     batch = AchClient::AchWorks::AchBatch.new(
       ach_transactions: [credit, credit]
     )
-    batch.stub(:get_response, FakeUnsuccessfulResponse.new) do
+    AchClient::AchWorks.stub(:request, FakeUnsuccessfulResponse.new) do
       assert_equal(
         assert_raises(RuntimeError) do
           batch.send_batch
         end.message,
-        'ACH Batch failed due to unknown SOAP fault'
+        'send_ach_trans_batch failed due to unknown SOAP fault'
       )
     end
   end
