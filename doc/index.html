@@ -60,6 +60,14 @@
       <iframe id="search_frame" src="class_list.html"></iframe>
 
       <div id="content"><div id='filecontents'>
+<p><a href="https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/feed"><img
+src="https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/badges/105ddb79b7f5c008bccd/gpa.svg"></a>
+<a
+href="https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/coverage"><img
+src="https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/badges/105ddb79b7f5c008bccd/coverage.svg"></a>
+<a href="https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/feed"><img
+src="https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/badges/105ddb79b7f5c008bccd/issue_count.svg"></a></p>
+
 <h1 id="label-AchClient">AchClient</h1>
 
 <p>Execute <code>bin/console</code> to run this gem in terminal.</p>
@@ -81,7 +89,116 @@
 
 <h2 id="label-Usage">Usage</h2>
 
-<p>TODO: Write usage instructions here</p>
+<h3 id="label-Sending+batch+ACH+transactions">Sending batch ACH transactions</h3>
+
+<pre class="code ruby"><code class="ruby">
+# Create a batch with a list of transactions
+batch = AchClient::AchBatch.new(
+  ach_transactions: [
+    AchClient::AchTransaction.new(
+      account_number: &#39;00002323044&#39;,
+      account_type: AccountTypes::Checking,
+      amount: BigDecimal.new(&#39;575.45&#39;),
+      memo: &#39;????&#39;,
+      merchant_name: &#39;DOE, JOHN&#39;,
+      routing_number: nil,
+      transaction_type: TransactionTypes::Credit,
+      ach_id: &#39;foooo&#39;
+    ),
+    ...
+  ]
+)
+
+# Send the batch to the provider
+batch.send_batch
+</code></pre>
+
+<p><code>send_batch</code> returns a tracking string on success. This string
+can be used to track the transaction later (not yet implemented)</p>
+
+<h3 id="label-Checking+Transaction+status">Checking Transaction status</h3>
+
+<p>AchWorks requires you to provide a “FrontEndTrace” when you send your
+transaction, but does not let you query by front_end_trace when checking
+status. You can only query for the most recent statuses, and those within a
+given date range.</p>
+
+<p>See the AchStatusChecker class for more details.</p>
+
+<p>To check statuses:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Build a status checker with your company details:
+</span>  <span class='id identifier rubyid_status_checker'>status_checker</span> <span class='op'>=</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>AchStatusChecker</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+    <span class='label'>company_info:</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>InputCompanyInfo</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span>
+  <span class='rparen'>)</span>
+
+  <span class='comment'># Check the most recent transactions
+</span>  <span class='id identifier rubyid_status_checker'>status_checker</span><span class='period'>.</span><span class='id identifier rubyid_most_recent'>most_recent</span>
+
+  <span class='comment'># Check the transactions with a date range
+</span>  <span class='id identifier rubyid_status_checker'>status_checker</span><span class='period'>.</span><span class='id identifier rubyid_in_range'>in_range</span><span class='lparen'>(</span><span class='label'>start_date:</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_week'>week</span><span class='period'>.</span><span class='id identifier rubyid_ago'>ago</span><span class='comma'>,</span> <span class='label'>end_date:</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>Both of these methods return a <code>Hash</code> with the “FrontEndTrace”
+as the keys and instances of AchClient::AchResponse as values.</p>
+
+<h3 id="label-Responses">Responses</h3>
+
+<p>There are a number of response states that can result from checking on the
+status of your ACH transactions.</p>
+<ul><li>
+<p><code>SettledAchResponse</code>: The transaction went through. :tada:</p>
+</li><li>
+<p><code>ProcessingAchResponse</code>: The transaction hasn&#39;t gone through
+yet. Patience.</p>
+</li><li>
+<p><code>ReturnedAchResponse</code>: The transaction was returned cause
+something went wrong. Check the return code on the response object for
+details</p>
+</li><li>
+<p><code>CorrectedAchResponse</code>: The transaction received a correction
+because some information has changed. Check the return code on the response
+object for details on what happened. Check the corrections hash on the
+response object for the new attributes</p>
+</li></ul>
+
+<h3 id="label-AchWorks">AchWorks</h3>
+
+<p>Some settings need to be configured first for using AchWorks provider:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_company_key'>company_key</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SASD%!%$DGLJGWYRRDGDDUDFDESDHDD</span><span class='tstring_end'>&#39;</span></span>
+<span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_company'>company</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>MYCOMPANY</span><span class='tstring_end'>&#39;</span></span>
+<span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_loc_i_d'>loc_i_d</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>9505</span><span class='tstring_end'>&#39;</span></span>
+<span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_s_s_s'>s_s_s</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TST</span><span class='tstring_end'>&#39;</span></span>
+<span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_wsdl'>wsdl</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://tstsvr.achworks.com/dnet/achws.asmx?wsdl</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<h4 id="label-Logging">Logging</h4>
+
+<p>For record keeping purposes, there is a log provider that allows you to
+hook into all requests sent to AchWorks and send them to your logging
+service.</p>
+
+<p>The default log provider is the NullLogProvider, which does not log
+requests.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># No logging
+</span><span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>Logging</span><span class='period'>.</span><span class='id identifier rubyid_log_provider'>log_provider</span> <span class='op'>=</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>Logging</span><span class='op'>::</span><span class='const'>NullLogProvider</span>
+
+<span class='comment'># Log to stdout
+</span><span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>Logging</span><span class='period'>.</span><span class='id identifier rubyid_log_provider'>log_provider</span> <span class='op'>=</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>Logging</span><span class='op'>::</span><span class='const'>StdoutLogProvider</span>
+
+<span class='comment'># Log to wherever you want by creating your own LogProvider class
+</span><span class='comment'># and overriding #send_logs
+</span><span class='kw'>class</span> <span class='const'>MyCustomLogger</span> <span class='op'>&lt;</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>Logging</span><span class='op'>::</span><span class='const'>LogProvider</span>
+  <span class='comment'># This method takes a log body and a log name
+</span>  <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send_logs'>send_logs</span><span class='lparen'>(</span><span class='label'>body:</span><span class='comma'>,</span> <span class='label'>name:</span><span class='rparen'>)</span>
+    <span class='comment'># Do whatever you want, like send the log data to S3, or whatever
+</span>    <span class='comment'>#   logging service you choose
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span>
+<span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>Logging</span><span class='period'>.</span><span class='id identifier rubyid_log_provider'>log_provider</span> <span class='op'>=</span> <span class='const'>MyCustomLogger</span>
+</code></pre>
 
 <h2 id="label-Development">Development</h2>
 
@@ -93,6 +210,19 @@ dependencies.</p>
 <p>You can also run <code>bin/console</code> for an interactive prompt that
 will allow you to experiment.</p>
 
+<h3 id="label-Documentation">Documentation</h3>
+
+<p>View them at <a
+href="https://forwardfinancing.github.io/ach_client/doc/AchClient/AchWorks.html">forwardfinancing.github.io/ach_client/doc/AchClient/AchWorks.html</a></p>
+
+<p>Uses yardocs. Run <code>yard doc &amp;&amp; open docs/index.html</code> to
+generate and view docs.</p>
+
+<p>To update the docs, checkout the <code>gh-pages</code> branch. Then run
+<code>yard doc</code> and push your changes up. The <code>gh-pages</code>
+has the doc directory included in source control. It should never be
+merged.</p>
+
 <h2 id="label-Contributing">Contributing</h2>
 
 <p>Bug reports and pull requests are welcome on GitHub at <a
@@ -100,7 +230,7 @@ href="https://github.com/ForwardFinancing/ach_client">github.com/ForwardFinancin
 </div></div>
 
       <div id="footer">
-  Generated on Wed Aug 10 14:21:02 2016 by
+  Generated on Fri Aug 19 09:13:03 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.3.1).
 </div>

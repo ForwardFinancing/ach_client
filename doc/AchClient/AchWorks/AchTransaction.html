@@ -103,7 +103,18 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>AchWorks implementation for AchTransaction</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -283,12 +294,12 @@
       <pre class="lines">
 
 
-12
-13
-14</pre>
+14
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_transaction.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_transaction.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ach_id'>ach_id</span>
   <span class='ivar'>@ach_id</span>
@@ -365,12 +376,12 @@
       <pre class="lines">
 
 
-8
-9
-10</pre>
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_transaction.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_transaction.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_arguments'>arguments</span>
   <span class='kw'>super</span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='symbol'>:ach_id</span><span class='rbracket'>]</span>
@@ -433,21 +444,21 @@ is responsible for ensuring the uniqueness of this value</p>
       <pre class="lines">
 
 
-46
-47
-48
-49
-50
-51
-52
-53
 54
 55
 56
-57</pre>
+57
+58
+59
+60
+61
+62
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_transaction.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_transaction.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_front_end_trace'>front_end_trace</span>
   <span class='comment'># I want to stop this before it goes through because AchWorks might
@@ -510,8 +521,6 @@ is responsible for ensuring the uniqueness of this value</p>
       <pre class="lines">
 
 
-17
-18
 19
 20
 21
@@ -530,10 +539,18 @@ is responsible for ensuring the uniqueness of this value</p>
 34
 35
 36
-37</pre>
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_transaction.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_transaction.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_hash'>to_hash</span>
   <span class='lbrace'>{</span>
@@ -545,12 +562,18 @@ is responsible for ensuring the uniqueness of this value</p>
     <span class='label'>CustomerAcctNo:</span> <span class='id identifier rubyid_account_number'>account_number</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
     <span class='label'>OriginatorName:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TBD</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
     <span class='label'>TransactionCode:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>WEB</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='comment'># CHECK THIS
-</span>    <span class='label'>CustTransType:</span> <span class='id identifier rubyid_customer_transaction_type'>customer_transaction_type</span><span class='comma'>,</span>
+</span>    <span class='label'>CustTransType:</span>
+      <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>TransactionTypeTransformer</span><span class='period'>.</span><span class='id identifier rubyid_class_to_string'>class_to_string</span><span class='lparen'>(</span>
+        <span class='id identifier rubyid_transaction_type'>transaction_type</span>
+      <span class='rparen'>)</span><span class='comma'>,</span>
     <span class='label'>CustomerID:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TBD</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-    <span class='label'>CustomerAcctType:</span> <span class='id identifier rubyid_customer_account_type'>customer_account_type</span><span class='comma'>,</span>
+    <span class='label'>CustomerAcctType:</span>
+      <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>AccountTypeTransformer</span><span class='period'>.</span><span class='id identifier rubyid_class_to_string'>class_to_string</span><span class='lparen'>(</span>
+        <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_account_type'>account_type</span>
+      <span class='rparen'>)</span><span class='comma'>,</span>
     <span class='label'>TransAmount:</span> <span class='id identifier rubyid_amount'>amount</span><span class='comma'>,</span>
-    <span class='label'>CheckOrTransDate:</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='comma'>,</span> <span class='comment'># Does this need to be read from ACH record
-</span>    <span class='label'>EffectiveDate:</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='comma'>,</span> <span class='comment'># Should be same or greater than above (probably same)
+    <span class='label'>CheckOrTransDate:</span> <span class='const'>DateFormatter</span><span class='period'>.</span><span class='id identifier rubyid_format'>format</span><span class='lparen'>(</span><span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='comment'># Does this need to be read from ACH record
+</span>    <span class='label'>EffectiveDate:</span> <span class='const'>DateFormatter</span><span class='period'>.</span><span class='id identifier rubyid_format'>format</span><span class='lparen'>(</span><span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='comment'># Should be same or greater than above (probably same)
 </span>    <span class='label'>Memo:</span> <span class='id identifier rubyid_memo'>memo</span><span class='comma'>,</span>
     <span class='label'>OpCode:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>S</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='comment'># Check this
 </span>    <span class='label'>AccountSet:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1</span><span class='tstring_end'>&#39;</span></span>
@@ -566,7 +589,7 @@ is responsible for ensuring the uniqueness of this value</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Aug 10 14:21:03 2016 by
+  Generated on Fri Aug 19 09:13:04 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.3.1).
 </div>

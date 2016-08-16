@@ -101,7 +101,18 @@
   
 </div>
 
-<div id="subclasses">
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Generic representation of a single Ach transaction</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="../AchWorks/AchTransaction.html" title="AchClient::AchWorks::AchTransaction (class)">AchClient::AchWorks::AchTransaction</a></span></p>
 </div>
@@ -376,18 +387,18 @@ AccountTypes::AccountType</p>
       <pre class="lines">
 
 
-32
-33
 34
 35
 36
 37
 38
 39
-40</pre>
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/abstract/ach_transaction.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/abstract/ach_transaction.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_arguments'>arguments</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='id identifier rubyid_arguments'>arguments</span><span class='period'>.</span><span class='id identifier rubyid_extract_options!'>extract_options!</span>
@@ -454,8 +465,6 @@ AccountTypes::AccountType</p>
       <pre class="lines">
 
 
-8
-9
 10
 11
 12
@@ -464,10 +473,12 @@ AccountTypes::AccountType</p>
 15
 16
 17
-18</pre>
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/abstract/ach_transaction.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/abstract/ach_transaction.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_arguments'>arguments</span>
   <span class='lbracket'>[</span>
@@ -535,12 +546,12 @@ AccountTypes::AccountType</p>
       <pre class="lines">
 
 
-48
-49
-50</pre>
+50
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/abstract/ach_transaction.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/abstract/ach_transaction.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_credit?'>credit?</span>
   <span class='id identifier rubyid_transaction_type'>transaction_type</span> <span class='op'>==</span> <span class='const'>TransactionTypes</span><span class='op'>::</span><span class='const'>Credit</span>
@@ -594,12 +605,12 @@ AccountTypes::AccountType</p>
       <pre class="lines">
 
 
-43
-44
-45</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/abstract/ach_transaction.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/abstract/ach_transaction.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_debit?'>debit?</span>
   <span class='id identifier rubyid_transaction_type'>transaction_type</span> <span class='op'>==</span> <span class='const'>TransactionTypes</span><span class='op'>::</span><span class='const'>Debit</span>
@@ -614,7 +625,7 @@ AccountTypes::AccountType</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Aug 10 14:21:02 2016 by
+  Generated on Fri Aug 19 09:13:04 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.3.1).
 </div>
