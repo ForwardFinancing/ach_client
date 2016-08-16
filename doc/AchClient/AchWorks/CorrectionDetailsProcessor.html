@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: AchClient::AchWorks::CorrectionDetailsProcessor
+  
+    &mdash; Documentation by YARD 0.9.5
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "AchClient::AchWorks::CorrectionDetailsProcessor";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../AchClient.html" title="AchClient (module)">AchClient</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span></span>
+     &raquo; 
+    <span class="title">CorrectionDetailsProcessor</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <iframe id="search_frame" src="../../class_list.html"></iframe>
+
+      <div id="content"><h1>Class: AchClient::AchWorks::CorrectionDetailsProcessor
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">AchClient::AchWorks::CorrectionDetailsProcessor</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ach_client/ach_works/correction_details_processor.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Turns the gibberish string that AchWorks gives us for correction returns
+when possible into meaningful data</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#decipher_C03-class_method" title="decipher_C03 (class method)">.<strong>decipher_C03</strong>(gibberish)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>CO3: The routing number and the account number were wrong.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#decipher_C06-class_method" title="decipher_C06 (class method)">.<strong>decipher_C06</strong>(gibberish)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Discrepency between AchWorks and standard correction codes: AchWorks: The
+account number and transaction code were wrong.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#decipher_C07-class_method" title="decipher_C07 (class method)">.<strong>decipher_C07</strong>(gibberish)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>C07: The account number, routing number, and account type were all  
+incorrect.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#decipher_correction_details-class_method" title="decipher_correction_details (class method)">.<strong>decipher_correction_details</strong>(gibberish)  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Turns the gibberish string that AchWorks gives us for correction returns
+when possible into meaningful data.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#decipher_unknown-class_method" title="decipher_unknown (class method)">.<strong>decipher_unknown</strong>(gibberish)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The rest of the cases are undocumented.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#method_missing-class_method" title="method_missing (class method)">.<strong>method_missing</strong>(method, *args, &amp;block)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>If it looks like we tried to call a function for an unknown correction
+code, then return the unhanlded correction data hash.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="decipher_C03-class_method">
+  
+    .<strong>decipher_C03</strong>(gibberish)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>CO3: The routing number and the account number were wrong.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/correction_details_processor.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_decipher_C03'>decipher_C03</span><span class='lparen'>(</span><span class='id identifier rubyid_gibberish'>gibberish</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span>
+    <span class='label'>routing_number:</span> <span class='id identifier rubyid_gibberish'>gibberish</span><span class='lbracket'>[</span><span class='int'>3</span><span class='op'>..</span><span class='int'>11</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>account_number:</span> <span class='id identifier rubyid_gibberish'>gibberish</span><span class='lbracket'>[</span><span class='int'>15</span><span class='op'>..</span><span class='int'>31</span><span class='rbracket'>]</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="decipher_C06-class_method">
+  
+    .<strong>decipher_C06</strong>(gibberish)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Discrepency between AchWorks and standard correction codes: AchWorks: The
+account number and transaction code were wrong. Everyone else: The account
+number and account type (checking/saving)</p>
+
+<pre class="code ruby"><code class="ruby">were wrong.</code></pre>
+
+<p>However, AchWorks indicates that the “transaction code” is only 1</p>
+
+<pre class="code ruby"><code class="ruby">character long within their gibberish string. Their transaction
+codes are usually 3 characters, while their account types are one
+character. So I will assume that &quot;transaction code&quot; means
+&quot;account type&quot;.</code></pre>
+
+<p>C06: The account number and account type were wrong</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53
+54
+55
+56
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/correction_details_processor.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_decipher_C06'>decipher_C06</span><span class='lparen'>(</span><span class='id identifier rubyid_gibberish'>gibberish</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span>
+    <span class='label'>account_number:</span> <span class='id identifier rubyid_gibberish'>gibberish</span><span class='lbracket'>[</span><span class='int'>3</span><span class='op'>..</span><span class='int'>19</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>account_type:</span>
+      <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>AccountTypeTransformer</span><span class='period'>.</span><span class='id identifier rubyid_string_to_class'>string_to_class</span><span class='lparen'>(</span>
+        <span class='id identifier rubyid_gibberish'>gibberish</span><span class='lbracket'>[</span><span class='int'>23</span><span class='rbracket'>]</span>
+      <span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="decipher_C07-class_method">
+  
+    .<strong>decipher_C07</strong>(gibberish)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>C07: The account number, routing number, and account type were all</p>
+
+<pre class="code ruby"><code class="ruby">incorrect. You really messed this one up.</code></pre>
+
+<p>Same issue as above with Transaction Code =&gt; Account Type At least they
+were consistently discrepent.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/correction_details_processor.rb', line 65</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_decipher_C07'>decipher_C07</span><span class='lparen'>(</span><span class='id identifier rubyid_gibberish'>gibberish</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span>
+    <span class='label'>routing_number:</span> <span class='id identifier rubyid_gibberish'>gibberish</span><span class='lbracket'>[</span><span class='int'>3</span><span class='op'>..</span><span class='int'>11</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>account_number:</span> <span class='id identifier rubyid_gibberish'>gibberish</span><span class='lbracket'>[</span><span class='int'>12</span><span class='op'>..</span><span class='int'>28</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>account_type:</span>
+      <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>AccountTypeTransformer</span><span class='period'>.</span><span class='id identifier rubyid_string_to_class'>string_to_class</span><span class='lparen'>(</span>
+        <span class='id identifier rubyid_gibberish'>gibberish</span><span class='lbracket'>[</span><span class='int'>29</span><span class='rbracket'>]</span>
+      <span class='rparen'>)</span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="decipher_correction_details-class_method">
+  
+    .<strong>decipher_correction_details</strong>(gibberish)  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Turns the gibberish string that AchWorks gives us for correction returns
+when possible into meaningful data</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>gibberish</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the string that AchWorks gave you</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a key value pairing of corrected attributes and their values. When
+possible.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+12
+13
+14
+15
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/correction_details_processor.rb', line 12</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_decipher_correction_details'>decipher_correction_details</span><span class='lparen'>(</span><span class='id identifier rubyid_gibberish'>gibberish</span><span class='rparen'>)</span>
+  <span class='comment'># The correction code is the first 3 chars of the gibberish.
+</span>  <span class='comment'># The meaning of the rest of the giberish depends on the correction
+</span>  <span class='comment'>#   code. These meanings are sometimes enumerated in the AchWorks
+</span>  <span class='comment'>#   documentation.
+</span>  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>decipher_</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_gibberish'>gibberish</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>..</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='comma'>,</span> <span class='id identifier rubyid_gibberish'>gibberish</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="decipher_unknown-class_method">
+  
+    .<strong>decipher_unknown</strong>(gibberish)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>The rest of the cases are undocumented. We will expose the raw data</p>
+
+<pre class="code ruby"><code class="ruby">given to us, along with a nice note that explains the situation
+while shaming AchWorks.</code></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/correction_details_processor.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_decipher_unknown'>decipher_unknown</span><span class='lparen'>(</span><span class='id identifier rubyid_gibberish'>gibberish</span><span class='rparen'>)</span>
+  <span class='lbrace'>{</span>
+    <span class='label'>unhandled_correction_data:</span> <span class='id identifier rubyid_gibberish'>gibberish</span><span class='lbracket'>[</span><span class='int'>3</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>note:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>AchWorks failed to document this correction code, so we </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>can\&#39;t tell you what this data means. You might be able to find </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>out by contacting them. Alternatively, you could check the </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>AchWorks web console, and match your records against theirs to </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>see what changed. Enjoy! Let us know what you find, and maybe we</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> can handle this case in the future.</span><span class='tstring_end'>&#39;</span></span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="method_missing-class_method">
+  
+    .<strong>method_missing</strong>(method, *args, &amp;block)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>If it looks like we tried to call a function for an unknown correction
+code, then return the unhanlded correction data hash</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/correction_details_processor.rb', line 23</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_method'>method</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_start_with?'>start_with?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>decipher_</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_gibberish'>gibberish</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_gibberish'>gibberish</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>String</span><span class='rparen'>)</span>
+      <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_decipher_unknown'>decipher_unknown</span><span class='lparen'>(</span><span class='id identifier rubyid_gibberish'>gibberish</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='kw'>super</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Fri Aug 19 09:13:05 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.5 (ruby-2.3.1).
+</div>
+
+    </div>
+  </body>
+</html>

@@ -81,19 +81,30 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/ach_client.rb<span class="defines">,<br />
-  lib/ach_client/version.rb,<br /> lib/ach_client/abstract/ach_batch.rb,<br /> lib/ach_client/ach_works/ach_batch.rb,<br /> lib/ach_client/ach_works/ach_works.rb,<br /> lib/ach_client/abstract/ach_transaction.rb,<br /> lib/ach_client/ach_works/ach_transaction.rb,<br /> lib/ach_client/ach_works/input_company_info.rb</span>
+  lib/ach_client/version.rb,<br /> lib/ach_client/return_code.rb,<br /> lib/ach_client/return_codes.rb,<br /> lib/ach_client/abstract/ach_batch.rb,<br /> lib/ach_client/ach_works/ach_works.rb,<br /> lib/ach_client/ach_works/ach_batch.rb,<br /> lib/ach_client/response/ach_response.rb,<br /> lib/ach_client/abstract/ach_transaction.rb,<br /> lib/ach_client/ach_works/date_formatter.rb,<br /> lib/ach_client/ach_works/logging/logging.rb,<br /> lib/ach_client/ach_works/ach_transaction.rb,<br /> lib/ach_client/ach_works/input_company_info.rb,<br /> lib/ach_client/ach_works/ach_status_checker.rb,<br /> lib/ach_client/response/settled_ach_response.rb,<br /> lib/ach_client/response/returned_ach_response.rb,<br /> lib/ach_client/ach_works/logging/log_provider.rb,<br /> lib/ach_client/response/corrected_ach_response.rb,<br /> lib/ach_client/ach_works/ach_works_transformer.rb,<br /> lib/ach_client/ach_works/logging/savon_observer.rb,<br /> lib/ach_client/response/processing_ach_response.rb,<br /> lib/ach_client/ach_works/account_type_transformer.rb,<br /> lib/ach_client/ach_works/logging/log_provider_job.rb,<br /> lib/ach_client/ach_works/response_record_processor.rb,<br /> lib/ach_client/ach_works/logging/null_log_provider.rb,<br /> lib/ach_client/ach_works/logging/stdout_log_provider.rb,<br /> lib/ach_client/ach_works/correction_details_processor.rb,<br /> lib/ach_client/ach_works/transaction_type_transformer.rb</span>
 </dd>
   </dl>
   
 </div>
 
-<h2>Defined Under Namespace</h2>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Adapter for interacting with various Ach service providers</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
 <p class="children">
   
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="AchClient/Abstract.html" title="AchClient::Abstract (class)">Abstract</a></span>, <span class='object_link'><a href="AchClient/AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="AchClient/Abstract.html" title="AchClient::Abstract (class)">Abstract</a></span>, <span class='object_link'><a href="AchClient/AchResponse.html" title="AchClient::AchResponse (class)">AchResponse</a></span>, <span class='object_link'><a href="AchClient/AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span>, <span class='object_link'><a href="AchClient/CorrectedAchResponse.html" title="AchClient::CorrectedAchResponse (class)">CorrectedAchResponse</a></span>, <span class='object_link'><a href="AchClient/ProcessingAchResponse.html" title="AchClient::ProcessingAchResponse (class)">ProcessingAchResponse</a></span>, <span class='object_link'><a href="AchClient/ReturnCode.html" title="AchClient::ReturnCode (class)">ReturnCode</a></span>, <span class='object_link'><a href="AchClient/ReturnCodes.html" title="AchClient::ReturnCodes (class)">ReturnCodes</a></span>, <span class='object_link'><a href="AchClient/ReturnedAchResponse.html" title="AchClient::ReturnedAchResponse (class)">ReturnedAchResponse</a></span>, <span class='object_link'><a href="AchClient/SettledAchResponse.html" title="AchClient::SettledAchResponse (class)">SettledAchResponse</a></span>
     
   
 </p>
@@ -102,7 +113,18 @@
   <dl class="constants">
     
       <dt id="VERSION-constant" class="">VERSION =
-        
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>Increment this when changes are published</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
       </dt>
       <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0.1.0</span><span class='tstring_end'>&#39;</span></span></pre></dd>
     
@@ -119,7 +141,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Aug 10 14:21:02 2016 by
+  Generated on Fri Aug 19 09:13:04 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.3.1).
 </div>

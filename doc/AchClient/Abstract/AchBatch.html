@@ -175,7 +175,8 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>processing later on.</p>
+<p>Sends the batch to the provider, and returns a tracking identifier
+processing later on.</p>
 </div></span>
   
 </li>
@@ -233,12 +234,12 @@
       <pre class="lines">
 
 
-9
 10
-11</pre>
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/abstract/ach_batch.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/abstract/ach_batch.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>ach_transactions:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='ivar'>@ach_transactions</span> <span class='op'>=</span> <span class='id identifier rubyid_ach_transactions'>ach_transactions</span>
@@ -267,7 +268,8 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>processing later on.</p>
+<p>Sends the batch to the provider, and returns a tracking identifier
+processing later on.</p>
 
 
   </div>
@@ -312,12 +314,12 @@
       <pre class="lines">
 
 
-16
-17
-18</pre>
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/abstract/ach_batch.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/abstract/ach_batch.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_send_batch'>send_batch</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>AbstractMethodError</span>
@@ -332,7 +334,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Aug 10 14:21:02 2016 by
+  Generated on Fri Aug 19 09:13:04 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.5 (ruby-2.3.1).
 </div>
