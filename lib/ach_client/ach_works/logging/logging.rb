@@ -38,6 +38,8 @@ module AchClient
         self._log_filters || []
       end
 
+      # Updates the log filters
+      # @param filters [Array<String>] List of XML nodes to scrub from the logs
       def self.log_filters=(filters)
         self._log_filters = filters
       end

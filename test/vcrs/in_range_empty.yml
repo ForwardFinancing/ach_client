@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 15 Aug 2016 15:15:27 GMT
+      - Wed, 17 Aug 2016 18:05:33 GMT
       Server:
       - Apache
       X-Aspnet-Version:
@@ -43,7 +43,7 @@ http_interactions:
       string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><GetACHReturnsHistResponse
         xmlns="http://achworks.com/"><GetACHReturnsHistResult><SSS>TST</SSS><LocID>9505</LocID><Status>SUCCESS</Status><Details>No
-        records to retrieve at this time, 08/15/2016 08:15:27 AM Pacific Time. Server
+        records to retrieve at this time, 08/17/2016 11:05:33 AM Pacific Time. Server
         Processing Time:&lt;0.0001 ms</Details><TotalNumRecords>0</TotalNumRecords><ReturnDateFrom>2016-08-04T07:13:05-07:00</ReturnDateFrom><ReturnDateTo>2016-08-10T17:00:00-07:00</ReturnDateTo><TotalNumErrors>0</TotalNumErrors></GetACHReturnsHistResult></GetACHReturnsHistResponse></soap:Body></soap:Envelope>
     http_version: 
   recorded_at: Thu, 11 Aug 2016 14:13:05 GMT

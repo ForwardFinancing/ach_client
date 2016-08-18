@@ -26,9 +26,15 @@ module AchClient
           CustomerAcctNo: account_number.to_s,
           OriginatorName: 'TBD',
           TransactionCode: 'WEB', # CHECK THIS
-          CustTransType: customer_transaction_type,
+          CustTransType:
+            AchClient::AchWorks::TransactionTypeTransformer.class_to_string(
+              transaction_type
+            ),
           CustomerID: 'TBD',
-          CustomerAcctType: customer_account_type,
+          CustomerAcctType:
+            AchClient::AchWorks::AccountTypeTransformer.class_to_string(
+              self.account_type
+            ),
           TransAmount: amount,
           CheckOrTransDate: DateFormatter.format(Date.today), # Does this need to be read from ACH record
           EffectiveDate: DateFormatter.format(Date.today), # Should be same or greater than above (probably same)
@@ -55,31 +61,6 @@ module AchClient
           # Our front end trace starts with a Z.
           # The letter Z is not the letter W.
           "Z#{ach_id}"
-        end
-      end
-
-      private
-
-      def customer_account_type
-        case self.account_type.to_s
-        when 'AccountTypes::Checking'
-          'C'
-        when 'AccountTypes::Savings'
-          'S'
-        else
-          raise 'account_type must be an instance of AccountType'
-        end
-      end
-
-      # Converts debit or credit to string expected by ACHWorks
-      def customer_transaction_type
-        case transaction_type.to_s
-        when 'TransactionTypes::Credit'
-          'C'
-        when 'TransactionTypes::Debit'
-          'D'
-        else
-          raise 'transaction_type must be an instance of TransactionType'
         end
       end
     end

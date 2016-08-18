@@ -11,34 +11,11 @@ module AchClient
       # If it fails, an exception will be thrown.
       # @return [String] the filename they give us for later tracking
       def send_batch
-        response = get_response
-        # Success on the response object just means that request was a 200
-        if response.success?
-          result = response.body[:send_ach_trans_batch_response]
-          result = result[:send_ach_trans_batch_result]
-          if result[:status] == 'SUCCESS'
-            result[:file_name]
-          else
-            # AchWorks likes to keep things interesting by sometimes putting
-            # the error messages in the details field instead of errors.
-            raise result.try(:[], :errors)
-                        .try(:[], :string)
-                        .try(:join, ', ') ||
-                  result[:details]
-          end
-        else
-          # This would normally raise an exception on its own, but just in case
-          raise 'ACH Batch failed due to unknown SOAP fault'
-        end
-      end
-
-      # Makes a SendACHTransBatch SOAP request to AchWorks with this object
-      # represented in the request body (XML)
-      def get_response
-        AchClient::AchWorks.soap_client.call(
-          :send_ach_trans_batch,
-          message: self.to_hash
-        )
+        AchClient::AchWorks.wrap_request(
+          method: :send_ach_trans_batch,
+          message: self.to_hash,
+          path: [:send_ach_trans_batch_response, :send_ach_trans_batch_result]
+        )[:file_name]
       end
 
       # Converts this batch to a hash which can be sent to ACHWorks via Savon

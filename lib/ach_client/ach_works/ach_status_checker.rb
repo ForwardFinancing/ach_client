@@ -16,30 +16,64 @@ module AchClient
       # unsuccessfully), AchWorks will never return the same Ach transactions
       # here again.
       # Wraps: http://tstsvr.achworks.com/dnet/achws.asmx?op=GetACHReturns
-      # @return [Savon::Response] AchWorks response
+      # @return [Hash{String => AchClient::AchResponse}] Hash with FrontEndTrace
+      #   values as keys, AchResponse objects as values
       def most_recent
-        AchClient::AchWorks.soap_client.call(
-          :get_ach_returns,
+        request_and_process_response(
+          method: :get_ach_returns,
           message: most_recent_hash
         )
       end
 
       ##
       # Gets the status of ach transactions between the given dates
-      # Can be called many times with the same result
       # Sometimes AchWorks will modify the end date...
       # Wraps: http://tstsvr.achworks.com/dnet/achws.asmx?op=GetACHReturnsHist
+      # BEWARE OF LARGE DATE RANGES: AchWorks doesn't appear to cache or even
+      # paginate their responses, so if your range has too many responses,
+      # something will probably break.
       # @param start_date [String] lower bound of date ranged status query
       # @param end_date [String] upper bound of date ranged status query
-      # @return [Savon::Response] AchWorks response
+      # @return [Hash{String => AchClient::AchResponse}] Hash with FrontEndTrace
+      #   values as keys, AchResponse objects as values
       def in_range(start_date:, end_date:)
-        AchClient::AchWorks.soap_client.call(
-          :get_ach_returns_hist,
+        request_and_process_response(
+          method: :get_ach_returns_hist,
           message: in_range_hash(start_date: start_date, end_date: end_date)
         )
       end
 
       private
+
+      def request_and_process_response(method:, message:)
+        response = AchClient::AchWorks.wrap_request(
+          method: method,
+          message: message,
+          path: ['_response', '_result'].map do |postfix|
+            (method.to_s + postfix).to_sym
+          end
+        )
+        if response[:total_num_records] == '0'
+          []
+        else
+          response[:ach_return_records][:ach_return_record].select do |record|
+            # Exclude records with no front end trace
+            # They are probably 9BNK response codes, not actual transactions
+            # 9BNK is when AchWorks gives us an aggregate record, containing
+            #   the total debit/credit to your actual bank account.
+            # We don't care about those here.
+            record[:front_end_trace].present?
+          end.map do |record|
+            {
+              record[:front_end_trace] =>
+              AchClient::AchWorks::ResponseRecordProcessor
+                .process_response_record(record)
+            }
+          end.reduce(&:merge)
+        end
+      end
+
+
 
       def most_recent_hash
         @company_info.to_hash
