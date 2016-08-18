@@ -1,5 +1,4 @@
 require 'active_support/all'
-require 'savon'
 
 module AchClient
   # Namespace class for all things AchWorks
@@ -24,18 +23,6 @@ module AchClient
     # @return [Savon::Client] The Savon client object to use for making SOAP
     # requests to AchWorks
     class_attribute :_soap_client
-
-    # @return [Savon::Client] The Savon client object to use for making SOAP
-    # requests to AchWorks
-    def self.soap_client
-      self._soap_client ||= Savon.client(wsdl: self.wsdl) do
-        # Lets us use symbols as keys without Savon changing the case
-        # { 'Key' => 'Value' } == { Key: 'Value' }
-        convert_request_keys_to :none
-
-        pretty_print_xml true
-      end
-    end
 
     # Handles making request to AchWorks.
     # If the request was successful, returns the response
@@ -71,12 +58,32 @@ module AchClient
     end
 
     # Makes a SOAP request to AchWorks, without any error handling, and returns
-    # the savon response
+    # the savon response after logging it
     # @param method [Symbol] SOAP operation to call against AchWorks
     # @param message [Hash] The request body
     # @return [Savon::Response] raw response
     def self.request(method:, message:)
-      self.soap_client.call(method, message: message)
+      logged_response(method, soap_client.call(method, message: message))
+    end
+
+    private_class_method def self.logged_response(method, response)
+      AchClient::AchWorks::Logging::LogProviderJob.perform_async(
+        xml: response.xml,
+        name: "response-#{method}-#{DateTime.now}.xml"
+      )
+      response
+    end
+
+    # @return [Savon::Client] The Savon client object to use for making SOAP
+    # requests to AchWorks
+    private_class_method def self.soap_client
+      self._soap_client ||= Savon.client(wsdl: self.wsdl) do
+        # Lets us use symbols as keys without Savon changing the case
+        # { 'Key' => 'Value' } == { Key: 'Value' }
+        convert_request_keys_to :none
+
+        pretty_print_xml true
+      end
     end
   end
 end

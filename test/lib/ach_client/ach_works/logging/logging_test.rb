@@ -38,7 +38,7 @@ class LoggingTest < MiniTest::Test
       AchClient::AchWorks::Logging.stub(:log_filters, ['CompanyKey']) do
         VCR.use_cassette('logger') do
           output = capture_subprocess_io do
-            AchClient::AchWorks.soap_client.call(
+            AchClient::AchWorks.send(:soap_client).call(
               :connection_check,
               message: AchClient::AchWorks::InputCompanyInfo.build.to_hash
             )

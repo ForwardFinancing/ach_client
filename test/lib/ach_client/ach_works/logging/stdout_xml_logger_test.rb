@@ -8,12 +8,14 @@ class StdoutLogProviderTest < MiniTest::Test
     ) do
       VCR.use_cassette('logger') do
         output = capture_subprocess_io do
-          AchClient::AchWorks.soap_client.call(
-            :connection_check,
+          AchClient::AchWorks.send(
+            :request,
+            method: :connection_check,
             message: AchClient::AchWorks::InputCompanyInfo.build.to_hash
           )
         end.first
-        assert_includes(output, 'connection_check')
+        assert_includes(output, 'request-connection_check')
+        assert_includes(output, 'response-connection_check')
         assert_includes(output, '.xml')
         assert_includes(output, '<?xml')
       end

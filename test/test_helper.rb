@@ -44,5 +44,5 @@ end
 # Savon makes a request for the WSDL and caches it when the first request is
 # made. We do this here in a VCR so that a future test is not the first request.
 VCR.use_cassette 'wsdl' do
-  AchClient::AchWorks.soap_client.operations
+  AchClient::AchWorks.send(:soap_client).operations
 end
