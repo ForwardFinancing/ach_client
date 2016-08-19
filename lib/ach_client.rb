@@ -1,5 +1,6 @@
-require 'sucker_punch'
 require 'active_support/all'
+require 'savon'
+require 'sucker_punch'
 
 # Require all of the files in lib
 Dir['./lib/**/*.rb'].sort.each { |f| require(f) }

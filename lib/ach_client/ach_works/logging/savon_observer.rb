@@ -14,9 +14,9 @@ module AchClient
         # @return [NilClass] returns nothing so the request is not mutated
         def notify(operation_name, builder, _globals, _locals)
           # Send the xml body to the logger job
-          AchClient::AchWorks::Logging::LogProviderJob.new.perform(
+          AchClient::AchWorks::Logging::LogProviderJob.perform_async(
             xml: builder.to_s,
-            name: "#{operation_name}-#{DateTime.now}.xml"
+            name: "request-#{operation_name}-#{DateTime.now}.xml"
           )
 
           # Must return nil so the request is unaltered
