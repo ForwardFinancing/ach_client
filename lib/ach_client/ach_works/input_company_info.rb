@@ -39,6 +39,27 @@ module AchClient
         )
       end
 
+      # Wraps: http://tstsvr.achworks.com/dnet/achws.asmx?op=ConnectionCheck
+      # Checks validity of company info
+      # @return whether or not the request was successful
+      def connection_valid?
+        connection_check_request(method: :connection_check)
+      end
+
+      # Wraps: http://tstsvr.achworks.com/dnet/achws.asmx?op=CheckCompanyStatus
+      # Checks company status
+      # @return whether or not the request was successful
+      def company_valid?
+        connection_check_request(method: :check_company_status)
+      end
+
+      # Calls both company_valid? and connection_valid?
+      # Checks the validity of company info
+      # @return whether or not the validity check requests were successful
+      def valid?
+        connection_valid? && company_valid?
+      end
+
       ##
       # Build a hash to send to ACHWorks under the InpCompanyInfo XML path
       # @return [Hash] hash to send to ACHWorks
@@ -51,6 +72,16 @@ module AchClient
             }
           end.reduce(&:merge)
         }
+      end
+
+      private
+      def connection_check_request(method:)
+        AchClient::AchWorks.request(
+          method: method,
+          message: self.to_hash
+        ).body["#{method}_response".to_sym]["#{method}_result".to_sym].include?(
+          'SUCCESS'
+        )
       end
     end
   end

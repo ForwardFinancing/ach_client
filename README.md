@@ -107,6 +107,21 @@ AchClient::AchWorks.s_s_s = 'TST'
 AchClient::AchWorks.wsdl = 'http://tstsvr.achworks.com/dnet/achws.asmx?wsdl'
 ```
 
+AchWorks recommends that you call their "ConnectionCheck" and
+"CheckCompanyStatus" before each request. We've included some wrappers for
+those endpoints in case you want to go that route.
+
+```ruby
+# ConnectionCheck
+AchClient::AchWorks::InputCompanyInfo.build.connection_valid?
+
+#CheckCompanyStatus
+AchClient::AchWorks::InputCompanyInfo.build.company_valid?
+
+# Both
+AchClient::AchWorks::InputCompanyInfo.build.valid?
+```
+
 #### Logging
 
 For record keeping purposes, there is a log provider that allows you to hook
