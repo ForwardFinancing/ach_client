@@ -65,7 +65,7 @@ module AchClient
             record[:front_end_trace].present?
           end.map do |record|
             {
-              record[:front_end_trace] =>
+              record[:front_end_trace][1..-1] =>
               AchClient::AchWorks::ResponseRecordProcessor
                 .process_response_record(record)
             }
