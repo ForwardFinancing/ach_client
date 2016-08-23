@@ -6,7 +6,7 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.9.5
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="class_list.html"></iframe>
+      <iframe id="nav" src="class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -57,95 +57,225 @@
         <div class="clear"></div>
       </div>
 
-      <iframe id="search_frame" src="class_list.html"></iframe>
-
       <div id="content"><div id='filecontents'>
-<p><a href="https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/feed"><img
-src="https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/badges/105ddb79b7f5c008bccd/gpa.svg"></a>
-<a
-href="https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/coverage"><img
-src="https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/badges/105ddb79b7f5c008bccd/coverage.svg"></a>
-<a href="https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/feed"><img
-src="https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/badges/105ddb79b7f5c008bccd/issue_count.svg"></a></p>
+<p><a href="https://codeclimate.com/github/ForwardFinancing/ach_client"><img
+src="https://codeclimate.com/github/ForwardFinancing/ach_client/badges/gpa.svg"></a></p>
+
+<p><a
+href="https://codeclimate.com/github/ForwardFinancing/ach_client/coverage"><img
+src="https://codeclimate.com/github/ForwardFinancing/ach_client/badges/coverage.svg"></a></p>
+
+<p><a href="https://codeclimate.com/github/ForwardFinancing/ach_client"><img
+src="https://codeclimate.com/github/ForwardFinancing/ach_client/badges/issue_count.svg"></a></p>
+
+<p><a href="https://travis-ci.org/ForwardFinancing/ach_client"><img
+src="https://travis-ci.org/ForwardFinancing/ach_client.svg?branch=master"></a></p>
 
 <h1 id="label-AchClient">AchClient</h1>
 
-<p>Execute <code>bin/console</code> to run this gem in terminal.</p>
+<h2 id="label-Overview">Overview</h2>
 
-<h2 id="label-Installation">Installation</h2>
+<p>The AchClient gem provides a common interface for working with a variety of
+ACH providers.</p>
 
-<p>Add this line to your application&#39;s Gemfile:</p>
+<p>Supported features include:</p>
+<ul><li>
+<p><strong>Individual Transactions:</strong> Sending a single ACH transaction
+for the provider to process</p>
+</li><li>
+<p><strong>Batch Transactions:</strong> Sending a batch of ACH transactions
+together to the provider to process</p>
+</li><li>
+<p><strong>Response Polling:</strong> Retrieving the results of sent ACH
+transactions from the provider, and processing that response into a
+standardized format</p>
+</li></ul>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ach_client</span><span class='tstring_end'>&#39;</span></span>
+<p>Some providers may not support all features</p>
+
+<p>| Provider | Individual ACH | Batch ACH | Response Polling | | —————— |
+——————- | ——————- | ——————- | | AchWorks | :white_check_mark: |
+:white_check_mark: | :white_check_mark: | | ICheckGateway |
+:white_check_mark: | :x: | :white_check_mark: | | NACHA+SFTP Providers |
+:x: | :white_check_mark: | :white_check_mark: |</p>
+
+<h3 id="label-About+NACHA-2BSFTP+Providers">About NACHA+SFTP Providers</h3>
+
+<p>Many banks/financial institutions use a similar system for receiving ACH
+transactions. For these providers, batches of ACH transactions can be
+represented in the NACHA file format. The bank provides you with an SFTP
+server where you can deposit these files. After the transactions are
+processed, the provider will leave another NACHA file containing the
+results on the server in an “Inbox” or “Outgoing” directory.</p>
+
+<p>The two API providers tend to be more reliable and easier to work with, but
+it is usually cheaper to interact directly with a financial institution.</p>
+
+<h2 id="label-Structure">Structure</h2>
+
+<p>Each provider has its own namespace. For all of the example code, you must
+replace <code>Provider</code> with a provider you want to use.</p>
+
+<p>For example, <code>AchClient::Provider::AchBatch</code> might become
+<code>AchClient::AchWorks::AchBatch</code></p>
+
+<p>For NACHA+SFTP providers, referencing them by name will create the
+namespace. For example, Silicon Valley Bank is a provider which adheres to
+the NACHA/SFTP standard. There is no AchClient::SiliconValleyBank namespace
+in the codebase, but if you reference that provider, it will be dynamically
+defined for you.</p>
+
+<h2 id="label-Individual+ACH+transactions">Individual ACH transactions</h2>
+
+<p>Create an instance of an AchTransaction following the code sample below:</p>
+<ul><li>
+<p><em>The Merchant</em> is the person/company to whom you will be sending an
+ACH credit or debit.</p>
+</li><li>
+<p>All account type classes are listed <a
+href="https://forwardfinancing.github.io/ach_client/doc/AchClient/AccountTypes.html">here</a></p>
+</li><li>
+<p>All transaction type classes are listed <a
+href="https://forwardfinancing.github.io/ach_client/doc/AchClient/TransactionTypes.html">here</a></p>
+</li><li>
+<p>Checkout the abstract <code>AchTransaction</code> class and the
+<code>AchTransaction</code> class for each provider for more info.</p>
+</li></ul>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'>Provider</span><span class='op'>::</span><span class='const'>AchTransaction</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+  <span class='comment'># The merchant&#39;s account number
+</span>  <span class='label'>account_number:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>115654668777</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='comment'># The merchant&#39;s account type (see account types note above)
+</span>  <span class='label'>account_type:</span> <span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/AccountTypes.html" title="AchClient::AccountTypes (module)">AccountTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/AccountTypes/BusinessChecking.html" title="AchClient::AccountTypes::BusinessChecking (class)">BusinessChecking</a></span></span><span class='comma'>,</span>
+  <span class='comment'># The amount of the ACH transaction, should be positive
+</span>  <span class='label'>amount:</span> <span class='const'>BigDecimal</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>575.45</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='comma'>,</span>
+  <span class='comment'># The date on which you would like the transaction to take effect.
+</span>  <span class='comment'># Beware that some providers may use this field to charge you extra for
+</span>  <span class='comment'># same-day ACH ( a recent feature for ACH providers )
+</span>  <span class='label'>effective_entry_date:</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='comma'>,</span>
+  <span class='comment'># Will show up on the merchant&#39;s bank statement
+</span>  <span class='label'>memo:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>????</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='comment'># The name of the merchant
+</span>  <span class='label'>merchant_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>test merchant</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='comment'># Your name (or the name of your company)
+</span>  <span class='label'>originator_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ff</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='comment'># The merchants routing number
+</span>  <span class='label'>routing_number:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>083000108</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='comment'># The ACH &quot;Standard Entry Class&quot; code to use for the ACH (google it for more)
+</span>  <span class='label'>sec_code:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CCD</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='comment'># Is the transaction a credit or debit against the merchant?
+</span>  <span class='label'>transaction_type:</span> <span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/TransactionTypes.html" title="AchClient::TransactionTypes (module)">TransactionTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/TransactionTypes/Debit.html" title="AchClient::TransactionTypes::Debit (class)">Debit</a></span></span><span class='comma'>,</span>
+  <span class='comment'># See section below
+</span>  <span class='label'>external_ach_id:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>blah</span><span class='tstring_end'>&#39;</span></span>
+<span class='rparen'>)</span>
 </code></pre>
 
-<p>And then execute:</p>
+<p>You can send the transaction to the provider by invoking the
+<code>#send</code> instance method on your instance of an
+<code>AchTransaction</code>. If the ACH transaction was successfully sent
+to the provider, the <code>external_ach_id</code> for the transaction will
+be returned. If sending the transaction was unsuccessful, an exception will
+be thrown.</p>
 
-<pre class="code ruby"><code class="ruby">$ bundle install</code></pre>
+<p>Successfully sending the transaction does not equate to the transaction
+actually being executed against the merchant&#39;s bank account. ACH
+transactions are inherently asynchronous because financial institutions can
+take days and in rare cases even months to process them.</p>
 
-<p>Or install it yourself as:</p>
+<h3 id="label-External+ACH+ID">External ACH ID</h3>
 
-<pre class="code ruby"><code class="ruby">$ gem install ach_client</code></pre>
+<p>The <code>external_ach_id</code> value can be used to track what happens to
+your transaction after you send it. You can use it to match transactions
+that you sent against results later received by the response polling
+methods.</p>
 
-<h2 id="label-Usage">Usage</h2>
+<p>The <code>external_ach_id</code> should be unique per transaction.</p>
 
-<h3 id="label-Sending+batch+ACH+transactions">Sending batch ACH transactions</h3>
+<p>Some providers do not allow you to supply your own tracking id. Other
+providers require you to provide your own unique tracking id.</p>
 
-<pre class="code ruby"><code class="ruby">
-# Create a batch with a list of transactions
-batch = AchClient::AchBatch.new(
-  ach_transactions: [
-    AchClient::AchTransaction.new(
-      account_number: &#39;00002323044&#39;,
-      account_type: AccountTypes::Checking,
-      amount: BigDecimal.new(&#39;575.45&#39;),
-      memo: &#39;????&#39;,
-      merchant_name: &#39;DOE, JOHN&#39;,
-      routing_number: nil,
-      transaction_type: TransactionTypes::Credit,
-      ach_id: &#39;foooo&#39;
-    ),
-    ...
-  ]
-)
+<p>The tracking id that the provider actually uses with your transaction will
+be returned by the <code>#send</code> method. So you should:</p>
 
-# Send the batch to the provider
-batch.send_batch
+<p>1) Create an instance of <code>AchTransaction</code> with a unique
+<code>external_ach_id</code> that you would <em>like</em> to use</p>
+
+<p>2) Call <code>#send</code> on your transaction</p>
+
+<p>3) Store the return value of <code>#send</code> somewhere - this is the
+<code>external_ach_id</code> that was actually used</p>
+
+<p>4) When you eventually poll the provider for the status of your
+transactions, you can use the <code>external_ach_id</code> you stored to
+reconcile the returned data against your records</p>
+
+<h2 id="label-Batched+ACH+transactions">Batched ACH transactions</h2>
+
+<p>A group of ACH transactions can also be sent in a single batched
+transaction to providers who support this functionality.</p>
+
+<p>Checkout the abstract <code>AchBatch</code> class and the
+<code>AchBatch</code> class for each provider for more info.</p>
+
+<p>Create an instance of <code>AchBatch</code> for your provider. The
+constructor takes an array of <code>AchTransactions</code> (which are
+described above).</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'>Provider</span><span class='op'>::</span><span class='const'>AchBatch</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+    <span class='label'>ach_transactions:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='rparen'>)</span>
 </code></pre>
 
-<p><code>send_batch</code> returns a tracking string on success. This string
-can be used to track the transaction later (not yet implemented)</p>
+<p>To send the batch to the provider, invoke the <code>#send_batch</code>
+method on your instance of <code>AchBatch</code>.</p>
 
-<h3 id="label-Checking+Transaction+status">Checking Transaction status</h3>
+<p>If sending the batch was successful, a list of <code>external_ach_id</code>
+will be returned. If it was unsuccessful, either because the whole batch or
+a single transaction was invalid, an exception will be raised, and none of
+the transactions will have been sent to the provider.</p>
 
-<p>AchWorks requires you to provide a “FrontEndTrace” when you send your
-transaction, but does not let you query by front_end_trace when checking
-status. You can only query for the most recent statuses, and those within a
-given date range.</p>
+<p>Successfully sending the transaction batch does not equate to the
+transactions actually being executed against the merchants&#39; bank
+accounts. ACH transactions are inherently asynchronous because financial
+institutions can take days and in rare cases even months to process them.</p>
 
-<p>See the AchStatusChecker class for more details.</p>
+<p>SFTP+NACHA providers take an optional <code>batch_number</code> parameter
+which may be used in the filename for uploaded NACHA files.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'>SomeBank</span><span class='op'>::</span><span class='const'>AchBatch</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+    <span class='label'>ach_transactions:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='label'>batch_number:</span> <span class='int'>5</span>
+  <span class='rparen'>)</span>
+</code></pre>
+
+<h2 id="label-Response+Polling+-+Checking+Transaction+Status">Response Polling - Checking Transaction Status</h2>
+
+<p>None of the providers support querying for transaction status by
+external_ach_id. Instead, we must query by date and</p>
 
 <p>To check statuses:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='comment'># Build a status checker with your company details:
-</span>  <span class='id identifier rubyid_status_checker'>status_checker</span> <span class='op'>=</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>AchStatusChecker</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
-    <span class='label'>company_info:</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>InputCompanyInfo</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span>
-  <span class='rparen'>)</span>
-
-  <span class='comment'># Check the most recent transactions
-</span>  <span class='id identifier rubyid_status_checker'>status_checker</span><span class='period'>.</span><span class='id identifier rubyid_most_recent'>most_recent</span>
+<pre class="code ruby"><code class="ruby"><span class='comment'># Check the most recent transactions
+</span>  <span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'>Provider</span><span class='op'>::</span><span class='const'>AchStatusChecker</span><span class='period'>.</span><span class='id identifier rubyid_most_recent'>most_recent</span>
 
   <span class='comment'># Check the transactions with a date range
-</span>  <span class='id identifier rubyid_status_checker'>status_checker</span><span class='period'>.</span><span class='id identifier rubyid_in_range'>in_range</span><span class='lparen'>(</span><span class='label'>start_date:</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_week'>week</span><span class='period'>.</span><span class='id identifier rubyid_ago'>ago</span><span class='comma'>,</span> <span class='label'>end_date:</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='rparen'>)</span>
+</span>  <span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'>Provider</span><span class='op'>::</span><span class='const'>AchStatusChecker</span><span class='period'>.</span><span class='id identifier rubyid_in_range'>in_range</span><span class='lparen'>(</span>
+    <span class='label'>start_date:</span> <span class='int'>1</span><span class='period'>.</span><span class='id identifier rubyid_week'>week</span><span class='period'>.</span><span class='id identifier rubyid_ago'>ago</span><span class='comma'>,</span>
+    <span class='label'>end_date:</span> <span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span>
+  <span class='rparen'>)</span>
 </code></pre>
 
-<p>Both of these methods return a <code>Hash</code> with the “FrontEndTrace”
-as the keys and instances of AchClient::AchResponse as values.</p>
+<p>Both of these methods return a <code>Hash</code> with the
+<code>external_ach_id</code> for ach_transaction as the keys and a list of
+instances of AchClient::AchResponse as values. A polling response may
+contain more than one response record for each <code>external_ach_id</code>
+if that ACH has changed statuses more than once within the polling range.</p>
 
 <h3 id="label-Responses">Responses</h3>
 
 <p>There are a number of response states that can result from checking on the
-status of your ACH transactions.</p>
+status of your ACH transactions. Each inherit from
+<code>AchClient::AchResponse</code></p>
 <ul><li>
 <p><code>SettledAchResponse</code>: The transaction went through. :tada:</p>
 </li><li>
@@ -162,42 +292,213 @@ object for details on what happened. Check the corrections hash on the
 response object for the new attributes</p>
 </li></ul>
 
-<h3 id="label-AchWorks">AchWorks</h3>
-
-<p>Some settings need to be configured first for using AchWorks provider:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_company_key'>company_key</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SASD%!%$DGLJGWYRRDGDDUDFDESDHDD</span><span class='tstring_end'>&#39;</span></span>
-<span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_company'>company</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>MYCOMPANY</span><span class='tstring_end'>&#39;</span></span>
-<span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_loc_i_d'>loc_i_d</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>9505</span><span class='tstring_end'>&#39;</span></span>
-<span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_s_s_s'>s_s_s</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TST</span><span class='tstring_end'>&#39;</span></span>
-<span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_wsdl'>wsdl</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://tstsvr.achworks.com/dnet/achws.asmx?wsdl</span><span class='tstring_end'>&#39;</span></span>
-</code></pre>
-
-<h4 id="label-Logging">Logging</h4>
+<h2 id="label-Logging">Logging</h2>
 
 <p>For record keeping purposes, there is a log provider that allows you to
-hook into all requests sent to AchWorks and send them to your logging
-service.</p>
+hook into all requests sent to a SOAP provider and send them to your
+logging service.</p>
 
 <p>The default log provider is the NullLogProvider, which does not log
 requests.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='comment'># No logging
-</span><span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>Logging</span><span class='period'>.</span><span class='id identifier rubyid_log_provider'>log_provider</span> <span class='op'>=</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>Logging</span><span class='op'>::</span><span class='const'>NullLogProvider</span>
+</span><span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Logging.html" title="AchClient::Logging (class)">Logging</a></span></span><span class='period'>.</span><span class='id identifier rubyid_log_provider'><span class='object_link'><a href="AchClient/Logging.html#log_provider-class_method" title="AchClient::Logging.log_provider (method)">log_provider</a></span></span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Logging.html" title="AchClient::Logging (class)">Logging</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Logging/NullLogProvider.html" title="AchClient::Logging::NullLogProvider (class)">NullLogProvider</a></span></span>
 
 <span class='comment'># Log to stdout
-</span><span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>Logging</span><span class='period'>.</span><span class='id identifier rubyid_log_provider'>log_provider</span> <span class='op'>=</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>Logging</span><span class='op'>::</span><span class='const'>StdoutLogProvider</span>
+</span><span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Logging.html" title="AchClient::Logging (class)">Logging</a></span></span><span class='period'>.</span><span class='id identifier rubyid_log_provider'><span class='object_link'><a href="AchClient/Logging.html#log_provider-class_method" title="AchClient::Logging.log_provider (method)">log_provider</a></span></span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Logging.html" title="AchClient::Logging (class)">Logging</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Logging/StdoutLogProvider.html" title="AchClient::Logging::StdoutLogProvider (class)">StdoutLogProvider</a></span></span>
 
 <span class='comment'># Log to wherever you want by creating your own LogProvider class
 </span><span class='comment'># and overriding #send_logs
-</span><span class='kw'>class</span> <span class='const'>MyCustomLogger</span> <span class='op'>&lt;</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>Logging</span><span class='op'>::</span><span class='const'>LogProvider</span>
+</span><span class='kw'>class</span> <span class='const'>MyCustomLogger</span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Logging.html" title="AchClient::Logging (class)">Logging</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Logging/LogProvider.html" title="AchClient::Logging::LogProvider (class)">LogProvider</a></span></span>
   <span class='comment'># This method takes a log body and a log name
 </span>  <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send_logs'>send_logs</span><span class='lparen'>(</span><span class='label'>body:</span><span class='comma'>,</span> <span class='label'>name:</span><span class='rparen'>)</span>
     <span class='comment'># Do whatever you want, like send the log data to S3, or whatever
 </span>    <span class='comment'>#   logging service you choose
 </span>  <span class='kw'>end</span>
 <span class='kw'>end</span>
-<span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>Logging</span><span class='period'>.</span><span class='id identifier rubyid_log_provider'>log_provider</span> <span class='op'>=</span> <span class='const'>MyCustomLogger</span>
+<span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Logging.html" title="AchClient::Logging (class)">Logging</a></span></span><span class='period'>.</span><span class='id identifier rubyid_log_provider'><span class='object_link'><a href="AchClient/Logging.html#log_provider-class_method" title="AchClient::Logging.log_provider (method)">log_provider</a></span></span> <span class='op'>=</span> <span class='const'>MyCustomLogger</span>
+</code></pre>
+
+<h3 id="label-Log+Filtering">Log Filtering</h3>
+
+<p>Log filtering is available for logs with key/value pairs. To enable log
+filtering, provide a list of keys who&#39;s values you would like to be
+scrubbed. Those values will be replaced with *</p>
+
+<pre class="code ruby"><code class="ruby">AchClient::Logging.log_filters = [
+  &#39;AccountNumber&#39;,
+  &#39;RoutingNumber&#39;,
+  ...
+]
+</code></pre>
+
+<h3 id="label-Log+Encryption">Log Encryption</h3>
+
+<p>To enable encryption of logs, provide both a <code>password</code> and a
+<code>salt</code></p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Logging.html" title="AchClient::Logging (class)">Logging</a></span></span><span class='period'>.</span><span class='id identifier rubyid_encryption_password'><span class='object_link'><a href="AchClient/Logging.html#encryption_password-instance_method" title="AchClient::Logging#encryption_password (method)">encryption_password</a></span></span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>password</span><span class='tstring_end'>&#39;</span></span>
+<span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Logging.html" title="AchClient::Logging (class)">Logging</a></span></span><span class='period'>.</span><span class='id identifier rubyid_encryption_salt'><span class='object_link'><a href="AchClient/Logging.html#encryption_salt-instance_method" title="AchClient::Logging#encryption_salt (method)">encryption_salt</a></span></span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>pepper</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>Logs will be encrypted after they are filtered, but before they are passed
+to the <code>LogProvider</code> implementation you chose.</p>
+
+<p>AchClient doesn&#39;t support reading from your log store, you will need to
+decrypt logs yourself as needed. For convenience, a decryption function has
+been provided that decrypts a message using the above provided
+<code>password</code> and <code>salt</code>.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Logging.html" title="AchClient::Logging (class)">Logging</a></span></span><span class='period'>.</span><span class='id identifier rubyid_decrypt_log'><span class='object_link'><a href="AchClient/Logging.html#decrypt_log-class_method" title="AchClient::Logging.decrypt_log (method)">decrypt_log</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>encrypted log gibberish.....</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+</code></pre>
+
+<h2 id="label-Provider+Configuration+Setup">Provider Configuration Setup</h2>
+
+<p>Each provider has a set of configuration attributes that must be set. Most
+of these values can be retrieved by contacting the provider directly. You
+can set the configuration variables by assigning them directly to the class
+attributes on the provider module. For example, if the provider is
+AchWorks, and the configuration attribute is password:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span></span><span class='period'>.</span><span class='id identifier rubyid_password'>password</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>your password</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>You probably want to set these variables from environment variables instead
+of hardcoding them into your app.</p>
+
+<p>Some test configuration values are provided for testing/development of this
+gem. You can find them in the <code>bin/console</code> file and in the test
+helper. Be aware that these credentials may be used to send data to some
+providers&#39; test environments under a shared test account. Avoid using
+real customer data in test.</p>
+
+<h3 id="label-AchWorks">AchWorks</h3>
+
+<p>| Attribute | Description | | ————– | —————————————- | |
+<code>company_key</code> | Company credential provided by AchWorks | |
+<code>company</code> | Company credential provided by AchWorks | |
+<code>loc_i_d</code> | Company credential provided by AchWorks | |
+<code>s_s_s</code> | Company credential provided by AchWorks | |
+<code>wsdl</code> | URL for the WSDL for AchWorks SOAP API | |
+<code>client_timeout_seconds</code> | Seconds to wait for a web response
+(optional) |</p>
+
+<h3 id="label-ICheckGateway">ICheckGateway</h3>
+
+<p>| Attribute | Description | | ————– | —————————————- | |
+<code>site_i_d</code> | Company credential provided by ICheckGateway | |
+<code>site_key</code> | Company credential provided by ICheckGateway | |
+<code>api_key</code> | Company credential provided by ICheckGateway | |
+<code>live</code> | <code>true</code> if you want transactions to be
+actually processed, <code>false</code> otherwise. Note: <code>true</code>
+only works with your production credentials, and <code>false</code> only
+works with the shared test credentials | | <code>wsdl</code> | URL for the
+WSDL for ICheckGateway SOAP API | | <code>client_timeout_seconds</code> |
+Seconds to wait for a web response (optional) |</p>
+
+<h3 id="label-NACHA+-2B+SFTP+Providers">NACHA + SFTP Providers</h3>
+
+<p>Most US banks use the same system for sending and receiving ACH
+transactions.</p>
+
+<p>For these providers, batches of ACH transactions are represented in the
+NACHA file format. The bank provides you with an SFTP server where you can
+deposit these files. After the transactions are processed, the provider
+will leave another NACHA file containing the results on the server in an
+“Inbox” or “Outgoing” directory.</p>
+
+<p>So far this setup has been confirmed to work with the following providers:
+- Bank Of America - Silicon Valley Bank</p>
+
+<p>You&#39;ll notice there aren&#39;t any provider namespaces in the codebase
+for these. You can define your own namespace simply by referencing it.</p>
+
+<p>For example, the first time you reference <code>AchClient::FakeBank</code>,
+all the following class attributes will be automatically defined for
+<code>AchClient::FakeBank</code>, along with the following classes: -
+<code>AchClient::FakeBank::AchTransaction</code> -
+<code>AchClient::FakeBank::AchBatch</code> -
+<code>AchClient::FakeBank::AchStatusChecker</code></p>
+
+<p>After setting the variables described in the below table, you can interact
+with these new classes using the same interface described above for the API
+providers.</p>
+
+<p>| Attribute | Description | | ————– | —————————————- | |
+<code>immediate_destination</code> | ID for company that is receiving the
+NACHA file (the bank) | | <code>immediate_destination_name</code> | Name of
+company that is receiving the NACHA file (the bank) | |
+<code>immediate_origin</code> | ID for company that is sending the NACHA
+file (you) | | <code>immediate_origin_name</code> | Name of company that is
+sending the NACHA file (you) | | <code>company_identification</code> | ID
+of your company | | <code>company_entry_description</code> | ID of company
+(provided by bank) | | <code>originating_dfi_identification</code> | ID of
+bank (provided by bank) | | <code>host</code> | URL of bank&#39;s SFTP
+server | | <code>username</code> | Username to connect via SFTP to
+bank&#39;s server | | <code>password</code> | Password to connect via SFTP
+to bank&#39;s server | | <code>private_ssh_key</code> | Private SSH key
+that matches the public key you gave the bank to put on their SFTP server
+(if applicable) | | <code>passphrase</code> | Passphrase for your private
+SSH key. If your passphrase was blank, leave this <code>nil</code> | |
+<code>outgoing_path</code> | Path on the remote server where bank has asked
+you to dump your NACHAs | | <code>incoming_path</code> | Path on the remote
+server where the bank leaves confirmation/return files | |
+<code>file_naming_strategy</code> | Function to define filenames for the
+NACHA files |</p>
+
+<h4 id="label-File+Naming+Strategy">File Naming Strategy</h4>
+
+<p>This attribute is a function to define filenames for the NACHA files. It is
+called from the <code>send_batch</code> method of the <code>AchBatch</code>
+class in your SFTP+NACHA provider&#39;s namespace. It will be passed a
+<code>batch_number</code> parameter, which may be <code>nil</code>.</p>
+
+<p>As an example, SiliconValleyBank&#39;s naming convention is as follows: -
+The first four characters are ACHP - The next 6 characters are the date
+formatted MMDDYY - The last 2 characters are a “sequence number” which
+shows the number of batches that have sent in the current day. The
+<code>file_naming_strategy</code> for this can be defined as follows:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'>SiliconValleyBank</span><span class='period'>.</span><span class='id identifier rubyid_file_naming_strategy'>file_naming_strategy</span> <span class='op'>=</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_batch_number'>batch_number</span><span class='op'>|</span>
+  <span class='id identifier rubyid_batch_number'>batch_number</span> <span class='op'>||=</span> <span class='int'>1</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ACHP</span><span class='embexpr_beg'>#{</span><span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='period'>.</span><span class='id identifier rubyid_strftime'>strftime</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%m%d%y</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_batch_number'>batch_number</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_rjust'>rjust</span><span class='lparen'>(</span><span class='int'>2</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h4 id="label-Assumptions+about+response+files+from+NACHA-2FSFTP+providers">Assumptions about response files from NACHA/SFTP providers</h4>
+
+<p>NACHA response files containing transaction confirmations, returns, and
+corrections are deposited by your bank in an &#39;Inbox&#39; or
+&#39;Outgoing&#39; folder on the SFTP server they provide. The status check
+functionality for these providers makes a few assumptions about this
+folder:</p>
+<ul><li>
+<p>All the files in it are inbound response files, which should be processed.
+If this is not true for some bank, we will need to add a file naming
+strategy configuration attribute for inbound files.</p>
+</li><li>
+<p>The SFTP user has write access to the inbound file directory. The
+<code>most_recent</code> functionality leaves a file that records the last
+access timestamp. If the SFTP user does not have write access, and your
+bank won&#39;t give it to you, we&#39;ll have to find another way to
+implement that.</p>
+</li></ul>
+
+<h2 id="label-Installation">Installation</h2>
+
+<p>Add this line to your application&#39;s Gemfile:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ach_client</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre class="code ruby"><code class="ruby">$ bundle install
+</code></pre>
+
+<p>Or install it yourself:</p>
+
+<pre class="code ruby"><code class="ruby">$ gem install ach_client
 </code></pre>
 
 <h2 id="label-Development">Development</h2>
@@ -205,23 +506,22 @@ requests.</p>
 <p>After checking out the repo, run <code>bin/setup</code> to install
 dependencies.</p>
 
-<p>Then, run <code>rake test</code> to run the tests.</p>
+<p>Then, run <code>bundle exec rake test</code> to run the tests.</p>
 
-<p>You can also run <code>bin/console</code> for an interactive prompt that
-will allow you to experiment.</p>
+<p>Execute <code>bin/console</code> to run this gem in terminal.</p>
 
 <h3 id="label-Documentation">Documentation</h3>
 
 <p>View them at <a
-href="https://forwardfinancing.github.io/ach_client/doc/AchClient/AchWorks.html">forwardfinancing.github.io/ach_client/doc/AchClient/AchWorks.html</a></p>
+href="https://forwardfinancing.github.io/ach_client/doc/index.html">forwardfinancing.github.io/ach_client/doc/index.html</a></p>
 
 <p>Uses yardocs. Run <code>yard doc &amp;&amp; open docs/index.html</code> to
 generate and view docs.</p>
 
-<p>To update the docs, checkout the <code>gh-pages</code> branch. Then run
-<code>yard doc</code> and push your changes up. The <code>gh-pages</code>
-has the doc directory included in source control. It should never be
-merged.</p>
+<p>To update the docs, checkout the <code>gh-pages</code> branch and rebase it
+against master. Then run <code>yard doc</code> and push your changes up.
+The <code>gh-pages</code> has the doc directory included in source control.
+It should never be merged.</p>
 
 <h2 id="label-Contributing">Contributing</h2>
 
@@ -230,9 +530,9 @@ href="https://github.com/ForwardFinancing/ach_client">github.com/ForwardFinancin
 </div></div>
 
       <div id="footer">
-  Generated on Fri Aug 19 09:13:03 2016 by
+  Generated on Tue Jan  2 09:53:20 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.5 (ruby-2.3.1).
+  0.9.12 (ruby-2.5.0).
 </div>
 
     </div>

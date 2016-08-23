@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: AchClient::ICheckGateway
+  
+    &mdash; Documentation by YARD 0.9.12
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "AchClient::ICheckGateway";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (I)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../AchClient.html" title="AchClient (module)">AchClient</a></span></span>
+     &raquo; 
+    <span class="title">ICheckGateway</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: AchClient::ICheckGateway
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">AchClient::ICheckGateway</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="SoapProvider.html" title="AchClient::SoapProvider (module)">SoapProvider</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/ach_client/providers/soap/i_check_gateway/i_check_gateway.rb<span class="defines">,<br />
+  lib/ach_client/providers/soap/i_check_gateway/ach_batch.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/company_info.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/ach_transaction.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/ach_status_checker.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/account_type_transformer.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/response_record_processor.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/transaction_type_transformer.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Wrapper class for all things ICheckGateway</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="ICheckGateway/AccountTypeTransformer.html" title="AchClient::ICheckGateway::AccountTypeTransformer (class)">AccountTypeTransformer</a></span>, <span class='object_link'><a href="ICheckGateway/AchBatch.html" title="AchClient::ICheckGateway::AchBatch (class)">AchBatch</a></span>, <span class='object_link'><a href="ICheckGateway/AchStatusChecker.html" title="AchClient::ICheckGateway::AchStatusChecker (class)">AchStatusChecker</a></span>, <span class='object_link'><a href="ICheckGateway/AchTransaction.html" title="AchClient::ICheckGateway::AchTransaction (class)">AchTransaction</a></span>, <span class='object_link'><a href="ICheckGateway/CompanyInfo.html" title="AchClient::ICheckGateway::CompanyInfo (class)">CompanyInfo</a></span>, <span class='object_link'><a href="ICheckGateway/ResponseRecordProcessor.html" title="AchClient::ICheckGateway::ResponseRecordProcessor (class)">ResponseRecordProcessor</a></span>, <span class='object_link'><a href="ICheckGateway/TransactionTypeTransformer.html" title="AchClient::ICheckGateway::TransactionTypeTransformer (class)">TransactionTypeTransformer</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wrap_request-class_method" title="wrap_request (class method)">.<strong>wrap_request</strong>(method:, message:)  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Wraps SOAP request with exception handling and pulls relevent hash out of
+response.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#api_key-instance_method" title="#api_key (instance method)">#<strong>api_key</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>API key from ICheckGateway.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#live-instance_method" title="#live (instance method)">#<strong>live</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>ICheckGateway uses their production environment for test/sandbox accounts
+Set this to false if you don&#39;t want your transactions to actually
+complete.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#site_i_d-instance_method" title="#site_i_d (instance method)">#<strong>site_i_d</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Site identifier from ICheckGateway.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#site_key-instance_method" title="#site_key (instance method)">#<strong>site_key</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Site key from ICheckGateway.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="wrap_request-class_method">
+  
+    .<strong>wrap_request</strong>(method:, message:)  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Wraps SOAP request with exception handling and pulls relevent hash out of
+response</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>method</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>SOAP action to call</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>message</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>SOAP message to send</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ICheckGateway response</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/i_check_gateway/i_check_gateway.rb', line 25</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_wrap_request'>wrap_request</span><span class='lparen'>(</span><span class='label'>method:</span><span class='comma'>,</span> <span class='label'>message:</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_response'>response</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="AchClient::ICheckGateway (class)">ICheckGateway</a></span></span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span>
+    <span class='label'>method:</span> <span class='id identifier rubyid_method'>method</span><span class='comma'>,</span>
+    <span class='label'>message:</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_success?'>success?</span>
+    <span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_method'>method</span><span class='embexpr_end'>}</span><span class='tstring_content'>_response</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_method'>method</span><span class='embexpr_end'>}</span><span class='tstring_content'>_result</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span>
+  <span class='kw'>else</span>
+    <span class='comment'># This happens when something goes wrong within the actual HTTP
+</span>    <span class='comment'>#   request before it gets to the soap processing.
+</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Unknown ICheckGateway SOAP fault</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="api_key-instance_method">
+  
+    #<strong>api_key</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns API key from ICheckGateway</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>API key from ICheckGateway</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+13</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/i_check_gateway/i_check_gateway.rb', line 13</span>
+
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbol'>:api_key</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="live-instance_method">
+  
+    #<strong>live</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>ICheckGateway uses their production environment for test/sandbox accounts
+Set this to false if you don&#39;t want your transactions to actually
+complete</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ICheckGateway GatewayLiveMode setting</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/i_check_gateway/i_check_gateway.rb', line 18</span>
+
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbol'>:live</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="site_i_d-instance_method">
+  
+    #<strong>site_i_d</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns Site identifier from ICheckGateway</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Site identifier from ICheckGateway</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+7</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/i_check_gateway/i_check_gateway.rb', line 7</span>
+
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbol'>:site_i_d</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="site_key-instance_method">
+  
+    #<strong>site_key</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns Site key from ICheckGateway</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Site key from ICheckGateway</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/i_check_gateway/i_check_gateway.rb', line 10</span>
+
+<span class='id identifier rubyid_class_attribute'>class_attribute</span> <span class='symbol'>:site_key</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Tue Jan  2 09:53:21 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.12 (ruby-2.5.0).
+</div>
+
+    </div>
+  </body>
+</html>

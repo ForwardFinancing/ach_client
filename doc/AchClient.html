@@ -6,7 +6,7 @@
 <title>
   Module: AchClient
   
-    &mdash; Documentation by YARD 0.9.5
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="class_list.html"></iframe>
+      <iframe id="nav" src="class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -59,8 +59,6 @@
         <div class="clear"></div>
       </div>
 
-      <iframe id="search_frame" src="class_list.html"></iframe>
-
       <div id="content"><h1>Module: AchClient
   
   
@@ -81,7 +79,7 @@
   <dl>
     <dt>Defined in:</dt>
     <dd>lib/ach_client.rb<span class="defines">,<br />
-  lib/ach_client/version.rb,<br /> lib/ach_client/return_code.rb,<br /> lib/ach_client/return_codes.rb,<br /> lib/ach_client/abstract/ach_batch.rb,<br /> lib/ach_client/ach_works/ach_works.rb,<br /> lib/ach_client/ach_works/ach_batch.rb,<br /> lib/ach_client/response/ach_response.rb,<br /> lib/ach_client/abstract/ach_transaction.rb,<br /> lib/ach_client/ach_works/date_formatter.rb,<br /> lib/ach_client/ach_works/logging/logging.rb,<br /> lib/ach_client/ach_works/ach_transaction.rb,<br /> lib/ach_client/ach_works/input_company_info.rb,<br /> lib/ach_client/ach_works/ach_status_checker.rb,<br /> lib/ach_client/response/settled_ach_response.rb,<br /> lib/ach_client/response/returned_ach_response.rb,<br /> lib/ach_client/ach_works/logging/log_provider.rb,<br /> lib/ach_client/response/corrected_ach_response.rb,<br /> lib/ach_client/ach_works/ach_works_transformer.rb,<br /> lib/ach_client/ach_works/logging/savon_observer.rb,<br /> lib/ach_client/response/processing_ach_response.rb,<br /> lib/ach_client/ach_works/account_type_transformer.rb,<br /> lib/ach_client/ach_works/logging/log_provider_job.rb,<br /> lib/ach_client/ach_works/response_record_processor.rb,<br /> lib/ach_client/ach_works/logging/null_log_provider.rb,<br /> lib/ach_client/ach_works/logging/stdout_log_provider.rb,<br /> lib/ach_client/ach_works/correction_details_processor.rb,<br /> lib/ach_client/ach_works/transaction_type_transformer.rb</span>
+  lib/ach_client/version.rb,<br /> lib/ach_client/helpers/utils.rb,<br /> lib/ach_client/logging/logging.rb,<br /> lib/ach_client/objects/return_code.rb,<br /> lib/ach_client/objects/return_codes.rb,<br /> lib/ach_client/objects/account_types.rb,<br /> lib/ach_client/logging/savon_observer.rb,<br /> lib/ach_client/helpers/dollars_to_cents.rb,<br /> lib/ach_client/logging/log_provider_job.rb,<br /> lib/ach_client/providers/sftp/ach_batch.rb,<br /> lib/ach_client/objects/transaction_types.rb,<br /> lib/ach_client/providers/abstract/ach_batch.rb,<br /> lib/ach_client/providers/sftp/sftp_provider.rb,<br /> lib/ach_client/providers/soap/soap_provider.rb,<br /> lib/ach_client/providers/sftp/nacha_provider.rb,<br /> lib/ach_client/objects/responses/ach_response.rb,<br /> lib/ach_client/providers/abstract/transformer.rb,<br /> lib/ach_client/providers/sftp/ach_transaction.rb,<br /> lib/ach_client/providers/abstract/company_info.rb,<br /> lib/ach_client/providers/sftp/ach_status_checker.rb,<br /> lib/ach_client/logging/log_providers/log_provider.rb,<br /> lib/ach_client/providers/abstract/ach_transaction.rb,<br /> lib/ach_client/providers/soap/ach_works/ach_batch.rb,<br /> lib/ach_client/providers/soap/ach_works/ach_works.rb,<br /> lib/ach_client/providers/abstract/ach_status_checker.rb,<br /> lib/ach_client/providers/soap/ach_works/company_info.rb,<br /> lib/ach_client/objects/responses/settled_ach_response.rb,<br /> lib/ach_client/logging/log_providers/null_log_provider.rb,<br /> lib/ach_client/objects/responses/returned_ach_response.rb,<br /> lib/ach_client/providers/sftp/account_type_transformer.rb,<br /> lib/ach_client/providers/soap/ach_works/date_formatter.rb,<br /> lib/ach_client/objects/responses/corrected_ach_response.rb,<br /> lib/ach_client/providers/soap/ach_works/ach_transaction.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/ach_batch.rb,<br /> lib/ach_client/logging/log_providers/stdout_log_provider.rb,<br /> lib/ach_client/objects/responses/processing_ach_response.rb,<br /> lib/ach_client/providers/sftp/transaction_type_transformer.rb,<br /> lib/ach_client/providers/soap/ach_works/ach_status_checker.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/company_info.rb,<br /> lib/ach_client/providers/abstract/response_record_processor.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/ach_transaction.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/i_check_gateway.rb,<br /> lib/ach_client/providers/soap/ach_works/account_type_transformer.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/ach_status_checker.rb,<br /> lib/ach_client/providers/soap/ach_works/response_record_processor.rb,<br /> lib/ach_client/providers/soap/ach_works/correction_details_processor.rb,<br /> lib/ach_client/providers/soap/ach_works/transaction_type_transformer.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/account_type_transformer.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/response_record_processor.rb,<br /> lib/ach_client/providers/soap/i_check_gateway/transaction_type_transformer.rb</span>
 </dd>
   </dl>
   
@@ -102,9 +100,11 @@
 <p class="children">
   
     
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="AchClient/AccountTypes.html" title="AchClient::AccountTypes (module)">AccountTypes</a></span>, <span class='object_link'><a href="AchClient/NachaProvider.html" title="AchClient::NachaProvider (module)">NachaProvider</a></span>, <span class='object_link'><a href="AchClient/SftpProvider.html" title="AchClient::SftpProvider (module)">SftpProvider</a></span>, <span class='object_link'><a href="AchClient/SoapProvider.html" title="AchClient::SoapProvider (module)">SoapProvider</a></span>, <span class='object_link'><a href="AchClient/TransactionTypes.html" title="AchClient::TransactionTypes (module)">TransactionTypes</a></span>
+    
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="AchClient/Abstract.html" title="AchClient::Abstract (class)">Abstract</a></span>, <span class='object_link'><a href="AchClient/AchResponse.html" title="AchClient::AchResponse (class)">AchResponse</a></span>, <span class='object_link'><a href="AchClient/AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span>, <span class='object_link'><a href="AchClient/CorrectedAchResponse.html" title="AchClient::CorrectedAchResponse (class)">CorrectedAchResponse</a></span>, <span class='object_link'><a href="AchClient/ProcessingAchResponse.html" title="AchClient::ProcessingAchResponse (class)">ProcessingAchResponse</a></span>, <span class='object_link'><a href="AchClient/ReturnCode.html" title="AchClient::ReturnCode (class)">ReturnCode</a></span>, <span class='object_link'><a href="AchClient/ReturnCodes.html" title="AchClient::ReturnCodes (class)">ReturnCodes</a></span>, <span class='object_link'><a href="AchClient/ReturnedAchResponse.html" title="AchClient::ReturnedAchResponse (class)">ReturnedAchResponse</a></span>, <span class='object_link'><a href="AchClient/SettledAchResponse.html" title="AchClient::SettledAchResponse (class)">SettledAchResponse</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="AchClient/Abstract.html" title="AchClient::Abstract (class)">Abstract</a></span>, <span class='object_link'><a href="AchClient/AchResponse.html" title="AchClient::AchResponse (class)">AchResponse</a></span>, <span class='object_link'><a href="AchClient/AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span>, <span class='object_link'><a href="AchClient/CorrectedAchResponse.html" title="AchClient::CorrectedAchResponse (class)">CorrectedAchResponse</a></span>, <span class='object_link'><a href="AchClient/Helpers.html" title="AchClient::Helpers (class)">Helpers</a></span>, <span class='object_link'><a href="AchClient/ICheckGateway.html" title="AchClient::ICheckGateway (class)">ICheckGateway</a></span>, <span class='object_link'><a href="AchClient/Logging.html" title="AchClient::Logging (class)">Logging</a></span>, <span class='object_link'><a href="AchClient/ProcessingAchResponse.html" title="AchClient::ProcessingAchResponse (class)">ProcessingAchResponse</a></span>, <span class='object_link'><a href="AchClient/ReturnCode.html" title="AchClient::ReturnCode (class)">ReturnCode</a></span>, <span class='object_link'><a href="AchClient/ReturnCodes.html" title="AchClient::ReturnCodes (class)">ReturnCodes</a></span>, <span class='object_link'><a href="AchClient/ReturnedAchResponse.html" title="AchClient::ReturnedAchResponse (class)">ReturnedAchResponse</a></span>, <span class='object_link'><a href="AchClient/SettledAchResponse.html" title="AchClient::SettledAchResponse (class)">SettledAchResponse</a></span>, <span class='object_link'><a href="AchClient/Sftp.html" title="AchClient::Sftp (class)">Sftp</a></span>, <span class='object_link'><a href="AchClient/Transformer.html" title="AchClient::Transformer (class)">Transformer</a></span>
     
   
 </p>
@@ -126,7 +126,7 @@
 
 </div>
       </dt>
-      <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>0.1.0</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1.0.0</span><span class='tstring_end'>&#39;</span></span></pre></dd>
     
   </dl>
 
@@ -136,14 +136,128 @@
 
 
 
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
 
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#const_missing-class_method" title="const_missing (class method)">.<strong>const_missing</strong>(name)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Enables consumer to interact with new Sftp/NACHA providers without adding
+them to the codebase!! Lets say the consumer wants to integrate with
+Citibank.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="const_missing-class_method">
+  
+    .<strong>const_missing</strong>(name)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Enables consumer to interact with new Sftp/NACHA providers without adding
+them to the codebase!! Lets say the consumer wants to integrate with
+Citibank. They would invoke AchClient::Citibank, which would be undefined.
+This const_missing would be called, and the Citibank module would be
+dynamically defined, with all the necessary Sftp/NACHA concerns included
+and ready for use. This is only helpful because many financial institutions
+use the same setup with NACHA and an SFTP server.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client.rb', line 23</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_const_missing'>const_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_const_set'>const_set</span><span class='lparen'>(</span>
+    <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+    <span class='const'>Class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span>
+      <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/SftpProvider.html" title="AchClient::SftpProvider (module)">SftpProvider</a></span></span>
+      <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/NachaProvider.html" title="AchClient::NachaProvider (module)">NachaProvider</a></span></span>
+
+      <span class='comment'># Defines the classes within the provider namespace to use for
+</span>      <span class='comment'># sending transactions
+</span>      <span class='id identifier rubyid_const_set'>const_set</span><span class='lparen'>(</span><span class='symbol'>:AchTransaction</span><span class='comma'>,</span> <span class='const'>Class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="AchClient/Sftp.html" title="AchClient::Sftp (class)">Sftp</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Sftp/AchTransaction.html" title="AchClient::Sftp::AchTransaction (class)">AchTransaction</a></span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_const_set'>const_set</span><span class='lparen'>(</span><span class='symbol'>:AchBatch</span><span class='comma'>,</span> <span class='const'>Class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="AchClient/Sftp.html" title="AchClient::Sftp (class)">Sftp</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Sftp/AchBatch.html" title="AchClient::Sftp::AchBatch (class)">AchBatch</a></span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_const_set'>const_set</span><span class='lparen'>(</span><span class='symbol'>:AchStatusChecker</span><span class='comma'>,</span> <span class='const'>Class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="AchClient/Sftp.html" title="AchClient::Sftp (class)">Sftp</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AchClient/Sftp/AchStatusChecker.html" title="AchClient::Sftp::AchStatusChecker (class)">AchStatusChecker</a></span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 </div>
 
       <div id="footer">
-  Generated on Fri Aug 19 09:13:04 2016 by
+  Generated on Tue Jan  2 09:53:20 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.5 (ruby-2.3.1).
+  0.9.12 (ruby-2.5.0).
 </div>
 
     </div>
