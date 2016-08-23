@@ -6,7 +6,7 @@
 <title>
   Class: AchClient::ReturnCodes
   
-    &mdash; Documentation by YARD 0.9.5
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="../class_list.html"></iframe>
+      <iframe id="nav" src="../class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="../class_list.html"></iframe>
 
       <div id="content"><h1>Class: AchClient::ReturnCodes
   
@@ -96,7 +94,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/ach_client/return_codes.rb</dd>
+    <dd>lib/ach_client/objects/return_codes.rb</dd>
   </dl>
   
 </div>
@@ -130,7 +128,7 @@
 
 </div>
       </dt>
-      <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>config/return_codes.yml</span><span class='tstring_end'>&#39;</span></span></pre></dd>
+      <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>../../../config/return_codes.yml</span><span class='tstring_end'>&#39;</span></span></pre></dd>
     
   </dl>
 
@@ -257,14 +255,18 @@
 16
 17
 18
-19</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/return_codes.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/objects/return_codes.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__return_codes'>_return_codes</span> <span class='op'>||=</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span><span class='const'>RETURN_CODES_YAML</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_code'>code</span><span class='op'>|</span>
-    <span class='const'>ReturnCode</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid__return_codes'>_return_codes</span> <span class='op'>||=</span> <span class='const'>YAML</span><span class='period'>.</span><span class='id identifier rubyid_load_file'>load_file</span><span class='lparen'>(</span>
+    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_expand_path'>expand_path</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_dirname'>dirname</span><span class='lparen'>(</span><span class='kw'>__FILE__</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#RETURN_CODES_YAML-constant" title="AchClient::ReturnCodes::RETURN_CODES_YAML (constant)">RETURN_CODES_YAML</a></span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_code'>code</span><span class='op'>|</span>
+    <span class='const'><span class='object_link'><a href="ReturnCode.html" title="AchClient::ReturnCode (class)">ReturnCode</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="ReturnCode.html#initialize-instance_method" title="AchClient::ReturnCode#initialize (method)">new</a></span></span><span class='lparen'>(</span>
       <span class='label'>code:</span> <span class='id identifier rubyid_code'>code</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>code</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
       <span class='label'>description:</span> <span class='id identifier rubyid_code'>code</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>description</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
       <span class='label'>reason:</span> <span class='id identifier rubyid_code'>code</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>reason</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -338,15 +340,15 @@
       <pre class="lines">
 
 
-24
-25
 26
 27
 28
-29</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/return_codes.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/objects/return_codes.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>code:</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_return_code'>return_code</span><span class='op'>|</span>
@@ -364,9 +366,9 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Aug 19 09:13:04 2016 by
+  Generated on Tue Jan  2 09:53:20 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.5 (ruby-2.3.1).
+  0.9.12 (ruby-2.5.0).
 </div>
 
     </div>

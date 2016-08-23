@@ -6,7 +6,7 @@
 <title>
   Class: AchClient::AchWorks::AchBatch
   
-    &mdash; Documentation by YARD 0.9.5
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="../../class_list.html"></iframe>
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="../../class_list.html"></iframe>
 
       <div id="content"><h1>Class: AchClient::AchWorks::AchBatch
   
@@ -98,7 +96,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/ach_client/ach_works/ach_batch.rb</dd>
+    <dd>lib/ach_client/providers/soap/ach_works/ach_batch.rb</dd>
   </dl>
   
 </div>
@@ -132,7 +130,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#send_batch-instance_method" title="#send_batch (instance method)">#<strong>send_batch</strong>  &#x21d2; String </a>
+      <a href="#do_send_batch-instance_method" title="#do_send_batch (instance method)">#<strong>do_send_batch</strong>  &#x21d2; Array&lt;String&gt; </a>
     
 
     
@@ -191,7 +189,7 @@ the action is successful, will return the filename that AchWorks gives us.</p>
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Abstract/AchBatch.html" title="AchClient::Abstract::AchBatch (class)">AchClient::Abstract::AchBatch</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Abstract/AchBatch.html#initialize-instance_method" title="AchClient::Abstract::AchBatch#initialize (method)">#initialize</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../Abstract/AchBatch.html#initialize-instance_method" title="AchClient::Abstract::AchBatch#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../Abstract/AchBatch.html#send_batch-instance_method" title="AchClient::Abstract::AchBatch#send_batch (method)">#send_batch</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -205,9 +203,9 @@ the action is successful, will return the filename that AchWorks gives us.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="send_batch-instance_method">
+  <h3 class="signature first" id="do_send_batch-instance_method">
   
-    #<strong>send_batch</strong>  &#x21d2; <tt>String</tt> 
+    #<strong>do_send_batch</strong>  &#x21d2; <tt>Array&lt;String&gt;</tt> 
   
 
   
@@ -232,13 +230,13 @@ exception will be thrown.</p>
     <li>
       
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
       
       
       
         &mdash;
         <div class='inline'>
-<p>the filename they give us for later tracking</p>
+<p>the external_ach_id&#39;s for each transaction</p>
 </div>
       
     </li>
@@ -257,17 +255,19 @@ exception will be thrown.</p>
 16
 17
 18
-19</pre>
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_batch.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/ach_works/ach_batch.rb', line 13</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_send_batch'>send_batch</span>
-  <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_wrap_request'>wrap_request</span><span class='lparen'>(</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_do_send_batch'>do_send_batch</span>
+  <span class='const'><span class='object_link'><a href="../../AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span></span><span class='period'>.</span><span class='id identifier rubyid_wrap_request'><span class='object_link'><a href="../AchWorks.html#wrap_request-class_method" title="AchClient::AchWorks.wrap_request (method)">wrap_request</a></span></span><span class='lparen'>(</span>
     <span class='label'>method:</span> <span class='symbol'>:send_ach_trans_batch</span><span class='comma'>,</span>
     <span class='label'>message:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_to_hash'>to_hash</span><span class='comma'>,</span>
     <span class='label'>path:</span> <span class='lbracket'>[</span><span class='symbol'>:send_ach_trans_batch_response</span><span class='comma'>,</span> <span class='symbol'>:send_ach_trans_batch_result</span><span class='rbracket'>]</span>
   <span class='rparen'>)</span><span class='lbracket'>[</span><span class='symbol'>:file_name</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_external_ach_ids'>external_ach_ids</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -318,7 +318,6 @@ exception will be thrown.</p>
       <pre class="lines">
 
 
-23
 24
 25
 26
@@ -336,17 +335,18 @@ exception will be thrown.</p>
 38
 39
 40
-41</pre>
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_batch.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/ach_works/ach_batch.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_hash'>to_hash</span>
-  <span class='const'>InputCompanyInfo</span><span class='period'>.</span><span class='id identifier rubyid_build'>build</span><span class='period'>.</span><span class='id identifier rubyid_to_hash'>to_hash</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span>
+  <span class='const'><span class='object_link'><a href="CompanyInfo.html" title="AchClient::AchWorks::CompanyInfo (class)">CompanyInfo</a></span></span><span class='period'>.</span><span class='id identifier rubyid_build'><span class='object_link'><a href="CompanyInfo.html#build-class_method" title="AchClient::AchWorks::CompanyInfo.build (method)">build</a></span></span><span class='period'>.</span><span class='id identifier rubyid_to_hash'><span class='object_link'><a href="CompanyInfo.html#to_hash-instance_method" title="AchClient::AchWorks::CompanyInfo#to_hash (method)">to_hash</a></span></span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span>
     <span class='lbrace'>{</span>
       <span class='label'>InpACHFile:</span><span class='lbrace'>{</span>
-        <span class='label'>SSS:</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_s_s_s'>s_s_s</span><span class='comma'>,</span>
-        <span class='label'>LocID:</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_loc_i_d'>loc_i_d</span><span class='comma'>,</span>
+        <span class='label'>SSS:</span> <span class='const'><span class='object_link'><a href="../../AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span></span><span class='period'>.</span><span class='id identifier rubyid_s_s_s'><span class='object_link'><a href="../AchWorks.html#s_s_s-instance_method" title="AchClient::AchWorks#s_s_s (method)">s_s_s</a></span></span><span class='comma'>,</span>
+        <span class='label'>LocID:</span> <span class='const'><span class='object_link'><a href="../../AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span></span><span class='period'>.</span><span class='id identifier rubyid_loc_i_d'><span class='object_link'><a href="../AchWorks.html#loc_i_d-instance_method" title="AchClient::AchWorks#loc_i_d (method)">loc_i_d</a></span></span><span class='comma'>,</span>
         <span class='label'>ACHFileName:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='comment'># Docs say to leave this blank...
 </span>        <span class='label'>TotalNumRecords:</span> <span class='id identifier rubyid_total_number_records'>total_number_records</span><span class='comma'>,</span>
         <span class='label'>TotalDebitRecords:</span> <span class='id identifier rubyid_total_debit_records'>total_debit_records</span><span class='comma'>,</span>
@@ -370,9 +370,9 @@ exception will be thrown.</p>
 </div>
 
       <div id="footer">
-  Generated on Fri Aug 19 09:13:04 2016 by
+  Generated on Tue Jan  2 09:53:21 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.5 (ruby-2.3.1).
+  0.9.12 (ruby-2.5.0).
 </div>
 
     </div>

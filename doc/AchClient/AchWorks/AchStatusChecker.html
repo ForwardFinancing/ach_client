@@ -6,7 +6,7 @@
 <title>
   Class: AchClient::AchWorks::AchStatusChecker
   
-    &mdash; Documentation by YARD 0.9.5
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="../../class_list.html"></iframe>
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -59,8 +59,6 @@
         <div class="clear"></div>
       </div>
 
-      <iframe id="search_frame" src="../../class_list.html"></iframe>
-
       <div id="content"><h1>Class: AchClient::AchWorks::AchStatusChecker
   
   
@@ -71,10 +69,12 @@
   <dl>
     <dt>Inherits:</dt>
     <dd>
-      <span class="inheritName">Object</span>
+      <span class="inheritName"><span class='object_link'><a href="../Abstract/AchStatusChecker.html" title="AchClient::Abstract::AchStatusChecker (class)">AchClient::Abstract::AchStatusChecker</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="../Abstract/AchStatusChecker.html" title="AchClient::Abstract::AchStatusChecker (class)">AchClient::Abstract::AchStatusChecker</a></span></li>
           
             <li class="next">AchClient::AchWorks::AchStatusChecker</li>
           
@@ -96,7 +96,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/ach_client/ach_works/ach_status_checker.rb</dd>
+    <dd>lib/ach_client/providers/soap/ach_works/ach_status_checker.rb</dd>
   </dl>
   
 </div>
@@ -121,7 +121,7 @@
 
   
     <h2>
-      Instance Method Summary
+      Class Method Summary
       <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
@@ -130,7 +130,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#in_range-instance_method" title="#in_range (instance method)">#<strong>in_range</strong>(start_date:, end_date:)  &#x21d2; Hash{String =&gt; AchClient::AchResponse} </a>
+      <a href="#in_range-class_method" title="in_range (class method)">.<strong>in_range</strong>(start_date:, end_date:)  &#x21d2; Hash{String =&gt; AchClient::AchResponse} </a>
     
 
     
@@ -155,33 +155,7 @@ AchWorks will modify the end date…</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(company_info:)  &#x21d2; AchStatusChecker </a>
-    
-
-    
-  </span>
-  
-  
-    <span class="note title constructor">constructor</span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>check Ach statuses for.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#most_recent-instance_method" title="#most_recent (instance method)">#<strong>most_recent</strong>  &#x21d2; Hash{String =&gt; AchClient::AchResponse} </a>
+      <a href="#most_recent-class_method" title="most_recent (class method)">.<strong>most_recent</strong>  &#x21d2; Hash{String =&gt; AchClient::AchResponse} </a>
     
 
     
@@ -205,81 +179,22 @@ AchWorks will modify the end date…</p>
     </ul>
   
 
-<div id="constructor_details" class="method_details_list">
-  <h2>Constructor Details</h2>
-  
-    <div class="method_details first">
-  <h3 class="signature first" id="initialize-instance_method">
-  
-    #<strong>initialize</strong>(company_info:)  &#x21d2; <tt><span class='object_link'><a href="" title="AchClient::AchWorks::AchStatusChecker (class)">AchStatusChecker</a></span></tt> 
-  
 
   
-
   
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>check Ach statuses for</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
   
-    <li>
-      
-        <span class='name'>The</span>
-      
-      
-        <span class='type'>(<tt><span class='object_link'><a href="InputCompanyInfo.html" title="AchClient::AchWorks::InputCompanyInfo (class)">AchClient::AchWorks::InputCompanyInfo</a></span></tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>company you want to</p>
-</div>
-      
-    </li>
   
-</ul>
-
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-9
-10
-11</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_status_checker.rb', line 9</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>company_info:</span><span class='rparen'>)</span>
-  <span class='ivar'>@company_info</span> <span class='op'>=</span> <span class='id identifier rubyid_company_info'>company_info</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
   
-</div>
+  
 
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="in_range-instance_method">
+  <h3 class="signature first" id="in_range-class_method">
   
-    #<strong>in_range</strong>(start_date:, end_date:)  &#x21d2; <tt>Hash{String =&gt; <span class='object_link'><a href="../AchResponse.html" title="AchClient::AchResponse (class)">AchClient::AchResponse</a></span>}</tt> 
+    .<strong>in_range</strong>(start_date:, end_date:)  &#x21d2; <tt>Hash{String =&gt; <span class='object_link'><a href="../AchResponse.html" title="AchClient::AchResponse (class)">AchClient::AchResponse</a></span>}</tt> 
   
 
   
@@ -361,17 +276,17 @@ something will probably break.</p>
       <pre class="lines">
 
 
-39
-40
-41
-42
-43
-44</pre>
+31
+32
+33
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_status_checker.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/ach_works/ach_status_checker.rb', line 31</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_in_range'>in_range</span><span class='lparen'>(</span><span class='label'>start_date:</span><span class='comma'>,</span> <span class='label'>end_date:</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_in_range'>in_range</span><span class='lparen'>(</span><span class='label'>start_date:</span><span class='comma'>,</span> <span class='label'>end_date:</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request_and_process_response'>request_and_process_response</span><span class='lparen'>(</span>
     <span class='label'>method:</span> <span class='symbol'>:get_ach_returns_hist</span><span class='comma'>,</span>
     <span class='label'>message:</span> <span class='id identifier rubyid_in_range_hash'>in_range_hash</span><span class='lparen'>(</span><span class='label'>start_date:</span> <span class='id identifier rubyid_start_date'>start_date</span><span class='comma'>,</span> <span class='label'>end_date:</span> <span class='id identifier rubyid_end_date'>end_date</span><span class='rparen'>)</span>
@@ -383,9 +298,9 @@ something will probably break.</p>
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="most_recent-instance_method">
+  <h3 class="signature " id="most_recent-class_method">
   
-    #<strong>most_recent</strong>  &#x21d2; <tt>Hash{String =&gt; <span class='object_link'><a href="../AchResponse.html" title="AchClient::AchResponse (class)">AchClient::AchResponse</a></span>}</tt> 
+    .<strong>most_recent</strong>  &#x21d2; <tt>Hash{String =&gt; <span class='object_link'><a href="../AchResponse.html" title="AchClient::AchResponse (class)">AchClient::AchResponse</a></span>}</tt> 
   
 
   
@@ -429,17 +344,17 @@ href="http://tstsvr.achworks.com/dnet/achws.asmx?op=GetACHReturns">tstsvr.achwor
       <pre class="lines">
 
 
-21
-22
-23
-24
-25
-26</pre>
+13
+14
+15
+16
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_status_checker.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/ach_works/ach_status_checker.rb', line 13</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_most_recent'>most_recent</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_most_recent'>most_recent</span>
   <span class='id identifier rubyid_request_and_process_response'>request_and_process_response</span><span class='lparen'>(</span>
     <span class='label'>method:</span> <span class='symbol'>:get_ach_returns</span><span class='comma'>,</span>
     <span class='label'>message:</span> <span class='id identifier rubyid_most_recent_hash'>most_recent_hash</span>
@@ -455,9 +370,9 @@ href="http://tstsvr.achworks.com/dnet/achws.asmx?op=GetACHReturns">tstsvr.achwor
 </div>
 
       <div id="footer">
-  Generated on Fri Aug 19 09:13:04 2016 by
+  Generated on Tue Jan  2 09:53:21 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.5 (ruby-2.3.1).
+  0.9.12 (ruby-2.5.0).
 </div>
 
     </div>

@@ -6,7 +6,7 @@
 <title>
   Class: AchClient::AchWorks::AccountTypeTransformer
   
-    &mdash; Documentation by YARD 0.9.5
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="../../class_list.html"></iframe>
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -59,8 +59,6 @@
         <div class="clear"></div>
       </div>
 
-      <iframe id="search_frame" src="../../class_list.html"></iframe>
-
       <div id="content"><h1>Class: AchClient::AchWorks::AccountTypeTransformer
   
   
@@ -71,12 +69,12 @@
   <dl>
     <dt>Inherits:</dt>
     <dd>
-      <span class="inheritName"><span class='object_link'><a href="AchWorksTransformer.html" title="AchClient::AchWorks::AchWorksTransformer (class)">AchWorksTransformer</a></span></span>
+      <span class="inheritName"><span class='object_link'><a href="../Transformer.html" title="AchClient::Transformer (class)">Transformer</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next"><span class='object_link'><a href="AchWorksTransformer.html" title="AchClient::AchWorks::AchWorksTransformer (class)">AchWorksTransformer</a></span></li>
+            <li class="next"><span class='object_link'><a href="../Transformer.html" title="AchClient::Transformer (class)">Transformer</a></span></li>
           
             <li class="next">AchClient::AchWorks::AccountTypeTransformer</li>
           
@@ -98,7 +96,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/ach_client/ach_works/account_type_transformer.rb</dd>
+    <dd>lib/ach_client/providers/soap/ach_works/account_type_transformer.rb</dd>
   </dl>
   
 </div>
@@ -133,7 +131,7 @@ AchWorks expects</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#string_to_class_map-class_method" title="string_to_class_map (class method)">.<strong>string_to_class_map</strong>  &#x21d2; Hash {String =&gt; Class} </a>
+      <a href="#transformer-class_method" title="transformer (class method)">.<strong>transformer</strong>  &#x21d2; Hash {String =&gt; Class} </a>
     
 
     
@@ -166,8 +164,8 @@ AchWorks expects</p>
   
   
   
-  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="AchWorksTransformer.html" title="AchClient::AchWorks::AchWorksTransformer (class)">AchWorksTransformer</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="AchWorksTransformer.html#class_to_string-class_method" title="AchClient::AchWorks::AchWorksTransformer.class_to_string (method)">class_to_string</a></span>, <span class='object_link'><a href="AchWorksTransformer.html#string_to_class-class_method" title="AchClient::AchWorks::AchWorksTransformer.string_to_class (method)">string_to_class</a></span></p>
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Transformer.html" title="AchClient::Transformer (class)">Transformer</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../Transformer.html#deserialize_provider_value-class_method" title="AchClient::Transformer.deserialize_provider_value (method)">deserialize_provider_value</a></span>, <span class='object_link'><a href="../Transformer.html#serialize_to_provider_value-class_method" title="AchClient::Transformer.serialize_to_provider_value (method)">serialize_to_provider_value</a></span></p>
 
 
   <div id="class_method_details" class="method_details_list">
@@ -175,9 +173,9 @@ AchWorks expects</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="string_to_class_map-class_method">
+  <h3 class="signature first" id="transformer-class_method">
   
-    .<strong>string_to_class_map</strong>  &#x21d2; <tt>Hash {String =&gt; Class}</tt> 
+    .<strong>transformer</strong>  &#x21d2; <tt>Hash {String =&gt; Class}</tt> 
   
 
   
@@ -218,20 +216,20 @@ AchWorks expects</p>
       <pre class="lines">
 
 
+9
+10
 11
 12
 13
-14
-15
-16</pre>
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/account_type_transformer.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/ach_works/account_type_transformer.rb', line 9</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_string_to_class_map'>string_to_class_map</span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_transformer'>transformer</span>
   <span class='lbrace'>{</span>
-    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>S</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'>AccountTypes</span><span class='op'>::</span><span class='const'>Savings</span><span class='comma'>,</span>
-    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>C</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'>AccountTypes</span><span class='op'>::</span><span class='const'>Checking</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>S</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../../AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AccountTypes.html" title="AchClient::AccountTypes (module)">AccountTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AccountTypes/Savings.html" title="AchClient::AccountTypes::Savings (class)">Savings</a></span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>C</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="../../AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AccountTypes.html" title="AchClient::AccountTypes (module)">AccountTypes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AccountTypes/Checking.html" title="AchClient::AccountTypes::Checking (class)">Checking</a></span></span>
   <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -244,9 +242,9 @@ AchWorks expects</p>
 </div>
 
       <div id="footer">
-  Generated on Fri Aug 19 09:13:04 2016 by
+  Generated on Tue Jan  2 09:53:22 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.5 (ruby-2.3.1).
+  0.9.12 (ruby-2.5.0).
 </div>
 
     </div>

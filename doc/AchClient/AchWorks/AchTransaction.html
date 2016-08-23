@@ -6,7 +6,7 @@
 <title>
   Class: AchClient::AchWorks::AchTransaction
   
-    &mdash; Documentation by YARD 0.9.5
+    &mdash; Documentation by YARD 0.9.12
   
 </title>
 
@@ -28,7 +28,7 @@
   </head>
   <body>
     <div class="nav_wrap">
-      <iframe id="nav" src="../../class_list.html"></iframe>
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
       <div id="resizer"></div>
     </div>
 
@@ -58,8 +58,6 @@
 </div>
         <div class="clear"></div>
       </div>
-
-      <iframe id="search_frame" src="../../class_list.html"></iframe>
 
       <div id="content"><h1>Class: AchClient::AchWorks::AchTransaction
   
@@ -98,7 +96,7 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/ach_client/ach_works/ach_transaction.rb</dd>
+    <dd>lib/ach_client/providers/soap/ach_works/ach_transaction.rb</dd>
   </dl>
   
 </div>
@@ -115,6 +113,27 @@
   
 
 </div>
+  <h2>Constant Summary</h2>
+  <dl class="constants">
+    
+      <dt id="MAX_MERCHANT_NAME_LENGTH-constant" class="">MAX_MERCHANT_NAME_LENGTH =
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>Only allows for merchant length of less than or equal to 22.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+      </dt>
+      <dd><pre class="code"><span class='int'>22</span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
+    
+  </dl>
+
 
 
 
@@ -124,7 +143,7 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#ach_id-instance_method" title="#ach_id (instance method)">#<strong>ach_id</strong>  &#x21d2; Object </a>
+      <a href="#customer_id-instance_method" title="#customer_id (instance method)">#<strong>customer_id</strong>  &#x21d2; Object </a>
     
 
     
@@ -144,7 +163,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute ach_id.</p>
+<p>Returns the value of attribute customer_id.</p>
 </div></span>
   
 </li>
@@ -193,6 +212,30 @@
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#do_send-instance_method" title="#do_send (instance method)">#<strong>do_send</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Send this transaction individually to AchWorks.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -255,7 +298,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../Abstract/AchTransaction.html" title="AchClient::Abstract::AchTransaction (class)">AchClient::Abstract::AchTransaction</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../Abstract/AchTransaction.html#credit%3F-instance_method" title="AchClient::Abstract::AchTransaction#credit? (method)">#credit?</a></span>, <span class='object_link'><a href="../Abstract/AchTransaction.html#debit%3F-instance_method" title="AchClient::Abstract::AchTransaction#debit? (method)">#debit?</a></span>, <span class='object_link'><a href="../Abstract/AchTransaction.html#initialize-instance_method" title="AchClient::Abstract::AchTransaction#initialize (method)">#initialize</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../Abstract/AchTransaction.html#credit%3F-instance_method" title="AchClient::Abstract::AchTransaction#credit? (method)">#credit?</a></span>, <span class='object_link'><a href="../Abstract/AchTransaction.html#debit%3F-instance_method" title="AchClient::Abstract::AchTransaction#debit? (method)">#debit?</a></span>, <span class='object_link'><a href="../Abstract/AchTransaction.html#initialize-instance_method" title="AchClient::Abstract::AchTransaction#initialize (method)">#initialize</a></span>, <span class='object_link'><a href="../Abstract/AchTransaction.html#send-instance_method" title="AchClient::Abstract::AchTransaction#send (method)">#send</a></span>, <span class='object_link'><a href="../Abstract/AchTransaction.html#sendable%3F-instance_method" title="AchClient::Abstract::AchTransaction#sendable? (method)">#sendable?</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -269,9 +312,9 @@
       
       <span id=""></span>
       <div class="method_details first">
-  <h3 class="signature first" id="ach_id-instance_method">
+  <h3 class="signature first" id="customer_id-instance_method">
   
-    #<strong>ach_id</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+    #<strong>customer_id</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
   
 
   
@@ -280,7 +323,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute ach_id</p>
+<p>Returns the value of attribute customer_id</p>
 
 
   </div>
@@ -294,15 +337,15 @@
       <pre class="lines">
 
 
-14
-15
-16</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_transaction.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/ach_works/ach_transaction.rb', line 17</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_ach_id'>ach_id</span>
-  <span class='ivar'>@ach_id</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_customer_id'>customer_id</span>
+  <span class='ivar'>@customer_id</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -353,7 +396,7 @@
   
     <li>
       
-        <span class='name'>ach_id</span>
+        <span class='name'>customer_id</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -362,7 +405,7 @@
       
         &mdash;
         <div class='inline'>
-<p>string to use as front_end_trace</p>
+<p>optional identifier for the customer</p>
 </div>
       
     </li>
@@ -376,15 +419,15 @@
       <pre class="lines">
 
 
-10
-11
-12</pre>
+13
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_transaction.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/ach_works/ach_transaction.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_arguments'>arguments</span>
-  <span class='kw'>super</span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='symbol'>:ach_id</span><span class='rbracket'>]</span>
+  <span class='kw'>super</span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='symbol'>:customer_id</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -398,7 +441,78 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="front_end_trace-instance_method">
+  <h3 class="signature first" id="do_send-instance_method">
+  
+    #<strong>do_send</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Send this transaction individually to AchWorks</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the front end trace</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/ach_works/ach_transaction.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_do_send'>do_send</span>
+  <span class='const'><span class='object_link'><a href="../../AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span></span><span class='period'>.</span><span class='id identifier rubyid_wrap_request'><span class='object_link'><a href="../AchWorks.html#wrap_request-class_method" title="AchClient::AchWorks.wrap_request (method)">wrap_request</a></span></span><span class='lparen'>(</span>
+    <span class='label'>method:</span> <span class='symbol'>:send_ach_trans</span><span class='comma'>,</span>
+    <span class='label'>message:</span> <span class='const'><span class='object_link'><a href="../../AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="CompanyInfo.html" title="AchClient::AchWorks::CompanyInfo (class)">CompanyInfo</a></span></span><span class='period'>.</span><span class='id identifier rubyid_build'><span class='object_link'><a href="CompanyInfo.html#build-class_method" title="AchClient::AchWorks::CompanyInfo.build (method)">build</a></span></span><span class='period'>.</span><span class='id identifier rubyid_to_hash'><span class='object_link'><a href="CompanyInfo.html#to_hash-instance_method" title="AchClient::AchWorks::CompanyInfo#to_hash (method)">to_hash</a></span></span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+      <span class='label'>InpACHTransRecord:</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_to_hash'>to_hash</span>
+    <span class='rbrace'>}</span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='label'>path:</span> <span class='lbracket'>[</span><span class='symbol'>:send_ach_trans_response</span><span class='comma'>,</span> <span class='symbol'>:send_ach_trans_result</span><span class='rbracket'>]</span>
+  <span class='rparen'>)</span><span class='lbracket'>[</span><span class='symbol'>:front_end_trace</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="front_end_trace-instance_method">
   
     #<strong>front_end_trace</strong>  &#x21d2; <tt>String</tt> 
   
@@ -444,32 +558,32 @@ is responsible for ensuring the uniqueness of this value</p>
       <pre class="lines">
 
 
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65</pre>
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_transaction.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/ach_works/ach_transaction.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_front_end_trace'>front_end_trace</span>
   <span class='comment'># I want to stop this before it goes through because AchWorks might
 </span>  <span class='comment'># just truncate the value, which could result in lost Achs.
-</span>  <span class='kw'>if</span> <span class='id identifier rubyid_ach_id'>ach_id</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>11</span>
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_external_ach_id'>external_ach_id</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='int'>11</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>AchWorks requires a FrontEndTrace of 12 chars or less</span><span class='tstring_end'>&#39;</span></span>
   <span class='kw'>else</span>
     <span class='comment'># The front end trace MUST NOT start with a W.
 </span>    <span class='comment'># Our front end trace starts with a Z.
 </span>    <span class='comment'># The letter Z is not the letter W.
-</span>    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Z</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ach_id'>ach_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+</span>    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Z</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_external_ach_id'>external_ach_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -521,21 +635,6 @@ is responsible for ensuring the uniqueness of this value</p>
       <pre class="lines">
 
 
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
 34
 35
 36
@@ -547,34 +646,49 @@ is responsible for ensuring the uniqueness of this value</p>
 42
 43
 44
-45</pre>
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/ach_client/ach_works/ach_transaction.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/ach_client/providers/soap/ach_works/ach_transaction.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_hash'>to_hash</span>
   <span class='lbrace'>{</span>
-    <span class='label'>SSS:</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_s_s_s'>s_s_s</span><span class='comma'>,</span>
-    <span class='label'>LocID:</span> <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='period'>.</span><span class='id identifier rubyid_loc_i_d'>loc_i_d</span><span class='comma'>,</span>
+    <span class='label'>SSS:</span> <span class='const'><span class='object_link'><a href="../../AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span></span><span class='period'>.</span><span class='id identifier rubyid_s_s_s'><span class='object_link'><a href="../AchWorks.html#s_s_s-instance_method" title="AchClient::AchWorks#s_s_s (method)">s_s_s</a></span></span><span class='comma'>,</span>
+    <span class='label'>LocID:</span> <span class='const'><span class='object_link'><a href="../../AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span></span><span class='period'>.</span><span class='id identifier rubyid_loc_i_d'><span class='object_link'><a href="../AchWorks.html#loc_i_d-instance_method" title="AchClient::AchWorks#loc_i_d (method)">loc_i_d</a></span></span><span class='comma'>,</span>
     <span class='label'>FrontEndTrace:</span> <span class='id identifier rubyid_front_end_trace'>front_end_trace</span><span class='comma'>,</span>
-    <span class='label'>CustomerName:</span> <span class='id identifier rubyid_merchant_name'>merchant_name</span><span class='comma'>,</span>
+    <span class='label'>CustomerName:</span> <span class='id identifier rubyid_merchant_name'>merchant_name</span><span class='lbracket'>[</span><span class='int'>0</span><span class='op'>..</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#MAX_MERCHANT_NAME_LENGTH-constant" title="AchClient::AchWorks::AchTransaction::MAX_MERCHANT_NAME_LENGTH (constant)">MAX_MERCHANT_NAME_LENGTH</a></span></span><span class='op'>-</span><span class='int'>1</span><span class='rparen'>)</span><span class='rbracket'>]</span><span class='comma'>,</span>
     <span class='label'>CustomerRoutingNo:</span> <span class='id identifier rubyid_routing_number'>routing_number</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
     <span class='label'>CustomerAcctNo:</span> <span class='id identifier rubyid_account_number'>account_number</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
-    <span class='label'>OriginatorName:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TBD</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
-    <span class='label'>TransactionCode:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>WEB</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='comment'># CHECK THIS
-</span>    <span class='label'>CustTransType:</span>
-      <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>TransactionTypeTransformer</span><span class='period'>.</span><span class='id identifier rubyid_class_to_string'>class_to_string</span><span class='lparen'>(</span>
+    <span class='label'>OriginatorName:</span> <span class='id identifier rubyid_originator_name'>originator_name</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='symbol'>:first</span><span class='comma'>,</span> <span class='int'>16</span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='label'>TransactionCode:</span> <span class='id identifier rubyid_sec_code'>sec_code</span><span class='comma'>,</span>
+    <span class='label'>CustTransType:</span>
+      <span class='const'><span class='object_link'><a href="../../AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="TransactionTypeTransformer.html" title="AchClient::AchWorks::TransactionTypeTransformer (class)">TransactionTypeTransformer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_serialize_to_provider_value'><span class='object_link'><a href="../Transformer.html#serialize_to_provider_value-class_method" title="AchClient::Transformer.serialize_to_provider_value (method)">serialize_to_provider_value</a></span></span><span class='lparen'>(</span>
         <span class='id identifier rubyid_transaction_type'>transaction_type</span>
       <span class='rparen'>)</span><span class='comma'>,</span>
-    <span class='label'>CustomerID:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>TBD</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+    <span class='label'>CustomerID:</span> <span class='id identifier rubyid_customer_id'>customer_id</span><span class='comma'>,</span>
     <span class='label'>CustomerAcctType:</span>
-      <span class='const'>AchClient</span><span class='op'>::</span><span class='const'>AchWorks</span><span class='op'>::</span><span class='const'>AccountTypeTransformer</span><span class='period'>.</span><span class='id identifier rubyid_class_to_string'>class_to_string</span><span class='lparen'>(</span>
+      <span class='const'><span class='object_link'><a href="../../AchClient.html" title="AchClient (module)">AchClient</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../AchWorks.html" title="AchClient::AchWorks (class)">AchWorks</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="AccountTypeTransformer.html" title="AchClient::AchWorks::AccountTypeTransformer (class)">AccountTypeTransformer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_serialize_to_provider_value'><span class='object_link'><a href="../Transformer.html#serialize_to_provider_value-class_method" title="AchClient::Transformer.serialize_to_provider_value (method)">serialize_to_provider_value</a></span></span><span class='lparen'>(</span>
         <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_account_type'>account_type</span>
       <span class='rparen'>)</span><span class='comma'>,</span>
     <span class='label'>TransAmount:</span> <span class='id identifier rubyid_amount'>amount</span><span class='comma'>,</span>
-    <span class='label'>CheckOrTransDate:</span> <span class='const'>DateFormatter</span><span class='period'>.</span><span class='id identifier rubyid_format'>format</span><span class='lparen'>(</span><span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='comment'># Does this need to be read from ACH record
-</span>    <span class='label'>EffectiveDate:</span> <span class='const'>DateFormatter</span><span class='period'>.</span><span class='id identifier rubyid_format'>format</span><span class='lparen'>(</span><span class='const'>Date</span><span class='period'>.</span><span class='id identifier rubyid_today'>today</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='comment'># Should be same or greater than above (probably same)
-</span>    <span class='label'>Memo:</span> <span class='id identifier rubyid_memo'>memo</span><span class='comma'>,</span>
+    <span class='label'>CheckOrTransDate:</span> <span class='const'><span class='object_link'><a href="DateFormatter.html" title="AchClient::AchWorks::DateFormatter (class)">DateFormatter</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="DateFormatter.html#format-class_method" title="AchClient::AchWorks::DateFormatter.format (method)">format</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_effective_entry_date'>effective_entry_date</span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='label'>EffectiveDate:</span> <span class='const'><span class='object_link'><a href="DateFormatter.html" title="AchClient::AchWorks::DateFormatter (class)">DateFormatter</a></span></span><span class='period'>.</span><span class='id identifier rubyid_format'><span class='object_link'><a href="DateFormatter.html#format-class_method" title="AchClient::AchWorks::DateFormatter.format (method)">format</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_effective_entry_date'>effective_entry_date</span><span class='rparen'>)</span><span class='comma'>,</span>
+    <span class='label'>Memo:</span> <span class='id identifier rubyid_memo'>memo</span><span class='period'>.</span><span class='id identifier rubyid_try'>try</span><span class='lparen'>(</span><span class='symbol'>:first</span><span class='comma'>,</span> <span class='int'>10</span><span class='rparen'>)</span><span class='comma'>,</span>
     <span class='label'>OpCode:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>S</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='comment'># Check this
 </span>    <span class='label'>AccountSet:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>1</span><span class='tstring_end'>&#39;</span></span>
   <span class='rbrace'>}</span>
@@ -589,9 +703,9 @@ is responsible for ensuring the uniqueness of this value</p>
 </div>
 
       <div id="footer">
-  Generated on Fri Aug 19 09:13:04 2016 by
+  Generated on Tue Jan  2 09:53:21 2018 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.5 (ruby-2.3.1).
+  0.9.12 (ruby-2.5.0).
 </div>
 
     </div>
