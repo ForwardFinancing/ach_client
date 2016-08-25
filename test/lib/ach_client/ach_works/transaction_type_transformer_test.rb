@@ -4,12 +4,12 @@ class TransactionTypeTransformerTest < MiniTest::Test
   def test_string_to_class
     assert_equal(
       AchClient::AchWorks::TransactionTypeTransformer.string_to_class('C'),
-      TransactionTypes::Credit
+      AchClient::TransactionTypes::Credit
     )
 
     assert_equal(
       AchClient::AchWorks::TransactionTypeTransformer.string_to_class('D'),
-      TransactionTypes::Debit
+      AchClient::TransactionTypes::Debit
     )
 
     assert_equal(
@@ -23,13 +23,13 @@ class TransactionTypeTransformerTest < MiniTest::Test
   def test_class_to_string
     assert_equal(
       AchClient::AchWorks::TransactionTypeTransformer.class_to_string(
-        TransactionTypes::Credit
+        AchClient::TransactionTypes::Credit
       ),
       'C'
     )
     assert_equal(
       AchClient::AchWorks::TransactionTypeTransformer.class_to_string(
-        TransactionTypes::Debit
+        AchClient::TransactionTypes::Debit
       ),
       'D'
     )
@@ -37,7 +37,7 @@ class TransactionTypeTransformerTest < MiniTest::Test
       assert_raises(RuntimeError) do
         AchClient::AchWorks::TransactionTypeTransformer.class_to_string(Class)
       end.message,
-      'type must be one of TransactionTypes::Credit, TransactionTypes::Debit'
+      'type must be one of AchClient::TransactionTypes::Credit, AchClient::TransactionTypes::Debit'
     )
   end
 end

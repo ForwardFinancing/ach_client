@@ -5,12 +5,12 @@ class AchTransactionTest < MiniTest::Test
     assert_equal(
       AchClient::AchWorks::AchTransaction.new(
         account_number: '00002323044',
-        account_type: AccountTypes::Checking,
+        account_type: AchClient::AccountTypes::Checking,
         amount: BigDecimal.new('575.45'),
         memo: '????',
         merchant_name: 'DOE, JOHN',
         routing_number: '123456780',
-        transaction_type: TransactionTypes::Debit,
+        transaction_type: AchClient::TransactionTypes::Debit,
         ach_id: 'foooo'
       ).to_hash,
       {
@@ -37,12 +37,12 @@ class AchTransactionTest < MiniTest::Test
     assert_equal(
       AchClient::AchWorks::AchTransaction.new(
         account_number: '00002323044',
-        account_type: AccountTypes::Savings,
+        account_type: AchClient::AccountTypes::Savings,
         amount: BigDecimal.new('575.45'),
         memo: '????',
         merchant_name: 'DOE, JOHN',
         routing_number: '123456780',
-        transaction_type: TransactionTypes::Credit,
+        transaction_type: AchClient::TransactionTypes::Credit,
         ach_id: 'foooo'
       ).to_hash,
       {
@@ -71,12 +71,12 @@ class AchTransactionTest < MiniTest::Test
     assert_raises(RuntimeError) do
       AchClient::AchWorks::AchTransaction.new(
         account_number: '00002323044',
-        account_type: AccountTypes::Savings,
+        account_type: AchClient::AccountTypes::Savings,
         amount: 575.45,
         memo: '????',
         merchant_name: 'DOE, JOHN',
         routing_number: '123456780',
-        transaction_type: TransactionTypes::Credit,
+        transaction_type: AchClient::TransactionTypes::Credit,
         ach_id: '123456789012' # too long
       ).to_hash
     end
@@ -89,7 +89,7 @@ class AchTransactionTest < MiniTest::Test
         memo: '????',
         merchant_name: 'DOE, JOHN',
         routing_number: '123456780',
-        transaction_type: TransactionTypes::Credit,
+        transaction_type: AchClient::TransactionTypes::Credit,
         ach_id: 'foo'
       ).to_hash
     end
@@ -97,7 +97,7 @@ class AchTransactionTest < MiniTest::Test
     assert_raises(RuntimeError) do
       AchClient::AchWorks::AchTransaction.new(
         account_number: '00002323044',
-        account_type: AccountTypes::Savings,
+        account_type: AchClient::AccountTypes::Savings,
         amount: 575.45,
         memo: '????',
         merchant_name: 'DOE, JOHN',

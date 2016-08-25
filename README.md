@@ -34,12 +34,12 @@ batch = AchClient::AchBatch.new(
   ach_transactions: [
     AchClient::AchTransaction.new(
       account_number: '00002323044',
-      account_type: AccountTypes::Checking,
+      account_type: AchClient::AccountTypes::Checking,
       amount: BigDecimal.new('575.45'),
       memo: '????',
       merchant_name: 'DOE, JOHN',
       routing_number: nil,
-      transaction_type: TransactionTypes::Credit,
+      transaction_type: AchClient::TransactionTypes::Credit,
       ach_id: 'foooo'
     ),
     ...

@@ -10,8 +10,8 @@ module AchClient
       # @return [Hash {String => Class}] the mapping
       def self.string_to_class_map
         {
-          'S' => AccountTypes::Savings,
-          'C' => AccountTypes::Checking
+          'S' => AchClient::AccountTypes::Savings,
+          'C' => AchClient::AccountTypes::Checking
         }
       end
     end
