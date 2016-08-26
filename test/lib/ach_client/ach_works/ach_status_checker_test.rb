@@ -85,7 +85,7 @@ class AchStatusChecker < MiniTest::Test
       )
       assert_equal(
         response['RG-SCRUB6'].corrections[:account_type],
-        AccountTypes::Checking
+        AchClient::AccountTypes::Checking
       )
 
       assert(response['RG-SCRUB7'].is_a?(AchClient::CorrectedAchResponse))
@@ -100,7 +100,7 @@ class AchStatusChecker < MiniTest::Test
       )
       assert_equal(
         response['RG-SCRUB7'].corrections[:account_type],
-        AccountTypes::Checking
+        AchClient::AccountTypes::Checking
       )
       assert_equal(
         response['RG-SCRUB7'].corrections[:account_number],

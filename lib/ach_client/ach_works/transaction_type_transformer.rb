@@ -11,8 +11,8 @@ module AchClient
       # @return [Hash {String => Class}] the mapping
       def self.string_to_class_map
         {
-          'C' => TransactionTypes::Credit,
-          'D' => TransactionTypes::Debit
+          'C' => AchClient::TransactionTypes::Credit,
+          'D' => AchClient::TransactionTypes::Debit
         }
       end
     end

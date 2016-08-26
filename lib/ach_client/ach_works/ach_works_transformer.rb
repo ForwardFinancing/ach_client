@@ -9,8 +9,8 @@ module AchClient
       # Convert AchWorks string representation to AchClient class
       # =>  representation
       # @param string [String] string to turn into class
-      # @return [Class] for example AccountTypes::Checking or
-      # AccountTypes::Savings
+      # @return [Class] for example AchClient::AccountTypes::Checking or
+      # AchClient::AccountTypes::Savings
       def self.string_to_class(string)
         self.string_to_class_map[string] or raise(
           "Unknown #{self} string #{string}"

@@ -23,14 +23,14 @@ module AchClient
 
       ##
       # @param account_number [String] Merchant's account number
-      # @param account_type [AccountTypes::AccountType] Merchant's account type
-      #   (debit or credit), must be an instance of AccountTypes::AccountType
+      # @param account_type [AchClient::AccountTypes::AccountType] Merchant's account type
+      #   (debit or credit), must be an instance of AchClient::AccountTypes::AccountType
       # @param amount [BigDecimal] Amount of the ACH transaction
       # @param memo [String] Ach memo thing
       # @param merchant_name [String] Name associated with merchantaccount we
       #   are ACHing with
       # @param routing_number [String] Routing number of the merchant's account
-      # @param transaction_type [TransactionTypes::TransactionType] debit or
+      # @param transaction_type [AchClient::TransactionTypes::TransactionType] debit or
       def initialize(*arguments)
         args = arguments.extract_options!
         self.class.arguments.each do |param|
@@ -43,12 +43,12 @@ module AchClient
 
       # @return [Boolean] true if transaction is a debit
       def debit?
-        transaction_type == TransactionTypes::Debit
+        transaction_type == AchClient::TransactionTypes::Debit
       end
 
       # @return [Boolean] true if transaction is a credit
       def credit?
-        transaction_type == TransactionTypes::Credit
+        transaction_type == AchClient::TransactionTypes::Credit
       end
     end
   end

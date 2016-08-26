@@ -4,12 +4,12 @@ class AchBatchTest < MiniTest::Test
   def debit
     AchClient::AchWorks::AchTransaction.new(
       account_number: '00002323044',
-      account_type: AccountTypes::Checking,
+      account_type: AchClient::AccountTypes::Checking,
       amount: BigDecimal.new('575.45'),
       memo: '????',
       merchant_name: 'DOE, JOHN',
       routing_number: '123456780',
-      transaction_type: TransactionTypes::Debit,
+      transaction_type: AchClient::TransactionTypes::Debit,
       ach_id: 'foooo'
     )
   end
@@ -17,12 +17,12 @@ class AchBatchTest < MiniTest::Test
   def credit
     AchClient::AchWorks::AchTransaction.new(
       account_number: '00002323044',
-      account_type: AccountTypes::Checking,
+      account_type: AchClient::AccountTypes::Checking,
       amount: BigDecimal.new('575.45'),
       memo: '????',
       merchant_name: 'DOE, JOHN',
       routing_number: '123456780',
-      transaction_type: TransactionTypes::Credit,
+      transaction_type: AchClient::TransactionTypes::Credit,
       ach_id: 'foooo'
     )
   end
@@ -30,12 +30,12 @@ class AchBatchTest < MiniTest::Test
   def invalid
     AchClient::AchWorks::AchTransaction.new(
       account_number: '00002323044',
-      account_type: AccountTypes::Checking,
+      account_type: AchClient::AccountTypes::Checking,
       amount: BigDecimal.new('575.45'),
       memo: '????',
       merchant_name: 'DOE, JOHN',
       routing_number: nil,
-      transaction_type: TransactionTypes::Credit,
+      transaction_type: AchClient::TransactionTypes::Credit,
       ach_id: 'foooo'
     )
   end
