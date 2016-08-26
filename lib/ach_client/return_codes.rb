@@ -3,13 +3,15 @@ module AchClient
   class ReturnCodes
 
     # The path to the file where the return codes are enumerated
-    RETURN_CODES_YAML = 'config/return_codes.yml'
+    RETURN_CODES_YAML = '../../config/return_codes.yml'
 
     class_attribute :_return_codes
 
     # @return [Array<AchClient::ReturnCode>] A list of all return codes.
     def self.all
-      self._return_codes ||= YAML.load_file(RETURN_CODES_YAML).map do |code|
+      self._return_codes ||= YAML.load_file(
+        File.expand_path(File.join(File.dirname(__FILE__), RETURN_CODES_YAML))
+      ).map do |code|
         ReturnCode.new(
           code: code['code'],
           description: code['description'],
