@@ -7,11 +7,13 @@ module AchClient
       ##
       # @param super [Array] args from parent class
       # @param ach_id [String] string to use as front_end_trace
+      # @param customer_id [String] optional identifier for the customer
       def self.arguments
-        super + [:ach_id]
+        super + [:ach_id, :customer_id]
       end
 
-      attr_reader :ach_id
+      attr_reader :ach_id,
+                  :customer_id
 
       ##
       # @return [Hash] turns this transaction into a hash that can be sent to
@@ -24,13 +26,13 @@ module AchClient
           CustomerName: merchant_name,
           CustomerRoutingNo: routing_number.to_s,
           CustomerAcctNo: account_number.to_s,
-          OriginatorName: 'TBD',
-          TransactionCode: 'WEB', # CHECK THIS
+          OriginatorName: originator_name,
+          TransactionCode: sec_code,
           CustTransType:
             AchClient::AchWorks::TransactionTypeTransformer.class_to_string(
               transaction_type
             ),
-          CustomerID: 'TBD',
+          CustomerID: customer_id,
           CustomerAcctType:
             AchClient::AchWorks::AccountTypeTransformer.class_to_string(
               self.account_type
