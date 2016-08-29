@@ -38,9 +38,12 @@ batch = AchClient::AchBatch.new(
       amount: BigDecimal.new('575.45'),
       memo: '????',
       merchant_name: 'DOE, JOHN',
+      originator_name: 'you',
+      sec_code: 'CCD'
       routing_number: nil,
       transaction_type: AchClient::TransactionTypes::Credit,
-      ach_id: 'foooo'
+      ach_id: 'foooo',
+      customer_id: '123'
     ),
     ...
   ]

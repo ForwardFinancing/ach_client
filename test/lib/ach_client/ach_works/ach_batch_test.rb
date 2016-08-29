@@ -8,9 +8,12 @@ class AchBatchTest < MiniTest::Test
       amount: BigDecimal.new('575.45'),
       memo: '????',
       merchant_name: 'DOE, JOHN',
+      originator_name: 'ff',
       routing_number: '123456780',
+      sec_code: 'CCD',
       transaction_type: AchClient::TransactionTypes::Debit,
-      ach_id: 'foooo'
+      ach_id: 'foooo',
+      customer_id: 'foo'
     )
   end
 
@@ -21,9 +24,12 @@ class AchBatchTest < MiniTest::Test
       amount: BigDecimal.new('575.45'),
       memo: '????',
       merchant_name: 'DOE, JOHN',
+      originator_name: 'ff',
       routing_number: '123456780',
+      sec_code: 'CCD',
       transaction_type: AchClient::TransactionTypes::Credit,
-      ach_id: 'foooo'
+      ach_id: 'foooo',
+      customer_id: 'foo'
     )
   end
 
@@ -124,10 +130,10 @@ class AchBatchTest < MiniTest::Test
         CustomerName: 'DOE, JOHN',
         CustomerRoutingNo: '123456780',
         CustomerAcctNo: '00002323044',
-        OriginatorName: 'TBD',
-        TransactionCode: 'WEB',
+        OriginatorName: 'ff',
+        TransactionCode: 'CCD',
         CustTransType: 'C',
-        CustomerID: 'TBD',
+        CustomerID: 'foo',
         CustomerAcctType: 'C',
         TransAmount: BigDecimal.new('575.45').to_s,
         CheckOrTransDate: '2016-08-11T00:00:00.00000+00:00',
@@ -143,10 +149,10 @@ class AchBatchTest < MiniTest::Test
         CustomerName: 'DOE, JOHN',
         CustomerRoutingNo: '123456780',
         CustomerAcctNo: '00002323044',
-        OriginatorName: 'TBD',
-        TransactionCode: 'WEB',
+        OriginatorName: 'ff',
+        TransactionCode: 'CCD',
         CustTransType: 'D',
-        CustomerID: 'TBD',
+        CustomerID: 'foo',
         CustomerAcctType: 'C',
         TransAmount: BigDecimal.new('575.45').to_s,
         CheckOrTransDate: '2016-08-11T00:00:00.00000+00:00',

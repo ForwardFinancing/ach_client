@@ -14,7 +14,9 @@ module AchClient
           :amount,
           :memo,
           :merchant_name,
+          :originator_name,
           :routing_number,
+          :sec_code,
           :transaction_type
         ]
       end
@@ -29,7 +31,11 @@ module AchClient
       # @param memo [String] Ach memo thing
       # @param merchant_name [String] Name associated with merchantaccount we
       #   are ACHing with
+      # @param originator_name [String] String identifying you, will appear on
+      #   merchants bank statement
       # @param routing_number [String] Routing number of the merchant's account
+      # @param sec_code [String] CCD, PPD, WEB, etc.
+      #  See: https://en.wikipedia.org/wiki/Automated_Clearing_House#SEC_codes
       # @param transaction_type [AchClient::TransactionTypes::TransactionType] debit or
       def initialize(*arguments)
         args = arguments.extract_options!
