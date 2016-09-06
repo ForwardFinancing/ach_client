@@ -13,5 +13,11 @@ AchClient::AchWorks.loc_i_d = '9505'
 AchClient::AchWorks.s_s_s = 'TST'
 AchClient::AchWorks.wsdl = 'http://tstsvr.achworks.com/dnet/achws.asmx?wsdl'
 
+AchClient::ICheckGateway.site_i_d = 'SEDZ'
+AchClient::ICheckGateway.site_key = '236652'
+AchClient::ICheckGateway.api_key = 'a3GFMBGz6KhkTzg'
+AchClient::ICheckGateway.live = false
+AchClient::ICheckGateway.wsdl = 'https://icheckgateway.com/API/Service.asmx?WSDL'
+
 # Start a console session using pry
 Pry.start

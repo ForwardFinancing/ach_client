@@ -1,0 +1,1694 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://icheckgateway.com/API/Service.asmx?WSDL
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      X-Frame-Options:
+      - SAMEORIGIN
+      Date:
+      - Wed, 07 Sep 2016 14:39:48 GMT
+      Content-Length:
+      - '126941'
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<wsdl:definitions xmlns:s=\"http://www.w3.org/2001/XMLSchema\"
+        xmlns:soap12=\"http://schemas.xmlsoap.org/wsdl/soap12/\" xmlns:http=\"http://schemas.xmlsoap.org/wsdl/http/\"
+        xmlns:mime=\"http://schemas.xmlsoap.org/wsdl/mime/\" xmlns:tns=\"https://icheckgateway.com/API/\"
+        xmlns:soap=\"http://schemas.xmlsoap.org/wsdl/soap/\" xmlns:tm=\"http://microsoft.com/wsdl/mime/textMatching/\"
+        xmlns:soapenc=\"http://schemas.xmlsoap.org/soap/encoding/\" targetNamespace=\"https://icheckgateway.com/API/\"
+        xmlns:wsdl=\"http://schemas.xmlsoap.org/wsdl/\">\r\n  <wsdl:types>\r\n    <s:schema
+        elementFormDefault=\"qualified\" targetNamespace=\"https://icheckgateway.com/API/\">\r\n
+        \     <s:element name=\"ProcessCreditCard\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"TransactionDate\" type=\"s:dateTime\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Phone\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Fax\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Street1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Street2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"City\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"State\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CreditCardNumber\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ExpirationDate\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CVCCode\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyAccount\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"APIKey\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"SalesTax\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ConsumerIP\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"ProcessCreditCardResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ProcessCreditCardResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"ProcessCheck\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"TransactionDate\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Phone\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Fax\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Street1\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Street2\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"City\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"State\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"RoutingNumber\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AccountNumber\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"AccountType\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyAccount\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"APIKey\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"EntryClassCode\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ConsumerIP\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"ProcessCheckResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ProcessCheckResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"ProcessScannedCheck\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Phone\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Fax\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Street1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Street2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"City\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"State\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"RoutingNumber\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AccountNumber\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"AccountType\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom1\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom2\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom3\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Description\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"FrontImage\" type=\"s:base64Binary\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"BackImage\"
+        type=\"s:base64Binary\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"ProcessScannedCheckResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ProcessScannedCheckResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"ProcessCheckWithSignature\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"TransactionDate\" type=\"s:dateTime\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Phone\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Fax\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Street1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Street2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"City\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"State\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"RoutingNumber\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AccountNumber\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"AccountType\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyAccount\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"APIKey\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"EntryClassCode\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Signature\" type=\"s:base64Binary\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"ProcessCheckWithSignatureResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ProcessCheckWithSignatureResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"ProcessCreditCardWithSignature\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"TransactionDate\" type=\"s:dateTime\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Phone\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Fax\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Street1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Street2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"City\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"State\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CreditCardNumber\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ExpirationDate\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CVCCode\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyAccount\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"APIKey\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"SalesTax\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Signature\" type=\"s:base64Binary\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"ProcessCreditCardWithSignatureResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ProcessCreditCardWithSignatureResult\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"SetupAutoCheck\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Phone\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Fax\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Street1\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Street2\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"City\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"State\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"RoutingNumber\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AccountNumber\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"AccountType\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom1\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom2\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom3\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Description\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EntryClassCode\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"StartDate\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"AutoSchedule\" type=\"s:int\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ConsumerIP\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SetupAutoCheckResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SetupAutoCheckResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"SetupAutoCheckWithTerm\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\"
+        type=\"s:double\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"TransactionType\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Phone\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Fax\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Street1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Street2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"City\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"State\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"RoutingNumber\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AccountNumber\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"AccountType\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom1\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom2\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom3\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Description\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EntryClassCode\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"StartDate\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"AutoSchedule\" type=\"s:int\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ConsumerIP\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"NumberOfPayments\" type=\"s:int\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"SetupAutoCheckWithTermResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SetupAutoCheckWithTermResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SetupAutoCard\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"APIKey\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Phone\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Fax\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Street1\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Street2\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"City\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"State\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CCNumber\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ExpirationDate\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CompanyName\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom1\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom2\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"StartDate\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"AutoSchedule\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ConsumerIP\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"SetupAutoCardResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SetupAutoCardResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SetupAutoCardWithTerm\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Phone\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Fax\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Street1\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Street2\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"City\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"State\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CCNumber\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ExpirationDate\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CompanyName\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom1\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom2\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"StartDate\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"AutoSchedule\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"NumberOfPayments\" type=\"s:int\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ConsumerIP\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"SetupAutoCardWithTermResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SetupAutoCardWithTermResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"HealthCheck\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"APIKey\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"HealthCheckResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"HealthCheckResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"VerifyRoutingNumber\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"RoutingNumber\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"VerifyRoutingNumberResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"VerifyRoutingNumberResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"VerifyCredentials\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"VerifyCredentialsResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"VerifyCredentialsResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"VerifyCheckOnly\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"RoutingNumber\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AccountNumber\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"VerifyCheckOnlyResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"VerifyCheckOnlyResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"VoidTransaction\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"PaymentType\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"OrderID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"VoidTransactionResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"VoidTransactionResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"RefundTransaction\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"PaymentType\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"OrderID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ConsumerIP\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"RefundTransactionResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"RefundTransactionResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"PullTransactionReport\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"startDate\" type=\"s:dateTime\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"endDate\" type=\"s:dateTime\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"PullTransactionReportResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"PullTransactionReportResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"PullReturnedChecks\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"ReturnedDate\" type=\"s:dateTime\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"PullReturnedChecksResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"PullReturnedChecksResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SaveCreditCardToken\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Street1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Street2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"City\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"State\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Phone\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Fax\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CreditCardNumber\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ExpirationDate\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ConsumerIP\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"SaveCreditCardTokenResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SaveCreditCardTokenResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SaveCheckToken\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"APIKey\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Street1\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Street2\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"City\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"State\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Phone\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Fax\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"RoutingNumber\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"BankAccountNumber\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"BankAccountType\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ConsumerIP\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"SaveCheckTokenResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SaveCheckTokenResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"UpdateCheckToken\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Token\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"LastName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"FirstName\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Street1\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Street2\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"City\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"State\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Zip\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Phone\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Fax\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"RoutingNumber\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"BankAccountType\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ConsumerIP\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"UpdateCheckTokenResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"UpdateCheckTokenResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"UpdateCreditCardToken\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Token\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"LastName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"FirstName\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Street1\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Street2\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"City\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"State\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Zip\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Phone\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Fax\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ExpirationDate\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ConsumerIP\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"UpdateCreditCardTokenResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"UpdateCreditCardTokenResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"DeleteCheckToken\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Token\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"DeleteCheckTokenResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"DeleteCheckTokenResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"DeleteCreditCardToken\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Token\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"DeleteCreditCardTokenResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"DeleteCreditCardTokenResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"ProcessCheckToken\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Token\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"PaymentDate\" type=\"s:dateTime\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"EntryClassCode\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ConsumerIP\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"ProcessCheckTokenResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ProcessCheckTokenResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"SetupAutoCheckToken\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Token\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"Amount\" type=\"s:double\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"PaymentDate\" type=\"s:dateTime\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom1\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom2\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"EntryClassCode\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"StartDate\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"AutoSchedule\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ConsumerIP\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"SetupAutoCheckTokenResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SetupAutoCheckTokenResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SetupAutoCheckTokenWithTerm\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Token\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"PaymentDate\" type=\"s:dateTime\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"EntryClassCode\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"StartDate\" type=\"s:dateTime\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"AutoSchedule\" type=\"s:int\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ConsumerIP\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"NumberOfPayments\" type=\"s:int\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"SetupAutoCheckTokenWithTermResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SetupAutoCheckTokenWithTermResult\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"SetupAutoCardTokenWithTerm\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Token\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"Amount\" type=\"s:double\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"PaymentDate\" type=\"s:dateTime\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom1\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom2\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"StartDate\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"AutoSchedule\" type=\"s:int\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ConsumerIP\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"NumberOfPayments\" type=\"s:int\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"SetupAutoCardTokenWithTermResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SetupAutoCardTokenWithTermResult\"
+        type=\"s:string\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"ProcessCreditCardToken\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Token\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"Amount\" type=\"s:double\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"PaymentDate\" type=\"s:dateTime\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom1\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom2\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"SalesTax\" type=\"s:double\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ConsumerIP\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"ProcessCreditCardTokenResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ProcessCreditCardTokenResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SetupAutoCardToken\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Token\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"PaymentDate\" type=\"s:dateTime\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"StartDate\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"AutoSchedule\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ConsumerIP\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"SetupAutoCardTokenResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SetupAutoCardTokenResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"IVRCreditCard\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"APIKey\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CreditCardNumber\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ExpirationDate\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CVCCode\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom1\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ConsumerPhone\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"IVRCreditCardResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"IVRCreditCardResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"IVRCheck\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"APIKey\" type=\"s:string\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"RoutingNumber\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"AccountNumber\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AccountType\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom1\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"ConsumerPhone\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"IVRCheckResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"IVRCheckResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"SwipedCreditCard\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CardStrip\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"Amount\" type=\"s:double\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"TransactionType\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom1\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom2\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"StreetAddress\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"ZipCode\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"SalesTax\" type=\"s:double\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"SwipedCreditCardResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SwipedCreditCardResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SwipedCreditCardEncrypted\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"DeviceSerial\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"KSN\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"MagnePrint\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"MagnePrintStatus\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Track1\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Track2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Track3\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"StreetAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"ZipCode\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"SalesTax\"
+        type=\"s:double\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"SwipedCreditCardEncryptedResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SwipedCreditCardEncryptedResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"AddInvoice\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"APIKey\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CustomerName\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerStreet\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerCity\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CustomerState\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CustomerZip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerPhone\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CustomerEmail\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"InvoiceDate\" type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"DueDate\" type=\"s:dateTime\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"ToEmail\" type=\"s:boolean\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"InvoiceNumber\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"InvoiceItems\" type=\"tns:ArrayOfString\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:complexType name=\"ArrayOfString\">\r\n        <s:sequence>\r\n          <s:element
+        minOccurs=\"0\" maxOccurs=\"unbounded\" name=\"string\" nillable=\"true\"
+        type=\"s:string\" />\r\n        </s:sequence>\r\n      </s:complexType>\r\n
+        \     <s:element name=\"AddInvoiceResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AddInvoiceResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"PurgeAllInvoices\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"ConfirmPurge\"
+        type=\"s:boolean\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"PurgeAllInvoicesResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"PurgeAllInvoicesResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"DeleteInvoice\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"APIKey\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"InvoiceNumber\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"DeleteInvoiceResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"DeleteInvoiceResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"iDynamoSwipe\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"TrackDecodeStatus\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"EncryptionStatus\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"MaskedTracks\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Track1Masked\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Track2Masked\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Track1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Track2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Track3\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CardIIN\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CardName\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CardLast4\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"CardExpDate\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CardServiceCode\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CardPanLength\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"KSN\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"DeviceSerial\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"MagnePrint\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"MagnePrintStatus\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SessionID\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"DeviceName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"Amount\" type=\"s:double\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom1\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom2\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom3\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Signature\" type=\"s:base64Binary\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"iDynamoSwipeResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"iDynamoSwipeResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"SetupRecurringCreditCardWithTerm\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"StartDate\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"Term\" type=\"s:int\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"Cycle\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Phone\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Fax\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Street1\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Street2\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"City\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"State\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CreditCardNumber\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Expiration\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"Amount\" type=\"s:double\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"TransactionType\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Custom1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ConsumerIPAddress\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SetupRecurringCreditCardWithTermResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SetupRecurringCreditCardWithTermResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"SetupRecurringCheckWithTerm\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"StartDate\"
+        type=\"s:dateTime\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"Term\" type=\"s:int\" />\r\n            <s:element minOccurs=\"1\"
+        maxOccurs=\"1\" name=\"Cycle\" type=\"s:int\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"LastName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Phone\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Fax\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Street1\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Street2\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"City\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"State\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"RoutingNumber\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"AccountNumber\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AccountType\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"EntryClassCode\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"Amount\" type=\"s:double\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"TransactionType\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"EmailAddress\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Custom1\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom2\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Custom3\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"Description\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"ConsumerIPAddress\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"SetupRecurringCheckWithTermResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SetupRecurringCheckWithTermResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"DeleteAutoCard\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"AutoReference\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"GatewayLiveMode\" type=\"s:boolean\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n      <s:element name=\"DeleteAutoCardResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"DeleteAutoCardResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"DeleteAutoCheck\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"SiteID\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"SiteKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"APIKey\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"AutoReference\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\"
+        type=\"s:boolean\" />\r\n          </s:sequence>\r\n        </s:complexType>\r\n
+        \     </s:element>\r\n      <s:element name=\"DeleteAutoCheckResponse\">\r\n
+        \       <s:complexType>\r\n          <s:sequence>\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"DeleteAutoCheckResult\" type=\"s:string\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"AddCustomer\">\r\n        <s:complexType>\r\n          <s:sequence>\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteID\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"SiteKey\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"APIKey\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"CustomerNumber\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"FirstName\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"LastName\" type=\"s:string\"
+        />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"CompanyName\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"Address1\" type=\"s:string\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"Address2\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"City\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"State\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Zip\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Phone\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"EmailAddress\" type=\"s:string\" />\r\n
+        \           <s:element minOccurs=\"0\" maxOccurs=\"1\" name=\"PaymentToken\"
+        type=\"s:string\" />\r\n            <s:element minOccurs=\"1\" maxOccurs=\"1\"
+        name=\"TokenIsACH\" type=\"s:boolean\" />\r\n            <s:element minOccurs=\"0\"
+        maxOccurs=\"1\" name=\"TokenDisplay\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"0\" maxOccurs=\"1\" name=\"Notes\" type=\"s:string\" />\r\n            <s:element
+        minOccurs=\"1\" maxOccurs=\"1\" name=\"GatewayLiveMode\" type=\"s:boolean\"
+        />\r\n          </s:sequence>\r\n        </s:complexType>\r\n      </s:element>\r\n
+        \     <s:element name=\"AddCustomerResponse\">\r\n        <s:complexType>\r\n
+        \         <s:sequence>\r\n            <s:element minOccurs=\"0\" maxOccurs=\"1\"
+        name=\"AddCustomerResult\" type=\"s:string\" />\r\n          </s:sequence>\r\n
+        \       </s:complexType>\r\n      </s:element>\r\n    </s:schema>\r\n  </wsdl:types>\r\n
+        \ <wsdl:message name=\"ProcessCreditCardSoapIn\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:ProcessCreditCard\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"ProcessCreditCardSoapOut\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:ProcessCreditCardResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"ProcessCheckSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:ProcessCheck\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"ProcessCheckSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:ProcessCheckResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"ProcessScannedCheckSoapIn\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:ProcessScannedCheck\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"ProcessScannedCheckSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:ProcessScannedCheckResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"ProcessCheckWithSignatureSoapIn\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:ProcessCheckWithSignature\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"ProcessCheckWithSignatureSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:ProcessCheckWithSignatureResponse\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"ProcessCreditCardWithSignatureSoapIn\">\r\n    <wsdl:part
+        name=\"parameters\" element=\"tns:ProcessCreditCardWithSignature\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"ProcessCreditCardWithSignatureSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:ProcessCreditCardWithSignatureResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SetupAutoCheckSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupAutoCheck\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"SetupAutoCheckSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:SetupAutoCheckResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"SetupAutoCheckWithTermSoapIn\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:SetupAutoCheckWithTerm\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"SetupAutoCheckWithTermSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:SetupAutoCheckWithTermResponse\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"SetupAutoCardSoapIn\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:SetupAutoCard\" />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SetupAutoCardSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupAutoCardResponse\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"SetupAutoCardWithTermSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupAutoCardWithTerm\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"SetupAutoCardWithTermSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupAutoCardWithTermResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"HealthCheckSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:HealthCheck\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"HealthCheckSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:HealthCheckResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"VerifyRoutingNumberSoapIn\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:VerifyRoutingNumber\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"VerifyRoutingNumberSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:VerifyRoutingNumberResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"VerifyCredentialsSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:VerifyCredentials\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"VerifyCredentialsSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:VerifyCredentialsResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"VerifyCheckOnlySoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:VerifyCheckOnly\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"VerifyCheckOnlySoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:VerifyCheckOnlyResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"VoidTransactionSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:VoidTransaction\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"VoidTransactionSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:VoidTransactionResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"RefundTransactionSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:RefundTransaction\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"RefundTransactionSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:RefundTransactionResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"PullTransactionReportSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:PullTransactionReport\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"PullTransactionReportSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:PullTransactionReportResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"PullReturnedChecksSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:PullReturnedChecks\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"PullReturnedChecksSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:PullReturnedChecksResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SaveCreditCardTokenSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SaveCreditCardToken\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"SaveCreditCardTokenSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SaveCreditCardTokenResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SaveCheckTokenSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SaveCheckToken\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"SaveCheckTokenSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:SaveCheckTokenResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"UpdateCheckTokenSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:UpdateCheckToken\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"UpdateCheckTokenSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:UpdateCheckTokenResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"UpdateCreditCardTokenSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:UpdateCreditCardToken\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"UpdateCreditCardTokenSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:UpdateCreditCardTokenResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"DeleteCheckTokenSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DeleteCheckToken\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"DeleteCheckTokenSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DeleteCheckTokenResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"DeleteCreditCardTokenSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DeleteCreditCardToken\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"DeleteCreditCardTokenSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DeleteCreditCardTokenResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"ProcessCheckTokenSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:ProcessCheckToken\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"ProcessCheckTokenSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:ProcessCheckTokenResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SetupAutoCheckTokenSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupAutoCheckToken\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"SetupAutoCheckTokenSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupAutoCheckTokenResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SetupAutoCheckTokenWithTermSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupAutoCheckTokenWithTerm\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SetupAutoCheckTokenWithTermSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupAutoCheckTokenWithTermResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SetupAutoCardTokenWithTermSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupAutoCardTokenWithTerm\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SetupAutoCardTokenWithTermSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupAutoCardTokenWithTermResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"ProcessCreditCardTokenSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:ProcessCreditCardToken\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"ProcessCreditCardTokenSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:ProcessCreditCardTokenResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SetupAutoCardTokenSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupAutoCardToken\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"SetupAutoCardTokenSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupAutoCardTokenResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"IVRCreditCardSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:IVRCreditCard\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"IVRCreditCardSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:IVRCreditCardResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"IVRCheckSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:IVRCheck\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"IVRCheckSoapOut\">\r\n    <wsdl:part
+        name=\"parameters\" element=\"tns:IVRCheckResponse\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"SwipedCreditCardSoapIn\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:SwipedCreditCard\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"SwipedCreditCardSoapOut\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:SwipedCreditCardResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SwipedCreditCardEncryptedSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SwipedCreditCardEncrypted\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SwipedCreditCardEncryptedSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SwipedCreditCardEncryptedResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"AddInvoiceSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:AddInvoice\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"AddInvoiceSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:AddInvoiceResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"PurgeAllInvoicesSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:PurgeAllInvoices\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"PurgeAllInvoicesSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:PurgeAllInvoicesResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"DeleteInvoiceSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DeleteInvoice\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"DeleteInvoiceSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:DeleteInvoiceResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"iDynamoSwipeSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:iDynamoSwipe\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"iDynamoSwipeSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:iDynamoSwipeResponse\" />\r\n
+        \ </wsdl:message>\r\n  <wsdl:message name=\"SetupRecurringCreditCardWithTermSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupRecurringCreditCardWithTerm\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SetupRecurringCreditCardWithTermSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupRecurringCreditCardWithTermResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SetupRecurringCheckWithTermSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupRecurringCheckWithTerm\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"SetupRecurringCheckWithTermSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:SetupRecurringCheckWithTermResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"DeleteAutoCardSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DeleteAutoCard\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"DeleteAutoCardSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:DeleteAutoCardResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:message
+        name=\"DeleteAutoCheckSoapIn\">\r\n    <wsdl:part name=\"parameters\" element=\"tns:DeleteAutoCheck\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"DeleteAutoCheckSoapOut\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:DeleteAutoCheckResponse\"
+        />\r\n  </wsdl:message>\r\n  <wsdl:message name=\"AddCustomerSoapIn\">\r\n
+        \   <wsdl:part name=\"parameters\" element=\"tns:AddCustomer\" />\r\n  </wsdl:message>\r\n
+        \ <wsdl:message name=\"AddCustomerSoapOut\">\r\n    <wsdl:part name=\"parameters\"
+        element=\"tns:AddCustomerResponse\" />\r\n  </wsdl:message>\r\n  <wsdl:portType
+        name=\"ServiceSoap\">\r\n    <wsdl:operation name=\"ProcessCreditCard\">\r\n
+        \     <wsdl:input message=\"tns:ProcessCreditCardSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:ProcessCreditCardSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessCheck\">\r\n      <wsdl:input message=\"tns:ProcessCheckSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:ProcessCheckSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"ProcessScannedCheck\">\r\n      <wsdl:input message=\"tns:ProcessScannedCheckSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:ProcessScannedCheckSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"ProcessCheckWithSignature\">\r\n
+        \     <wsdl:input message=\"tns:ProcessCheckWithSignatureSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:ProcessCheckWithSignatureSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"ProcessCreditCardWithSignature\">\r\n      <wsdl:input
+        message=\"tns:ProcessCreditCardWithSignatureSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:ProcessCreditCardWithSignatureSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"SetupAutoCheck\">\r\n      <wsdl:input message=\"tns:SetupAutoCheckSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:SetupAutoCheckSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"SetupAutoCheckWithTerm\">\r\n      <wsdl:input
+        message=\"tns:SetupAutoCheckWithTermSoapIn\" />\r\n      <wsdl:output message=\"tns:SetupAutoCheckWithTermSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"SetupAutoCard\">\r\n
+        \     <wsdl:input message=\"tns:SetupAutoCardSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:SetupAutoCardSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCardWithTerm\">\r\n      <wsdl:input message=\"tns:SetupAutoCardWithTermSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:SetupAutoCardWithTermSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"HealthCheck\">\r\n      <wsdl:input
+        message=\"tns:HealthCheckSoapIn\" />\r\n      <wsdl:output message=\"tns:HealthCheckSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"VerifyRoutingNumber\">\r\n
+        \     <wsdl:input message=\"tns:VerifyRoutingNumberSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:VerifyRoutingNumberSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"VerifyCredentials\">\r\n      <wsdl:input message=\"tns:VerifyCredentialsSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:VerifyCredentialsSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"VerifyCheckOnly\">\r\n      <wsdl:input message=\"tns:VerifyCheckOnlySoapIn\"
+        />\r\n      <wsdl:output message=\"tns:VerifyCheckOnlySoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"VoidTransaction\">\r\n      <wsdl:input message=\"tns:VoidTransactionSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:VoidTransactionSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"RefundTransaction\">\r\n      <wsdl:input message=\"tns:RefundTransactionSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:RefundTransactionSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"PullTransactionReport\">\r\n      <wsdl:input message=\"tns:PullTransactionReportSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:PullTransactionReportSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"PullReturnedChecks\">\r\n
+        \     <wsdl:input message=\"tns:PullReturnedChecksSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:PullReturnedChecksSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"SaveCreditCardToken\">\r\n      <wsdl:input message=\"tns:SaveCreditCardTokenSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:SaveCreditCardTokenSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"SaveCheckToken\">\r\n
+        \     <wsdl:input message=\"tns:SaveCheckTokenSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:SaveCheckTokenSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"UpdateCheckToken\">\r\n      <wsdl:input message=\"tns:UpdateCheckTokenSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:UpdateCheckTokenSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"UpdateCreditCardToken\">\r\n      <wsdl:input message=\"tns:UpdateCreditCardTokenSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:UpdateCreditCardTokenSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"DeleteCheckToken\">\r\n
+        \     <wsdl:input message=\"tns:DeleteCheckTokenSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:DeleteCheckTokenSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteCreditCardToken\">\r\n      <wsdl:input message=\"tns:DeleteCreditCardTokenSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:DeleteCreditCardTokenSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"ProcessCheckToken\">\r\n
+        \     <wsdl:input message=\"tns:ProcessCheckTokenSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:ProcessCheckTokenSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCheckToken\">\r\n      <wsdl:input message=\"tns:SetupAutoCheckTokenSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:SetupAutoCheckTokenSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"SetupAutoCheckTokenWithTerm\">\r\n
+        \     <wsdl:input message=\"tns:SetupAutoCheckTokenWithTermSoapIn\" />\r\n
+        \     <wsdl:output message=\"tns:SetupAutoCheckTokenWithTermSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"SetupAutoCardTokenWithTerm\">\r\n
+        \     <wsdl:input message=\"tns:SetupAutoCardTokenWithTermSoapIn\" />\r\n
+        \     <wsdl:output message=\"tns:SetupAutoCardTokenWithTermSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"ProcessCreditCardToken\">\r\n
+        \     <wsdl:input message=\"tns:ProcessCreditCardTokenSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:ProcessCreditCardTokenSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"SetupAutoCardToken\">\r\n      <wsdl:input message=\"tns:SetupAutoCardTokenSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:SetupAutoCardTokenSoapOut\" />\r\n
+        \   </wsdl:operation>\r\n    <wsdl:operation name=\"IVRCreditCard\">\r\n      <wsdl:input
+        message=\"tns:IVRCreditCardSoapIn\" />\r\n      <wsdl:output message=\"tns:IVRCreditCardSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"IVRCheck\">\r\n
+        \     <wsdl:input message=\"tns:IVRCheckSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:IVRCheckSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SwipedCreditCard\">\r\n      <wsdl:input message=\"tns:SwipedCreditCardSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:SwipedCreditCardSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"SwipedCreditCardEncrypted\">\r\n      <wsdl:input
+        message=\"tns:SwipedCreditCardEncryptedSoapIn\" />\r\n      <wsdl:output message=\"tns:SwipedCreditCardEncryptedSoapOut\"
+        />\r\n    </wsdl:operation>\r\n    <wsdl:operation name=\"AddInvoice\">\r\n
+        \     <wsdl:input message=\"tns:AddInvoiceSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:AddInvoiceSoapOut\" />\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"PurgeAllInvoices\">\r\n      <wsdl:input message=\"tns:PurgeAllInvoicesSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:PurgeAllInvoicesSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"DeleteInvoice\">\r\n      <wsdl:input message=\"tns:DeleteInvoiceSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:DeleteInvoiceSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"iDynamoSwipe\">\r\n      <wsdl:input message=\"tns:iDynamoSwipeSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:iDynamoSwipeSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"SetupRecurringCreditCardWithTerm\">\r\n      <wsdl:input
+        message=\"tns:SetupRecurringCreditCardWithTermSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:SetupRecurringCreditCardWithTermSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"SetupRecurringCheckWithTerm\">\r\n      <wsdl:input
+        message=\"tns:SetupRecurringCheckWithTermSoapIn\" />\r\n      <wsdl:output
+        message=\"tns:SetupRecurringCheckWithTermSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"DeleteAutoCard\">\r\n      <wsdl:input message=\"tns:DeleteAutoCardSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:DeleteAutoCardSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"DeleteAutoCheck\">\r\n      <wsdl:input message=\"tns:DeleteAutoCheckSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:DeleteAutoCheckSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \   <wsdl:operation name=\"AddCustomer\">\r\n      <wsdl:input message=\"tns:AddCustomerSoapIn\"
+        />\r\n      <wsdl:output message=\"tns:AddCustomerSoapOut\" />\r\n    </wsdl:operation>\r\n
+        \ </wsdl:portType>\r\n  <wsdl:binding name=\"ServiceSoap\" type=\"tns:ServiceSoap\">\r\n
+        \   <soap:binding transport=\"http://schemas.xmlsoap.org/soap/http\" />\r\n
+        \   <wsdl:operation name=\"ProcessCreditCard\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/ProcessCreditCard\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessCheck\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/ProcessCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessScannedCheck\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/ProcessScannedCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessCheckWithSignature\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/ProcessCheckWithSignature\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessCreditCardWithSignature\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/ProcessCreditCardWithSignature\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCheck\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCheckWithTerm\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCheckWithTerm\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCard\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCard\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCardWithTerm\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCardWithTerm\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"HealthCheck\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/HealthCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"VerifyRoutingNumber\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/VerifyRoutingNumber\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"VerifyCredentials\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/VerifyCredentials\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"VerifyCheckOnly\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/VerifyCheckOnly\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"VoidTransaction\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/VoidTransaction\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"RefundTransaction\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/RefundTransaction\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"PullTransactionReport\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/PullTransactionReport\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"PullReturnedChecks\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/PullReturnedChecks\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SaveCreditCardToken\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SaveCreditCardToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SaveCheckToken\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SaveCheckToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"UpdateCheckToken\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/UpdateCheckToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"UpdateCreditCardToken\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/UpdateCreditCardToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteCheckToken\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/DeleteCheckToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteCreditCardToken\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/DeleteCreditCardToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessCheckToken\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/ProcessCheckToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCheckToken\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCheckToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCheckTokenWithTerm\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCheckTokenWithTerm\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCardTokenWithTerm\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCardTokenWithTerm\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessCreditCardToken\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/ProcessCreditCardToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCardToken\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCardToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"IVRCreditCard\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/IVRCreditCard\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"IVRCheck\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/IVRCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SwipedCreditCard\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SwipedCreditCard\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SwipedCreditCardEncrypted\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SwipedCreditCardEncrypted\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"AddInvoice\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/AddInvoice\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"PurgeAllInvoices\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/PurgeAllInvoices\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteInvoice\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/DeleteInvoice\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"iDynamoSwipe\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/iDynamoSwipe\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupRecurringCreditCardWithTerm\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SetupRecurringCreditCardWithTerm\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupRecurringCheckWithTerm\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/SetupRecurringCheckWithTerm\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteAutoCard\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/DeleteAutoCard\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteAutoCheck\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/DeleteAutoCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"AddCustomer\">\r\n      <soap:operation soapAction=\"https://icheckgateway.com/API/AddCustomer\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:binding name=\"ServiceSoap12\" type=\"tns:ServiceSoap\">\r\n    <soap12:binding
+        transport=\"http://schemas.xmlsoap.org/soap/http\" />\r\n    <wsdl:operation
+        name=\"ProcessCreditCard\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/ProcessCreditCard\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessCheck\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/ProcessCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessScannedCheck\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/ProcessScannedCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessCheckWithSignature\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/ProcessCheckWithSignature\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessCreditCardWithSignature\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/ProcessCreditCardWithSignature\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCheck\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCheckWithTerm\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCheckWithTerm\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCard\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCard\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCardWithTerm\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCardWithTerm\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"HealthCheck\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/HealthCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"VerifyRoutingNumber\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/VerifyRoutingNumber\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"VerifyCredentials\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/VerifyCredentials\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"VerifyCheckOnly\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/VerifyCheckOnly\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"VoidTransaction\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/VoidTransaction\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"RefundTransaction\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/RefundTransaction\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"PullTransactionReport\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/PullTransactionReport\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"PullReturnedChecks\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/PullReturnedChecks\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SaveCreditCardToken\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SaveCreditCardToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SaveCheckToken\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SaveCheckToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"UpdateCheckToken\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/UpdateCheckToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"UpdateCreditCardToken\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/UpdateCreditCardToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteCheckToken\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/DeleteCheckToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteCreditCardToken\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/DeleteCreditCardToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessCheckToken\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/ProcessCheckToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCheckToken\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCheckToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCheckTokenWithTerm\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCheckTokenWithTerm\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCardTokenWithTerm\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCardTokenWithTerm\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"ProcessCreditCardToken\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/ProcessCreditCardToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupAutoCardToken\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SetupAutoCardToken\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"IVRCreditCard\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/IVRCreditCard\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"IVRCheck\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/IVRCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SwipedCreditCard\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SwipedCreditCard\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SwipedCreditCardEncrypted\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SwipedCreditCardEncrypted\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"AddInvoice\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/AddInvoice\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"PurgeAllInvoices\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/PurgeAllInvoices\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteInvoice\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/DeleteInvoice\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"iDynamoSwipe\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/iDynamoSwipe\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupRecurringCreditCardWithTerm\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SetupRecurringCreditCardWithTerm\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"SetupRecurringCheckWithTerm\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/SetupRecurringCheckWithTerm\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteAutoCard\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/DeleteAutoCard\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"DeleteAutoCheck\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/DeleteAutoCheck\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n    <wsdl:operation
+        name=\"AddCustomer\">\r\n      <soap12:operation soapAction=\"https://icheckgateway.com/API/AddCustomer\"
+        style=\"document\" />\r\n      <wsdl:input>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:input>\r\n      <wsdl:output>\r\n        <soap12:body use=\"literal\"
+        />\r\n      </wsdl:output>\r\n    </wsdl:operation>\r\n  </wsdl:binding>\r\n
+        \ <wsdl:service name=\"Service\">\r\n    <wsdl:port name=\"ServiceSoap\" binding=\"tns:ServiceSoap\">\r\n
+        \     <soap:address location=\"https://icheckgateway.com/API/Service.asmx\"
+        />\r\n    </wsdl:port>\r\n    <wsdl:port name=\"ServiceSoap12\" binding=\"tns:ServiceSoap12\">\r\n
+        \     <soap12:address location=\"https://icheckgateway.com/API/Service.asmx\"
+        />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
+    http_version: 
+  recorded_at: Thu, 11 Aug 2016 14:13:05 GMT
+recorded_with: VCR 3.0.3

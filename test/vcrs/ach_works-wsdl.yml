@@ -4,22 +4,22 @@ http_interactions:
     method: get
     uri: http://tstsvr.achworks.com/dnet/achws.asmx?wsdl
     body:
-      encoding: UTF-8
+      encoding: US-ASCII
       string: ''
     headers:
-      User-Agent:
-      - HTTPClient/1.0 (2.7.1, ruby 2.3.1 (2016-04-26))
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
-      Date:
-      - Wed, 10 Aug 2016 16:47:56 GMT
+      User-Agent:
+      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Wed, 10 Aug 2016 16:48:40 GMT
+      - Wed, 07 Sep 2016 15:06:16 GMT
       Server:
       - Apache
       X-Aspnet-Version:
@@ -641,5 +641,5 @@ http_interactions:
         \     <soap12:address location=\"http://tstsvr.achworks.com/dnet/achws.asmx\"
         />\r\n    </wsdl:port>\r\n  </wsdl:service>\r\n</wsdl:definitions>"
     http_version: 
-  recorded_at: Wed, 10 Aug 2016 16:47:57 GMT
+  recorded_at: Thu, 11 Aug 2016 14:13:05 GMT
 recorded_with: VCR 3.0.3

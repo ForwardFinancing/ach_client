@@ -34,6 +34,30 @@ class AccountTypeTransformerTest < MiniTest::Test
       'S'
     )
     assert_equal(
+      AchClient::AchWorks::AccountTypeTransformer.class_to_string(
+        AchClient::AccountTypes::BusinessSavings
+      ),
+      'S'
+    )
+    assert_equal(
+      AchClient::AchWorks::AccountTypeTransformer.class_to_string(
+        AchClient::AccountTypes::PersonalSavings
+      ),
+      'S'
+    )
+    assert_equal(
+      AchClient::AchWorks::AccountTypeTransformer.class_to_string(
+        AchClient::AccountTypes::PersonalChecking
+      ),
+      'C'
+    )
+    assert_equal(
+      AchClient::AchWorks::AccountTypeTransformer.class_to_string(
+        AchClient::AccountTypes::BusinessChecking
+      ),
+      'C'
+    )
+    assert_equal(
       assert_raises(RuntimeError) do
         AchClient::AchWorks::AccountTypeTransformer.class_to_string(Class)
       end.message,
