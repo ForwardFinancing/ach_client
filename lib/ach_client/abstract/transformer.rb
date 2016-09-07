@@ -1,0 +1,38 @@
+module AchClient
+  ##
+  # Transforms between client class and the strings that the provider expects
+  # For example, the TransactionType classes are serialized as 'C' or 'D' for
+  # AchWorks
+  class Transformer
+
+    ##
+    # Convert provider's string representation to AchClient class
+    #   representation
+    # @param string [String] string to turn into class
+    # @return [Class] for example AchClient::AccountTypes::Checking or
+    # AchClient::AccountTypes::Savings
+    def self.string_to_class(string)
+      self.string_to_class_map[string] or raise(
+        "Unknown #{self} string #{string}"
+      )
+    end
+
+    ##
+    # Convert client class to string representation used by provider
+    # @param type [Class] the type to convert to a string
+    # @return [String] string serialization of the input class
+    def self.class_to_string(type)
+      self.string_to_class_map.find do |_, v|
+        type <= v
+      end.try(:first) or raise(
+        "type must be one of #{self.string_to_class_map.values.join(', ')}"
+      )
+    end
+
+    # Mapping of classes to strings, to be overridden
+    # @return [Hash {String => Class}] the mapping
+    def self.string_to_class_map
+      raise AbstractMethodError
+    end
+  end
+end

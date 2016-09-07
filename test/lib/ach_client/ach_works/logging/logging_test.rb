@@ -3,39 +3,39 @@ require 'test_helper'
 class LoggingTest < MiniTest::Test
   def test_log_provider_assignment
     assert_equal(
-      AchClient::AchWorks::Logging.log_provider,
-      AchClient::AchWorks::Logging::NullLogProvider
+      AchClient::Logging.log_provider,
+      AchClient::Logging::NullLogProvider
     )
 
-    AchClient::AchWorks::Logging.log_provider = AchClient::AchWorks::Logging::StdoutLogProvider
+    AchClient::Logging.log_provider = AchClient::Logging::StdoutLogProvider
 
     assert_equal(
-      AchClient::AchWorks::Logging.log_provider,
-      AchClient::AchWorks::Logging::StdoutLogProvider
+      AchClient::Logging.log_provider,
+      AchClient::Logging::StdoutLogProvider
     )
 
-    assert_raises(RuntimeError) {AchClient::AchWorks::Logging.log_provider = ''}
-    AchClient::AchWorks::Logging.log_provider = AchClient::AchWorks::Logging::NullLogProvider
+    assert_raises(RuntimeError) {AchClient::Logging.log_provider = ''}
+    AchClient::Logging.log_provider = AchClient::Logging::NullLogProvider
   end
 
   def test_log_filter_assignment
-    assert_equal(AchClient::AchWorks::Logging.log_filters, [])
+    assert_equal(AchClient::Logging.log_filters, [])
 
-    AchClient::AchWorks::Logging.log_filters = ['Something']
+    AchClient::Logging.log_filters = ['Something']
 
-    assert_equal(AchClient::AchWorks::Logging.log_filters, ['Something'])
+    assert_equal(AchClient::Logging.log_filters, ['Something'])
 
-    AchClient::AchWorks::Logging.log_filters = nil
+    AchClient::Logging.log_filters = nil
 
-    assert_equal(AchClient::AchWorks::Logging.log_filters, [])
+    assert_equal(AchClient::Logging.log_filters, [])
   end
 
   def test_log_scrubbing
-    AchClient::AchWorks::Logging.stub(
+    AchClient::Logging.stub(
       :log_provider,
-      AchClient::AchWorks::Logging::StdoutLogProvider
+      AchClient::Logging::StdoutLogProvider
     ) do
-      AchClient::AchWorks::Logging.stub(:log_filters, ['CompanyKey']) do
+      AchClient::Logging.stub(:log_filters, ['CompanyKey']) do
         VCR.use_cassette('logger') do
           output = capture_subprocess_io do
             AchClient::AchWorks.send(:soap_client).call(

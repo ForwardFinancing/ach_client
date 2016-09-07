@@ -134,21 +134,21 @@ The default log provider is the NullLogProvider, which does not log requests.
 
 ```ruby
 # No logging
-AchClient::AchWorks::Logging.log_provider = AchClient::AchWorks::Logging::NullLogProvider
+AchClient::Logging.log_provider = AchClient::Logging::NullLogProvider
 
 # Log to stdout
-AchClient::AchWorks::Logging.log_provider = AchClient::AchWorks::Logging::StdoutLogProvider
+AchClient::Logging.log_provider = AchClient::Logging::StdoutLogProvider
 
 # Log to wherever you want by creating your own LogProvider class
 # and overriding #send_logs
-class MyCustomLogger < AchClient::AchWorks::Logging::LogProvider
+class MyCustomLogger < AchClient::Logging::LogProvider
   # This method takes a log body and a log name
   def self.send_logs(body:, name:)
     # Do whatever you want, like send the log data to S3, or whatever
     #   logging service you choose
   end
 end
-AchClient::AchWorks::Logging.log_provider = MyCustomLogger
+AchClient::Logging.log_provider = MyCustomLogger
 
 ```
 
