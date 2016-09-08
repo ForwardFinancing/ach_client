@@ -15,6 +15,18 @@ module AchClient
       attr_reader :ach_id,
                   :customer_id
 
+      # Send this transaction individually to AchWorks
+      # @return [String] the front end trace
+      def send
+        AchClient::AchWorks.wrap_request(
+          method: :send_ach_trans,
+          message: AchClient::AchWorks::InputCompanyInfo.build.to_hash.merge({
+            InpACHTransRecord: self.to_hash
+          }),
+          path: [:send_ach_trans_response, :send_ach_trans_result]
+        )[:front_end_trace]
+      end
+
       ##
       # @return [Hash] turns this transaction into a hash that can be sent to
       # AchWorks
