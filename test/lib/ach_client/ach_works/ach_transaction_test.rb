@@ -113,4 +113,25 @@ class AchTransactionTest < MiniTest::Test
       ).to_hash
     end
   end
+
+  def test_send
+    VCR.use_cassette('ach_works_ach_transaction_success') do
+      assert_equal(
+        AchClient::AchWorks::AchTransaction.new(
+          account_number: '00002323044',
+          account_type: AchClient::AccountTypes::Checking,
+          amount: BigDecimal.new('575.45'),
+          memo: '????',
+          merchant_name: 'DOE, JOHN',
+          originator_name: 'ff',
+          routing_number: '123456780',
+          sec_code: 'CCD',
+          transaction_type: AchClient::TransactionTypes::Debit,
+          ach_id: 'foooo',
+          customer_id: 'foo'
+        ).send,
+        'Zfoooo'
+      )
+    end
+  end
 end
