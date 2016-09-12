@@ -1,15 +1,7 @@
 module AchClient
   class AchWorks
     # Poll AchWorks for status of processed or processing Ach transactions.
-    class AchStatusChecker
-
-      ##
-      # @param [AchClient::AchWorks::InputCompanyInfo] The company you want to
-      # check Ach statuses for
-      def initialize(company_info:)
-        @company_info = company_info
-      end
-
+    class AchStatusChecker < Abstract::AchStatusChecker
       ##
       # Gets the most recent "unread" ach statuses from AchWorks.
       # NOT IDEMPOTENT - Once this method is called (successfully or
@@ -18,7 +10,7 @@ module AchClient
       # Wraps: http://tstsvr.achworks.com/dnet/achws.asmx?op=GetACHReturns
       # @return [Hash{String => AchClient::AchResponse}] Hash with FrontEndTrace
       #   values as keys, AchResponse objects as values
-      def most_recent
+      def self.most_recent
         request_and_process_response(
           method: :get_ach_returns,
           message: most_recent_hash
@@ -36,16 +28,17 @@ module AchClient
       # @param end_date [String] upper bound of date ranged status query
       # @return [Hash{String => AchClient::AchResponse}] Hash with FrontEndTrace
       #   values as keys, AchResponse objects as values
-      def in_range(start_date:, end_date:)
+      def self.in_range(start_date:, end_date:)
         request_and_process_response(
           method: :get_ach_returns_hist,
           message: in_range_hash(start_date: start_date, end_date: end_date)
         )
       end
 
-      private
-
-      def request_and_process_response(method:, message:)
+      private_class_method def self.request_and_process_response(
+        method:,
+        message:
+      )
         response = AchClient::AchWorks.wrap_request(
           method: method,
           message: message,
@@ -73,15 +66,18 @@ module AchClient
         end
       end
 
-
-
-      def most_recent_hash
-        @company_info.to_hash
+      private_class_method def self.company_info
+        AchClient::AchWorks::CompanyInfo.build
       end
 
-      def in_range_hash(start_date:, end_date:)
-        @company_info.to_hash.merge({
-          ReturnDateFrom: AchClient::AchWorks::DateFormatter.format(start_date),
+      private_class_method def self.most_recent_hash
+        company_info.to_hash
+      end
+
+      private_class_method def self.in_range_hash(start_date:, end_date:)
+        company_info.to_hash.merge({
+          ReturnDateFrom:
+            AchClient::AchWorks::DateFormatter.format(start_date),
           ReturnDateTo: AchClient::AchWorks::DateFormatter.format(end_date)
         })
       end

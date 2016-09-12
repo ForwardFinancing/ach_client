@@ -11,7 +11,7 @@ class StdoutLogProviderTest < MiniTest::Test
           AchClient::AchWorks.send(
             :request,
             method: :connection_check,
-            message: AchClient::AchWorks::InputCompanyInfo.build.to_hash
+            message: AchClient::AchWorks::CompanyInfo.build.to_hash
           )
         end.first
         assert_includes(output, 'request-connection_check')

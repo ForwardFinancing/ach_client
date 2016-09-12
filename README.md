@@ -24,38 +24,35 @@ Or install it yourself as:
 
 ## Usage
 
-### Sending batch ACH transactions
+### Sending ACH transactions
 
 
 ```ruby
+# Replace Provider with your provider ie:
+# AchWorks or ICheckGateway
 
-# Create a batch with a list of transactions
-batch = AchClient::AchBatch.new(
-  ach_transactions: [
-    AchClient::AchTransaction.new(
-      account_number: '00002323044',
-      account_type: AchClient::AccountTypes::Checking,
-      amount: BigDecimal.new('575.45'),
-      memo: '????',
-      merchant_name: 'DOE, JOHN',
-      originator_name: 'you',
-      sec_code: 'CCD'
-      routing_number: nil,
-      transaction_type: AchClient::TransactionTypes::Credit,
-      ach_id: 'foooo',
-      customer_id: '123'
-    ),
-    ...
-  ]
+# Create and send an ACH transaction
+ach = AchClient::Provider::AchTransaction.new(
+  account_number: '00002323044',
+  account_type: AchClient::AccountTypes::Checking,
+  amount: BigDecimal.new('575.45'),
+  memo: '????',
+  merchant_name: 'DOE, JOHN',
+  originator_name: 'you',
+  sec_code: 'CCD'
+  routing_number: nil,
+  transaction_type: AchClient::TransactionTypes::Credit,
+  ach_id: 'foooo',
+  customer_id: '123'
 )
 
-# Send the batch to the provider
-batch.send_batch
+# Send the ach to the provider
+ach.send
+
 ```
 
-`send_batch` returns a tracking string on success.
-This string can be used to track the transaction later (not yet implemented)
-
+`send` returns a tracking string on success.
+This string can be used to track the transaction later.
 
 ### Checking Transaction status
 
@@ -64,24 +61,27 @@ transaction, but does not let you query by front_end_trace when checking status.
 You can only query for the most recent statuses, and those within a given date
 range.
 
+ICheckGateway does not allow you to provide an external ACH id, instead it assigns a confirmation code to use as an identifier. This value should be stored and used to reconcile transactions
+
 See the AchStatusChecker class for more details.
 
 To check statuses:
 
 ```ruby
-  # Build a status checker with your company details:
-  status_checker = AchClient::AchWorks::AchStatusChecker.new(
-    company_info: AchClient::AchWorks::InputCompanyInfo.build
-  )
-
   # Check the most recent transactions
-  status_checker.most_recent
+  AchClient::Provider::AchStatusChecker.most_recent
 
   # Check the transactions with a date range
-  status_checker.in_range(start_date: 1.week.ago, end_date: Date.today)
+  AchClient::Provider::AchStatusChecker.in_range(
+    start_date: 1.week.ago,
+    end_date: Date.today
+  )
+
+  # Replace Provider with your provider ie:
+  # AchWorks or ICheckGateway
 ```
 
-Both of these methods return a `Hash` with the "FrontEndTrace" as the keys and
+Both of these methods return a `Hash` with the provider's external id for the ach_transaction as the keys and
 instances of AchClient::AchResponse as values.
 
 ### Responses
@@ -116,13 +116,13 @@ those endpoints in case you want to go that route.
 
 ```ruby
 # ConnectionCheck
-AchClient::AchWorks::InputCompanyInfo.build.connection_valid?
+AchClient::AchWorks::CompanyInfo.build.connection_valid?
 
 #CheckCompanyStatus
-AchClient::AchWorks::InputCompanyInfo.build.company_valid?
+AchClient::AchWorks::CompanyInfo.build.company_valid?
 
 # Both
-AchClient::AchWorks::InputCompanyInfo.build.valid?
+AchClient::AchWorks::CompanyInfo.build.valid?
 ```
 
 #### Logging

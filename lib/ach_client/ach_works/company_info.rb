@@ -1,8 +1,7 @@
 module AchClient
   class AchWorks
-
     # This is the ACHworks "credentials" for your company
-    class InputCompanyInfo
+    class CompanyInfo < Abstract::CompanyInfo
 
       attr_reader :company_key,
                   :company,
@@ -29,14 +28,14 @@ module AchClient
       end
 
       ##
-      # @return [InputCompanyInfo] instance built from configuration values
+      # @return [CompanyInfo] instance built from configuration values
       def self.build
-        self.new(
-          company_key: AchClient::AchWorks.company_key,
-          company: AchClient::AchWorks.company,
-          loc_i_d: AchClient::AchWorks.loc_i_d,
-          s_s_s: AchClient::AchWorks.s_s_s
-        )
+        build_from_config([
+          :company_key,
+          :company,
+          :loc_i_d,
+          :s_s_s
+        ])
       end
 
       # Wraps: http://tstsvr.achworks.com/dnet/achws.asmx?op=ConnectionCheck

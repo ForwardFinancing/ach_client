@@ -21,7 +21,7 @@ module AchClient
       # Converts this batch to a hash which can be sent to ACHWorks via Savon
       # @return [Hash] hash to send to AchWorks
       def to_hash
-        InputCompanyInfo.build.to_hash.merge(
+        CompanyInfo.build.to_hash.merge(
           {
             InpACHFile:{
               SSS: AchClient::AchWorks.s_s_s,
