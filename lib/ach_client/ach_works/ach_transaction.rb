@@ -20,7 +20,7 @@ module AchClient
       def send
         AchClient::AchWorks.wrap_request(
           method: :send_ach_trans,
-          message: AchClient::AchWorks::InputCompanyInfo.build.to_hash.merge({
+          message: AchClient::AchWorks::CompanyInfo.build.to_hash.merge({
             InpACHTransRecord: self.to_hash
           }),
           path: [:send_ach_trans_response, :send_ach_trans_result]

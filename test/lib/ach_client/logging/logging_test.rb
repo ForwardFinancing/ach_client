@@ -40,7 +40,7 @@ class LoggingTest < MiniTest::Test
           output = capture_subprocess_io do
             AchClient::AchWorks.send(:soap_client).call(
               :connection_check,
-              message: AchClient::AchWorks::InputCompanyInfo.build.to_hash
+              message: AchClient::AchWorks::CompanyInfo.build.to_hash
             )
           end.first
           assert(output.include?('***FILTERED***'))

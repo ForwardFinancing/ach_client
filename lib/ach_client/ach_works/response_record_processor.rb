@@ -1,7 +1,7 @@
 module AchClient
   class AchWorks
     # Processes individual response records from AchWorks
-    class ResponseRecordProcessor
+    class ResponseRecordProcessor < Abstract::ResponseRecordProcessor
 
       # Find the response code in the response record and delegate to the
       # appropriate handler method

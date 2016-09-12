@@ -2,9 +2,7 @@ require 'test_helper'
 
 class AchStatusChecker < MiniTest::Test
   def status_checker
-    AchClient::AchWorks::AchStatusChecker.new(
-      company_info: AchClient::AchWorks::InputCompanyInfo.build
-    )
+    AchClient::AchWorks::AchStatusChecker
   end
 
   def test_most_recent_invalid_response_code
