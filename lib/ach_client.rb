@@ -1,3 +1,4 @@
+require 'ach'
 require 'active_support/all'
 require 'savon'
 require 'sucker_punch'

@@ -11,8 +11,8 @@ module AchClient
     # @param string [String] string to turn into class
     # @return [Class] for example AchClient::AccountTypes::Checking or
     # AchClient::AccountTypes::Savings
-    def self.string_to_class(string)
-      self.string_to_class_map[string] or raise(
+    def self.deserialize_provider_value(string)
+      self.transformer[string] or raise(
         "Unknown #{self} string #{string}"
       )
     end
@@ -21,17 +21,17 @@ module AchClient
     # Convert client class to string representation used by provider
     # @param type [Class] the type to convert to a string
     # @return [String] string serialization of the input class
-    def self.class_to_string(type)
-      self.string_to_class_map.find do |_, v|
+    def self.serialize_to_provider_value(type)
+      self.transformer.find do |_, v|
         type <= v
       end.try(:first) or raise(
-        "type must be one of #{self.string_to_class_map.values.join(', ')}"
+        "type must be one of #{self.transformer.values.join(', ')}"
       )
     end
 
     # Mapping of classes to strings, to be overridden
     # @return [Hash {String => Class}] the mapping
-    def self.string_to_class_map
+    def self.transformer
       raise AbstractMethodError
     end
   end

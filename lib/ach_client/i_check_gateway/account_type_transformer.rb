@@ -7,7 +7,7 @@ module AchClient
       # 'B' means Business, 'P' means Personal
       # 'C' means Checking, 'S' means Savings
       # @return [Hash {String => Class}] the mapping
-      def self.string_to_class_map
+      def self.transformer
         {
           'PS' => AchClient::AccountTypes::PersonalSavings,
           'PC' => AchClient::AccountTypes::PersonalChecking,

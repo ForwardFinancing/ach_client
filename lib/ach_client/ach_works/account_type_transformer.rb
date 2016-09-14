@@ -6,7 +6,7 @@ module AchClient
     class AccountTypeTransformer < AchClient::Transformer
       # 'C' means Checking, 'S' means Savings
       # @return [Hash {String => Class}] the mapping
-      def self.string_to_class_map
+      def self.transformer
         {
           'S' => AchClient::AccountTypes::Savings,
           'C' => AchClient::AccountTypes::Checking

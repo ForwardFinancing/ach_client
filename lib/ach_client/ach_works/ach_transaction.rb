@@ -41,12 +41,12 @@ module AchClient
           OriginatorName: originator_name,
           TransactionCode: sec_code,
           CustTransType:
-            AchClient::AchWorks::TransactionTypeTransformer.class_to_string(
+            AchClient::AchWorks::TransactionTypeTransformer.serialize_to_provider_value(
               transaction_type
             ),
           CustomerID: customer_id,
           CustomerAcctType:
-            AchClient::AchWorks::AccountTypeTransformer.class_to_string(
+            AchClient::AchWorks::AccountTypeTransformer.serialize_to_provider_value(
               self.account_type
             ),
           TransAmount: amount,

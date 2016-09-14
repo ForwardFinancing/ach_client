@@ -52,7 +52,7 @@ module AchClient
         {
           account_number: gibberish[3..19],
           account_type:
-            AchClient::AchWorks::AccountTypeTransformer.string_to_class(
+            AchClient::AchWorks::AccountTypeTransformer.deserialize_provider_value(
               gibberish[23]
             )
         }
@@ -67,7 +67,7 @@ module AchClient
           routing_number: gibberish[3..11],
           account_number: gibberish[12..28],
           account_type:
-            AchClient::AchWorks::AccountTypeTransformer.string_to_class(
+            AchClient::AchWorks::AccountTypeTransformer.deserialize_provider_value(
               gibberish[29]
             )
         }
