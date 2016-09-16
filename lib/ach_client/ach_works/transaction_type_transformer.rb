@@ -7,7 +7,7 @@ module AchClient
 
       # 'C' means Credit, 'D' means Debit
       # @return [Hash {String => Class}] the mapping
-      def self.string_to_class_map
+      def self.transformer
         {
           'C' => AchClient::TransactionTypes::Credit,
           'D' => AchClient::TransactionTypes::Debit

@@ -1,0 +1,66 @@
+module AchClient
+  class SiliconValleyBank
+    # SiliconValleyBank implementation of an ach batch
+    class AchBatch < Abstract::AchBatch
+
+      # Converts this AchBatch into the NACHA object representation provided
+      # by the ACH gem.
+      # @return [ACH::ACHFile] Yo NACHA
+      def cook_some_nachas
+        nacha = ACH::ACHFile.new
+        nacha.instance_variable_set(:@header, nacha_file_header)
+
+        # The NACHA can have multiple batches.
+        # Transactions in the same batch must have the same originator and
+        # sec_code, so we group by sec_code and originator when building batches
+        @ach_transactions.group_by(&:sec_code).map do |sec_code, transactions|
+          transactions.group_by(&:originator_name)
+                      .map do |originator_name, batch_transactions|
+            nacha.batches << nacha_batch(
+              sec_code,
+              originator_name,
+              batch_transactions
+            )
+          end
+        end
+        nacha
+      end
+
+      private
+      def nacha_file_header
+        file_header = ACH::Records::FileHeader.new
+        [
+          :immediate_destination,
+          :immediate_destination_name,
+          :immediate_origin,
+          :immediate_origin_name
+        ].each do |attribute|
+          file_header.send(
+            "#{attribute}=",
+            AchClient::SiliconValleyBank.send(attribute)
+          )
+        end
+        file_header
+      end
+
+      def nacha_batch(sec_code, originator_name, transactions)
+        batch = ACH::Batch.new
+        batch_header = batch.header
+        batch_header.company_name = originator_name
+        batch_header.company_identification =
+          AchClient::SiliconValleyBank.company_identification
+        batch_header.standard_entry_class_code = sec_code
+        batch_header.company_entry_description =
+          AchClient::SiliconValleyBank.company_entry_description
+        batch_header.company_descriptive_date = Date.today
+        batch_header.effective_entry_date = Date.today
+        batch_header.originating_dfi_identification =
+          AchClient::SiliconValleyBank.originating_dfi_identification
+        transactions.each do |transaction|
+          batch.entries << transaction.to_entry_detail
+        end
+        batch
+      end
+    end
+  end
+end

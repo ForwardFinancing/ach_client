@@ -56,6 +56,10 @@ module AchClient
       def credit?
         transaction_type == AchClient::TransactionTypes::Credit
       end
+
+      def send
+        raise AbstractMethodError
+      end
     end
   end
 end

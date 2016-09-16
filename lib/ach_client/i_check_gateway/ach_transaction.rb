@@ -39,11 +39,11 @@ module AchClient
           RoutingNumber: routing_number.to_s,
           AccountNumber: account_number.to_s,
           AccountType: AchClient::ICheckGateway::AccountTypeTransformer
-                         .class_to_string(account_type),
+                         .serialize_to_provider_value(account_type),
           EntryClassCode: sec_code,
           TransactionType:
             AchClient::ICheckGateway::TransactionTypeTransformer
-              .class_to_string(transaction_type),
+              .serialize_to_provider_value(transaction_type),
           CompanyName: merchant_name,
           Description: memo,
           TransactionDate: Date.today

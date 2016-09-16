@@ -42,6 +42,9 @@ Gem::Specification.new do |spec|
   # Asynchronocity w/out extra infrastucture dependency (database/redis)
   spec.add_dependency 'sucker_punch', '~> 2'
 
+  # NACHA library
+  spec.add_dependency 'ach', '~> 0'
+
   spec.add_development_dependency 'bundler', '~> 1.12'
   spec.add_development_dependency 'codeclimate-test-reporter'
   spec.add_development_dependency 'minitest-reporters'

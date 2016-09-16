@@ -36,6 +36,13 @@ AchClient::ICheckGateway.site_key = '236652'
 AchClient::ICheckGateway.api_key = 'a3GFMBGz6KhkTzg'
 AchClient::ICheckGateway.live = false
 AchClient::ICheckGateway.wsdl = 'https://icheckgateway.com/API/Service.asmx?WSDL'
+AchClient::SiliconValleyBank.immediate_destination = '000000000'
+AchClient::SiliconValleyBank.immediate_destination_name = 'Test Destination'
+AchClient::SiliconValleyBank.immediate_origin = '000000000'
+AchClient::SiliconValleyBank.immediate_origin_name = 'Test Origin'
+AchClient::SiliconValleyBank.company_identification = '123456789'
+AchClient::SiliconValleyBank.company_entry_description = 'idk brah'
+AchClient::SiliconValleyBank.originating_dfi_identification = '00000000'
 
 require 'webmock/minitest'
 require 'vcr'
