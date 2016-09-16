@@ -1,13 +1,14 @@
 require 'test_helper'
+class Abstract
+  class CompanyInfoTest < MiniTest::Test
+    def test_abstractlyness
+      assert_raises(AbstractMethodError) do
+        AchClient::Abstract::CompanyInfo.build
+      end
 
-class CompanyInfoTest < MiniTest::Test
-  def test_abstractlyness
-    assert_raises(AbstractMethodError) do
-      AchClient::Abstract::CompanyInfo.build
-    end
-
-    assert_raises(AbstractMethodError) do
-      AchClient::Abstract::CompanyInfo.new.to_hash
+      assert_raises(AbstractMethodError) do
+        AchClient::Abstract::CompanyInfo.new.to_hash
+      end
     end
   end
 end
