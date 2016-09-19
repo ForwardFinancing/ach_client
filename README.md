@@ -168,7 +168,8 @@ View them at https://forwardfinancing.github.io/ach_client/doc/AchClient/AchWork
 
 Uses yardocs. Run `yard doc && open docs/index.html` to generate and view docs.
 
-To update the docs, checkout the `gh-pages` branch.
+To update the docs, checkout the `gh-pages` branch and rebase it against
+master.
 Then run `yard doc` and push your changes up.
 The `gh-pages` has the doc directory included in source control. It should
 never be merged.

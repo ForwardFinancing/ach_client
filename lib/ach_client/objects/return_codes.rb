@@ -3,7 +3,7 @@ module AchClient
   class ReturnCodes
 
     # The path to the file where the return codes are enumerated
-    RETURN_CODES_YAML = '../../config/return_codes.yml'
+    RETURN_CODES_YAML = '../../../config/return_codes.yml'
 
     class_attribute :_return_codes
 
