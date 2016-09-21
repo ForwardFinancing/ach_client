@@ -24,37 +24,6 @@ class SiliconValleyBank
       )
     end
 
-    class FakeSFTPConnection
-      def self.dir
-        self
-      end
-
-      def self.glob(*args)
-        [
-          FakeFile.new('ACHP08111605'),
-          FakeFile.new('ACHP08111601'),
-          FakeFile.new('ACHP08111602')
-        ]
-      end
-
-      def self.file
-        self
-      end
-
-      def self.open!(*args, &block)
-        yield FakeFile.new('TestFile')
-      end
-
-      class FakeFile
-        attr_reader :name
-        def initialize(name)
-          @name = name
-        end
-
-        def puts(*)
-        end
-      end
-    end
 
     def test_send_batch
       Net::SFTP.stubs(:start).yields(FakeSFTPConnection)

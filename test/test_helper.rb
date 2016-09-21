@@ -1,3 +1,4 @@
+require_relative './fake_sftp_connection.rb'
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
 require 'codeclimate-test-reporter'

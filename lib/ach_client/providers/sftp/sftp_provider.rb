@@ -61,6 +61,28 @@ module AchClient
         end
         result.map(&:name)
       end
+
+      # Returns the contents of the files in the given directory that match
+      # the given glob
+      # @param file_path [String] path to directory the search will start from
+      # @param glob [String] the glob to search for, ie "*.rb" => all .rb files
+      # @return [{String => String}] Hash of discovered files, where each
+      # key is a filename and each value is a file's contents
+      def self.retrieve_files(file_path:, glob:)
+        files = nil
+        self.with_sftp_connection do |sftp_connection|
+          files = sftp_connection.dir.glob(file_path, glob).map do |file|
+            {
+              file.name =>
+              sftp_connection.file.open!(
+                File.join(file_path, file.name),
+                'r'
+              ).read
+            }
+          end.reduce(&:merge)
+        end
+        files
+      end
     end
   end
 end
