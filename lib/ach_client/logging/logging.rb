@@ -1,5 +1,5 @@
 require_relative './savon_observer.rb'
-require_relative './log_provider.rb'
+require_relative './log_providers/log_provider.rb'
 
 module AchClient
   # Base class for all things logging

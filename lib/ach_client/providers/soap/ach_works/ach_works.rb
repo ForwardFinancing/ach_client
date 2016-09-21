@@ -1,4 +1,5 @@
 require 'active_support/all'
+require_relative '../soap_provider'
 
 module AchClient
   # Namespace class for all things AchWorks

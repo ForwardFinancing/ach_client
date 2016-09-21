@@ -16,12 +16,6 @@ Gem::Specification.new do |spec|
   spec.summary = %q{ Adapter to interact with various ACH service providers }
   spec.homepage = 'https://github.com/ForwardFinancing/ach_client'
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = ''
-  else
-    raise 'RubyGems 2.0 or newer is required to protect against gem pushes.'
-  end
-
   spec.files = `git ls-files -z`.split(/\x0/)
                                 .reject do |f|
                                   f.match(%r{^(test|spec|features)/})
@@ -33,22 +27,26 @@ Gem::Specification.new do |spec|
     'config'
   ]
 
+  # NACHA library
+  spec.add_dependency 'ach', '~> 0'
+
   # Handy ruby behavior from rails
   spec.add_dependency 'activesupport'
 
-  # SOAP client (for AchWorks client)
+  # SFTP client (for SiliconValleyBank client)
+  spec.add_dependency 'net-sftp'
+
+  # SOAP client (for AchWorks and ICheckGateway clients)
   spec.add_dependency 'savon', '~> 2'
 
   # Asynchronocity w/out extra infrastucture dependency (database/redis)
   spec.add_dependency 'sucker_punch', '~> 2'
 
-  # NACHA library
-  spec.add_dependency 'ach', '~> 0'
-
   spec.add_development_dependency 'bundler', '~> 1.12'
   spec.add_development_dependency 'codeclimate-test-reporter'
   spec.add_development_dependency 'minitest-reporters'
   spec.add_development_dependency 'minitest', '~> 5'
+  spec.add_development_dependency 'mocha'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rake', '~> 10'
   spec.add_development_dependency 'simplecov'

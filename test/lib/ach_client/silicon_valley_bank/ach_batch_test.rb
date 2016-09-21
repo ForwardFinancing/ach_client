@@ -1,4 +1,5 @@
 require 'test_helper'
+
 class SiliconValleyBank
   class AchBatchTest < MiniTest::Test
     def transaction
@@ -17,11 +18,52 @@ class SiliconValleyBank
       )
     end
 
+    def batch
+      AchClient::SiliconValleyBank::AchBatch.new(
+        ach_transactions: [transaction, transaction]
+      )
+    end
+
+    class FakeSFTPConnection
+      def self.dir
+        self
+      end
+
+      def self.glob(*args)
+        [
+          FakeFile.new('ACHP08111605'),
+          FakeFile.new('ACHP08111601'),
+          FakeFile.new('ACHP08111602')
+        ]
+      end
+
+      def self.file
+        self
+      end
+
+      def self.open!(*args, &block)
+        yield FakeFile.new('TestFile')
+      end
+
+      class FakeFile
+        attr_reader :name
+        def initialize(name)
+          @name = name
+        end
+
+        def puts(*)
+        end
+      end
+    end
+
+    def test_send_batch
+      Net::SFTP.stubs(:start).yields(FakeSFTPConnection)
+      assert_equal(batch.send_batch, 'ACHP08111606')
+    end
+
     def test_nacha
       assert_equal(
-        AchClient::SiliconValleyBank::AchBatch.new(
-         ach_transactions: [transaction, transaction]
-        ).cook_some_nachas.to_s,
+        batch.cook_some_nachas.to_s,
         "101 000000000 0000000001608111013A094101TEST DESTINATION       TEST ORIGIN                    \r\n5225FF                                  1123456789CCDIDK BRAH  160811160811   1000000000000001\r\n62712345678000002323044      0000057545123FOOOO       DOE, JOHN               0000000000000123\r\n62712345678000002323044      0000057545123FOOOO       DOE, JOHN               0000000000000123\r\n822500000200246913560000001150900000000000001123456789                         000000000000001\r\n9000001000001000000020024691356000000115090000000000000                                       \r\n9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999\r\n9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999\r\n9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999\r\n9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999\r\n"
       )
     end

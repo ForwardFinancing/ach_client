@@ -3,6 +3,16 @@ module AchClient
     # SiliconValleyBank implementation of an ach batch
     class AchBatch < Abstract::AchBatch
 
+      # Sends the batch to SVB
+      # @return [String] the name of the file created on the remote server
+      def send_batch
+        AchClient::SiliconValleyBank.write_remote_file(
+          file_path:
+            AchClient::SiliconValleyBank::AchFilenameBuilder.next_file_name,
+          file_body: cook_some_nachas.to_s
+        )
+      end
+
       # Converts this AchBatch into the NACHA object representation provided
       # by the ACH gem.
       # @return [ACH::ACHFile] Yo NACHA
