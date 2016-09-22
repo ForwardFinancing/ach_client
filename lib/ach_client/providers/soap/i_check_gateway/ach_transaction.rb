@@ -4,17 +4,16 @@ module AchClient
     class AchTransaction < Abstract::AchTransaction
 
       # Sends this transaction to ICheckGateway
-      # If successful, returns a string from the response that might maybe be
-      # a unique identifier for the transaction from ICheckGateway, but idk #
-      # because it's not documented at all.
+      # If successful, returns a string from the response that seems to be
+      # a unique identifier for the transaction from ICheckGateway
       # Raises an exception with as much info as possible if something goes
       # wrong
-      # @return [String] a string returned by ICheckGateway
+      # @return [String] a string returned by ICheckGateway - external_ach_id
       def send
         # The response comes back as a | separated list of field values with
-        #   no keys. There is no documentation around what each column means,
-        #   but it seems that the first column will contain 'APPROVED' if the
-        #   request was successful. The 8th column is the confirmation number
+        #   no header field/keys. It seems that the first column will contain
+        #   'APPROVED' if the request was successful. The 8th column is the
+        #   confirmation number
         response = AchClient::ICheckGateway.wrap_request(
           method: :process_check,
           message: self.to_hash

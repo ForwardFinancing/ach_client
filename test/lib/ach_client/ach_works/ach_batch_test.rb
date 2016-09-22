@@ -13,7 +13,7 @@ class AchWorks
         routing_number: '123456780',
         sec_code: 'CCD',
         transaction_type: AchClient::TransactionTypes::Debit,
-        ach_id: 'foooo',
+        external_ach_id: 'foooo',
         customer_id: 'foo'
       )
     end
@@ -29,7 +29,7 @@ class AchWorks
         routing_number: '123456780',
         sec_code: 'CCD',
         transaction_type: AchClient::TransactionTypes::Credit,
-        ach_id: 'foooo',
+        external_ach_id: 'foooo',
         customer_id: 'foo'
       )
     end
@@ -43,7 +43,7 @@ class AchWorks
         merchant_name: 'DOE, JOHN',
         routing_number: nil,
         transaction_type: AchClient::TransactionTypes::Credit,
-        ach_id: 'foooo'
+        external_ach_id: 'foooo'
       )
     end
 
@@ -80,8 +80,7 @@ class AchWorks
       VCR.use_cassette('send_batch') do
         # It returns the ACH filename
         response = batch.send_batch
-        assert_includes(response, 'TST9505')
-        assert_includes(response, '.XML')
+        assert_equal(response, ["foooo", "foooo", "foooo", "foooo", "foooo", "foooo"])
 
         assert_requested(
           :post,

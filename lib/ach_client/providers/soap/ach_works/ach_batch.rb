@@ -9,13 +9,14 @@ module AchClient
       # If the action is successful, will return the filename that AchWorks
       # gives us. We can use that to track the batch processing later on.
       # If it fails, an exception will be thrown.
-      # @return [String] the filename they give us for later tracking
+      # @return [Array<String>] the external_ach_id's for each transaction
       def send_batch
         AchClient::AchWorks.wrap_request(
           method: :send_ach_trans_batch,
           message: self.to_hash,
           path: [:send_ach_trans_batch_response, :send_ach_trans_batch_result]
         )[:file_name]
+        external_ach_ids
       end
 
       # Converts this batch to a hash which can be sent to ACHWorks via Savon
@@ -41,6 +42,10 @@ module AchClient
       end
 
       private
+
+      def external_ach_ids
+        @ach_transactions.map(&:external_ach_id)
+      end
 
       # Because AchWorks can't count...
       def total_number_records

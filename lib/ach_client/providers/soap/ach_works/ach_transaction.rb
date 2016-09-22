@@ -6,14 +6,12 @@ module AchClient
 
       ##
       # @param super [Array] args from parent class
-      # @param ach_id [String] string to use as front_end_trace
       # @param customer_id [String] optional identifier for the customer
       def self.arguments
-        super + [:ach_id, :customer_id]
+        super + [:customer_id]
       end
 
-      attr_reader :ach_id,
-                  :customer_id
+      attr_reader :customer_id
 
       # Send this transaction individually to AchWorks
       # @return [String] the front end trace
@@ -68,13 +66,13 @@ module AchClient
       def front_end_trace
         # I want to stop this before it goes through because AchWorks might
         # just truncate the value, which could result in lost Achs.
-        if ach_id.length > 11
+        if external_ach_id.length > 11
           raise 'AchWorks requires a FrontEndTrace of 12 chars or less'
         else
           # The front end trace MUST NOT start with a W.
           # Our front end trace starts with a Z.
           # The letter Z is not the letter W.
-          "Z#{ach_id}"
+          "Z#{external_ach_id}"
         end
       end
     end
