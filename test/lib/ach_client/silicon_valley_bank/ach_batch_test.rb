@@ -27,7 +27,7 @@ class SiliconValleyBank
 
     def test_send_batch
       Net::SFTP.stubs(:start).yields(FakeSFTPConnection)
-      assert_equal(batch.send_batch, 'ACHP08111606')
+      assert_equal(batch.send_batch, ["123foooo", "123foooo"])
     end
 
     def test_nacha

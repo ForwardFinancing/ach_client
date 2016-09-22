@@ -13,7 +13,7 @@ module AchClient
 
       ##
       # Sends the batch to the provider, and returns a tracking identifier
-      # @return [Object] Identifier to use to poll for result of batch
+      # @return [Array<String>] Identifiers to use to poll for result of batch
       # processing later on.
       def send_batch
         raise AbstractMethodError

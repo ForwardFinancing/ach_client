@@ -80,8 +80,7 @@ class AchWorks
       VCR.use_cassette('send_batch') do
         # It returns the ACH filename
         response = batch.send_batch
-        assert_includes(response, 'TST9505')
-        assert_includes(response, '.XML')
+        assert_equal(response, ["foooo", "foooo", "foooo", "foooo", "foooo", "foooo"])
 
         assert_requested(
           :post,
