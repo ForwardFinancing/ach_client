@@ -198,8 +198,6 @@ Execute `bin/console` to run this gem in terminal.
 
 ### Documentation
 
-View them at https://forwardfinancing.github.io/ach_client/doc/AchClient/AchWorks.html
-
 Uses yardocs. Run `yard doc && open docs/index.html` to generate and view docs.
 
 To update the docs, checkout the `gh-pages` branch and rebase it against
