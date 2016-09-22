@@ -14,7 +14,7 @@ class AchWorks
           routing_number: '123456780',
           sec_code: 'CCD',
           transaction_type: AchClient::TransactionTypes::Debit,
-          ach_id: 'foooo',
+          external_ach_id: 'foooo',
           customer_id: 'foo'
         ).to_hash,
         {
@@ -49,7 +49,7 @@ class AchWorks
           sec_code: 'CCD',
           routing_number: '123456780',
           transaction_type: AchClient::TransactionTypes::Credit,
-          ach_id: 'foooo',
+          external_ach_id: 'foooo',
           customer_id: 'foo'
         ).to_hash,
         {
@@ -84,7 +84,7 @@ class AchWorks
           merchant_name: 'DOE, JOHN',
           routing_number: '123456780',
           transaction_type: AchClient::TransactionTypes::Credit,
-          ach_id: '123456789012' # too long
+          external_ach_id: '123456789012' # too long
         ).to_hash
       end
 
@@ -97,7 +97,7 @@ class AchWorks
           merchant_name: 'DOE, JOHN',
           routing_number: '123456780',
           transaction_type: AchClient::TransactionTypes::Credit,
-          ach_id: 'foo'
+          external_ach_id: 'foo'
         ).to_hash
       end
 
@@ -110,7 +110,7 @@ class AchWorks
           merchant_name: 'DOE, JOHN',
           routing_number: '123456780',
           transaction_type: BigDecimal, #invalid
-          ach_id: 'foo'
+          external_ach_id: 'foo'
         ).to_hash
       end
     end
@@ -128,7 +128,7 @@ class AchWorks
             routing_number: '123456780',
             sec_code: 'CCD',
             transaction_type: AchClient::TransactionTypes::Debit,
-            ach_id: 'foooo',
+            external_ach_id: 'foooo',
             customer_id: 'foo'
           ).send,
           'Zfoooo'

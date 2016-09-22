@@ -13,7 +13,7 @@ class AchWorks
         routing_number: '123456780',
         sec_code: 'CCD',
         transaction_type: AchClient::TransactionTypes::Debit,
-        ach_id: 'foooo',
+        external_ach_id: 'foooo',
         customer_id: 'foo'
       )
     end
@@ -29,7 +29,7 @@ class AchWorks
         routing_number: '123456780',
         sec_code: 'CCD',
         transaction_type: AchClient::TransactionTypes::Credit,
-        ach_id: 'foooo',
+        external_ach_id: 'foooo',
         customer_id: 'foo'
       )
     end
@@ -43,7 +43,7 @@ class AchWorks
         merchant_name: 'DOE, JOHN',
         routing_number: nil,
         transaction_type: AchClient::TransactionTypes::Credit,
-        ach_id: 'foooo'
+        external_ach_id: 'foooo'
       )
     end
 

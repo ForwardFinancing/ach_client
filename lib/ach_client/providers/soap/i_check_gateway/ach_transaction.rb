@@ -9,7 +9,7 @@ module AchClient
       # because it's not documented at all.
       # Raises an exception with as much info as possible if something goes
       # wrong
-      # @return [String] a string returned by ICheckGateway
+      # @return [String] a string returned by ICheckGateway - external_ach_id
       def send
         # The response comes back as a | separated list of field values with
         #   no keys. There is no documentation around what each column means,

@@ -12,7 +12,7 @@ class SiliconValleyBank
         routing_number: '123456780',
         sec_code: 'CCD',
         transaction_type: AchClient::TransactionTypes::Debit,
-        trace_id: '123foooo',
+        external_ach_id: '123foooo',
         customer_id: 'foo'
       )
     end
