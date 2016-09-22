@@ -4,7 +4,144 @@
 
 # AchClient
 
-Execute `bin/console` to run this gem in terminal.
+## Overview
+
+The AchClient gem provides a common interface for working with a variety of
+ACH providers.
+
+Supported features include:
+
+- **Individual Transactions:** Sending a single ACH transaction for the provider to process
+- **Batch Transactions:** Sending a batch of ACH transactions together to the provider to process
+- **Response Polling:** Retrieving the results of sent ACH transactions from the provider, and processing that response into a standardized format
+
+Some providers may not support all features
+
+
+| Provider           | Individual ACH      | Batch ACH           | Response Polling    |
+| ------------------ | ------------------- | ------------------- | ------------------- |
+| AchWorks           | :white_check_mark:  | :white_check_mark:  | :white_check_mark:  |
+| ICheckGateway      | :white_check_mark:  | :x:                 | :white_check_mark:  |
+| SiliconValleyBank  | :x:                 | :white_check_mark:  | :white_check_mark:  |
+
+
+## Structure
+
+Each provider has its own namespace. For all of the example code, you must replace `Provider` with a provider you want to use.
+
+For example, `AchClient::Provider::AchBatch` might become `AchClient::AchWorks::SiliconValleyBank`
+
+## Individual ACH transactions
+
+Create an instance of an AchTransaction following the code sample below:
+
+- *The Merchant* is the person/company to whom you will be sending an ACH credit or debit.
+
+- All account type classes are listed [here](https://forwardfinancing.github.io/ach_client/doc/AchClient/AccountTypes.html)
+
+- All transaction type classes are listed [here](https://forwardfinancing.github.io/ach_client/doc/AchClient/TransactionTypes.html)
+
+- Checkout the abstract `AchTransaction` class and the `AchTransaction` class for each provider for more info.
+
+```ruby
+AchClient::Provider::AchTransaction.new(
+  # The merchant's account number
+  account_number: '115654668777',
+  # The merchant's account type (see account types note above)
+  account_type: AchClient::AccountTypes::BusinessChecking,
+  # The amount of the ACH transaction, should be positive
+  amount: BigDecimal.new('575.45'),
+  # Will show up on the merchant's bank statement
+  memo: '????',
+  # The name of the merchant
+  merchant_name: 'test merchant',
+  # Your name (or the name of your company)
+  originator_name: 'ff',
+  # The merchants routing number
+  routing_number: '083000108',
+  # The ACH "Standard Entry Class" code to use for the ACH (google it for more)
+  sec_code: 'CCD',
+  # Is the transaction a credit or debit against the merchant?
+  transaction_type: AchClient::TransactionTypes::Debit,
+  # See section below
+  external_ach_id: 'blah'
+)
+```
+
+You can send the transaction to the provider by invoking the `#send` instance method on your instance of an `AchTransaction`. If the ACH transaction was successfully sent to the provider, the `external_ach_id` for the transaction will be returned. If sending the transaction was unsuccessful, an exception will be thrown.
+
+Successfully sending the transaction does not equate to the transaction actually being executed against the merchant's bank account. ACH transactions are inherently asynchronous because financial institutions can take days and in rare cases even months to process them.
+
+### Exteral ACH ID
+
+The `external_ach_id` value can be used to track what happens to your transaction after you send it. You can use it to match transactions that you sent against results later received by the response polling methods.
+
+The `external_ach_id` should be unique per transaction.
+
+Some providers do not allow you to supply your own tracking id. Other providers require you to provide your own unique tracking id.
+
+The tracking id that the provider actually uses with your transaction will be
+returned by the `#send` method. So you should:
+
+1) Create an instance of `AchTransaction` with a unique `external_ach_id` that you would *like* to use
+2) Call `#send` on your transaction
+3) Store the return value of `#send` somewhere - this is the `external_ach_id` that was actually used
+4) When you eventually poll the provider for the status of your transactions, you can use the `external_ach_id` you stored to reconcile the returned data against your records
+
+## Batched ACH transactions
+
+A group of ACH transactions can also be sent in a single batched transaction to
+providers who support this functionality.
+
+Checkout the abstract `AchBatch` class and the `AchBatch` class for each provider for more info.
+
+Create an instance of `AchBatch` for your provider. The constructor takes an array of `AchTransactions` (which are described above).
+
+```ruby
+  AchClient::Provider::AchBatch.new(
+    ach_transactions: []
+  )
+```
+
+To send the batch to the provider, invoke the `#send_batch` method on your instance of `AchBatch`.
+
+If sending the batch was successful, a list of `external_ach_id` will be returned. If it was unsuccessful, either because the whole batch or a single transaction was invalid, an exception will be raised, and none of the transactions will have been sent to the provider.
+
+Successfully sending the transaction batch does not equate to the transactions actually being executed against the merchants' bank accounts. ACH transactions are inherently asynchronous because financial institutions can take days and in rare cases even months to process them.
+
+## Checking Transaction status
+
+None of the providers support querying for transaction status by external_ach_id. Instead, we must query by date and
+
+To check statuses:
+
+```ruby
+  # Check the most recent transactions
+  AchClient::Provider::AchStatusChecker.most_recent
+
+  # Check the transactions with a date range
+  AchClient::Provider::AchStatusChecker.in_range(
+    start_date: 1.week.ago,
+    end_date: Date.today
+  )
+```
+
+Both of these methods return a `Hash` with the `external_ach_id` for ach_transaction as the keys and
+instances of AchClient::AchResponse as values.
+
+### Responses
+
+There are a number of response states that can result from checking on the
+status of your ACH transactions. Each inherit from `AchClient::AchResponse`
+
+- `SettledAchResponse`: The transaction went through. :tada:
+- `ProcessingAchResponse`: The transaction hasn't gone through yet. Patience.
+- `ReturnedAchResponse`: The transaction was returned cause something went
+wrong. Check the return code on the response object for details
+- `CorrectedAchResponse`: The transaction received a correction because some
+information has changed. Check the return code on the response object for
+details on what happened. Check the corrections hash on the response object for
+the new attributes
 
 ## Installation
 
@@ -22,113 +159,10 @@ Or install it yourself as:
 
     $ gem install ach_client
 
-## Usage
-
-### Sending ACH transactions
-
-
-```ruby
-# Replace Provider with your provider ie:
-# AchWorks or ICheckGateway
-
-# Create and send an ACH transaction
-ach = AchClient::Provider::AchTransaction.new(
-  account_number: '00002323044',
-  account_type: AchClient::AccountTypes::Checking,
-  amount: BigDecimal.new('575.45'),
-  memo: '????',
-  merchant_name: 'DOE, JOHN',
-  originator_name: 'you',
-  sec_code: 'CCD'
-  routing_number: nil,
-  transaction_type: AchClient::TransactionTypes::Credit,
-  ach_id: 'foooo',
-  customer_id: '123'
-)
-
-# Send the ach to the provider
-ach.send
-
-```
-
-`send` returns a tracking string on success.
-This string can be used to track the transaction later.
-
-### Checking Transaction status
-
-AchWorks requires you to provide a "FrontEndTrace" when you send your
-transaction, but does not let you query by front_end_trace when checking status.
-You can only query for the most recent statuses, and those within a given date
-range.
-
-ICheckGateway does not allow you to provide an external ACH id, instead it assigns a confirmation code to use as an identifier. This value should be stored and used to reconcile transactions
-
-See the AchStatusChecker class for more details.
-
-To check statuses:
-
-```ruby
-  # Check the most recent transactions
-  AchClient::Provider::AchStatusChecker.most_recent
-
-  # Check the transactions with a date range
-  AchClient::Provider::AchStatusChecker.in_range(
-    start_date: 1.week.ago,
-    end_date: Date.today
-  )
-
-  # Replace Provider with your provider ie:
-  # AchWorks or ICheckGateway
-```
-
-Both of these methods return a `Hash` with the provider's external id for the ach_transaction as the keys and
-instances of AchClient::AchResponse as values.
-
-### Responses
-
-There are a number of response states that can result from checking on the
-status of your ACH transactions.
-
-- `SettledAchResponse`: The transaction went through. :tada:
-- `ProcessingAchResponse`: The transaction hasn't gone through yet. Patience.
-- `ReturnedAchResponse`: The transaction was returned cause something went
-wrong. Check the return code on the response object for details
-- `CorrectedAchResponse`: The transaction received a correction because some
-information has changed. Check the return code on the response object for
-details on what happened. Check the corrections hash on the response object for
-the new attributes
-
-### AchWorks
-
-Some settings need to be configured first for using AchWorks provider:
-
-```ruby
-AchClient::AchWorks.company_key = 'SASD%!%$DGLJGWYRRDGDDUDFDESDHDD'
-AchClient::AchWorks.company = 'MYCOMPANY'
-AchClient::AchWorks.loc_i_d = '9505'
-AchClient::AchWorks.s_s_s = 'TST'
-AchClient::AchWorks.wsdl = 'http://tstsvr.achworks.com/dnet/achws.asmx?wsdl'
-```
-
-AchWorks recommends that you call their "ConnectionCheck" and
-"CheckCompanyStatus" before each request. We've included some wrappers for
-those endpoints in case you want to go that route.
-
-```ruby
-# ConnectionCheck
-AchClient::AchWorks::CompanyInfo.build.connection_valid?
-
-#CheckCompanyStatus
-AchClient::AchWorks::CompanyInfo.build.company_valid?
-
-# Both
-AchClient::AchWorks::CompanyInfo.build.valid?
-```
-
 #### Logging
 
 For record keeping purposes, there is a log provider that allows you to hook
-into all requests sent to AchWorks and send them to your logging service.
+into all requests sent to a SOAP provider and send them to your logging service.
 
 The default log provider is the NullLogProvider, which does not log requests.
 
@@ -156,10 +190,10 @@ AchClient::Logging.log_provider = MyCustomLogger
 
 After checking out the repo, run `bin/setup` to install dependencies.
 
-Then, run `rake test` to run the tests.
+Then, run `bundle exec rake test` to run the tests.
 
-You can also run `bin/console` for an interactive prompt that
-will allow you to experiment.
+
+Execute `bin/console` to run this gem in terminal.
 
 
 ### Documentation
