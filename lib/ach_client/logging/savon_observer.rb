@@ -14,7 +14,7 @@ module AchClient
       def notify(operation_name, builder, _globals, _locals)
         # Send the xml body to the logger job
         AchClient::Logging::LogProviderJob.perform_async(
-          xml: builder.to_s,
+          body: builder.to_s,
           name: "request-#{operation_name}-#{DateTime.now}.xml"
         )
 

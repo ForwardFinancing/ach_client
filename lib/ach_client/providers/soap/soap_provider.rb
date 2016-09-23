@@ -25,7 +25,7 @@ module AchClient
         # Provider name can be the name of the class this is included in
         provider_name = self.to_s.demodulize
         AchClient::Logging::LogProviderJob.perform_async(
-          xml: response.xml,
+          body: response.xml,
           name: "response-#{provider_name}-#{method}-#{DateTime.now}.xml"
         )
         response

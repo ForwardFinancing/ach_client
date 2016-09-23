@@ -7,13 +7,13 @@ module AchClient
       ## Prettifies the xml and sends it asynchronously to the log provider
       # @param xml [String] xml body to log
       # @param name [String] title for the log
-      def perform(xml:, name:)
+      def perform(body:, name:)
         # Savon logger does a nice job of XML pretty print
         # Takes: message, list of filters, pretty print boolean
         AchClient::Logging.log_provider.send_logs(
           body: maybe_encrypt_message(
             message: Savon::LogMessage.new(
-              xml,
+              body,
               AchClient::Logging.log_filters,
               true
             ).to_s
