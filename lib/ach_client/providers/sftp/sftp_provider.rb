@@ -44,6 +44,12 @@ module AchClient
       def self.write_remote_file(file_path:, file_body:)
         self.with_sftp_connection do |sftp_connection|
           sftp_connection.file.open!(file_path, 'w') do |file|
+            # Log the file contents
+            AchClient::Logging::LogProviderJob.perform_async(
+              body: file_body,
+              name: "request-#{DateTime.now}-#{file_path.parameterize}"
+            )
+            # Write the file on the remote server
             file.puts(file_body)
           end
         end
@@ -70,6 +76,7 @@ module AchClient
       # key is a filename and each value is a file's contents
       def self.retrieve_files(file_path:, glob:)
         files = nil
+        # retrieve the files from the remote server
         self.with_sftp_connection do |sftp_connection|
           files = sftp_connection.dir.glob(file_path, glob).map do |file|
             {
@@ -80,6 +87,13 @@ module AchClient
               ).read
             }
           end.reduce(&:merge)
+        end
+        # log the retrieved files
+        files.each do |name, body|
+          AchClient::Logging::LogProviderJob.perform_async(
+            body: body,
+            name: "response-#{DateTime.now}-#{name}"
+          )
         end
         files
       end
