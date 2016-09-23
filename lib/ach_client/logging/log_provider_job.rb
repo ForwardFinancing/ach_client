@@ -11,13 +11,25 @@ module AchClient
         # Savon logger does a nice job of XML pretty print
         # Takes: message, list of filters, pretty print boolean
         AchClient::Logging.log_provider.send_logs(
-          body: Savon::LogMessage.new(
-            xml,
-            AchClient::Logging.log_filters,
-            true
+          body: maybe_encrypt_message(
+            message: Savon::LogMessage.new(
+              xml,
+              AchClient::Logging.log_filters,
+              true
+            ).to_s
           ),
           name: name
         )
+      end
+
+      private
+      def maybe_encrypt_message(message:)
+        # Only encrypt if the client provided a password and a salt
+        if AchClient::Logging.should_use_encryption?
+          AchClient::Logging.codec.encrypt_and_sign(message)
+        else
+          message
+        end
       end
     end
   end
