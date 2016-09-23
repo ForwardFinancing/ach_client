@@ -159,7 +159,7 @@ Or install it yourself as:
 
     $ gem install ach_client
 
-#### Logging
+## Logging
 
 For record keeping purposes, there is a log provider that allows you to hook
 into all requests sent to a SOAP provider and send them to your logging service.
@@ -183,7 +183,35 @@ class MyCustomLogger < AchClient::Logging::LogProvider
   end
 end
 AchClient::Logging.log_provider = MyCustomLogger
+```
 
+### Log Filtering
+
+Log filtering is available for logs with key/value pairs. To enable log filtering, provide a list of keys who's values you would like to be scrubbed. Those values will be replaced with *
+
+```ruby
+AchClient::Logging.log_filters = [
+  'AccountNumber',
+  'RoutingNumber',
+  ...
+]
+```
+
+### Log Encryption
+
+To enable encryption of logs, provide both a `password` and a `salt`
+
+```ruby
+AchClient::Logging.password = 'password'
+AchClient::Logging.salt = 'pepper'
+```
+
+Logs will be encrypted after they are filtered, but before they are passed to the `LogProvider` implementation you chose.
+
+AchClient doesn't support reading from your log store, you will need to decrypt logs yourself as needed. For convenience, a decryption function has been provided that decrypts a message using the above provided `password` and `salt`.
+
+```ruby
+AchClient::Logging.decrypt_log('encrypted log gibberish.....')
 ```
 
 ## Development

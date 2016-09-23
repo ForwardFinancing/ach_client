@@ -11,6 +11,12 @@ module AchClient
     # @return [Class] type of the log provider
     class_attribute :_log_provider_type
 
+    # @return [String] password to use for encrypting logs
+    class_attribute :encryption_password
+
+    # @return [String] salt to use for encrypting logs
+    class_attribute :encryption_salt
+
     # Defaults to AchClient::Logging::NullLogProvider
     # @return [Class] The Log provider to use.
     def self.log_provider
@@ -41,6 +47,30 @@ module AchClient
     # @param filters [Array<String>] List of XML nodes to scrub from the logs
     def self.log_filters=(filters)
       self._log_filters = filters
+    end
+
+    # Creates a codec (does encryption and decryption) using the provided
+    # password and salt
+    # @return [ActiveSupport::MessageEncryptor] the encryptor
+    def self.codec
+      ActiveSupport::MessageEncryptor.new(
+        ActiveSupport::KeyGenerator.new(
+          AchClient::Logging.encryption_password
+        ).generate_key(AchClient::Logging.encryption_salt)
+      )
+    end
+
+    # Returns whether the client has enabled encryption - if both a username and
+    # salt have been provided
+    # @return [Boolean] is encryption enabled?
+    def self.should_use_encryption?
+      encryption_password && encryption_salt
+    end
+
+    # Decrypt encrypted log file
+    # @param gibberish [String] the log body to decrypt
+    def self.decrypt_log(gibberish)
+      codec.decrypt_and_verify(gibberish)
     end
   end
 end
