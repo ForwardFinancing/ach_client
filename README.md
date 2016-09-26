@@ -251,6 +251,7 @@ Some test configuration values are provided for testing/development of this gem.
 | `username` | Username to connect via SFTP to SVB's server |
 | `password` | Password to connect via SFTP to SVB's server |
 | `private_ssh_key` | Private SSH key that matches the public key you gave SVB to put on their SVB server |
+| `passphrase` | Passphrase for your private SSH key. If your passphrase was blank, leave this `nil` |
 | `outgoing_path` | Path on the remote server where SVB has asked you to dump your NACHAs |
 
 ## Installation
