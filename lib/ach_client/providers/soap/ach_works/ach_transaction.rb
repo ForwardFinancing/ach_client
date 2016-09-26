@@ -36,7 +36,7 @@ module AchClient
           CustomerName: merchant_name,
           CustomerRoutingNo: routing_number.to_s,
           CustomerAcctNo: account_number.to_s,
-          OriginatorName: originator_name,
+          OriginatorName: originator_name.try(:first, 16),
           TransactionCode: sec_code,
           CustTransType:
             AchClient::AchWorks::TransactionTypeTransformer.serialize_to_provider_value(
@@ -50,7 +50,7 @@ module AchClient
           TransAmount: amount,
           CheckOrTransDate: DateFormatter.format(Date.today), # Does this need to be read from ACH record
           EffectiveDate: DateFormatter.format(Date.today), # Should be same or greater than above (probably same)
-          Memo: memo,
+          Memo: memo.try(:first, 10),
           OpCode: 'S', # Check this
           AccountSet: '1'
         }
