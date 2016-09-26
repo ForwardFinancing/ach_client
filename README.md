@@ -1,6 +1,10 @@
 [![Code Climate](https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/badges/105ddb79b7f5c008bccd/gpa.svg)](https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/feed)
+
 [![Test Coverage](https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/badges/105ddb79b7f5c008bccd/coverage.svg)](https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/coverage)
+
 [![Issue Count](https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/badges/105ddb79b7f5c008bccd/issue_count.svg)](https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/feed)
+
+[ ![Codeship Status for ForwardFinancing/ach_client](https://codeship.com/projects/1b042fa0-3bcf-0134-3b13-56d3c23905f3/status?branch=master)](https://codeship.com/projects/166756)
 
 # AchClient
 
@@ -29,7 +33,7 @@ Some providers may not support all features
 
 Each provider has its own namespace. For all of the example code, you must replace `Provider` with a provider you want to use.
 
-For example, `AchClient::Provider::AchBatch` might become `AchClient::AchWorks::SiliconValleyBank`
+For example, `AchClient::Provider::AchBatch` might become `AchClient::AchWorks::AchBatch`
 
 ## Individual ACH transactions
 
@@ -72,7 +76,7 @@ You can send the transaction to the provider by invoking the `#send` instance me
 
 Successfully sending the transaction does not equate to the transaction actually being executed against the merchant's bank account. ACH transactions are inherently asynchronous because financial institutions can take days and in rare cases even months to process them.
 
-### Exteral ACH ID
+### External ACH ID
 
 The `external_ach_id` value can be used to track what happens to your transaction after you send it. You can use it to match transactions that you sent against results later received by the response polling methods.
 
@@ -109,7 +113,7 @@ If sending the batch was successful, a list of `external_ach_id` will be returne
 
 Successfully sending the transaction batch does not equate to the transactions actually being executed against the merchants' bank accounts. ACH transactions are inherently asynchronous because financial institutions can take days and in rare cases even months to process them.
 
-## Checking Transaction status
+## Response Polling - Checking Transaction Status
 
 None of the providers support querying for transaction status by external_ach_id. Instead, we must query by date and
 
@@ -142,22 +146,6 @@ wrong. Check the return code on the response object for details
 information has changed. Check the return code on the response object for
 details on what happened. Check the corrections hash on the response object for
 the new attributes
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'ach_client'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install ach_client
 
 ## Logging
 
@@ -214,19 +202,84 @@ AchClient doesn't support reading from your log store, you will need to decrypt 
 AchClient::Logging.decrypt_log('encrypted log gibberish.....')
 ```
 
+## Provider Configuration Setup
+
+Each provider has a set of configuration attributes that must be set.
+Most of these values can be retrieved by contacting the provider directly.
+You can set the configuration variables by assigning them directly to the class attributes on the provider module. For example, if the provider is AchWorks, and the configuration attribute is password:
+
+```ruby
+AchClient::AchWorks.password = 'your password'
+```
+
+You probably want to set these variables from environment variables instead of hardcoding them into your app.
+
+Some test configuration values are provided for testing/development of this gem. You can find them in the `bin/console` file and in the test helper. Be aware that these credentials may be used to send data to some providers' test environments under a shared test account. Avoid using real customer data in test.
+
+### AchWorks
+
+| Attribute      | Description                              |
+| -------------- | ---------------------------------------- |
+| `company_key`  | Company credential provided by AchWorks  |
+| `company`      | Company credential provided by AchWorks  |
+| `loc_i_d`      | Company credential provided by AchWorks  |
+| `s_s_s`        | Company credential provided by AchWorks  |
+| `wsdl`         | URL for the WSDL for AchWorks SOAP API   |
+
+### ICheckGateway
+
+| Attribute      | Description                              |
+| -------------- | ---------------------------------------- |
+| `site_i_d`     | Company credential provided by ICheckGateway  |
+| `site_key`     | Company credential provided by ICheckGateway  |
+| `api_key`      | Company credential provided by ICheckGateway  |
+| `live`         | `true` if you want transactions to be actually processed, `false` otherwise. Note: `true` only works with your production credentials, and `false`  only works with the shared test credentials |
+| `wsdl`         | URL for the WSDL for ICheckGateway SOAP API   |
+
+### SiliconValleyBank
+
+| Attribute      | Description                              |
+| -------------- | ---------------------------------------- |
+| `immediate_destination`  | ID for company that is receiving the NACHA file (SVB)  |
+| `immediate_destination_name`  | Name of company that is receiving the NACHA file (SVB)  |
+| `immediate_origin`  | ID for company that is sending the NACHA file (you)  |
+| `immediate_origin_name`  | Name of company that is sending the NACHA file (you) |
+| `company_identification`  | ID of your company   |
+| `company_entry_description` | No idea what this is yet |
+| `originating_dfi_identification` | No idea what this is yet |
+| `host` | URL of SVB's SFTP server |
+| `username` | Username to connect via SFTP to SVB's server |
+| `password` | Password to connect via SFTP to SVB's server |
+| `private_ssh_key` | Private SSH key that matches the public key you gave SVB to put on their SVB server |
+| `outgoing_path` | Path on the remote server where SVB has asked you to dump your NACHAs |
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'ach_client'
+```
+
+And then execute:
+
+    $ bundle install
+
+Or install it yourself:
+
+    $ gem install ach_client
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies.
 
 Then, run `bundle exec rake test` to run the tests.
 
-
 Execute `bin/console` to run this gem in terminal.
-
 
 ### Documentation
 
-View them at https://forwardfinancing.github.io/ach_client/doc/AchClient/AchWorks.html
+View them at https://forwardfinancing.github.io/ach_client/doc/index.html
 
 Uses yardocs. Run `yard doc && open docs/index.html` to generate and view docs.
 
