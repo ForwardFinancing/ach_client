@@ -17,6 +17,10 @@ module AchClient
       # provided to SVB, ie the output of `cat path/to/private/ssh/key`
       class_attribute :private_ssh_key
 
+      # @return [String | NilClass] Passphrase for your private ssh key
+      # (if applicable)
+      class_attribute :passphrase
+
       # @return [String] The path on the remote server to the directory where
       # you will deposit your outgoing NACHA files
       class_attribute :outgoing_path
@@ -30,7 +34,8 @@ module AchClient
           host,
           username,
           password: password,
-          key_data: [private_ssh_key]
+          key_data: [private_ssh_key],
+          passphrase: passphrase
         ) do |sftp_connection|
           yield(sftp_connection)
         end
