@@ -48,7 +48,7 @@ module AchClient
       # @return [String] the filename written to, if successful
       def self.write_remote_file(file_path:, file_body:)
         self.with_sftp_connection do |sftp_connection|
-          sftp_connection.file.open!(file_path, 'w') do |file|
+          sftp_connection.file.open(file_path, 'w') do |file|
             # Log the file contents
             AchClient::Logging::LogProviderJob.perform_async(
               body: file_body,
@@ -86,7 +86,7 @@ module AchClient
           files = sftp_connection.dir.glob(file_path, glob).map do |file|
             {
               file.name =>
-              sftp_connection.file.open!(
+              sftp_connection.file.open(
                 File.join(file_path, file.name),
                 'r'
               ).read

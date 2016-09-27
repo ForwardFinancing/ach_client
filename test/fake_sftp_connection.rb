@@ -15,7 +15,7 @@ class FakeSFTPConnection
     self
   end
 
-  def self.open!(*args, &block)
+  def self.open(*args, &block)
     if block_given?
       yield FakeFile.new('TestFile')
     else
@@ -28,7 +28,9 @@ class FakeSFTPConnection
   end
 
   class FakeFile
+
     attr_reader :name
+
     def initialize(name)
       @name = name
     end
