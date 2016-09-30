@@ -26,7 +26,7 @@ module AchClient
         entry.originating_dfi_identification =
           AchClient::SiliconValleyBank.originating_dfi_identification
         # Not sure what this does yet, suspect is foreign key set by us
-        entry.trace_number = external_ach_id.to_i # Does need to be a number
+        entry.trace_number = external_ach_id.gsub(/\D/, '').to_i # Does need to be a number
         entry
       end
 
