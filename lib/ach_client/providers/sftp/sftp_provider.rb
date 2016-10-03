@@ -1,3 +1,5 @@
+require 'net/sftp'
+
 module AchClient
   # Base concern for providers like SVB that use an SFTP system instead of API
   module SftpProvider
@@ -24,6 +26,11 @@ module AchClient
       # @return [String] The path on the remote server to the directory where
       # you will deposit your outgoing NACHA files
       class_attribute :outgoing_path
+
+      # @return [Proc] A function that defines the filenaming strategy for your
+      # provider. The function should take an optional batch number and return
+      # a filename string
+      class_attribute :file_naming_strategy
 
       # Executes the given block with an obtained SFTP connection configured
       # using the above settings

@@ -1,8 +1,8 @@
 module AchClient
-  class SiliconValleyBank
+  class Sftp
     ##
     # Transforms TransactionTypes between AchClient class and the string
-    # that SVB expects
+    # that NACHA expects
     class TransactionTypeTransformer < AchClient::Transformer
       # '2' means Credit, '7' means Debit
       # The account type string is the second character in the transaction_code

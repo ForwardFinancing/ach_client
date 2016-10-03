@@ -82,6 +82,10 @@ neykreVPVPYSfDzgWoKtfQKp1Zsk9n5iqsxykMS79fhO9y8SHkjEbUXjU68=
 -----END RSA PRIVATE KEY-----
 "
 AchClient::SiliconValleyBank.outgoing_path = '/outbox'
+AchClient::SiliconValleyBank.file_naming_strategy = lambda do |batch_number|
+  batch_number ||= 1
+  "ACHP#{Date.today.strftime('%m%d%y')}#{batch_number.to_s.rjust(2, '0')}"
+end
 
 
 # Start a console session using pry

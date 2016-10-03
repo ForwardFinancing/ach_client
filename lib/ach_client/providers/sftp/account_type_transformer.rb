@@ -1,8 +1,8 @@
 module AchClient
-  class SiliconValleyBank
+  class Sftp
     ##
     # Transforms AccountTypes between AchClient class and the string
-    # that SiliconValleyBank expects
+    # that NACHA expects
     class AccountTypeTransformer < AchClient::Transformer
 
       # '2' means Checking, '3' means Savings

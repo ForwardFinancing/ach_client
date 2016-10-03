@@ -1,14 +1,25 @@
 module AchClient
-  class SiliconValleyBank
-    # SiliconValleyBank implementation of an ach batch
+  # Namespace for all things Sftp
+  class Sftp
+    # NACHA representation of an AchBatch
     class AchBatch < Abstract::AchBatch
 
-      # Sends the batch to SVB
+      def initialize(ach_transactions: [], batch_number: nil)
+        super(ach_transactions: ach_transactions)
+        @batch_number = batch_number
+      end
+
+      # The filename used for the batch
+      # @return [String] filename to use
+      def batch_file_name
+        self.class.parent.file_naming_strategy.(@batch_number)
+      end
+
+      # Sends the batch to SFTP provider
       # @return [Array<String>]
       def send_batch
-        AchClient::SiliconValleyBank.write_remote_file(
-          file_path:
-            AchClient::SiliconValleyBank::AchFilenameBuilder.next_file_name,
+        self.class.parent.write_remote_file(
+          file_path: batch_file_name,
           file_body: cook_some_nachas.to_s
         )
         @ach_transactions.map(&:external_ach_id)
@@ -46,10 +57,7 @@ module AchClient
           :immediate_origin,
           :immediate_origin_name
         ].each do |attribute|
-          file_header.send(
-            "#{attribute}=",
-            AchClient::SiliconValleyBank.send(attribute)
-          )
+          file_header.send("#{attribute}=", self.class.parent.send(attribute))
         end
         file_header
       end
@@ -59,14 +67,14 @@ module AchClient
         batch_header = batch.header
         batch_header.company_name = originator_name
         batch_header.company_identification =
-          AchClient::SiliconValleyBank.company_identification
+          self.class.parent.company_identification
         batch_header.standard_entry_class_code = sec_code
         batch_header.company_entry_description =
-          AchClient::SiliconValleyBank.company_entry_description
+          self.class.parent.company_entry_description
         batch_header.company_descriptive_date = Date.today
         batch_header.effective_entry_date = Date.today
         batch_header.originating_dfi_identification =
-          AchClient::SiliconValleyBank.originating_dfi_identification
+          self.class.parent.originating_dfi_identification
         transactions.each do |transaction|
           batch.entries << transaction.to_entry_detail
         end

@@ -41,12 +41,11 @@ class SiliconValleyBank
         end.first
         # Make sure logging happened too
         assert_equal(
-          "request-2016-08-11T10:13:05-04:00-achp08111606\n#{expected_batch_result}",
+          "request-2016-08-11T10:13:05-04:00-achp08111601\n#{expected_batch_result}",
           log_output
         )
       end
     end
-
 
     def test_nacha
       assert_equal(batch.cook_some_nachas.to_s, expected_batch_result)
