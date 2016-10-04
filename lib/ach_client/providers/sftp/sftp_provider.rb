@@ -37,13 +37,7 @@ module AchClient
       # @param block [Proc] the code to execute with a provided connection
       # @return [Object] the result of the block
       def self.with_sftp_connection(&_block)
-        Net::SFTP.start(
-          host,
-          username,
-          password: password,
-          key_data: [private_ssh_key],
-          passphrase: passphrase
-        ) do |sftp_connection|
+        Net::SFTP.start(*connection_params) do |sftp_connection|
           yield(sftp_connection)
         end
       end
@@ -108,6 +102,16 @@ module AchClient
           )
         end
         files
+      end
+
+      private_class_method def self.connection_params
+        [
+          host,
+          username,
+          (private_ssh_key ? {key_data: [private_ssh_key]} : nil),
+          (passphrase ? {passphrase: passphrase} : nil),
+          password: password
+        ].compact
       end
     end
   end
