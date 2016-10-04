@@ -19,7 +19,10 @@ module AchClient
       # @return [Array<String>]
       def send_batch
         self.class.parent.write_remote_file(
-          file_path: batch_file_name,
+          file_path: File.join(
+            self.class.parent.outgoing_path,
+            batch_file_name
+          ),
           file_body: cook_some_nachas.to_s
         )
         @ach_transactions.map(&:external_ach_id)
