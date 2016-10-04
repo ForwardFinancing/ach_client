@@ -1,6 +1,13 @@
 require 'test_helper'
 class SiliconValleyBank
   class SiliconValleyBankTest < MiniTest::Test
+    def test_list_files
+      Net::SFTP.stubs(:start).yields(FakeSFTPConnection)
+      assert_equal(
+        AchClient::SiliconValleyBank.list_files(file_path: '~', glob: '*'),
+        ["ACHP08111605", "ACHP08111601", "ACHP08111602"]
+      )
+    end
     def test_attributes
       assert_equal(AchClient::SiliconValleyBank.immediate_destination,"000000000")
       assert_equal(AchClient::SiliconValleyBank.immediate_destination_name, "Test Destination")

@@ -26,14 +26,30 @@ Some providers may not support all features
 | ------------------ | ------------------- | ------------------- | ------------------- |
 | AchWorks           | :white_check_mark:  | :white_check_mark:  | :white_check_mark:  |
 | ICheckGateway      | :white_check_mark:  | :x:                 | :white_check_mark:  |
-| SiliconValleyBank  | :x:                 | :white_check_mark:  | :white_check_mark:  |
+| NACHA+SFTP Providers  | :x:                 | :white_check_mark:  | :white_check_mark:  |
 
+### About NACHA+SFTP Providers
+
+Many banks/financial institutions use a similar system for receiving ACH
+transactions. For these providers, batches of ACH transactions can be
+represented in the NACHA file format. The bank provides you with an SFTP server
+where you can deposit these files. After the transactions are processed, the
+provider will leave another NACHA file containing the results on the server in
+an "Inbox" or "Outgoing" directory.
+
+The two API providers tend to be more reliable and easier to work with, but it
+is usually cheaper to interact directly with a financial institution.
 
 ## Structure
 
 Each provider has its own namespace. For all of the example code, you must replace `Provider` with a provider you want to use.
 
 For example, `AchClient::Provider::AchBatch` might become `AchClient::AchWorks::AchBatch`
+
+For NACHA+SFTP providers, referencing them by name will create the namespace.
+For example, Silicon Valley Bank is a provider which adheres to the NACHA/SFTP
+standard. There is no AchClient::SiliconValleyBank namespace in the codebase,
+but if you reference that provider, it will be dynamically defined for you.
 
 ## Individual ACH transactions
 
@@ -88,8 +104,11 @@ The tracking id that the provider actually uses with your transaction will be
 returned by the `#send` method. So you should:
 
 1) Create an instance of `AchTransaction` with a unique `external_ach_id` that you would *like* to use
+
 2) Call `#send` on your transaction
+
 3) Store the return value of `#send` somewhere - this is the `external_ach_id` that was actually used
+
 4) When you eventually poll the provider for the status of your transactions, you can use the `external_ach_id` you stored to reconcile the returned data against your records
 
 ## Batched ACH transactions
@@ -112,6 +131,15 @@ To send the batch to the provider, invoke the `#send_batch` method on your insta
 If sending the batch was successful, a list of `external_ach_id` will be returned. If it was unsuccessful, either because the whole batch or a single transaction was invalid, an exception will be raised, and none of the transactions will have been sent to the provider.
 
 Successfully sending the transaction batch does not equate to the transactions actually being executed against the merchants' bank accounts. ACH transactions are inherently asynchronous because financial institutions can take days and in rare cases even months to process them.
+
+SFTP+NACHA providers take an optional `batch_number` parameter which may be used in the filename for uploaded NACHA files.
+
+```ruby
+  AchClient::SomeBank::AchBatch.new(
+    ach_transactions: [],
+    batch_number: 5
+  )
+```
 
 ## Response Polling - Checking Transaction Status
 
@@ -236,23 +264,65 @@ Some test configuration values are provided for testing/development of this gem.
 | `live`         | `true` if you want transactions to be actually processed, `false` otherwise. Note: `true` only works with your production credentials, and `false`  only works with the shared test credentials |
 | `wsdl`         | URL for the WSDL for ICheckGateway SOAP API   |
 
-### SiliconValleyBank
+### NACHA + SFTP Providers
+
+For these providers, batches of ACH transactions are
+represented in the NACHA file format. The bank provides you with an SFTP server
+where you can deposit these files. After the transactions are processed, the
+provider will leave another NACHA file containing the results on the server in
+an "Inbox" or "Outgoing" directory.
+
+So far this setup has been confirmed to work with the following providers:
+- Bank Of America
+- Silicon Valley Bank
+
+You'll notice there aren't any provider namespaces in the codebase for these.
+You can define your own namespace simply by referencing it.
+
+For example, the first time you reference `AchClient::FakeBank`, all the following class attributes will be automatically defined for
+`AchClient::FakeBank`, along with the following classes:
+- `AchClient::FakeBank::AchTransaction`
+- `AchClient::FakeBank::AchBatch`
+
+After setting the variables described in the below table, you can interact with
+these new classes using the same interface described above for the API providers.
 
 | Attribute      | Description                              |
 | -------------- | ---------------------------------------- |
-| `immediate_destination`  | ID for company that is receiving the NACHA file (SVB)  |
-| `immediate_destination_name`  | Name of company that is receiving the NACHA file (SVB)  |
+| `immediate_destination`  | ID for company that is receiving the NACHA file (the bank)  |
+| `immediate_destination_name`  | Name of company that is receiving the NACHA file (the bank)  |
 | `immediate_origin`  | ID for company that is sending the NACHA file (you)  |
 | `immediate_origin_name`  | Name of company that is sending the NACHA file (you) |
 | `company_identification`  | ID of your company   |
-| `company_entry_description` | No idea what this is yet |
-| `originating_dfi_identification` | No idea what this is yet |
-| `host` | URL of SVB's SFTP server |
-| `username` | Username to connect via SFTP to SVB's server |
-| `password` | Password to connect via SFTP to SVB's server |
-| `private_ssh_key` | Private SSH key that matches the public key you gave SVB to put on their SVB server |
+| `company_entry_description` | ID of company (provided by bank) |
+| `originating_dfi_identification` | ID of bank (provided by bank) |
+| `host` | URL of bank's SFTP server |
+| `username` | Username to connect via SFTP to bank's server |
+| `password` | Password to connect via SFTP to bank's server |
+| `private_ssh_key` | Private SSH key that matches the public key you gave the bank to put on their SFTP server (if applicable) |
 | `passphrase` | Passphrase for your private SSH key. If your passphrase was blank, leave this `nil` |
-| `outgoing_path` | Path on the remote server where SVB has asked you to dump your NACHAs |
+| `outgoing_path` | Path on the remote server where bank has asked you to dump your NACHAs |
+| `file_naming_strategy` | Function to define filenames for the NACHA files |
+
+#### File Naming Strategy
+
+This attribute is a function to define filenames for the NACHA files. It is
+called from the `send_batch` method of the `AchBatch` class in your SFTP+NACHA provider's namespace. It will be passed a `batch_number` parameter, which may be
+`nil`.
+
+As an example, SiliconValleyBank's naming convention is as follows:
+- The first four characters are ACHP
+- The next 6 characters are the date formatted MMDDYY
+- The last 2 characters are a "sequence number" which shows the number of
+batches that have sent in the current day.
+The `file_naming_strategy` for this can be defined as follows:
+
+```ruby
+AchClient::SiliconValleyBank.file_naming_strategy = lambda do |batch_number|
+  batch_number ||= 1
+  "ACHP#{Date.today.strftime('%m%d%y')}#{batch_number.to_s.rjust(2, '0')}"
+end
+```
 
 ## Installation
 
