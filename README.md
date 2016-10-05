@@ -71,6 +71,10 @@ AchClient::Provider::AchTransaction.new(
   account_type: AchClient::AccountTypes::BusinessChecking,
   # The amount of the ACH transaction, should be positive
   amount: BigDecimal.new('575.45'),
+  # The date on which you would like the transaction to take effect.
+  # Beware that some providers may use this field to charge you extra for
+  # same-day ACH ( a recent feature for ACH providers )
+  effective_entry_date: Date.today,
   # Will show up on the merchant's bank statement
   memo: '????',
   # The name of the merchant

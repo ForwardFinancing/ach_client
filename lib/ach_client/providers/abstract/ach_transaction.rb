@@ -12,6 +12,7 @@ module AchClient
           :account_number,
           :account_type,
           :amount,
+          :effective_entry_date,
           :external_ach_id,
           :memo,
           :merchant_name,
@@ -29,6 +30,7 @@ module AchClient
       # @param account_type [AchClient::AccountTypes::AccountType] Merchant's account type
       #   (debit or credit), must be an instance of AchClient::AccountTypes::AccountType
       # @param amount [BigDecimal] Amount of the ACH transaction
+      # @param effective_entry_date [Date] The date the transaction should be enacted
       # @param external_ach_id [String] Tracking string you would like the
       # provider to use with your transaction
       # @param memo [String] Ach memo thing

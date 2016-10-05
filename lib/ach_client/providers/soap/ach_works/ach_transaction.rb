@@ -48,8 +48,8 @@ module AchClient
               self.account_type
             ),
           TransAmount: amount,
-          CheckOrTransDate: DateFormatter.format(Date.today), # Does this need to be read from ACH record
-          EffectiveDate: DateFormatter.format(Date.today), # Should be same or greater than above (probably same)
+          CheckOrTransDate: DateFormatter.format(effective_entry_date),
+          EffectiveDate: DateFormatter.format(effective_entry_date),
           Memo: memo.try(:first, 10),
           OpCode: 'S', # Check this
           AccountSet: '1'

@@ -41,11 +41,15 @@ module AchClient
         @ach_transactions.group_by(&:sec_code).map do |sec_code, transactions|
           transactions.group_by(&:originator_name)
                       .map do |originator_name, batch_transactions|
-            nacha.batches << nacha_batch(
-              sec_code,
-              originator_name,
-              batch_transactions
-            )
+            batch_transactions.group_by(&:effective_entry_date)
+                            .map do |effective_entry_date, batched_transactions|
+              nacha.batches << nacha_batch(
+                sec_code,
+                originator_name,
+                effective_entry_date,
+                batched_transactions
+              )
+            end
           end
         end
         nacha
@@ -65,7 +69,12 @@ module AchClient
         file_header
       end
 
-      def nacha_batch(sec_code, originator_name, transactions)
+      def nacha_batch(
+        sec_code,
+        originator_name,
+        effective_entry_date,
+        transactions
+      )
         batch = ACH::Batch.new
         batch_header = batch.header
         batch_header.company_name = originator_name
@@ -74,8 +83,8 @@ module AchClient
         batch_header.standard_entry_class_code = sec_code
         batch_header.company_entry_description =
           self.class.parent.company_entry_description
-        batch_header.company_descriptive_date = Date.today
-        batch_header.effective_entry_date = Date.today
+        batch_header.company_descriptive_date = effective_entry_date
+        batch_header.effective_entry_date = effective_entry_date
         batch_header.originating_dfi_identification =
           self.class.parent.originating_dfi_identification
         transactions.each do |transaction|

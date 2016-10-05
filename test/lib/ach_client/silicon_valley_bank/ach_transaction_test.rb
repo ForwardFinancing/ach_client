@@ -35,7 +35,7 @@ class SiliconValleyBank
         assert_raises(RuntimeError) do
           svb_transaction.send
         end.message,
-        'SiliconValleyBank does not support individual transactions'
+        'NACHA/SFTP providers do not support individual transactions'
       )
     end
   end

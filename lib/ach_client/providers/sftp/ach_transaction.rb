@@ -5,7 +5,7 @@ module AchClient
 
       # Most SFTP providers only support batch transactions
       def send
-        raise 'SiliconValleyBank does not support individual transactions'
+        raise 'NACHA/SFTP providers do not support individual transactions'
       end
 
       # Converts this ach transaction to the ACH gem's representation of a
@@ -20,7 +20,7 @@ module AchClient
         entry.individual_id_number = external_ach_id # Doesn't need to be a number
         entry.individual_name = merchant_name
         entry.originating_dfi_identification =
-          AchClient::SiliconValleyBank.originating_dfi_identification
+          self.class.parent.originating_dfi_identification
         entry.trace_number = external_ach_id.gsub(/\D/, '').to_i # Does need to be a number
         entry
       end
