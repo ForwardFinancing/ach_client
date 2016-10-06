@@ -45,7 +45,7 @@ module AchClient
               .serialize_to_provider_value(transaction_type),
           CompanyName: merchant_name,
           Description: memo,
-          TransactionDate: Date.today
+          TransactionDate: effective_entry_date
         })
       end
     end

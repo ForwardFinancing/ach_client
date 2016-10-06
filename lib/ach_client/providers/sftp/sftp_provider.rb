@@ -108,10 +108,12 @@ module AchClient
         [
           host,
           username,
-          (private_ssh_key ? {key_data: [private_ssh_key]} : nil),
-          (passphrase ? {passphrase: passphrase} : nil),
-          password: password
-        ].compact
+          [
+            (private_ssh_key ? {key_data: [private_ssh_key]} : nil),
+            (passphrase ? {passphrase: passphrase} : nil),
+            password: password
+          ].compact.reduce(&:merge)
+        ]
       end
     end
   end

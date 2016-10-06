@@ -6,6 +6,7 @@ class ICheckGateway
         account_number: '115654668777',
         account_type: AchClient::AccountTypes::BusinessChecking,
         amount: BigDecimal.new('575.45'),
+        effective_entry_date: Date.today,
         memo: '????',
         merchant_name: 'test merchant',
         originator_name: 'ff',
