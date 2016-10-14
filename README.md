@@ -1,10 +1,10 @@
-[![Code Climate](https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/badges/105ddb79b7f5c008bccd/gpa.svg)](https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/feed)
+[![Code Climate](https://codeclimate.com/github/ForwardFinancing/ach_client/badges/gpa.svg)](https://codeclimate.com/github/ForwardFinancing/ach_client)
 
-[![Test Coverage](https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/badges/105ddb79b7f5c008bccd/coverage.svg)](https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/coverage)
+[![Test Coverage](https://codeclimate.com/github/ForwardFinancing/ach_client/badges/coverage.svg)](https://codeclimate.com/github/ForwardFinancing/ach_client/coverage)
 
-[![Issue Count](https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/badges/105ddb79b7f5c008bccd/issue_count.svg)](https://codeclimate.com/repos/57a229c5c6e5cf08910039d4/feed)
+[![Issue Count](https://codeclimate.com/github/ForwardFinancing/ach_client/badges/issue_count.svg)](https://codeclimate.com/github/ForwardFinancing/ach_client)
 
-[ ![Codeship Status for ForwardFinancing/ach_client](https://codeship.com/projects/1b042fa0-3bcf-0134-3b13-56d3c23905f3/status?branch=master)](https://codeship.com/projects/166756)
+[![Build Status](https://travis-ci.org/ForwardFinancing/ach_client.svg?branch=master)](https://travis-ci.org/ForwardFinancing/ach_client)
 
 # AchClient
 

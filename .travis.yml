@@ -1,0 +1,5 @@
+language: ruby
+script: CODECLIMATE_REPO_TOKEN=1fc324a28beed303e632765cca14487904a23023d85b9127a288f04cc007d28d bundle exec rake test
+before_install:
+- export TZ=US/Eastern
+- date
