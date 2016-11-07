@@ -306,6 +306,7 @@ these new classes using the same interface described above for the API providers
 | `private_ssh_key` | Private SSH key that matches the public key you gave the bank to put on their SFTP server (if applicable) |
 | `passphrase` | Passphrase for your private SSH key. If your passphrase was blank, leave this `nil` |
 | `outgoing_path` | Path on the remote server where bank has asked you to dump your NACHAs |
+| `incoming_path` | Path on the remote server where the bank leaves confirmation/return files |
 | `file_naming_strategy` | Function to define filenames for the NACHA files |
 
 #### File Naming Strategy

@@ -7,8 +7,6 @@ SimpleCov.start do
   add_filter '/test'
 end
 
-CodeClimate::TestReporter.start
-
 # Freeze time so we don't have to worry about Time.now relativity
 require 'timecop'
 Timecop.freeze(DateTime.parse('2016-08-11T10:13:05-04:00'))
@@ -100,6 +98,7 @@ AV5CX5HcJIyVcu6WVQDcXY4OkBl6lgLpSyaNrDcyl8svy/U2+4d5hQF42MgqkB8d
 neykreVPVPYSfDzgWoKtfQKp1Zsk9n5iqsxykMS79fhO9y8SHkjEbUXjU68=
 -----END RSA PRIVATE KEY-----"
 AchClient::SiliconValleyBank.outgoing_path = '/root/svb_sandbox'
+AchClient::SiliconValleyBank.outgoing_path = '/root/svb_sandbox/Inbox'
 AchClient::SiliconValleyBank.file_naming_strategy = lambda do |batch_number|
   batch_number ||= 1
   "ACHP#{Date.today.strftime('%m%d%y')}#{batch_number.to_s.rjust(2, '0')}"
