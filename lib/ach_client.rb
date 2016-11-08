@@ -31,6 +31,7 @@ module AchClient
         # sending transactions
         const_set(:AchTransaction, Class.new(Sftp::AchTransaction))
         const_set(:AchBatch, Class.new(Sftp::AchBatch))
+        const_set(:AchStatusChecker, Class.new(Sftp::AchStatusChecker))
       end
     )
   end

@@ -27,6 +27,10 @@ module AchClient
       # you will deposit your outgoing NACHA files
       class_attribute :outgoing_path
 
+      # @return [String] The path on the remote server to the directory where
+      # the SFTP provider will deposit return/confirmation files
+      class_attribute :incoming_path
+
       # @return [Proc] A function that defines the filenaming strategy for your
       # provider. The function should take an optional batch number and return
       # a filename string

@@ -42,7 +42,7 @@ class SiliconValleyBank
         end.first
         # Make sure logging happened too
         assert_equal(
-          "request-2016-08-11T10:13:05-04:00-root-svb_sandbox-achp08111601\n#{expected_batch_result}",
+          "request-2016-08-11T10:13:05-04:00-root-svb_sandbox-inbox-achp08111601\n#{expected_batch_result}",
           log_output
         )
       end
