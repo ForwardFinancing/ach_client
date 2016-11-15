@@ -37,20 +37,50 @@ module AchClient
           ACH::ACHFile.new(entry.last).batches.map do |batch|
             batch.entries.map do |ach|
               # return trace ==> response
-              {
-                ach.individual_id_number =>
-                  if ach.addenda.length == 0
-                    # If there are no addenda, I think it is a success.
-                    AchClient::SettledAchResponse.new(
-                      date: batch.header.effective_entry_date
-                    )
-                  else
-                    # If there are addenda, I think it is a return/correction
-                    # But we don't know what those look like yet
-                  end
-              }
+              { ach.individual_id_number => process_ach(batch, ach) }
             end.reduce({}, &:merge)
           end.reduce({}, &:merge).merge(acc)
+        end
+      end
+
+      private_class_method def self.process_ach(batch, ach)
+        if ach.addenda.length == 0
+          # If there are no addenda, it is a success.
+          AchClient::SettledAchResponse.new(
+            date: batch.header.effective_entry_date
+          )
+        else
+          # If there is an addenda, it is a return
+          process_ach_return(batch, ach)
+        end
+      end
+
+      private_class_method def self.process_ach_return(batch, ach)
+        # I'm not sure why/if there would be multiple addenda.
+        # So just taking the first one.
+        case ach.addenda.first.reason_code.first
+        # If the first letter is R, it is a return
+        when 'R'
+          AchClient::ReturnedAchResponse.new(
+            date: batch.header.effective_entry_date,
+            return_code: AchClient::ReturnCodes.find_by(
+              code: ach.addenda.first.reason_code
+            )
+          )
+        # If the first letter is C, it is a correction
+        when 'C'
+          AchClient::CorrectedAchResponse.new(
+            date: batch.header.effective_entry_date,
+            return_code: AchClient::ReturnCodes.find_by(
+              code: ach.addenda.first.reason_code
+            ),
+            corrections: {
+              # The key for deciphering this field is probably documented
+              # somewhere. We can expand on this once there is a use case for
+              # automatically processing corrections
+              unhandled_correction_data: ach.addenda.first.corrected_data
+            }
+          )
         end
       end
 

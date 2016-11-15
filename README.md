@@ -270,6 +270,8 @@ Some test configuration values are provided for testing/development of this gem.
 
 ### NACHA + SFTP Providers
 
+Most US banks use the same system for sending and receiving ACH transactions.
+
 For these providers, batches of ACH transactions are
 represented in the NACHA file format. The bank provides you with an SFTP server
 where you can deposit these files. After the transactions are processed, the
@@ -287,6 +289,7 @@ For example, the first time you reference `AchClient::FakeBank`, all the followi
 `AchClient::FakeBank`, along with the following classes:
 - `AchClient::FakeBank::AchTransaction`
 - `AchClient::FakeBank::AchBatch`
+- `AchClient::FakeBank::AchStatusChecker`
 
 After setting the variables described in the below table, you can interact with
 these new classes using the same interface described above for the API providers.
@@ -328,6 +331,20 @@ AchClient::SiliconValleyBank.file_naming_strategy = lambda do |batch_number|
   "ACHP#{Date.today.strftime('%m%d%y')}#{batch_number.to_s.rjust(2, '0')}"
 end
 ```
+
+#### Assumptions about response files from NACHA/SFTP providers
+
+NACHA response files containing transaction confirmations, returns, and
+corrections are deposited by your bank in an 'Inbox' or 'Outgoing' folder on the
+SFTP server they provide. The status check functionality for these providers
+makes a few assumptions about this folder:
+
+- All the files in it are inbound response files, which should be processed. If
+this is not true for some bank, we will need to add a file naming strategy configuration attribute for inbound files.
+- The SFTP user has write access to the inbound file directory. The
+`most_recent` functionality leaves a file that records the last access
+timestamp. If the SFTP user does not have write access, and your bank won't give
+it to you, we'll have to find another way to implement that.
 
 ## Installation
 
