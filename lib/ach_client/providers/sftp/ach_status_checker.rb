@@ -47,6 +47,7 @@ module AchClient
         if ach.addenda.length == 0
           # If there are no addenda, it is a success.
           AchClient::SettledAchResponse.new(
+            amount: (ach.amount / 100.0).to_d,
             date: batch.header.effective_entry_date
           )
         else
@@ -62,6 +63,7 @@ module AchClient
         # If the first letter is R, it is a return
         when 'R'
           AchClient::ReturnedAchResponse.new(
+            amount: (ach.amount / 100.0).to_d,
             date: batch.header.effective_entry_date,
             return_code: AchClient::ReturnCodes.find_by(
               code: ach.addenda.first.reason_code
@@ -70,6 +72,7 @@ module AchClient
         # If the first letter is C, it is a correction
         when 'C'
           AchClient::CorrectedAchResponse.new(
+            amount: (ach.amount / 100.0).to_d,
             date: batch.header.effective_entry_date,
             return_code: AchClient::ReturnCodes.find_by(
               code: ach.addenda.first.reason_code

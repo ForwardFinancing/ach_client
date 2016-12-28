@@ -33,17 +33,17 @@ class SiliconValleyBank
       AchClient::SiliconValleyBank.password = nil
       AchClient::SiliconValleyBank.private_ssh_key = nil
 
-      assert_equal(AchClient::SiliconValleyBank.immediate_destination, nil)
-      assert_equal(AchClient::SiliconValleyBank.immediate_destination_name, nil)
-      assert_equal(AchClient::SiliconValleyBank.immediate_origin, nil)
-      assert_equal(AchClient::SiliconValleyBank.immediate_origin_name, nil)
-      assert_equal(AchClient::SiliconValleyBank.company_identification, nil)
-      assert_equal(AchClient::SiliconValleyBank.company_entry_description, nil)
-      assert_equal(AchClient::SiliconValleyBank.originating_dfi_identification, nil)
-      assert_equal(AchClient::SiliconValleyBank.host, nil)
-      assert_equal(AchClient::SiliconValleyBank.username, nil)
-      assert_equal(AchClient::SiliconValleyBank.password, nil)
-      assert_equal(AchClient::SiliconValleyBank.private_ssh_key, nil)
+      assert_nil(AchClient::SiliconValleyBank.immediate_destination)
+      assert_nil(AchClient::SiliconValleyBank.immediate_destination_name)
+      assert_nil(AchClient::SiliconValleyBank.immediate_origin)
+      assert_nil(AchClient::SiliconValleyBank.immediate_origin_name)
+      assert_nil(AchClient::SiliconValleyBank.company_identification)
+      assert_nil(AchClient::SiliconValleyBank.company_entry_description)
+      assert_nil(AchClient::SiliconValleyBank.originating_dfi_identification)
+      assert_nil(AchClient::SiliconValleyBank.host)
+      assert_nil(AchClient::SiliconValleyBank.username)
+      assert_nil(AchClient::SiliconValleyBank.password)
+      assert_nil(AchClient::SiliconValleyBank.private_ssh_key)
 
       AchClient::SiliconValleyBank.immediate_destination = '000000000'
       AchClient::SiliconValleyBank.immediate_destination_name = 'Test Destination'

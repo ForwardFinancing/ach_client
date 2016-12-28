@@ -30,16 +30,20 @@ class ICheckGateway
           ).to_json,
           {
             'ef69436stub0' => AchClient::ProcessingAchResponse.new(
+              amount: '250.00',
               date: '9/12/2016'
             ),
             'cb4e1d6stub1' => AchClient::SettledAchResponse.new(
+              amount: '906.43',
               date: '9/6/2016'
             ),
             '7370d7dstub2' => AchClient::ReturnedAchResponse.new(
+              amount: '176.10',
               date: '9/7/2016',
               return_code: AchClient::ReturnCodes.find_by(code: 'R08')
             ),
             'c4918f8stub3' => AchClient::ReturnedAchResponse.new(
+              amount: '178.75',
               date: '9/6/2016',
               return_code: AchClient::ReturnCodes.find_by(code: 'R01')
             )
