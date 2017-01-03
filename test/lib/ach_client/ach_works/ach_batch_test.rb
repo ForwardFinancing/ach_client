@@ -109,7 +109,7 @@ class AchWorks
       )
       assert_equal(batch.to_hash[:InpACHFile][:SSS], 'TST')
       assert_equal(batch.to_hash[:InpACHFile][:LocID], '9505')
-      assert_equal(batch.to_hash[:InpACHFile][:ACHFileName], nil)
+      assert_nil(batch.to_hash[:InpACHFile][:ACHFileName])
       assert_equal(batch.to_hash[:InpACHFile][:TotalNumRecords], 6)
       assert_equal(batch.to_hash[:InpACHFile][:TotalDebitRecords], 3)
       assert_equal(

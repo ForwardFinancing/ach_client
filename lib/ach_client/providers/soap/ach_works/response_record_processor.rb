@@ -29,14 +29,20 @@ module AchClient
       # @param record [Hash] AchWorks response hash
       # @return [AchClient::ProcessingAchResponse] processing response
       def self.process_1SNT(record)
-        AchClient::ProcessingAchResponse.new(date: record[:action_date])
+        AchClient::ProcessingAchResponse.new(
+          amount: BigDecimal.new(record[:trans_amount]),
+          date: record[:action_date]
+        )
       end
 
       # 2STL: The transaction is settled. Huzzah!
       # @param record [Hash] AchWorks response hash
       # @return [AchClient::SettledAchResponse] settled response
       def self.process_2STL(record)
-        AchClient::SettledAchResponse.new(date: record[:action_date])
+        AchClient::SettledAchResponse.new(
+          amount: BigDecimal.new(record[:trans_amount]),
+          date: record[:action_date]
+        )
       end
 
       # 3RET: The transaction was returned for some reason (insufficient
@@ -45,6 +51,7 @@ module AchClient
       # @return [AchClient::ReturnedAchResponse] returned response
       def self.process_3RET(record)
         AchClient::ReturnedAchResponse.new(
+          amount: BigDecimal.new(record[:trans_amount]),
           date: record[:action_date],
           return_code: AchClient::ReturnCodes.find_by(
             code: record[:action_detail][0..2]
@@ -68,6 +75,7 @@ module AchClient
       # @return [AchClient::CorrectedAchResponse] corrected response
       def self.process_5COR(record)
         AchClient::CorrectedAchResponse.new(
+          amount: BigDecimal.new(record[:trans_amount]),
           date: record[:action_date],
           return_code: AchClient::ReturnCodes.find_by(
             code: record[:action_detail][0..2]

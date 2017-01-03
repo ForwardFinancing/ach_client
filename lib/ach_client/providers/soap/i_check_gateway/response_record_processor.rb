@@ -6,6 +6,8 @@ module AchClient
 
       # The column index with the record status
       STATUS_COLUMN = 1
+      # The column index with the record amount ($)
+      AMOUNT_COLUMN = 15
       # The column index with the record submission date
       DATE_COLUMN = 17
       # THe string index range within the record status with the return code
@@ -22,10 +24,16 @@ module AchClient
         case record[STATUS_COLUMN].first
         when 'N'
           # N - no, it hasn't settled yet
-          AchClient::ProcessingAchResponse.new(date: record[DATE_COLUMN])
+          AchClient::ProcessingAchResponse.new(
+            amount: record[AMOUNT_COLUMN],
+            date: record[DATE_COLUMN]
+          )
         when 'Y'
           # Y - yes, it has settled
-          AchClient::SettledAchResponse.new(date: record[DATE_COLUMN])
+          AchClient::SettledAchResponse.new(
+            amount: record[AMOUNT_COLUMN],
+            date: record[DATE_COLUMN]
+          )
         else
           # If it starts with R, it is probably a return, in which case the
           # column looks like: R (R01)
@@ -33,6 +41,7 @@ module AchClient
           # ICheckGateway
           if record[1].start_with?('R')
             AchClient::ReturnedAchResponse.new(
+              amount: record[AMOUNT_COLUMN],
               date: record[DATE_COLUMN],
               return_code: AchClient::ReturnCodes.find_by(
                 code: record[STATUS_COLUMN][RETURN_CODE_INDEX]

@@ -10,9 +10,9 @@ module AchClient
     # @param return_code [AchClient::ReturnCode] Ach Return code for the
     # correction (ie AchClient::ReturnCodes.find_by(code: 'C01'))
     # @param corrections [Hash] A hash of corrected attributes and their values
-    def initialize(date:, return_code:, corrections:)
+    def initialize(amount:, date:, return_code:, corrections:)
       @corrections = corrections
-      super(date: date, return_code: return_code)
+      super(amount: amount, date: date, return_code: return_code)
     end
   end
 end

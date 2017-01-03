@@ -8,9 +8,9 @@ module AchClient
     # @param date [DateTime] date of correction return
     # @param return_code [AchClient::ReturnCode] Ach Return code for the
     # correction (ie AchClient::ReturnCodes.find_by(code: 'C01'))
-    def initialize(date:, return_code:)
+    def initialize(amount:, date:, return_code:)
       @return_code = return_code
-      super(date: date)
+      super(amount: amount, date: date)
     end
   end
 end

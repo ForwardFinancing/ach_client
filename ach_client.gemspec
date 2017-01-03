@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
   # Handy ruby behavior from rails
   spec.add_dependency 'activesupport'
 
-  # SFTP client (for SiliconValleyBank client)
+  # SFTP client (for Bank providers)
   spec.add_dependency 'net-sftp'
 
   # SOAP client (for AchWorks and ICheckGateway clients)
