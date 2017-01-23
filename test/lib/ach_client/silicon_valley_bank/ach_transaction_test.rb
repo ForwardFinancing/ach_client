@@ -38,5 +38,41 @@ class SiliconValleyBank
         'NACHA/SFTP providers do not support individual transactions'
       )
     end
+
+    def test_swaps_negative_debit_to_positive_credit
+      entry = AchClient::SiliconValleyBank::AchTransaction.new(
+        account_number: '00002323044',
+        account_type: AchClient::AccountTypes::Checking,
+        amount: BigDecimal.new('-575.45'),
+        memo: '????',
+        merchant_name: 'DOE, JOHN',
+        originator_name: 'ff',
+        routing_number: '123456780',
+        sec_code: 'CCD',
+        transaction_type: AchClient::TransactionTypes::Debit,
+        external_ach_id: '123foooo',
+        customer_id: 'foo'
+      ).to_entry_detail
+      refute(entry.debit?)
+      assert(entry.amount.positive?)
+    end
+
+    def test_swaps_negative_credit_to_positive_debit
+      entry = AchClient::SiliconValleyBank::AchTransaction.new(
+        account_number: '00002323044',
+        account_type: AchClient::AccountTypes::Checking,
+        amount: BigDecimal.new('-575.45'),
+        memo: '????',
+        merchant_name: 'DOE, JOHN',
+        originator_name: 'ff',
+        routing_number: '123456780',
+        sec_code: 'CCD',
+        transaction_type: AchClient::TransactionTypes::Credit,
+        external_ach_id: '123foooo',
+        customer_id: 'foo'
+      ).to_entry_detail
+      refute(entry.credit?)
+      assert(entry.amount.positive?)
+    end
   end
 end
