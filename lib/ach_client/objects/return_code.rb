@@ -3,6 +3,12 @@ module AchClient
   # See config/return_codes.yml for our list.
   class ReturnCode
 
+    # The first character in a correction code
+    CORRECTION_START_CHARACTER = 'C'
+
+    # The first character in an internal return code
+    INTERNAL_START_CHARACTER = 'X'
+
     attr_accessor :code,
                   :description,
                   :reason
@@ -15,6 +21,18 @@ module AchClient
       @code = code
       @description = description
       @reason = reason
+    end
+
+    # @return Whether or not this return is a correction/notice of change
+    def correction?
+      @code.start_with?(CORRECTION_START_CHARACTER)
+    end
+
+    # @return Whether or not the return is internal
+    # An "internal" return means that the ACH provider knew that the ACH
+    #   would fail and didn't bother to send it to their upstream provider
+    def internal?
+      @code.start_with?(INTERNAL_START_CHARACTER)
     end
   end
 end
