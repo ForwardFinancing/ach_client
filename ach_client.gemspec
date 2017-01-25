@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.email = [
     'zach@zachcotter.com'
   ]
+  spec.licenses = ['MIT']
 
   spec.summary = %q{ Adapter to interact with various ACH service providers }
   spec.homepage = 'https://github.com/ForwardFinancing/ach_client'
