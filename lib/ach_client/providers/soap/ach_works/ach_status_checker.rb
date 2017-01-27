@@ -58,6 +58,7 @@ module AchClient
             record[:front_end_trace].present?
           end.map do |record|
             {
+              # Strips the first characther because it is always the added Z
               record[:front_end_trace][1..-1] =>
               AchClient::AchWorks::ResponseRecordProcessor
                 .process_response_record(record)

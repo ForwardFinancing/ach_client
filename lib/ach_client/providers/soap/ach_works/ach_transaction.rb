@@ -22,7 +22,7 @@ module AchClient
             InpACHTransRecord: self.to_hash
           }),
           path: [:send_ach_trans_response, :send_ach_trans_result]
-        )[:front_end_trace]
+        )[:front_end_trace][1..-1]
       end
 
       ##
