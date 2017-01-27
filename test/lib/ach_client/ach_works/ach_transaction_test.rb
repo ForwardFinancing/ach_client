@@ -137,7 +137,7 @@ class AchWorks
             external_ach_id: 'foooo',
             customer_id: 'foo'
           ).send,
-          'Zfoooo'
+          'foooo'
         )
       end
     end
