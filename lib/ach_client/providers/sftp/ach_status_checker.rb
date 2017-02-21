@@ -99,7 +99,7 @@ module AchClient
         # Get info on all files - equivalent to `ls`
         connection.dir.entries(self.parent.incoming_path)
                       .select do |file|
-          last_modified_time = Time.at(file.attributes.mtime)
+          last_modified_time = Time.at(file.attributes.mtime) - 1.minute
           # Filter to files modified in date range
           last_modified_time > start_date && (
             !end_date || last_modified_time < end_date
@@ -121,6 +121,18 @@ module AchClient
           'r'
         ).read
         DateTime.parse(most_recent_string)
+      rescue Net::SFTP::StatusException => e
+        # If code is 2 ("no such file"), then we need to create the file
+        #  otherwise, something else went wrong and the exception should
+        #  bubble up
+        if e.code == 2
+          # Create the file and write the current date
+          update_most_recent_check_date(connection: connection)
+          # Return the earliest possible date as the last check
+          Time.at(0).to_datetime
+        else
+          raise e
+        end
       end
 
       # Leave file with last grabbed date
@@ -137,9 +149,9 @@ module AchClient
             connection: connection,
             start_date: last_most_recent_check_date(connection: connection)
           )
-        update_most_recent_check_date(connection: connection)
+          update_most_recent_check_date(connection: connection)
         end
-        files
+        files || []
       end
     end
   end
