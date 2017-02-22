@@ -19,7 +19,7 @@ class FakeSFTPConnection
     if block_given?
       yield FakeFile.new('TestFile')
     elsif args[0].try(:end_with?, 'most_recent')
-      FakeFile.new('most_recent', DateTime.yesterday.to_time.to_s)
+      most_recent
     elsif args[0].try(:include?, 'status_check')
       FakeFile.new('status_check',
 """111 111111111 1111111111111111111A111111AAAAAAAAAAAAA          AAAAAAA AAAAAA      AAAAAA
@@ -92,6 +92,10 @@ class FakeSFTPConnection
         })
       })
     ]
+  end
+
+  def self.most_recent
+    FakeFile.new('most_recent', DateTime.yesterday.to_time.to_s)
   end
 
   def self.read
