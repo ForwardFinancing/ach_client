@@ -57,5 +57,13 @@ class SiliconValleyBank
         AchClient::ReturnCodes.find_by(code: 'R03')
       )
     end
+
+    def test_process_files_with_no_files
+      Net::SFTP.stubs(:start).yields(FakeSFTPConnection)
+      AchClient::SiliconValleyBank::AchStatusChecker.any_instance.stubs(
+        :most_recent_files
+      ).returns(nil)
+      assert(AchClient::SiliconValleyBank::AchStatusChecker.most_recent)
+    end
   end
 end

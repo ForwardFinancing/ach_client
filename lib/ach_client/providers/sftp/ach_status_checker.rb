@@ -33,7 +33,7 @@ module AchClient
       end
 
       private_class_method def self.process_files(files)
-        files.reduce({}) do |acc, entry|
+        (files || []).reduce({}) do |acc, entry|
           ACH::ACHFile.new(entry.last).batches.map do |batch|
             batch.entries.map do |ach|
               # return trace ==> response
