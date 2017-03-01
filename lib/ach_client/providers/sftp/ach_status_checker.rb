@@ -103,7 +103,7 @@ module AchClient
           # Filter to files modified in date range
           last_modified_time > start_date && (
             !end_date || last_modified_time < end_date
-          )
+          ) && file.name != 'most_recent'
         end.map do |file|
           body = connection.file.open(inbox_path_to(file.name), 'r').read
           AchClient::Logging::LogProviderJob.perform_async(
