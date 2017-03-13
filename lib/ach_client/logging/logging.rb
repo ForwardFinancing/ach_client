@@ -56,7 +56,7 @@ module AchClient
       ActiveSupport::MessageEncryptor.new(
         ActiveSupport::KeyGenerator.new(
           AchClient::Logging.encryption_password
-        ).generate_key(AchClient::Logging.encryption_salt)
+        ).generate_key(AchClient::Logging.encryption_salt, 32)
       )
     end
 

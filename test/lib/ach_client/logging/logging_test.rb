@@ -73,12 +73,12 @@ class LoggingTest < MiniTest::Test
         message = "Super secret secrets"
         log_encrypted = AchClient::Logging.codec.encrypt_and_sign(message)
         encrypted = ActiveSupport::MessageEncryptor.new(
-          ActiveSupport::KeyGenerator.new('password').generate_key('pepper')
+          ActiveSupport::KeyGenerator.new('password').generate_key('pepper', 32)
         ).encrypt_and_sign(message)
 
         log_decrypted = AchClient::Logging.decrypt_log(log_encrypted)
         decrypted = ActiveSupport::MessageEncryptor.new(
-          ActiveSupport::KeyGenerator.new('password').generate_key('pepper')
+          ActiveSupport::KeyGenerator.new('password').generate_key('pepper', 32)
         ).decrypt_and_verify(log_encrypted)
 
         assert_equal(log_decrypted, decrypted)
@@ -97,7 +97,7 @@ class LoggingTest < MiniTest::Test
       AchClient::Logging.stub(:encryption_password, 'password') do
         AchClient::Logging.stub(:encryption_salt, 'pepper') do
           decrypted_output = ActiveSupport::MessageEncryptor.new(
-            ActiveSupport::KeyGenerator.new('password').generate_key('pepper')
+            ActiveSupport::KeyGenerator.new('password').generate_key('pepper', 32)
           ).decrypt_and_verify(log_output.split("\n")[1])
           assert_equal(
             plain_output.split("\n")[1..-1].join("\n") + "\n",
