@@ -7,7 +7,11 @@ module AchClient
       #   they are discovered
       KNOWN_ERROR_STRINGS = [
         # ICheckGateway has a rate limit of 20 requests per calendar day
-        "ACCESS DENIED: Report Call Limit Exceeded"
+        "ACCESS DENIED: Report Call Limit Exceeded",
+        # The date range can't be wider than 15 days
+        "ACCESS DENIED: Date Range Exceeds 15 Days",
+        # Because so far they all contain ACCESS_DENIED:
+        "ACCESS_DENIED"
       ]
 
       ##
@@ -25,7 +29,7 @@ module AchClient
       def self.check_for_errors(record)
         KNOWN_ERROR_STRINGS.each do |error_string|
           if record.include?(error_string)
-            raise "Couldnt process ICheckGateway Response: #{error_string}"
+            raise "Couldnt process ICheckGateway Response: #{record}"
           end
         end
       end

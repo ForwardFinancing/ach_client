@@ -35,6 +35,20 @@ class ICheckGateway
       end
     end
 
+    def test_in_range_rate_limit
+      VCR.use_cassette('icg_in_range_range_limit') do
+        assert_equal(
+          assert_raises(RuntimeError) do
+            AchClient::ICheckGateway::AchStatusChecker.in_range(
+              start_date: Date.tomorrow,
+              end_date: Date.today
+            )
+          end.message,
+          "Couldnt process ICheckGateway Response: ACCESS DENIED: Date Range Exceeds 15 Days"
+        )
+      end
+    end
+
     def test_in_range_success
       VCR.use_cassette('icg_in_range_success') do
         assert_equal(
