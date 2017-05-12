@@ -222,8 +222,8 @@ AchClient::Logging.log_filters = [
 To enable encryption of logs, provide both a `password` and a `salt`
 
 ```ruby
-AchClient::Logging.password = 'password'
-AchClient::Logging.salt = 'pepper'
+AchClient::Logging.encryption_password = 'password'
+AchClient::Logging.encryption_salt = 'pepper'
 ```
 
 Logs will be encrypted after they are filtered, but before they are passed to the `LogProvider` implementation you chose.
