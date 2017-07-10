@@ -257,6 +257,7 @@ Some test configuration values are provided for testing/development of this gem.
 | `loc_i_d`      | Company credential provided by AchWorks  |
 | `s_s_s`        | Company credential provided by AchWorks  |
 | `wsdl`         | URL for the WSDL for AchWorks SOAP API   |
+| `client_timeout_seconds` | Seconds to wait for a web response (optional) |
 
 ### ICheckGateway
 
@@ -267,6 +268,7 @@ Some test configuration values are provided for testing/development of this gem.
 | `api_key`      | Company credential provided by ICheckGateway  |
 | `live`         | `true` if you want transactions to be actually processed, `false` otherwise. Note: `true` only works with your production credentials, and `false`  only works with the shared test credentials |
 | `wsdl`         | URL for the WSDL for ICheckGateway SOAP API   |
+| `client_timeout_seconds` | Seconds to wait for a web response (optional) |
 
 ### NACHA + SFTP Providers
 
