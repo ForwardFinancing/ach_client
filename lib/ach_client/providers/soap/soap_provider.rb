@@ -12,6 +12,10 @@ module AchClient
       # requests to the provider
       class_attribute :_soap_client
 
+      # @return [Integer] Number of seconds to leave connections open before
+      # raising HTTPClient::ConnectTimeoutError.
+      class_attribute :client_timeout_seconds
+
       # Makes a SOAP request to the provider, without any error handling, and
       # returns the savon response after logging it
       # @param method [Symbol] SOAP operation to call against the provider
@@ -34,7 +38,11 @@ module AchClient
       # @return [Savon::Client] The Savon client object to use for making SOAP
       # requests to the provider
       private_class_method def self.soap_client
-        self._soap_client ||= Savon.client(wsdl: self.wsdl) do
+        self._soap_client ||= Savon.client(
+          wsdl: self.wsdl,
+          open_timeout: self.client_timeout_seconds,
+          read_timeout: self.client_timeout_seconds
+        ) do
           # Lets us use symbols as keys without Savon changing the case
           # { 'Key' => 'Value' } == { Key: 'Value' }
           convert_request_keys_to :none
