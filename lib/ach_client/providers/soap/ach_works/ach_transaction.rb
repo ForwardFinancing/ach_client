@@ -4,6 +4,9 @@ module AchClient
     # AchWorks implementation for AchTransaction
     class AchTransaction < Abstract::AchTransaction
 
+      # Only allows for merchant length of less than or equal to 22.
+      MAX_MERCHANT_NAME_LENGTH = 22.freeze
+
       ##
       # @param super [Array] args from parent class
       # @param customer_id [String] optional identifier for the customer
@@ -33,7 +36,7 @@ module AchClient
           SSS: AchClient::AchWorks.s_s_s,
           LocID: AchClient::AchWorks.loc_i_d,
           FrontEndTrace: front_end_trace,
-          CustomerName: merchant_name,
+          CustomerName: merchant_name[0..(MAX_MERCHANT_NAME_LENGTH-1)],
           CustomerRoutingNo: routing_number.to_s,
           CustomerAcctNo: account_number.to_s,
           OriginatorName: originator_name.try(:first, 16),
