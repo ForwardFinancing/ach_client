@@ -55,4 +55,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'vcr'
   spec.add_development_dependency 'webmock'
   spec.add_development_dependency 'yard'
+  spec.add_development_dependency 'bundler-audit'
 end
