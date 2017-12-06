@@ -4,7 +4,7 @@ module AchClient
     class AchTransaction < Abstract::AchTransaction
 
       # Most SFTP providers only support batch transactions
-      def send
+      def do_send
         raise 'NACHA/SFTP providers do not support individual transactions'
       end
 

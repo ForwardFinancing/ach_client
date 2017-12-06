@@ -50,6 +50,14 @@ class ICheckGateway
     end
 
     def test_failure_send
+      assert_raises(InvalidAchTransactionError) do
+        invalid_transaction = transaction
+        invalid_transaction.instance_variable_set(
+          :@effective_entry_date,
+          Date.yesterday
+        )
+        invalid_transaction.send
+      end
       # Request will fail because `Date.today` is in the past
       VCR.use_cassette('icheckgateway_ach_transaction_failure') do
         assert_equal(
