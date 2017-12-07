@@ -51,5 +51,15 @@ class SiliconValleyBank
     def test_nacha
       assert_equal(batch.cook_some_nachas.to_s, expected_batch_result)
     end
+
+    def test_send_invalid_batch
+      assert_raises(InvalidAchTransactionError) do
+        invalid = transaction
+        invalid.instance_variable_set(:@effective_entry_date, Date.yesterday)
+        AchClient::SiliconValleyBank::AchBatch.new(
+          ach_transactions: [invalid]
+        ).send_batch
+      end
+    end
   end
 end

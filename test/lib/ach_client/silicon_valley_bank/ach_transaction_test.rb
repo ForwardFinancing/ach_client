@@ -13,6 +13,7 @@ class SiliconValleyBank
         sec_code: 'CCD',
         transaction_type: AchClient::TransactionTypes::Debit,
         external_ach_id: '123foooo',
+        effective_entry_date: Date.tomorrow,
         customer_id: 'foo'
       )
     end

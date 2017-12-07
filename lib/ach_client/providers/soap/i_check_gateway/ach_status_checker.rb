@@ -11,7 +11,7 @@ module AchClient
         # The date range can't be wider than 15 days
         "ACCESS DENIED: Date Range Exceeds 15 Days",
         # Because so far they all contain ACCESS_DENIED:
-        "ACCESS_DENIED"
+        "ACCESS DENIED"
       ]
 
       ##

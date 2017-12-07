@@ -10,7 +10,7 @@ module AchClient
       # gives us. We can use that to track the batch processing later on.
       # If it fails, an exception will be thrown.
       # @return [Array<String>] the external_ach_id's for each transaction
-      def send_batch
+      def do_send_batch
         AchClient::AchWorks.wrap_request(
           method: :send_ach_trans_batch,
           message: self.to_hash,

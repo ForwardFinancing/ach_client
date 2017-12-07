@@ -62,8 +62,26 @@ module AchClient
         transaction_type == AchClient::TransactionTypes::Credit
       end
 
+      # Check if the transaction is sendable, and if so, send it according
+      #   to the subclass implementation
       def send
+        if sendable?
+          do_send
+        else
+          raise InvalidAchTransactionError
+        end
+      end
+
+      # The implementation of sending the transaction, as implemented by the
+      #   subclass
+      def do_send
         raise AbstractMethodError
+      end
+
+      # Prevent sending of invalid transactions, such as those where the
+      #   effective entry date is in the past
+      def sendable?
+        effective_entry_date&.future? || effective_entry_date&.today?
       end
     end
   end

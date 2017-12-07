@@ -172,6 +172,13 @@ class AchWorks
     end
 
     def test_send_bad_batch_raises_errors
+      assert_raises(InvalidAchTransactionError) do
+        invalid = credit
+        invalid.instance_variable_set(:@effective_entry_date, Date.yesterday)
+        AchClient::AchWorks::AchBatch.new(
+          ach_transactions: [invalid]
+        ).send_batch
+      end
       VCR.use_cassette('send_invalid_batch') do
         assert_equal(
           assert_raises(RuntimeError) do

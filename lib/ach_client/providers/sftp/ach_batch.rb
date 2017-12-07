@@ -17,7 +17,7 @@ module AchClient
 
       # Sends the batch to SFTP provider
       # @return [Array<String>]
-      def send_batch
+      def do_send_batch
         self.class.parent.write_remote_file(
           file_path: File.join(
             self.class.parent.outgoing_path,

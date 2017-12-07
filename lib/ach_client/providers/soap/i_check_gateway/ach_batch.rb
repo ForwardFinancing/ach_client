@@ -4,7 +4,7 @@ module AchClient
     class AchBatch < Abstract::AchBatch
 
       # ICheckGateway does not support ACH batching
-      def send_batch
+      def do_send_batch
         raise 'ICheckGateway does not support ACH batching'
       end
     end

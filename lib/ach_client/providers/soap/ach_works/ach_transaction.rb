@@ -18,7 +18,7 @@ module AchClient
 
       # Send this transaction individually to AchWorks
       # @return [String] the front end trace
-      def send
+      def do_send
         AchClient::AchWorks.wrap_request(
           method: :send_ach_trans,
           message: AchClient::AchWorks::CompanyInfo.build.to_hash.merge({

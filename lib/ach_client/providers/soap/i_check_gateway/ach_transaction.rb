@@ -9,7 +9,7 @@ module AchClient
       # Raises an exception with as much info as possible if something goes
       # wrong
       # @return [String] a string returned by ICheckGateway - external_ach_id
-      def send
+      def do_send
         # The response comes back as a | separated list of field values with
         #   no header field/keys. It seems that the first column will contain
         #   'APPROVED' if the request was successful. The 8th column is the
