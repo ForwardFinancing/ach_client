@@ -163,7 +163,9 @@ To check statuses:
 ```
 
 Both of these methods return a `Hash` with the `external_ach_id` for ach_transaction as the keys and
-instances of AchClient::AchResponse as values.
+a list of instances of AchClient::AchResponse as values. A polling response may contain
+more than one response record for each `external_ach_id` if that ACH has changed
+statuses more than once within the polling range.
 
 ### Responses
 

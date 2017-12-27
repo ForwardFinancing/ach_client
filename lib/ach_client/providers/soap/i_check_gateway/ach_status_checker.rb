@@ -35,26 +35,30 @@ module AchClient
       end
 
       # Wrapper for the range response endpoint
-      # @return [Hash{String => AchClient::AchResponse}] Hash with confirmation
-      # number as the key, AchResponse objects as values
+      # @return [Hash{String => [AchClient::AchResponse]}] Hash with
+      # confirmation number as the key, lists of AchResponse objects as values
       def self.in_range(start_date:, end_date:)
-        AchClient::ICheckGateway.wrap_request(
-          method: :pull_transaction_report,
-          message: AchClient::ICheckGateway::CompanyInfo.build.to_hash.merge({
-            startDate: start_date,
-            endDate: end_date
-          })
-        ).split("\n").select do |record|
-          check_for_errors(record)
-          # Ignore credit card swipes if there are any
-          record.start_with?('ICHECK')
-        end.map do |record|
-          {
-            record.split('|')[3] =>
-              AchClient::ICheckGateway::ResponseRecordProcessor
-                .process_response_record(record)
-          }
-        end.reduce(&:merge)
+        Helpers::Utils.hashlist_merge(
+          AchClient::ICheckGateway.wrap_request(
+            method: :pull_transaction_report,
+            message: AchClient::ICheckGateway::CompanyInfo.build.to_hash.merge({
+              startDate: start_date,
+              endDate: end_date
+            })
+          ).split("\n").select do |record|
+            check_for_errors(record)
+            # Ignore credit card swipes if there are any
+            record.start_with?('ICHECK')
+          end.map do |record|
+            {
+              record.split('|')[3] =>
+                [
+                  AchClient::ICheckGateway::ResponseRecordProcessor
+                    .process_response_record(record)
+                ]
+            }
+          end
+        )
       end
     end
   end

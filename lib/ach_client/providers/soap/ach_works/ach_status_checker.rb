@@ -49,21 +49,25 @@ module AchClient
         if response[:total_num_records] == '0'
           []
         else
-          response[:ach_return_records][:ach_return_record].select do |record|
-            # Exclude records with no front end trace
-            # They are probably 9BNK response codes, not actual transactions
-            # 9BNK is when AchWorks gives us an aggregate record, containing
-            #   the total debit/credit to your actual bank account.
-            # We don't care about those here.
-            record[:front_end_trace].present?
-          end.map do |record|
-            {
-              # Strips the first characther because it is always the added Z
-              record[:front_end_trace][1..-1] =>
-              AchClient::AchWorks::ResponseRecordProcessor
-                .process_response_record(record)
-            }
-          end.reduce(&:merge)
+          Helpers::Utils.hashlist_merge(
+            response[:ach_return_records][:ach_return_record].select do |record|
+              # Exclude records with no front end trace
+              # They are probably 9BNK response codes, not actual transactions
+              # 9BNK is when AchWorks gives us an aggregate record, containing
+              #   the total debit/credit to your actual bank account.
+              # We don't care about those here.
+              record[:front_end_trace].present?
+            end.map do |record|
+              {
+                # Strips the first characther because it is always the added Z
+                record[:front_end_trace][1..-1] =>
+                  [
+                    AchClient::AchWorks::ResponseRecordProcessor
+                    .process_response_record(record)
+                  ]
+              }
+            end
+          )
         end
       end
 
