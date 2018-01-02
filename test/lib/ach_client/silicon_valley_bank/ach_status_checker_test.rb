@@ -5,8 +5,8 @@ class SiliconValleyBank
     def test_most_recent
       Net::SFTP.stubs(:start).yields(FakeSFTPConnection)
       response = AchClient::SiliconValleyBank::AchStatusChecker.most_recent
-      assert response["T005"].is_a?(AchClient::SettledAchResponse)
-      assert_equal response["T005"].date, Date.parse("Fri, 11 Nov 2011")
+      assert response["T005"].first.is_a?(AchClient::SettledAchResponse)
+      assert_equal response["T005"].first.date, Date.parse("Fri, 11 Nov 2011")
     end
 
     def test_most_recent_no_such_file
@@ -17,8 +17,8 @@ class SiliconValleyBank
         Net::SFTP::StatusException.new(OpenStruct.new({code: 2}))
       )
       response = AchClient::SiliconValleyBank::AchStatusChecker.most_recent
-      assert response["T005"].is_a?(AchClient::SettledAchResponse)
-      assert_equal response["T005"].date, Date.parse("Fri, 11 Nov 2011")
+      assert response["T005"].first.is_a?(AchClient::SettledAchResponse)
+      assert_equal response["T005"].first.date, Date.parse("Fri, 11 Nov 2011")
     end
 
     def test_most_recent_other_exception
@@ -37,23 +37,39 @@ class SiliconValleyBank
         start_date: Date.yesterday - 1.day,
         end_date: Date.tomorrow
       )
-      assert response["T005"].is_a?(AchClient::SettledAchResponse)
-      assert_equal response["T005"].date, Date.parse("Fri, 11 Nov 2011")
+      assert response["T005"].first.is_a?(AchClient::SettledAchResponse)
+      assert_equal response["T005"].first.date, Date.parse("Fri, 11 Nov 2011")
 
-      assert response["CUSTIDNO"].is_a?(AchClient::CorrectedAchResponse)
-      assert_equal response["CUSTIDNO"].corrections, {
+      # There are 2 records with ExternalAchId: CUSTIDNO
+      # One is a correction, the other is a return.
+
+      correction = response["CUSTIDNO"].find do |record|
+        record.is_a?(AchClient::CorrectedAchResponse)
+      end
+      rejection = response["CUSTIDNO"].find do |record|
+        record.is_a?(AchClient::ReturnedAchResponse)
+      end
+      assert correction.is_a?(AchClient::CorrectedAchResponse)
+      assert_equal correction.corrections, {
         unhandled_correction_data: "051400549   2018413280533"
       }
-      assert_equal response["CUSTIDNO"].date, Date.parse("Fri, 15 Jul 2011")
+      assert_equal correction.date, Date.parse("Fri, 15 Jul 2011")
       assert_equal(
-        response["CUSTIDNO"].return_code,
+        correction.return_code,
         AchClient::ReturnCodes.find_by(code: 'C03')
       )
 
-      assert response["CUSTID1"].is_a?(AchClient::ReturnedAchResponse)
-      assert_equal response["CUSTID1"].date, Date.parse("Fri, 15 Jul 2011")
+      assert rejection.is_a?(AchClient::ReturnedAchResponse)
+      assert_equal rejection.date, Date.parse("Wed, 13 Jul 2011")
       assert_equal(
-        response["CUSTID1"].return_code,
+        rejection.return_code,
+        AchClient::ReturnCodes.find_by(code: 'R01')
+      )
+
+      assert response["CUSTID1"].first.is_a?(AchClient::ReturnedAchResponse)
+      assert_equal response["CUSTID1"].first.date, Date.parse("Fri, 15 Jul 2011")
+      assert_equal(
+        response["CUSTID1"].first.return_code,
         AchClient::ReturnCodes.find_by(code: 'R03')
       )
     end

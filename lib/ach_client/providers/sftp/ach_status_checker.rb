@@ -6,8 +6,9 @@ module AchClient
       ##
       # Gets the status of ach transactions since the last time we ran this
       # method
-      # @return [Hash{String => AchClient::AchResponse}] Hash with
-      #   individual_id_number values as keys, AchResponse objects as values
+      # @return [Hash{String => [AchClient::AchResponse]}] Hash with
+      #   individual_id_number values as keys, list of AchResponse objects
+      #   as values
       def self.most_recent
         process_files(most_recent_files)
       end
@@ -16,8 +17,9 @@ module AchClient
       # Gets the status of ach transactions between the given dates
       # @param start_date [String] lower bound of date ranged status query
       # @param end_date [String] upper bound of date ranged status query
-      # @return [Hash{String => AchClient::AchResponse}] Hash with
-      #   individual_id_number values as keys, AchResponse objects as values
+      # @return [Hash{String => [AchClient::AchResponse]}] Hash with
+      #   individual_id_number values as keys, list of AchResponse objects as
+      #   values
       def self.in_range(start_date:, end_date:)
         in_range = {}
         self.parent.with_sftp_connection do |connection|
@@ -33,14 +35,16 @@ module AchClient
       end
 
       private_class_method def self.process_files(files)
-        (files || []).reduce({}) do |acc, entry|
-          ACH::ACHFile.new(entry.last).batches.map do |batch|
-            batch.entries.map do |ach|
-              # return trace ==> response
-              { ach.individual_id_number => process_ach(batch, ach) }
-            end.reduce({}, &:merge)
-          end.reduce({}, &:merge).merge(acc)
-        end
+        Helpers::Utils.hashlist_merge(
+          (files || []).reduce([]) do |acc, entry|
+            ACH::ACHFile.new(entry.last).batches.map do |batch|
+              batch.entries.map do |ach|
+                # return trace ==> response
+                { ach.individual_id_number => [process_ach(batch, ach)] }
+              end
+            end.reduce([], &:+) + acc
+          end
+        )
       end
 
       private_class_method def self.process_ach(batch, ach)
