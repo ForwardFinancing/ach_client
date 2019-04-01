@@ -9,7 +9,7 @@ class SiliconValleyBank
         amount: BigDecimal.new('575.45'),
         effective_entry_date: Date.today,
         memo: '????',
-        merchant_name: 'DOE, JOHN',
+        merchant_name: "DOE,\n JOHN\r\n",
         originator_name: 'ff',
         routing_number: '123456780',
         sec_code: 'CCD',
