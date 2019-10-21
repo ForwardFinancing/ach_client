@@ -344,6 +344,10 @@
   description: "Ok for submission"
   reason: "Ok for submission"
 -
+  code: 'X01'
+  description: "The available and/or cash reserve balance is not sufficient to cover the dollar value of the debit Entry."
+  reason: "Insufficient Funds"
+-
   code: 'X02'
   description: "A previously active account has been closed by action of the customer or the RDFI."
   reason: "Account Closed"
