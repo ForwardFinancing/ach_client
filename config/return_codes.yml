@@ -372,6 +372,10 @@
   description: "The Receiver has placed a stop payment order on this debit Entry."
   reason: "Payment Stopped"
 -
+  code: 'X09'
+  description: "A sufficient ledger balance exists to satisfy the dollar value of the transaction, but the available balance is below the dollar value of the debit Entry."
+  reason: "Uncollected funds due to uncleared deposit"
+-
   code: 'X10'
   description: "The RDFI has been notified by the Receiver that the Entry is unauthorized, improper, or ineligible."
   reason: "Customer Says: Not Authorized/Improper/Ineligible"
