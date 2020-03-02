@@ -145,6 +145,12 @@ SFTP+NACHA providers take an optional `batch_number` parameter which may be used
   )
 ```
 
+## Testing
+
+A fake ACH provider (in the `AchClient::Fake` namespace) is included to facilitate testing on staging environments.
+This provider behaves the same way as any other without actually sending any transactions. The transaction sending
+methods return the given `external_ach_id`s with no side-effects.
+
 ## Response Polling - Checking Transaction Status
 
 None of the providers support querying for transaction status by external_ach_id. Instead, we must query by date and

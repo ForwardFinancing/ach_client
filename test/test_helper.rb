@@ -17,7 +17,7 @@ require 'sucker_punch/testing/inline'
 require 'ach_client'
 require 'minitest/autorun'
 require 'minitest/mock'
-require 'mocha/mini_test'
+require 'mocha/minitest'
 require 'pry'
 
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new
