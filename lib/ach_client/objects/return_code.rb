@@ -9,6 +9,9 @@ module AchClient
     # The first character in an internal return code
     INTERNAL_START_CHARACTER = 'X'
 
+    # Returns that are both internal and corrections start with this string
+    INTERNAL_CORRECTION_STRING = 'XZ'
+
     attr_accessor :code,
                   :description,
                   :reason
@@ -25,7 +28,7 @@ module AchClient
 
     # @return Whether or not this return is a correction/notice of change
     def correction?
-      @code.start_with?(CORRECTION_START_CHARACTER)
+      @code.start_with?(CORRECTION_START_CHARACTER) || @code.start_with?(INTERNAL_CORRECTION_STRING)
     end
 
     # @return Whether or not the return is internal

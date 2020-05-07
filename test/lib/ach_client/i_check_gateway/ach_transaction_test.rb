@@ -67,6 +67,29 @@ class ICheckGateway
       end
     end
 
+    def test_failure_correction
+      error = assert_raises(AchClient::ICheckGateway::InstantRejectionError) do
+        VCR.use_cassette('icheckgateway_ach_transaction_correction') do
+          transaction.send
+        end
+      end
+      assert_equal(error.ach_response.amount, transaction.amount)
+      assert_equal(error.ach_response.corrections, "987654321")
+      assert_equal(error.ach_response.date, transaction.effective_entry_date)
+      assert_equal(error.ach_response.return_code.code, 'XZ2')
+    end
+
+    def test_failure_x13
+      error = assert_raises(AchClient::ICheckGateway::InstantRejectionError) do
+        VCR.use_cassette('icheckgateway_ach_transaction_x13') do
+          transaction.send
+        end
+      end
+      assert_equal(error.ach_response.amount, transaction.amount)
+      assert_equal(error.ach_response.date, transaction.effective_entry_date)
+      assert_equal(error.ach_response.return_code.code, 'X13')
+    end
+
     class FakeUnsuccessfulResponse
       def success?
         false

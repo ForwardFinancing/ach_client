@@ -115,6 +115,16 @@ returned by the `#send` method. So you should:
 
 4) When you eventually poll the provider for the status of your transactions, you can use the `external_ach_id` you stored to reconcile the returned data against your records
 
+### ICheckGateway instant rejection caveat
+
+ICheckGateway sometimes returns an API error when a valid ACH transaction is sent in a handful of
+rejection scenarios. This is unusual because most providers will accept the transaction, return an
+`external_ach_id`, and then supply the rejection info when you poll for responses (see section on response polling
+below) at a later date. This idiosyncrasy is handled by raising an exception `InstantRejectionError` which contains
+information about the premature ACH return. In this case, no `external_ach_id` is returned by the `#send` method
+because ICheck does not return one, nor do they maintain a record of the transaction in their system. See the
+`InstantRejectionError` class for more details.
+
 ## Batched ACH transactions
 
 A group of ACH transactions can also be sent in a single batched transaction to
