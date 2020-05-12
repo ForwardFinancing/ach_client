@@ -6,15 +6,15 @@
 <title>
   File: README
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "README";
   relpath = '';
 </script>
@@ -209,6 +209,20 @@ be returned by the <code>#send</code> method. So you should:</p>
 transactions, you can use the <code>external_ach_id</code> you stored to
 reconcile the returned data against your records</p>
 
+<h3 id="label-ICheckGateway+instant+rejection+caveat">ICheckGateway instant rejection caveat</h3>
+
+<p>ICheckGateway sometimes returns an API error when a valid ACH transaction
+is sent in a handful of rejection scenarios. This is unusual because most
+providers will accept the transaction, return an
+<code>external_ach_id</code>, and then supply the rejection info when you
+poll for responses (see section on response polling below) at a later date.
+This idiosyncrasy is handled by raising an exception
+<code>InstantRejectionError</code> which contains information about the
+premature ACH return. In this case, no <code>external_ach_id</code> is
+returned by the <code>#send</code> method because ICheck does not return
+one, nor do they maintain a record of the transaction in their system. See
+the <code>InstantRejectionError</code> class for more details.</p>
+
 <h2 id="label-Batched+ACH+transactions">Batched ACH transactions</h2>
 
 <p>A group of ACH transactions can also be sent in a single batched
@@ -247,6 +261,14 @@ which may be used in the filename for uploaded NACHA files.</p>
     <span class='label'>batch_number:</span> <span class='int'>5</span>
   <span class='rparen'>)</span>
 </code></pre>
+
+<h2 id="label-Testing">Testing</h2>
+
+<p>A fake ACH provider (in the <code>AchClient::Fake</code> namespace) is
+included to facilitate testing on staging environments. This provider
+behaves the same way as any other without actually sending any
+transactions. The transaction sending methods return the given
+<code>external_ach_id</code>s with no side-effects.</p>
 
 <h2 id="label-Response+Polling+-+Checking+Transaction+Status">Response Polling - Checking Transaction Status</h2>
 
@@ -530,9 +552,9 @@ href="https://github.com/ForwardFinancing/ach_client">github.com/ForwardFinancin
 </div></div>
 
       <div id="footer">
-  Generated on Tue Jan  2 09:53:20 2018 by
+  Generated on Tue May 12 10:48:47 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.5.0).
+  0.9.25 (ruby-2.5.0).
 </div>
 
     </div>

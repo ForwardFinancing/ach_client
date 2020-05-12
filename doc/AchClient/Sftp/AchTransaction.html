@@ -6,15 +6,15 @@
 <title>
   Class: AchClient::Sftp::AchTransaction
   
-    &mdash; Documentation by YARD 0.9.12
+    &mdash; Documentation by YARD 0.9.25
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "AchClient::Sftp::AchTransaction";
   relpath = '../../';
 </script>
@@ -300,22 +300,24 @@ transaction for eventual NACHA transformation</p>
 23
 24
 25
-26</pre>
+26
+27</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/ach_client/providers/sftp/ach_transaction.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_entry_detail'>to_entry_detail</span>
   <span class='id identifier rubyid_entry'>entry</span> <span class='op'>=</span> <span class='const'>ACH</span><span class='op'>::</span><span class='const'>EntryDetail</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_transaction_code'>transaction_code</span> <span class='op'>=</span> <span class='id identifier rubyid_transaction_code'>transaction_code</span>
-  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_routing_number'>routing_number</span> <span class='op'>=</span> <span class='id identifier rubyid_routing_number'>routing_number</span>
-  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_account_number'>account_number</span> <span class='op'>=</span> <span class='id identifier rubyid_account_number'>account_number</span>
+  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_transaction_code'>transaction_code</span> <span class='op'>=</span> <span class='id identifier rubyid_remove_newlines'>remove_newlines</span><span class='lparen'>(</span><span class='id identifier rubyid_transaction_code'>transaction_code</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_routing_number'>routing_number</span> <span class='op'>=</span> <span class='id identifier rubyid_remove_newlines'>remove_newlines</span><span class='lparen'>(</span><span class='id identifier rubyid_routing_number'>routing_number</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_account_number'>account_number</span> <span class='op'>=</span> <span class='id identifier rubyid_remove_newlines'>remove_newlines</span><span class='lparen'>(</span><span class='id identifier rubyid_account_number'>account_number</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_amount'>amount</span> <span class='op'>=</span> <span class='id identifier rubyid_amount_in_cents'>amount_in_cents</span>
-  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_individual_id_number'>individual_id_number</span> <span class='op'>=</span> <span class='id identifier rubyid_external_ach_id'>external_ach_id</span> <span class='comment'># Doesn&#39;t need to be a number
-</span>  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_individual_name'>individual_name</span> <span class='op'>=</span> <span class='id identifier rubyid_merchant_name'>merchant_name</span>
-  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_originating_dfi_identification'>originating_dfi_identification</span> <span class='op'>=</span>
+  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_individual_id_number'>individual_id_number</span> <span class='op'>=</span> <span class='id identifier rubyid_remove_newlines'>remove_newlines</span><span class='lparen'>(</span><span class='id identifier rubyid_external_ach_id'>external_ach_id</span><span class='rparen'>)</span> <span class='comment'># Doesn&#39;t need to be a number
+</span>  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_individual_name'>individual_name</span> <span class='op'>=</span> <span class='id identifier rubyid_remove_newlines'>remove_newlines</span><span class='lparen'>(</span><span class='id identifier rubyid_merchant_name'>merchant_name</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_originating_dfi_identification'>originating_dfi_identification</span> <span class='op'>=</span> <span class='id identifier rubyid_remove_newlines'>remove_newlines</span><span class='lparen'>(</span>
     <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_parent'>parent</span><span class='period'>.</span><span class='id identifier rubyid_originating_dfi_identification'>originating_dfi_identification</span>
-  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_trace_number'>trace_number</span> <span class='op'>=</span> <span class='id identifier rubyid_external_ach_id'>external_ach_id</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\D</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='comment'># Does need to be a number
+  <span class='rparen'>)</span>
+  <span class='id identifier rubyid_entry'>entry</span><span class='period'>.</span><span class='id identifier rubyid_trace_number'>trace_number</span> <span class='op'>=</span> <span class='id identifier rubyid_remove_non_digits'>remove_non_digits</span><span class='lparen'>(</span><span class='id identifier rubyid_external_ach_id'>external_ach_id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='comment'># Must be number
 </span>  <span class='id identifier rubyid_entry'>entry</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -328,9 +330,9 @@ transaction for eventual NACHA transformation</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Jan  2 09:53:21 2018 by
+  Generated on Tue May 12 10:48:48 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.12 (ruby-2.5.0).
+  0.9.25 (ruby-2.5.0).
 </div>
 
     </div>
