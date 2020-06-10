@@ -1,3 +1,7 @@
+### 2.1.0
+
+* Add AchClient::Fake::AchStatusChecker to facilitate response poller testing
+
 ### 2.0.0
 
 * Add new AchClient::ICheckGateway::InstantRejectionError to handle API errors raised by ICheckGateway in situations
