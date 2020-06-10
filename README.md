@@ -197,6 +197,12 @@ information has changed. Check the return code on the response object for
 details on what happened. Check the corrections hash on the response object for
 the new attributes
 
+### Testing
+
+The fake ACH provider namespace provides a status checker `AchClient::Fake::AchStatusChecker` that always returns the
+same responses. The external_ach_id for each response will be one of
+`['processing', 'settled', 'returned', 'corrected', 'late_returned']`
+
 ## Logging
 
 For record keeping purposes, there is a log provider that allows you to hook
