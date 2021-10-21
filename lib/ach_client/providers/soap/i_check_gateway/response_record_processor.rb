@@ -10,7 +10,7 @@ module AchClient
       AMOUNT_COLUMN = 15
       # The column index with the record submission date
       DATE_COLUMN = 17
-      # THe string index range within the record status with the return code
+      # The string index range within the record status with the return code
       RETURN_CODE_INDEX = 3..5
 
       ## Transforms ICheckGateway transaction report response records into

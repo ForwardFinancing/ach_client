@@ -50,39 +50,78 @@ class ICheckGateway
     end
 
     def test_in_range_success
-      VCR.use_cassette('icg_in_range_success') do
-        assert_equal(
-          AchClient::ICheckGateway::AchStatusChecker.in_range(
-            start_date: Date.yesterday,
-            end_date: Date.today
-          ).to_json,
-          {
-            'ef69436stub0' => [
-              AchClient::ProcessingAchResponse.new(
-                amount: '250.00',
-                date: '9/12/2016'
-              ),
-              AchClient::SettledAchResponse.new(
-                amount: '250.00',
-                date: '9/12/2016'
-              )
-            ],
-            'cb4e1d6stub1' => [AchClient::SettledAchResponse.new(
-              amount: '906.43',
-              date: '9/6/2016'
-            )],
-            '7370d7dstub2' => [AchClient::ReturnedAchResponse.new(
-              amount: '176.10',
-              date: '9/7/2016',
-              return_code: AchClient::ReturnCodes.find_by(code: 'R08')
-            )],
-            'c4918f8stub3' => [AchClient::ReturnedAchResponse.new(
+      vcr_options = {
+        match_requests_on: [
+          # SOAP APIs all use the same URL, so we must define a custom request
+          #   matcher when there is more than one cassette
+          lambda do |left_request, right_request|
+            left_request.uri == right_request.uri &&
+              left_request.headers["Soapaction"] == right_request.headers["Soapaction"] &&
+              left_request.body == right_request.body
+          end
+        ]
+      }
+      VCR.use_cassettes([
+        {name: 'icg_in_range_success', options: vcr_options},
+        {name: 'icg_late_returns_a', options: vcr_options},
+        {name: 'icg_late_returns_b', options: vcr_options}
+      ]) do
+        expected = {
+          'pending_and_settled' => [
+            AchClient::ProcessingAchResponse.new(
+              amount: '250.00',
+              date: '9/12/2016'
+            ),
+            AchClient::SettledAchResponse.new(
+              amount: '250.00',
+              date: '9/12/2016'
+            )
+          ],
+          'settled1' => [AchClient::SettledAchResponse.new(
+            amount: '906.43',
+            date: '9/6/2016'
+          )],
+          'accountclosed' => [AchClient::ReturnedAchResponse.new(
+            amount: '176.10',
+            date: '9/7/2016',
+            return_code: AchClient::ReturnCodes.find_by(code: 'R08')
+          )],
+          'nsf' => [
+            AchClient::ReturnedAchResponse.new(
+              amount: nil,
+              date: '2016-08-10',
+              return_code: AchClient::ReturnCodes.find_by(code: 'R01')
+            ),
+            AchClient::ReturnedAchResponse.new(
               amount: '178.75',
               date: '9/6/2016',
               return_code: AchClient::ReturnCodes.find_by(code: 'R01')
-            )]
-          }.to_json
-        )
+            )
+          ],
+          'short_late_return' => [
+            AchClient::ReturnedAchResponse.new(
+              amount: nil,
+              date: '2016-08-10',
+              return_code: AchClient::ReturnCodes.find_by(code: 'R08')
+            ),
+            AchClient::SettledAchResponse.new(
+              amount: '123.45',
+              date: '8/10/2016'
+            )
+          ],
+          'very_late_return' => [
+            AchClient::ReturnedAchResponse.new(
+              amount: nil,
+              date: '2016-08-11',
+              return_code: AchClient::ReturnCodes.find_by(code: 'R02')
+            )
+          ]
+        }.sort.to_json
+        actual = AchClient::ICheckGateway::AchStatusChecker.in_range(
+          start_date: Date.yesterday,
+          end_date: Date.today
+        ).sort.to_json
+        assert_equal(JSON.parse(expected).to_h, JSON.parse(actual).to_h)
       end
     end
   end
