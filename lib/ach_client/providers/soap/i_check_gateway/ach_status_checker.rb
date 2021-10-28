@@ -34,8 +34,7 @@ module AchClient
         end
       end
 
-      # Wrapper for the range response endpoint
-      # @return [Hash{String => [AchClient::AchResponse]}] Hash with
+      # @return Hash{String => [AchClient::AchResponse]} Hash with
       # confirmation number as the key, lists of AchResponse objects as values
       def self.in_range(start_date:, end_date:)
         Helpers::Utils.hashlist_merge(
@@ -44,6 +43,8 @@ module AchClient
         )
       end
 
+      # @return [Hash{String => [AchClient::AchResponse]}] List of hashes with
+      # confirmation number as the key, lists of AchResponse objects as values
       private_class_method def self.pull_transaction_report(start_date:, end_date:)
         AchClient::ICheckGateway.wrap_request(
           method: :pull_transaction_report,
@@ -53,9 +54,12 @@ module AchClient
           })
         ).split("\n").select do |record|
           check_for_errors(record)
-          # Ignore credit card swipes if there are any
+          # Only the records that start with ICHECK are ACH transactions.
+          # Everything else is other types of transactions such as credit card swipes which are outside
+          # the scope of this library
           record.start_with?('ICHECK')
         end.map do |record|
+          # The 4th column is the external_ach_id which becomes the hash key
           {
             record.split('|')[3] =>
               [
@@ -70,6 +74,8 @@ module AchClient
       #   any late returns that were returned outside the window of pending ACHs.
       # This uses a separate endpoint which gives back returned ACHs by the return date, which will include late
       #  returns
+      # @return [Hash{String => [AchClient::AchResponse]}] List of hashes with
+      # confirmation number as the key, lists of AchResponse objects as values
       private_class_method def self.check_for_late_returns(start_date:, end_date:)
         (start_date..end_date).map do |date|
           AchClient::ICheckGateway.wrap_request(
@@ -78,6 +84,8 @@ module AchClient
               ReturnedDate: date
             })
           ).split("\n").map do |record|
+            # Each record returned by the API is a pipe separated list with 2 columns:
+            # Example: external_ach_id|R01\r\n
             external_ach_id, return_code = record.split('|')
             {external_ach_id => [AchClient::ReturnedAchResponse.new(
               amount: nil, # response does not include amount
