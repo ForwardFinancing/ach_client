@@ -14,6 +14,8 @@ module AchClient
         "ACCESS DENIED"
       ]
 
+      EMPTY_RETURNS_RESPONSE = 'NO RETURNS REPORTED'.freeze
+
       ##
       # ICheckGateway does not support this
       def self.most_recent
@@ -84,14 +86,22 @@ module AchClient
               ReturnedDate: date
             })
           ).split("\n").map do |record|
-            # Each record returned by the API is a pipe separated list with 2 columns:
-            # Example: external_ach_id|R01\r\n
-            external_ach_id, return_code = record.split('|')
-            {external_ach_id => [AchClient::ReturnedAchResponse.new(
-              amount: nil, # response does not include amount
-              date: date,
-              return_code: AchClient::ReturnCodes.find_by(code: return_code)
-            )]}
+            if record.include?("|")
+              # Each record returned by the API is a pipe separated list with 2 columns:
+              # Example: external_ach_id|R01\r\n
+              external_ach_id, return_code = record.split('|')
+              {external_ach_id => [AchClient::ReturnedAchResponse.new(
+                amount: nil, # response does not include amount
+                date: date,
+                return_code: AchClient::ReturnCodes.find_by(code: return_code)
+              )]}
+            elsif record.include?(EMPTY_RETURNS_RESPONSE)
+              # Server returns an error message instead of an empty list, so we catch the error message and return our
+              #  own empty response
+              {}
+            else
+              raise "Couldnt process ICheckGateway Late Returns Response: #{record}"
+            end
           end
         end.reduce(&:+)
       end

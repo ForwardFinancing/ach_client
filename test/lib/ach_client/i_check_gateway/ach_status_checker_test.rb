@@ -1,6 +1,19 @@
 require 'test_helper'
 class ICheckGateway
   class AchStatusCheckerTest < MiniTest::Test
+    # SOAP APIs all use the same URL, so we must define a custom request
+    #   matcher when there is more than one cassette
+    def vcr_options
+      {
+        match_requests_on: [
+          lambda do |left_request, right_request|
+            left_request.uri == right_request.uri &&
+              left_request.headers["Soapaction"] == right_request.headers["Soapaction"] &&
+              left_request.body == right_request.body
+          end
+        ]
+      }
+    end
     def test_most_recent
       assert_raises(RuntimeError) do
         AchClient::ICheckGateway::AchStatusChecker.most_recent
@@ -49,18 +62,40 @@ class ICheckGateway
       end
     end
 
+    def test_in_range_empty_returns
+      # Make sure status checker doesn't raise an error when one of the requests to the late returns endpoint returns
+      #  no results
+      VCR.use_cassettes([
+        {name: 'icg_in_range_success', options: vcr_options},
+        {name: 'icg_late_returns_empty', options: vcr_options},
+        {name: 'icg_late_returns_b', options: vcr_options}
+      ]) do
+        assert AchClient::ICheckGateway::AchStatusChecker.in_range(
+          start_date: Date.yesterday,
+          end_date: Date.today
+        )
+      end
+    end
+
+    def test_in_range_returns_error
+      VCR.use_cassettes([
+        {name: 'icg_in_range_success', options: vcr_options},
+        {name: 'icg_late_returns_error', options: vcr_options},
+      ]) do
+        assert_equal(
+          assert_raises(RuntimeError) do
+            AchClient::ICheckGateway::AchStatusChecker.in_range(
+              start_date: Date.yesterday,
+              end_date: Date.today
+            )
+          end.message,
+          "Couldnt process ICheckGateway Late Returns Response: HERE IS AN UNDOCUMENTED API ERROR"
+        )
+      end
+    end
+
     def test_in_range_success
-      vcr_options = {
-        match_requests_on: [
-          # SOAP APIs all use the same URL, so we must define a custom request
-          #   matcher when there is more than one cassette
-          lambda do |left_request, right_request|
-            left_request.uri == right_request.uri &&
-              left_request.headers["Soapaction"] == right_request.headers["Soapaction"] &&
-              left_request.body == right_request.body
-          end
-        ]
-      }
+
       VCR.use_cassettes([
         {name: 'icg_in_range_success', options: vcr_options},
         {name: 'icg_late_returns_a', options: vcr_options},
