@@ -11,7 +11,7 @@
 ## Overview
 
 The AchClient gem provides a common interface for working with a variety of
-ACH providers.
+ACH providers.  This is an **OPEN SOURCE PROJECT, PUBLICLY ACCESSIBLE**, and licensed under the BSD 3-Clause license
 
 Supported features include:
 
