@@ -25,6 +25,13 @@ module AchClient
       # @return [String] originating_dfi_identification refers to your bank?
       # originating_dfi => "Originating Depository Financial Institution"
       class_attribute :originating_dfi_identification
+
+      # @return [Proc<Time>] method to calculate the File Creation Date for NACHA header
+      class_attribute :transmission_datetime_calculator, default: -> { Time.now }
+
+      def self.transmission_datetime
+        transmission_datetime_calculator.call
+      end
     end
   end
 end

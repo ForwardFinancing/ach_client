@@ -52,6 +52,15 @@ class SiliconValleyBank
       assert_equal(batch.cook_some_nachas.to_s, expected_batch_result)
     end
 
+    def test_override_file_creation_date
+      AchClient::SiliconValleyBank.transmission_datetime_calculator = -> { Time.utc(2022) }
+      # this is the part of the file that has file creation datetime stamp (with no helpful readability chars)
+      expected = expected_batch_result.gsub("1608111013", "2201010000")
+      assert_equal(batch.cook_some_nachas.to_s, expected)
+      AchClient::SiliconValleyBank.transmission_datetime_calculator = -> { Time.now }
+    end
+
+
     def test_send_invalid_batch
       assert_raises(InvalidAchTransactionError) do
         invalid = transaction
