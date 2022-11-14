@@ -62,7 +62,8 @@ module AchClient
           :immediate_destination,
           :immediate_destination_name,
           :immediate_origin,
-          :immediate_origin_name
+          :immediate_origin_name,
+          :transmission_datetime
         ].each do |attribute|
           file_header.send("#{attribute}=", self.class.parent.send(attribute))
         end

@@ -337,6 +337,7 @@ these new classes using the same interface described above for the API providers
 | `outgoing_path` | Path on the remote server where bank has asked you to dump your NACHAs |
 | `incoming_path` | Path on the remote server where the bank leaves confirmation/return files |
 | `file_naming_strategy` | Function to define filenames for the NACHA files |
+| `transmission_datetime_calculator` | (optional) Function to define File Creation Date header value - defaults to `-> { Time.now }` - note that you may wish to override this to use a non-UTC zone |
 
 #### File Naming Strategy
 

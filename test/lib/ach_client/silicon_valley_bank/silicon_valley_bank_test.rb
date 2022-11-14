@@ -20,6 +20,7 @@ class SiliconValleyBank
       assert_equal(AchClient::SiliconValleyBank.username, 'ebachman@piedpiper.org')
       assert_equal(AchClient::SiliconValleyBank.password, 'AviatoRulez7')
       assert_includes(AchClient::SiliconValleyBank.private_ssh_key, 'PRIVATE KEY')
+      assert_equal(AchClient::SiliconValleyBank.transmission_datetime.iso8601, '2016-08-11T10:13:05-04:00')
 
       AchClient::SiliconValleyBank.immediate_destination = nil
       AchClient::SiliconValleyBank.immediate_destination_name = nil
@@ -32,6 +33,7 @@ class SiliconValleyBank
       AchClient::SiliconValleyBank.username = nil
       AchClient::SiliconValleyBank.password = nil
       AchClient::SiliconValleyBank.private_ssh_key = nil
+      AchClient::SiliconValleyBank.transmission_datetime_calculator = -> { Time.utc(2022) }
 
       assert_nil(AchClient::SiliconValleyBank.immediate_destination)
       assert_nil(AchClient::SiliconValleyBank.immediate_destination_name)
@@ -44,6 +46,8 @@ class SiliconValleyBank
       assert_nil(AchClient::SiliconValleyBank.username)
       assert_nil(AchClient::SiliconValleyBank.password)
       assert_nil(AchClient::SiliconValleyBank.private_ssh_key)
+      assert_equal(AchClient::SiliconValleyBank.transmission_datetime.iso8601, '2022-01-01T00:00:00Z')
+
 
       AchClient::SiliconValleyBank.immediate_destination = '000000000'
       AchClient::SiliconValleyBank.immediate_destination_name = 'Test Destination'
@@ -107,6 +111,7 @@ class SiliconValleyBank
       neykreVPVPYSfDzgWoKtfQKp1Zsk9n5iqsxykMS79fhO9y8SHkjEbUXjU68=
       -----END RSA PRIVATE KEY-----
       "
+      AchClient::SiliconValleyBank.transmission_datetime_calculator = -> { Time.now }
     end
   end
 end
