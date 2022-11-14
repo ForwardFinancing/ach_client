@@ -10,11 +10,13 @@ module AchClient
       AMOUNT_COLUMN = 15
       # The column index with the record submission date
       DATE_COLUMN = 17
-      # THe string index range within the record status with the return code
+      # The string index range within the record status with the return code
       RETURN_CODE_INDEX = 3..5
 
       ## Transforms ICheckGateway transaction report response records into
-      # AchClient::Response objects
+      # AchClient::Response object
+      # Here is an example record:
+      # ICHECK|N||external_ach_id|abc||||||||BC|012345678|********1234|250.00|D|9/12/2016|05:03:04|C1234-1234||AutoCheck|||abcde|CCD|||\r\ns
       # @param record [String] the | separated record string from ICheckGateway
       # @return [AchClient::AchResponse] our representation of the response
       def self.process_response_record(record)
