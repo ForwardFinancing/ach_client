@@ -30,7 +30,7 @@ module AchClient
       # @return [AchClient::ProcessingAchResponse] processing response
       def self.process_1SNT(record)
         AchClient::ProcessingAchResponse.new(
-          amount: BigDecimal.new(record[:trans_amount]),
+          amount: BigDecimal(record[:trans_amount]),
           date: record[:action_date]
         )
       end
@@ -40,7 +40,7 @@ module AchClient
       # @return [AchClient::SettledAchResponse] settled response
       def self.process_2STL(record)
         AchClient::SettledAchResponse.new(
-          amount: BigDecimal.new(record[:trans_amount]),
+          amount: BigDecimal(record[:trans_amount]),
           date: record[:action_date]
         )
       end
@@ -51,7 +51,7 @@ module AchClient
       # @return [AchClient::ReturnedAchResponse] returned response
       def self.process_3RET(record)
         AchClient::ReturnedAchResponse.new(
-          amount: BigDecimal.new(record[:trans_amount]),
+          amount: BigDecimal(record[:trans_amount]),
           date: record[:action_date],
           return_code: AchClient::ReturnCodes.find_by(
             code: record[:action_detail][0..2]
@@ -75,7 +75,7 @@ module AchClient
       # @return [AchClient::CorrectedAchResponse] corrected response
       def self.process_5COR(record)
         AchClient::CorrectedAchResponse.new(
-          amount: BigDecimal.new(record[:trans_amount]),
+          amount: BigDecimal(record[:trans_amount]),
           date: record[:action_date],
           return_code: AchClient::ReturnCodes.find_by(
             code: record[:action_detail][0..2]

@@ -5,7 +5,7 @@ class SiliconValleyBank
       AchClient::SiliconValleyBank::AchTransaction.new(
         account_number: '00002323044',
         account_type: AchClient::AccountTypes::Checking,
-        amount: BigDecimal.new('575.45'),
+        amount: BigDecimal('575.45'),
         memo: '????',
         merchant_name: 'DOE, JOHN',
         originator_name: 'ff',
@@ -44,7 +44,7 @@ class SiliconValleyBank
       entry = AchClient::SiliconValleyBank::AchTransaction.new(
         account_number: '00002323044',
         account_type: AchClient::AccountTypes::Checking,
-        amount: BigDecimal.new('-575.45'),
+        amount: BigDecimal('-575.45'),
         memo: '????',
         merchant_name: 'DOE, JOHN',
         originator_name: 'ff',
@@ -62,7 +62,7 @@ class SiliconValleyBank
       entry = AchClient::SiliconValleyBank::AchTransaction.new(
         account_number: '00002323044',
         account_type: AchClient::AccountTypes::Checking,
-        amount: BigDecimal.new('-575.45'),
+        amount: BigDecimal('-575.45'),
         memo: '????',
         merchant_name: 'DOE, JOHN',
         originator_name: 'ff',

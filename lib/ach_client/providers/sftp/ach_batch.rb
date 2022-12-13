@@ -12,15 +12,15 @@ module AchClient
       # The filename used for the batch
       # @return [String] filename to use
       def batch_file_name
-        self.class.parent.file_naming_strategy.(@batch_number)
+        self.class.module_parent.file_naming_strategy.(@batch_number)
       end
 
       # Sends the batch to SFTP provider
       # @return [Array<String>]
       def do_send_batch
-        self.class.parent.write_remote_file(
+        self.class.module_parent.write_remote_file(
           file_path: File.join(
-            self.class.parent.outgoing_path,
+            self.class.module_parent.outgoing_path,
             batch_file_name
           ),
           file_body: cook_some_nachas.to_s
@@ -65,7 +65,7 @@ module AchClient
           :immediate_origin_name,
           :transmission_datetime
         ].each do |attribute|
-          file_header.send("#{attribute}=", self.class.parent.send(attribute))
+          file_header.send("#{attribute}=", self.class.module_parent.send(attribute))
         end
         file_header
       end
@@ -80,14 +80,14 @@ module AchClient
         batch_header = batch.header
         batch_header.company_name = originator_name
         batch_header.company_identification =
-          self.class.parent.company_identification
+          self.class.module_parent.company_identification
         batch_header.standard_entry_class_code = sec_code
         batch_header.company_entry_description =
-          self.class.parent.company_entry_description
+          self.class.module_parent.company_entry_description
         batch_header.company_descriptive_date = effective_entry_date
         batch_header.effective_entry_date = effective_entry_date
         batch_header.originating_dfi_identification =
-          self.class.parent.originating_dfi_identification
+          self.class.module_parent.originating_dfi_identification
         transactions.each do |transaction|
           batch.entries << transaction.to_entry_detail
         end

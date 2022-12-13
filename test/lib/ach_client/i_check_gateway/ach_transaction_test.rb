@@ -5,7 +5,7 @@ class ICheckGateway
       AchClient::ICheckGateway::AchTransaction.new(
         account_number: '115654668777',
         account_type: AchClient::AccountTypes::BusinessChecking,
-        amount: BigDecimal.new('575.45'),
+        amount: BigDecimal('575.45'),
         effective_entry_date: Date.today,
         memo: '????',
         merchant_name: 'test merchant',
@@ -24,7 +24,7 @@ class ICheckGateway
           SiteID: 'SEDZ',
           SiteKey: '236652',
           APIKey: 'a3GFMBGz6KhkTzg',
-          Amount: BigDecimal.new('575.45'),
+          Amount: BigDecimal('575.45'),
           RoutingNumber: '083000108',
           AccountNumber: '115654668777',
           AccountType: 'BC',

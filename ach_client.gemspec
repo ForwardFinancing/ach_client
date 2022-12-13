@@ -28,17 +28,19 @@ Gem::Specification.new do |spec|
     'config'
   ]
 
+  #spec.required_ruby_version = '>= 2.7.0'
+
   # NACHA library
   spec.add_dependency 'ach', '~> 0'
 
   # Handy ruby behavior from rails
-  spec.add_dependency 'activesupport', '< 6' # Need to rename .parent to .module_parent before upgrade
+  spec.add_dependency 'activesupport'
 
   # SFTP client (for Bank providers)
   spec.add_dependency 'net-sftp'
 
   # SOAP client (for AchWorks and ICheckGateway clients)
-  spec.add_dependency 'savon', '~> 2'
+  spec.add_dependency 'savon', '~> 2.12.0'
 
   # Asynchronocity w/out extra infrastucture dependency (database/redis)
   spec.add_dependency 'sucker_punch', '~> 2'

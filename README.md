@@ -70,7 +70,7 @@ AchClient::Provider::AchTransaction.new(
   # The merchant's account type (see account types note above)
   account_type: AchClient::AccountTypes::BusinessChecking,
   # The amount of the ACH transaction, should be positive
-  amount: BigDecimal.new('575.45'),
+  amount: BigDecimal('575.45'),
   # The date on which you would like the transaction to take effect.
   # Beware that some providers may use this field to charge you extra for
   # same-day ACH ( a recent feature for ACH providers )

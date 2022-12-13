@@ -22,7 +22,7 @@ module AchClient
       #   values
       def self.in_range(start_date:, end_date:)
         in_range = {}
-        self.parent.with_sftp_connection do |connection|
+        self.module_parent.with_sftp_connection do |connection|
           in_range = process_files(
             files_in_range(
               connection: connection,
@@ -92,7 +92,7 @@ module AchClient
       end
 
       private_class_method def self.inbox_path_to(filename)
-        "#{self.parent.incoming_path}/#{filename}"
+        "#{self.module_parent.incoming_path}/#{filename}"
       end
 
       private_class_method def self.files_in_range(
@@ -101,7 +101,7 @@ module AchClient
         end_date: nil
       )
         # Get info on all files - equivalent to `ls`
-        connection.dir.entries(self.parent.incoming_path)
+        connection.dir.entries(self.module_parent.incoming_path)
                       .select do |file|
           last_modified_time = Time.at(file.attributes.mtime) - 1.minute
           # Filter to files modified in date range
@@ -148,7 +148,7 @@ module AchClient
 
       private_class_method def self.most_recent_files
         files = []
-        self.parent.with_sftp_connection do |connection|
+        self.module_parent.with_sftp_connection do |connection|
           files = files_in_range(
             connection: connection,
             start_date: last_most_recent_check_date(connection: connection)
