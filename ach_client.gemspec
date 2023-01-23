@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'ach', '~> 0'
 
   # Handy ruby behavior from rails
-  spec.add_dependency 'activesupport'
+  spec.add_dependency 'activesupport', '>= 6.0'
 
   # SFTP client (for Bank providers)
   spec.add_dependency 'net-sftp'
