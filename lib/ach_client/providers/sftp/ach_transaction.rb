@@ -20,7 +20,7 @@ module AchClient
         entry.individual_id_number = remove_newlines(external_ach_id) # Doesn't need to be a number
         entry.individual_name = remove_newlines(merchant_name)
         entry.originating_dfi_identification = remove_newlines(
-          self.class.parent.originating_dfi_identification
+          self.class.module_parent.originating_dfi_identification
         )
         entry.trace_number = remove_non_digits(external_ach_id).to_i # Must be number
         entry

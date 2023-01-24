@@ -6,7 +6,7 @@ class AchWorks
       AchClient::AchWorks::AchTransaction.new(
         account_number: '00002323044',
         account_type: AchClient::AccountTypes::Checking,
-        amount: BigDecimal.new('575.45'),
+        amount: BigDecimal('575.45'),
         effective_entry_date: Date.today,
         memo: '????',
         merchant_name: 'DOE, JOHN',
@@ -23,7 +23,7 @@ class AchWorks
       AchClient::AchWorks::AchTransaction.new(
         account_number: '00002323044',
         account_type: AchClient::AccountTypes::Checking,
-        amount: BigDecimal.new('575.45'),
+        amount: BigDecimal('575.45'),
         effective_entry_date: Date.today,
         memo: '????',
         merchant_name: 'DOE, JOHN',
@@ -40,7 +40,7 @@ class AchWorks
       AchClient::AchWorks::AchTransaction.new(
         account_number: '00002323044',
         account_type: AchClient::AccountTypes::Checking,
-        amount: BigDecimal.new('575.45'),
+        amount: BigDecimal('575.45'),
         effective_entry_date: Date.today,
         memo: '????',
         merchant_name: 'DOE, JOHN',
@@ -114,12 +114,12 @@ class AchWorks
       assert_equal(batch.to_hash[:InpACHFile][:TotalDebitRecords], 3)
       assert_equal(
         batch.to_hash[:InpACHFile][:TotalDebitAmount],
-        BigDecimal.new('575.45') * 3
+        BigDecimal('575.45') * 3
       )
       assert_equal(batch.to_hash[:InpACHFile][:TotalCreditRecords], 3)
       assert_equal(
         batch.to_hash[:InpACHFile][:TotalCreditAmount],
-        BigDecimal.new('575.45') * 3
+        BigDecimal('575.45') * 3
       )
       assert_equal(
         batch.to_hash[:InpACHFile][:ACHRecords][:ACHTransRecord].length,
@@ -138,7 +138,7 @@ class AchWorks
           CustTransType: 'C',
           CustomerID: 'foo',
           CustomerAcctType: 'C',
-          TransAmount: BigDecimal.new('575.45').to_s,
+          TransAmount: BigDecimal('575.45').to_s,
           CheckOrTransDate: '2016-08-11T00:00:00.00000+00:00',
           EffectiveDate: '2016-08-11T00:00:00.00000+00:00',
           Memo: '????',
@@ -157,7 +157,7 @@ class AchWorks
           CustTransType: 'D',
           CustomerID: 'foo',
           CustomerAcctType: 'C',
-          TransAmount: BigDecimal.new('575.45').to_s,
+          TransAmount: BigDecimal('575.45').to_s,
           CheckOrTransDate: '2016-08-11T00:00:00.00000+00:00',
           EffectiveDate: '2016-08-11T00:00:00.00000+00:00',
           Memo: '????',

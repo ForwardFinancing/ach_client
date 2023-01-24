@@ -7,7 +7,7 @@ class AchWorks
         AchClient::AchWorks::AchTransaction.new(
           account_number: '00002323044',
           account_type: AchClient::AccountTypes::Checking,
-          amount: BigDecimal.new('575.45'),
+          amount: BigDecimal('575.45'),
           effective_entry_date: Date.today,
           memo: '????',
           merchant_name: 'DOE, JOHN MELONCAMP FALLON DOUGIE',
@@ -43,7 +43,7 @@ class AchWorks
         AchClient::AchWorks::AchTransaction.new(
           account_number: '00002323044',
           account_type: AchClient::AccountTypes::Savings,
-          amount: BigDecimal.new('575.45'),
+          amount: BigDecimal('575.45'),
           effective_entry_date: Date.today,
           memo: '????',
           merchant_name: 'DOE, JOHN',
@@ -125,7 +125,7 @@ class AchWorks
         AchClient::AchWorks::AchTransaction.new(
           account_number: '00002323044',
           account_type: AchClient::AccountTypes::Checking,
-          amount: BigDecimal.new('575.45'),
+          amount: BigDecimal('575.45'),
           effective_entry_date: Date.yesterday,
           memo: '????',
           merchant_name: 'DOE, JOHN',
@@ -142,7 +142,7 @@ class AchWorks
           AchClient::AchWorks::AchTransaction.new(
             account_number: '00002323044',
             account_type: AchClient::AccountTypes::Checking,
-            amount: BigDecimal.new('575.45'),
+            amount: BigDecimal('575.45'),
             effective_entry_date: Date.today,
             memo: '????',
             merchant_name: 'DOE, JOHN',
