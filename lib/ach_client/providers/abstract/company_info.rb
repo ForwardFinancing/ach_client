@@ -17,11 +17,10 @@ module AchClient
       end
 
       private_class_method def self.build_from_config(args)
-        self.new(
-          args.map do |arg|
+        args_hash = args.map do |arg|
             {arg => self.to_s.deconstantize.constantize.send(arg)}
           end.reduce(&:merge)
-        )
+        self.new(**args_hash)
       end
     end
   end

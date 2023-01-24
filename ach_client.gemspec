@@ -43,7 +43,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'savon', '~> 2.12.0'
 
   # Asynchronocity w/out extra infrastucture dependency (database/redis)
-  spec.add_dependency 'sucker_punch', '~> 2'
+  spec.add_dependency 'sucker_punch', '~> 3'
 
   spec.add_development_dependency 'codeclimate-test-reporter'
   spec.add_development_dependency 'minitest-reporters'
