@@ -55,18 +55,22 @@
   code: 'R02'
   description: "A previously active account has been closed by action of the customer or the RDFI."
   reason: "Account Closed"
+  risk_and_enforcement_category: administrative
 -
   code: 'R03'
   description: "The account number structure is valid and it passes the Check digit validation, but the account number does not correspond to the individual identified in the Entry, or the account number designated is not an existing account."
   reason: "Bad account info/Not currently an existing account"
+  risk_and_enforcement_category: administrative
 -
   code: 'R04'
   description: "The account number structure is not valid. The Entry may fail the Check digit validation or may contain an incorrect number of digits."
   reason: "Invalid Account Number Structure"
+  risk_and_enforcement_category: administrative
 -
   code: 'R05'
   description: "CCD or CTX debit Entry was transmitted to a Consumer Account of the Receiver and was not authorized by the Receiver."
   reason: "Unauthorized CCD Debit to Consumer Account"
+  risk_and_enforcement_category: unauthorized
 -
   code: 'R06'
   description: "The ODFI has requested that the RDFI return an Erroneous Entry."
@@ -75,6 +79,7 @@
   code: 'R07'
   description: "The RDFI's customer (the Receiver) revoked the authorization previously provided to the Originator for this debit Entry."
   reason: "Authorization Revoked by Customer"
+  risk_and_enforcement_category: unauthorized
 -
   code: 'R08'
   description: "The Receiver has placed a stop payment order on this debit Entry."
@@ -87,6 +92,7 @@
   code: 'R10'
   description: "The RDFI has been notified by the Receiver that the Entry is unauthorized, improper, or ineligible."
   reason: "Customer Says: Not Authorized/Improper/Ineligible"
+  risk_and_enforcement_category: unauthorized
 -
   code: 'R11'
   description: "Used when returning a Check truncation Entry."
@@ -163,6 +169,7 @@
   code: 'R29'
   description: "The RDFI has been notified by the Receiver(non-consumer) that a specific Entry has not been authorized by the Receiver."
   reason: "Corporate Customer Advises Not Authorized"
+  risk_and_enforcement_category: unauthorized
 -
   code: 'R30'
   description: "The RDFI does not participate in a Check truncation program."
@@ -243,6 +250,7 @@
   code: 'R51'
   description: "An RCK Entry considered to be ineligible or improper."
   reason: "RCK Entry: Related Item Ineligible/Entry Improper"
+  risk_and_enforcement_category: unauthorized
 -
   code: 'R52'
   description: "A stop payment order has been placed on the item to which the RCK Entry relates."

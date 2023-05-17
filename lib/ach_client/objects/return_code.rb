@@ -14,16 +14,19 @@ module AchClient
 
     attr_accessor :code,
                   :description,
-                  :reason
+                  :reason,
+                  :risk_and_enforcement_category
 
     # Constructs a Ach return code
     # @param code [String] the 3 char code identifier (ie 'R01')
     # @param description [String] full explanation of the return
     # @param reason [String] shorter explanation of the return
-    def initialize(code:, description:, reason: nil)
+    def initialize(code:, description:, reason: nil, risk_and_enforcement_category: nil)
       @code = code
       @description = description
       @reason = reason
+      # See https://www.nacha.org/rules/ach-network-risk-and-enforcement-topics
+      @risk_and_enforcement_category = risk_and_enforcement_category
     end
 
     # @return Whether or not this return is a correction/notice of change
@@ -36,6 +39,14 @@ module AchClient
     #   would fail and didn't bother to send it to their upstream provider
     def internal?
       @code.start_with?(INTERNAL_START_CHARACTER)
+    end
+
+    def administrative_return?
+      @risk_and_enforcement_category == "administrative"
+    end
+
+    def unauthorized_return?
+      @risk_and_enforcement_category == "unauthorized"
     end
   end
 end
