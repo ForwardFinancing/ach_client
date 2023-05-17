@@ -11,7 +11,14 @@ module AchClient
       # @param globals [Savon::GlobalOptions] Savon's global options
       # @param locals [Savon::LocalOptions] Savon's global options
       # @return [NilClass] returns nothing so the request is not mutated
-      def notify(operation_name, builder, _globals, _locals)
+      def notify(operation_name, builder, globals, _locals)
+        # Since Savon only lets us register observers globally this method is called by any other Savon clients outside
+        #   this library. We don't want to log for those other clients so we check to see that the request came from
+        #   AchClient by comparing the wsdl to our known wsdls
+        return unless [
+          AchClient::ICheckGateway.wsdl,
+          AchClient::AchWorks.wsdl
+        ].include?(globals.instance_variable_get(:@options)[:wsdl])
         # Send the xml body to the logger job
         AchClient::Logging::LogProviderJob.perform_async(
           body: builder.to_s,
