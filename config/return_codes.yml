@@ -1,777 +1,776 @@
 ---
 -
-  code: 'C01'
-  description: "ACH Change Code. Incorrect Account Number"
-  reason: "Incorrect Account Number"
+  code: C01
+  description: ACH Change Code. Incorrect Account Number
+  reason: Incorrect bank account number
 -
-  code: 'C02'
-  description: "ACH Change Code. Incorrect Transit Route"
-  reason: "Incorrect Transit Route"
+  code: C02
+  description: ACH Change Code. Incorrect Transit Route
+  reason: Incorrect transit/routing number
 -
-  code: 'C03'
-  description: "ACH Change Code. Incorrect Account Number and Bank route"
-  reason: "Incorrect Account Number and Bank route"
+  code: C03
+  description: ACH Change Code. Incorrect Account Number and Bank route
+  reason: Incorrect transit/routing number and bank account number
 -
-  code: 'C04'
-  description: "ACH Change Code. Incorrect Account Name"
-  reason: "Incorrect Account Name"
+  code: C04
+  description: ACH Change Code. Incorrect Account Name
+  reason: Bank account name change
 -
-  code: 'C05'
-  description: "Trans Code: 22=checking/credit, 27=checking/debit, 32=savings/credit, 37=savings/debit"
-  reason: "Incorrect Acct Type (Checking vs Savings)"
+  code: C05
+  description: 'Trans Code: 22=checking/credit, 27=checking/debit, 32=savings/credit, 37=savings/debit'
+  reason: Incorrect payment code
 -
-  code: 'C06'
-  description: "ACH Change Code. Incorrect Acct Number and Acct Type"
-  reason: "Incorrect Acct Number and Acct Type"
+  code: C06
+  description: ACH Change Code. Incorrect Acct Number and Acct Type
+  reason: Incorrect bank account number and transit code
 -
-  code: 'C07'
-  description: "ACH Change Code. Incorrect Acct Number, Route and Acct Type"
-  reason: "Incorrect Acct Number, Route and Acct Type"
+  code: C07
+  description: ACH Change Code. Incorrect Acct Number, Route and Acct Type
+  reason: Incorrect transit/routing number, bank account number and payment code
 -
-  code: 'C09'
-  description: "ACH Change Code. Incorrect Individual ID"
-  reason: "Incorrect Individual ID"
+  code: C09
+  description: ACH Change Code. Incorrect Individual ID
+  reason: Incorrect individual ID number
 -
-  code: 'C10'
-  description: "ACH Change Code. Incorrect Company Name"
-  reason: "Incorrect Company Name"
+  code: C10
+  description: ACH Change Code. Incorrect Company Name
+  reason: Incorrect company name
 -
-  code: 'C11'
-  description: "ACH Change Code. Incorrect Company ID"
-  reason: "Incorrect Company ID"
+  code: C11
+  description: ACH Change Code. Incorrect Company ID
+  reason: Incorrect company identification
 -
-  code: 'C12'
-  description: "ACH Change Code. Incorrect Company Name and ID"
-  reason: "Incorrect Company Name and ID"
+  code: C12
+  description: ACH Change Code. Incorrect Company Name and ID
+  reason: Incorrect company name and company ID
 -
-  code: 'C13'
-  description: "ACH Change Code. Addenda Format Error"
-  reason: "Addenda Format Error"
+  code: C13
+  description: ACH Change Code. Addenda Format Error
+  reason: Addenda Format Error
 -
-  code: 'R01'
-  description: "The available and/or cash reserve balance is not sufficient to cover the dollar value of the debit Entry."
-  reason: "Insufficient Funds"
+  code: R01
+  description: The available and/or cash reserve balance is not sufficient to cover the dollar value of the debit Entry.
+  reason: Insufficient Funds
 -
-  code: 'R02'
-  description: "A previously active account has been closed by action of the customer or the RDFI."
-  reason: "Account Closed"
+  code: R02
+  description: A previously active account has been closed by action of the customer or the RDFI.
+  reason: Account Closed
   risk_and_enforcement_category: administrative
 -
-  code: 'R03'
-  description: "The account number structure is valid and it passes the Check digit validation, but the account number does not correspond to the individual identified in the Entry, or the account number designated is not an existing account."
-  reason: "Bad account info/Not currently an existing account"
+  code: R03
+  description: The account number structure is valid and it passes the Check digit validation, but the account number does not correspond to the individual identified in the Entry, or the account number designated is not an existing account.
+  reason: No Account/Unable to Locate Account
   risk_and_enforcement_category: administrative
 -
-  code: 'R04'
-  description: "The account number structure is not valid. The Entry may fail the Check digit validation or may contain an incorrect number of digits."
-  reason: "Invalid Account Number Structure"
+  code: R04
+  description: The account number structure is not valid. The Entry may fail the Check digit validation or may contain an incorrect number of digits.
+  reason: Invalid Account Number
   risk_and_enforcement_category: administrative
 -
-  code: 'R05'
-  description: "CCD or CTX debit Entry was transmitted to a Consumer Account of the Receiver and was not authorized by the Receiver."
-  reason: "Unauthorized CCD Debit to Consumer Account"
+  code: R05
+  description: CCD or CTX debit Entry was transmitted to a Consumer Account of the Receiver and was not authorized by the Receiver.
+  reason: Reserved
   risk_and_enforcement_category: unauthorized
 -
-  code: 'R06'
-  description: "The ODFI has requested that the RDFI return an Erroneous Entry."
-  reason: "Returned by request of Sender or ACHWorks bank"
+  code: R06
+  description: The ODFI has requested that the RDFI return an Erroneous Entry.
+  reason: Returned per ODFIs Request
 -
-  code: 'R07'
-  description: "The RDFI's customer (the Receiver) revoked the authorization previously provided to the Originator for this debit Entry."
-  reason: "Authorization Revoked by Customer"
+  code: R07
+  description: The RDFI's customer (the Receiver) revoked the authorization previously provided to the Originator for this debit Entry.
+  reason: Authorization Revoked by Customer
   risk_and_enforcement_category: unauthorized
 -
-  code: 'R08'
-  description: "The Receiver has placed a stop payment order on this debit Entry."
-  reason: "Payment Stopped"
+  code: R08
+  description: The Receiver has placed a stop payment order on this debit Entry.
+  reason: Payment Stopped or Stop Payment on Item
 -
-  code: 'R09'
-  description: "A sufficient ledger balance exists to satisfy the dollar value of the transaction, but the available balance is below the dollar value of the debit Entry."
-  reason: "Uncollected funds due to uncleared deposit"
+  code: R09
+  description: A sufficient ledger balance exists to satisfy the dollar value of the transaction, but the available balance is below the dollar value of the debit Entry.
+  reason: Uncollected Funds
 -
-  code: 'R10'
-  description: "The RDFI has been notified by the Receiver that the Entry is unauthorized, improper, or ineligible."
-  reason: "Customer Says: Not Authorized/Improper/Ineligible"
+  code: R10
+  description: The RDFI has been notified by the Receiver that the Entry is unauthorized, improper, or ineligible.
+  reason: Customer Advises Not Authorized
   risk_and_enforcement_category: unauthorized
 -
-  code: 'R11'
-  description: "Used when returning a Check truncation Entry."
-  reason: "Check Truncation Entry Return"
+  code: R11
+  description: Used when returning a Check truncation Entry.
+  reason: Customer Advises Entry Not in Accordance with the Terms of the Authorization
 -
-  code: 'R12'
-  description: "A financial institution received an Entry to an account that was sold to another financial institution."
-  reason: "Account Sold to Another Bank"
+  code: R12
+  description: A financial institution received an Entry to an account that was sold to another financial institution.
+  reason: Branch sold to another DFI
 -
-  code: 'R13'
-  description: "Entry contains a Receiving DFI Identification or Gateway Identification that is not a valid ACH routing number."
-  reason: "Invalid ACH Routing Number"
+  code: R13
+  description: Entry contains a Receiving DFI Identification or Gateway Identification that is not a valid ACH routing number.
+  reason: RDFI not qualified to participate
 -
-  code: 'R14'
-  description: "The representative payee is either deceased or unable to continue in that capacity. The beneficiary is not deceased."
-  reason: "Representative Payee Deceased or Incapacitated"
+  code: R14
+  description: The representative payee is either deceased or unable to continue in that capacity. The beneficiary is not deceased.
+  reason: Re-presentment payee deceased or unable to continue in that capacity
 -
-  code: 'R15'
+  code: R15
   description: "(1) The beneficiary is deceased, or (2) The account holder is deceased."
-  reason: "Beneficiary/Account Holder (not Rep Payee)Deceased"
+  reason: Beneficiary of account holder deceased
 -
-  code: 'R16'
-  description: "1) Access to the account is restricted due to specific action taken by the RDFI or by legal action; or (2) OFAC has instructed the RDFI or Gateway to return the Entry."
-  reason: "Account Frozen/Entry Returned Per OFAC Instruction"
+  code: R16
+  description: 1) Access to the account is restricted due to specific action taken by the RDFI or by legal action; or (2) OFAC has instructed the RDFI or Gateway to return the Entry.
+  reason: Account Frozen
 -
-  code: 'R17'
-  description: "Field(s) cannot be processed by RDFI."
-  reason: "File Record Field Errors"
+  code: R17
+  description: Field(s) cannot be processed by RDFI.
+  reason: File record edit criteria
 -
-  code: 'R18'
-  description: "The effective Entry date for a credit Entry is more than two Banking Days after the Banking Day of processing as established by the Originating ACH Operator; or The effective Entry date for a debit Entry is more than one Banking Day after the processing d"
-  reason: "Improper Effective Entry Date"
+  code: R18
+  description: The effective Entry date for a credit Entry is more than two Banking Days after the Banking Day of processing as established by the Originating ACH Operator; or The effective Entry date for a debit Entry is more than one Banking Day after the processing d
+  reason: Improper effective entry date
 -
-  code: 'R19'
-  description: "Amount field is non-numeric. Amount field is not zero in a prenotification, DNE, ENR, Notification of Change, refused Notification of Change, or zero dollar CCD, CTX, or IAT Entry. Amount field is zero in an Entry other than a Prenotification, DNE, ENR, N"
-  reason: "Amount Field Error"
+  code: R19
+  description: Amount field is non-numeric. Amount field is not zero in a prenotification, DNE, ENR, Notification of Change, refused Notification of Change, or zero dollar CCD, CTX, or IAT Entry. Amount field is zero in an Entry other than a Prenotification, DNE, ENR, N
+  reason: Amount field error
 -
-  code: 'R20'
-  description: "ACH Entry to a non-Transaction Account. Account does not accept this type of transaction."
-  reason: "Account doesn't accept trans type (Credit/Debit)"
+  code: R20
+  description: ACH Entry to a non-Transaction Account. Account does not accept this type of transaction.
+  reason: Non-Transaction Account
 -
-  code: 'R21'
-  description: "The identification number used in the Company Identification Field is not valid."
-  reason: "Invalid Company Identification"
+  code: R21
+  description: The identification number used in the Company Identification Field is not valid.
+  reason: Invalid company identification
 -
-  code: 'R22'
-  description: "The Receiver has indicated to the RDFI that the number with which the Originator was identified is not correct."
-  reason: "Invalid Individual ID Number"
+  code: R22
+  description: The Receiver has indicated to the RDFI that the number with which the Originator was identified is not correct.
+  reason: Invalid individual ID number
 -
-  code: 'R23'
-  description: "Any credit Entry that is refused by the Receiver may be returned by the RDFI."
-  reason: "Credit Entry Refused by Receiver"
+  code: R23
+  description: Any credit Entry that is refused by the Receiver may be returned by the RDFI.
+  reason: Credit entry refused by receiver
 -
-  code: 'R24'
-  description: "The RDFI has received what appears to be a duplicate Entry; i.e., the trace number, date, dollar amount and/or other data matches another transaction."
-  reason: "Duplicate Entry"
+  code: R24
+  description: The RDFI has received what appears to be a duplicate Entry; i.e., the trace number, date, dollar amount and/or other data matches another transaction.
+  reason: Duplicate entry
 -
-  code: 'R25'
-  description: "Addenda Record Indicator value is incorrect. Addenda Type Code is invalid, out of sequence, or missing, Number of Addenda Records exceeds allowable maximum, Addenda Sequence Number is invalid."
-  reason: "Addenda Error"
+  code: R25
+  description: Addenda Record Indicator value is incorrect. Addenda Type Code is invalid, out of sequence, or missing, Number of Addenda Records exceeds allowable maximum, Addenda Sequence Number is invalid.
+  reason: Addenda error
 -
-  code: 'R26'
-  description: "Erroneous data or missing data in a mandatory field."
-  reason: "Mandatory Field Error"
+  code: R26
+  description: Erroneous data or missing data in a mandatory field.
+  reason: Mandatory field error
 -
-  code: 'R27'
-  description: "Original Entry Trace Number is not present in the Addenda Record on a Return or Notification of Change Entry; or Trace Number of an Addenda Record is not the same as the Trace Number of the preceding Entry Detail Record."
-  reason: "Trace Number Error"
+  code: R27
+  description: Original Entry Trace Number is not present in the Addenda Record on a Return or Notification of Change Entry; or Trace Number of an Addenda Record is not the same as the Trace Number of the preceding Entry Detail Record.
+  reason: Trace number error
 -
-  code: 'R28'
-  description: "The Check digit for a routing number is not valid."
-  reason: "Routing Number Check Digit Error"
+  code: R28
+  description: The Check digit for a routing number is not valid.
+  reason: Routing number check digit error
 -
-  code: 'R29'
-  description: "The RDFI has been notified by the Receiver(non-consumer) that a specific Entry has not been authorized by the Receiver."
-  reason: "Corporate Customer Advises Not Authorized"
+  code: R29
+  description: The RDFI has been notified by the Receiver(non-consumer) that a specific Entry has not been authorized by the Receiver.
+  reason: Corporate customer advises not authorized
   risk_and_enforcement_category: unauthorized
 -
-  code: 'R30'
-  description: "The RDFI does not participate in a Check truncation program."
-  reason: "RDFI Not Participant in Check Truncation Program"
+  code: R30
+  description: The RDFI does not participate in a Check truncation program.
+  reason: RDFI not participant in check truncation program
 -
-  code: 'R31'
-  description: "The RDFI may return a CCD or CTX Entry that the ODFI agrees to accept."
-  reason: "Permissible Return Entry (CCD and CTX only)"
+  code: R31
+  description: The RDFI may return a CCD or CTX Entry that the ODFI agrees to accept.
+  reason: Permissible return entry
 -
-  code: 'R32'
-  description: "The RDFI is not able to settle the Entry."
-  reason: "RDFI Non-Settlement"
+  code: R32
+  description: The RDFI is not able to settle the Entry.
+  reason: RDFI non-settlement
 -
-  code: 'R33'
-  description: "This Return Reason Code may only be used to return XCK Entries and is at the RDFI's sole discretion."
-  reason: "Return of XCK Entry"
+  code: R33
+  description: This Return Reason Code may only be used to return XCK Entries and is at the RDFI's sole discretion.
+  reason: Return of XCK entry
 -
-  code: 'R34'
-  description: "The RDFI's participation has been limited by a federal or state supervisor."
-  reason: "Limited Participation DFI"
+  code: R34
+  description: The RDFI's participation has been limited by a federal or state supervisor.
+  reason: Limited participation DFI
 -
-  code: 'R35'
-  description: "Debit Entries (with the exception of Reversing Entries) are not permitted for CIE Entries or to loan accounts."
-  reason: "Return of Improper Debit Entry"
+  code: R35
+  description: Debit Entries (with the exception of Reversing Entries) are not permitted for CIE Entries or to loan accounts.
+  reason: Return of improper debit entry
 -
-  code: 'R36'
-  description: "ACH credit Entries (with the exception of Reversing Entries) are not permitted for use with ARC, BOC, POP, RCK, TEL, WEB, and XCK."
-  reason: "Return of Improper Credit Entry"
+  code: R36
+  description: ACH credit Entries (with the exception of Reversing Entries) are not permitted for use with ARC, BOC, POP, RCK, TEL, WEB, and XCK.
+  reason: Return of improper credit entry
 -
-  code: 'R37'
-  description: "The source document to which an ARC, BOC, or POP Entry relates has been presented for payment."
-  reason: "Source Document Presented for Payment"
+  code: R37
+  description: The source document to which an ARC, BOC, or POP Entry relates has been presented for payment.
+  reason: Source Document Presented
 -
-  code: 'R38'
-  description: "The RDFI determines a stop payment order has been placed on the source document to which the ARC or BOC Entry relates."
-  reason: "Stop Payment on Source Document"
+  code: R38
+  description: The RDFI determines a stop payment order has been placed on the source document to which the ARC or BOC Entry relates.
+  reason: Stop Payment on Source Document
 -
-  code: 'R39'
-  description: "The RDFI determines that: (1) the source document used for an ARC, BOC, or POP Entry to its Receiver's account is improper, or (2) an ARC, BOC, or POP Entry and the source document to which the Entry relates have both been presented for payment and posted"
-  reason: "Source Document: Improper/Presented for Payment"
+  code: R39
+  description: 'The RDFI determines that: (1) the source document used for an ARC, BOC, or POP Entry to its Receiver''s account is improper, or (2) an ARC, BOC, or POP Entry and the source document to which the Entry relates have both been presented for payment and posted'
+  reason: Improper Source Document
 -
-  code: 'R40'
-  description: "This Return Reason Code may only be used to return ENR Entries and is at the Federal Government Agency's sole discretion."
-  reason: "Return of ENR Entry by Federal Government Agency"
+  code: R40
+  description: This Return Reason Code may only be used to return ENR Entries and is at the Federal Government Agency's sole discretion.
+  reason: Return of ENR entry by Federal Government Agency (ENR Only)
 -
-  code: 'R41'
-  description: "Either the Transaction Code included in Field 3 of the Addenda Record does not conform to the ACH Record Format Specifications contained in Appendix Three (ACH Record Format Specifications) or it is not appropriate with regard to an Automated Enrollment E"
-  reason: "Invalid Transaction Code"
+  code: R41
+  description: Either the Transaction Code included in Field 3 of the Addenda Record does not conform to the ACH Record Format Specifications contained in Appendix Three (ACH Record Format Specifications) or it is not appropriate with regard to an Automated Enrollment E
+  reason: Invalid transaction code (ENR Only)
 -
-  code: 'R42'
-  description: "The Routing Number and the Check Digit included in Field 3 of the Addenda Record is either not a valid number or it does not conform to the Modulus 10 formula."
-  reason: "Routing Number/Check Digit Error"
+  code: R42
+  description: The Routing Number and the Check Digit included in Field 3 of the Addenda Record is either not a valid number or it does not conform to the Modulus 10 formula.
+  reason: Routing number/check digit error (ENR only)
 -
-  code: 'R43'
-  description: "The Receiver's account number included in Field 3 of the Addenda Record must include at least one alphameric character."
-  reason: "Invalid DFI Account Number"
+  code: R43
+  description: The Receiver's account number included in Field 3 of the Addenda Record must include at least one alphameric character.
+  reason: Invalid DFI account number (ENR only)
 -
-  code: 'R44'
-  description: "The Individual ID Number/Identification Number provided in Field 3 of the Addenda Record does not match a corresponding ID number in the Federal Government Agency's records."
-  reason: "Invalid Individual ID Number/Identification Number"
+  code: R44
+  description: The Individual ID Number/Identification Number provided in Field 3 of the Addenda Record does not match a corresponding ID number in the Federal Government Agency's records.
+  reason: Invalid individual ID number (ENR only)
 -
-  code: 'R45'
-  description: "The name of the consumer or company provided in Field 3 of the Addenda Record either does not match a corresponding name in the Federal Government Agency's records or fails to include at least one alphameric character."
-  reason: "Invalid Individual Name/Company Name"
+  code: R45
+  description: The name of the consumer or company provided in Field 3 of the Addenda Record either does not match a corresponding name in the Federal Government Agency's records or fails to include at least one alphameric character.
+  reason: Invalid individual name/company name (ENR only)
 -
-  code: 'R46'
-  description: "The Representative Payee Indicator Code included in Field 3 of the Addenda Record has been omitted or it is not consistent with the Federal Government Agency's records."
-  reason: "Invalid Representative Payee Indicator"
+  code: R46
+  description: The Representative Payee Indicator Code included in Field 3 of the Addenda Record has been omitted or it is not consistent with the Federal Government Agency's records.
+  reason: Invalid representative payee indicator (ENR only)
 -
-  code: 'R47'
-  description: "The Entry is a duplicate of an Automated Enrollment Entry previously initiated by a DFI."
-  reason: "Duplicate Enrollment (ENR only)"
+  code: R47
+  description: The Entry is a duplicate of an Automated Enrollment Entry previously initiated by a DFI.
+  reason: Duplicate enrollment
 -
-  code: 'R50'
-  description: "The RDFI is located in a state that has not adopted Revised Article 4 of the Uniform Commercial Code (1990 Official Text) and has not revised its customer agreements to allow for Electronic presentment. OR The RDFI is located within a state that requires "
-  reason: "State Law Affecting RCK Acceptance"
+  code: R50
+  description: The RDFI is located in a state that has not adopted Revised Article 4 of the Uniform Commercial Code (1990 Official Text) and has not revised its customer agreements to allow for Electronic presentment. OR The RDFI is located within a state that requires
+  reason: State Law Affecting RCK Acceptance
 -
-  code: 'R51'
-  description: "An RCK Entry considered to be ineligible or improper."
-  reason: "RCK Entry: Related Item Ineligible/Entry Improper"
+  code: R51
+  description: An RCK Entry considered to be ineligible or improper.
+  reason: Item is Ineligible, Notice Not Provided, Signature not genuine
   risk_and_enforcement_category: unauthorized
 -
-  code: 'R52'
-  description: "A stop payment order has been placed on the item to which the RCK Entry relates."
-  reason: "Stop Payment on Item Related to RCK Entry"
+  code: R52
+  description: A stop payment order has been placed on the item to which the RCK Entry relates.
+  reason: Stop Payment on Item
 -
-  code: 'R53'
-  description: "In addition to an RCK Entry, the item to which the RCK Entry relates has also been presented for payment."
-  reason: "Item and RCK Entry Presented for Payment"
+  code: R53
+  description: In addition to an RCK Entry, the item to which the RCK Entry relates has also been presented for payment.
 -
-  code: 'R61'
-  description: "The financial institution preparing the Return Entry (the RDFI of the original Entry) has placed the incorrect Routing Number in the Receiving DFI Identification field."
-  reason: "Misrouted Return"
+  code: R61
+  description: The financial institution preparing the Return Entry (the RDFI of the original Entry) has placed the incorrect Routing Number in the Receiving DFI Identification field.
+  reason: Misrouted return
 -
-  code: 'R62'
-  description: "The Trace Number found in positions 07-21 in the Addenda Record of the return entry is different from the trace number of the original entry."
-  reason: "Incorrect Trace Number"
+  code: R62
+  description: The Trace Number found in positions 07-21 in the Addenda Record of the return entry is different from the trace number of the original entry.
+  reason: Incorrect trace number
 -
-  code: 'R63'
-  description: "The dollar amount in the Entry Detail Record of the return entry is different from the dollar amount of the original entry."
-  reason: "Incorrect Dollar Amount"
+  code: R63
+  description: The dollar amount in the Entry Detail Record of the return entry is different from the dollar amount of the original entry.
+  reason: Incorrect dollar amount
 -
-  code: 'R64'
-  description: "The Individual Identification Number reflected in the Entry Detail Record of the return entry is different from the Individual Identification Number/Identification Number used in the original entry."
-  reason: "Incorrect Individual Identification"
+  code: R64
+  description: The Individual Identification Number reflected in the Entry Detail Record of the return entry is different from the Individual Identification Number/Identification Number used in the original entry.
+  reason: Incorrect individual identification
 -
-  code: 'R65'
-  description: "The Transaction Code in the Entry Detail Record of the return entry is not the return equivalent of the Transaction Code in the original entry."
-  reason: "Incorrect Transaction Code"
+  code: R65
+  description: The Transaction Code in the Entry Detail Record of the return entry is not the return equivalent of the Transaction Code in the original entry.
+  reason: Incorrect transaction code
 -
-  code: 'R66'
-  description: "The Company Identification number used in the Company/Batch Header Record of the return entry is different from the Company Identification number used in the original entry."
-  reason: "Incorrect Company Identification"
+  code: R66
+  description: The Company Identification number used in the Company/Batch Header Record of the return entry is different from the Company Identification number used in the original entry.
+  reason: Incorrect company identification
 -
-  code: 'R67'
-  description: "The ODFI has received more than one Return for the same Entry."
-  reason: "Duplicate Return"
+  code: R67
+  description: The ODFI has received more than one Return for the same Entry.
+  reason: Duplicate return
 -
-  code: 'R68'
-  description: "The Return Entry has not been sent within the timeframe established by these Rules."
-  reason: "Untimely Return"
+  code: R68
+  description: The Return Entry has not been sent within the timeframe established by these Rules.
+  reason: Untimely Return
 -
-  code: 'R69'
-  description: "One or more of the field requirements are incorrect (Individual Identification Number, Company Identification Number, Invalid Effective Entry Date)."
-  reason: "Field Error(s)"
+  code: R69
+  description: One or more of the field requirements are incorrect (Individual Identification Number, Company Identification Number, Invalid Effective Entry Date).
+  reason: Multiple Errors
 -
-  code: 'R70'
-  description: "The ODFI has received a Return Entry identified by the RDFI as being returned with the permission of, or at the request of, the ODFI, but the ODFI has not agreed to accept the Entry or has not requested the return of the Entry."
-  reason: "Permissible Return Not Accepted/Requested by ODFI"
+  code: R70
+  description: The ODFI has received a Return Entry identified by the RDFI as being returned with the permission of, or at the request of, the ODFI, but the ODFI has not agreed to accept the Entry or has not requested the return of the Entry.
+  reason: Permissible return entry not accepted
 -
-  code: 'R71'
-  description: "The financial institution preparing the dishonored Return Entry (the ODFI of the original Entry) has placed the incorrect Routing Number in the Receiving DFI Identification field."
-  reason: "Misrouted Dishonored Return"
+  code: R71
+  description: The financial institution preparing the dishonored Return Entry (the ODFI of the original Entry) has placed the incorrect Routing Number in the Receiving DFI Identification field.
+  reason: Misrouted dishonored return
 -
-  code: 'R72'
-  description: "The dishonored Return Entry has not been sent within the designated timeframe."
-  reason: "Untimely Dishonored Return"
+  code: R72
+  description: The dishonored Return Entry has not been sent within the designated timeframe.
+  reason: Untimely dishonored return
 -
-  code: 'R73'
-  description: "The RDFI is certifying that the original Return Entry was sent within the timeframe designated in these Rules."
-  reason: "Timely Original Return"
+  code: R73
+  description: The RDFI is certifying that the original Return Entry was sent within the timeframe designated in these Rules.
+  reason: Timely original return
 -
-  code: 'R74'
-  description: "The RDFI is correcting a previous Return Entry that was dishonored using Return Reason Code R69 (Field Errors) because it contained incomplete or incorrect information."
-  reason: "Corrected Return"
+  code: R74
+  description: The RDFI is correcting a previous Return Entry that was dishonored using Return Reason Code R69 (Field Errors) because it contained incomplete or incorrect information.
+  reason: Corrected return
 -
-  code: 'R75'
-  description: "The Return Entry was not a duplicate of an Entry previously returned by the RDFI."
-  reason: "Return Not a Duplicate"
+  code: R75
+  description: The Return Entry was not a duplicate of an Entry previously returned by the RDFI.
+  reason: Return Not Duplicate
 -
-  code: 'R76'
-  description: "The original Return Entry did not contain the errors indicated by the ODFI in the dishonored Return Entry."
-  reason: "No Errors Found"
+  code: R76
+  description: The original Return Entry did not contain the errors indicated by the ODFI in the dishonored Return Entry.
+  reason: No Errors Found
 -
-  code: 'R80'
-  description: "The IAT Entry is being returned due to one or more of the following conditions: ¥ invalid DFI/Bank Branch Country Code ¥ invalid DFI/Bank Identification Number Qualifier ¥ invalid Foreign Exchange Indicator ¥ invalid ISO Originating Currency Code ¥ invali"
-  reason: "IAT Entry Coding Error"
+  code: R80
+  description: 'The IAT Entry is being returned due to one or more of the following conditions: ¥ invalid DFI/Bank Branch Country Code ¥ invalid DFI/Bank Identification Number Qualifier ¥ invalid Foreign Exchange Indicator ¥ invalid ISO Originating Currency Code ¥ invali'
+  reason: Cross-Border Payment Coding Error
 -
-  code: 'R81'
-  description: "The IAT Entry is being returned because the Gateway does not have an agreement with either the ODFI or the Gateway's customer to transmit IAT Entries."
-  reason: "Non-Participant in IAT Program"
+  code: R81
+  description: The IAT Entry is being returned because the Gateway does not have an agreement with either the ODFI or the Gateway's customer to transmit IAT Entries.
+  reason: Non-Participant in Cross-Border Program
 -
-  code: 'R82'
-  description: "The reference used to identify the Foreign Receiving DFI of an Outbound IAT Entry is invalid."
-  reason: "Invalid Foreign Receiving DFI Identification"
+  code: R82
+  description: The reference used to identify the Foreign Receiving DFI of an Outbound IAT Entry is invalid.
+  reason: Invalid Foreign Receiving DFI Identification
 -
-  code: 'R83'
-  description: "The IAT Entry is being returned due to settlement problems in the foreign payment system."
-  reason: "Foreign Receiving DFI Unable to Settle"
+  code: R83
+  description: The IAT Entry is being returned due to settlement problems in the foreign payment system.
+  reason: Foreign Receiving DFI Unable to Settle
 -
-  code: 'R84'
-  description: "For Outbound IAT Entries, the Entry has not been processed and is being returned at the Gateway's discretion because either (1) the processing of such Entry may expose the Gateway to excessive risk, or (2) the foreign payment system does support the funct"
-  reason: "Entry Not Processed by Gateway"
+  code: R84
+  description: For Outbound IAT Entries, the Entry has not been processed and is being returned at the Gateway's discretion because either (1) the processing of such Entry may expose the Gateway to excessive risk, or (2) the foreign payment system does support the funct
+  reason: Not Processed by Gateway
 -
-  code: 'R85'
-  description: "The RDFI/Gateway has identified the Entry as an Outbound international payment and is returning the Entry because it bears an SEC Code that lacks information required by the Gateway for OFAC compliance."
-  reason: "Incorrectly Coded Outbound International Payment"
+  code: R85
+  description: The RDFI/Gateway has identified the Entry as an Outbound international payment and is returning the Entry because it bears an SEC Code that lacks information required by the Gateway for OFAC compliance.
+  reason: Incorrectly Coded Outbound Int’l Payment
 -
-  code: 'X00'
-  description: "Ok for submission"
-  reason: "Ok for submission"
+  code: X00
+  description: Ok for submission
+  reason: Ok for submission
 -
-  code: 'X01'
-  description: "The available and/or cash reserve balance is not sufficient to cover the dollar value of the debit Entry."
-  reason: "Insufficient Funds"
+  code: X01
+  description: The available and/or cash reserve balance is not sufficient to cover the dollar value of the debit Entry.
+  reason: Insufficient Funds
 -
-  code: 'X02'
-  description: "A previously active account has been closed by action of the customer or the RDFI."
-  reason: "Account Closed"
+  code: X02
+  description: A previously active account has been closed by action of the customer or the RDFI.
+  reason: Account Closed
 -
-  code: 'X03'
-  description: "The account number structure is valid and it passes the Check digit validation, but the account number does not correspond to the individual identified in the Entry, or the account number designated is not an existing account."
-  reason: "Bad account info/Not currently an existing account"
+  code: X03
+  description: The account number structure is valid and it passes the Check digit validation, but the account number does not correspond to the individual identified in the Entry, or the account number designated is not an existing account.
+  reason: 'No Account '
 -
-  code: 'X04'
-  description: "The account number structure is not valid. The Entry may fail the Check digit validation or may contain an incorrect number of digits."
-  reason: "Invalid Account Number Structure"
+  code: X04
+  description: The account number structure is not valid. The Entry may fail the Check digit validation or may contain an incorrect number of digits.
+  reason: Invalid Account Number Structure
 -
-  code: 'X05'
-  description: "CCD or CTX debit Entry was transmitted to a Consumer Account of the Receiver and was not authorized by the Receiver."
-  reason: "Unauthorized CCD Debit to Consumer Account"
+  code: X05
+  description: CCD or CTX debit Entry was transmitted to a Consumer Account of the Receiver and was not authorized by the Receiver.
+  reason: Unauthorized CCD Debit to Consumer Account
 -
-  code: 'X07'
-  description: "The RDFI's customer (the Receiver) revoked the authorization previously provided to the Originator for this debit Entry."
-  reason: "Authorization Revoked by Customer"
+  code: X07
+  description: The RDFI's customer (the Receiver) revoked the authorization previously provided to the Originator for this debit Entry.
+  reason: Authorization Revoked by Customer
 -
-  code: 'X08'
-  description: "The Receiver has placed a stop payment order on this debit Entry."
-  reason: "Payment Stopped"
+  code: X08
+  description: The Receiver has placed a stop payment order on this debit Entry.
+  reason: Payment Stopped
 -
-  code: 'X09'
-  description: "A sufficient ledger balance exists to satisfy the dollar value of the transaction, but the available balance is below the dollar value of the debit Entry."
-  reason: "Uncollected funds due to uncleared deposit"
+  code: X09
+  description: A sufficient ledger balance exists to satisfy the dollar value of the transaction, but the available balance is below the dollar value of the debit Entry.
+  reason: Uncollected funds due to uncleared deposit
 -
-  code: 'X10'
-  description: "The RDFI has been notified by the Receiver that the Entry is unauthorized, improper, or ineligible."
-  reason: "Customer Says: Not Authorized/Improper/Ineligible"
+  code: X10
+  description: The RDFI has been notified by the Receiver that the Entry is unauthorized, improper, or ineligible.
+  reason: 'Customer Says: Not Authorized/Improper/Ineligible'
 -
-  code: 'X12'
-  description: "A financial institution received an Entry to an account that was sold to another financial institution."
-  reason: "Account Sold to Another Bank"
+  code: X12
+  description: A financial institution received an Entry to an account that was sold to another financial institution.
+  reason: Account Sold to Another Bank
 -
-  code: 'X13'
-  description: "Entry contains a Receiving DFI Identification or Gateway Identification that is not a valid ACH routing number."
-  reason: "Invalid ACH Routing Number"
+  code: X13
+  description: Entry contains a Receiving DFI Identification or Gateway Identification that is not a valid ACH routing number.
+  reason: Invalid ACH Routing Number
 -
-  code: 'X14'
-  description: "The representative payee is either deceased or unable to continue in that capacity. The beneficiary is not deceased."
-  reason: "Representative Payee Deceased or Incapacitated"
+  code: X14
+  description: The representative payee is either deceased or unable to continue in that capacity. The beneficiary is not deceased.
+  reason: Representative Payee Deceased or Incapacitated
 -
-  code: 'X15'
+  code: X15
   description: "(1) The beneficiary is deceased, or (2) The account holder is deceased."
-  reason: "Beneficiary/Account Holder (not Rep Payee)Deceased"
--
-  code: 'X16'
-  description: "1) Access to the account is restricted due to specific action taken by the RDFI or by legal action; or (2) OFAC has instructed the RDFI or Gateway to return the Entry."
-  reason: "Account Frozen/Entry Returned Per OFAC Instruction"
--
-  code: 'X20'
-  description: "ACH Entry to a non-Transaction Account. Account does not accept this type of transaction."
-  reason: "Account doesn't accept trans type (Credit/Debit)"
--
-  code: 'X22'
-  description: "The Receiver has indicated to the RDFI that the number with which the Originator was identified is not correct."
-  reason: "Invalid Individual ID Number"
--
-  code: 'X26'
-  description: "Erroneous data or missing data in a mandatory field."
-  reason: "Mandatory Field Error"
--
-  code: 'X28'
-  description: "The Check digit for a routing number is not valid."
-  reason: "Routing Number Check Digit Error"
--
-  code: 'X29'
-  description: "The RDFI has been notified by the Receiver(non-consumer) that a specific Entry has not been authorized by the Receiver."
-  reason: "Corporate Customer Advises Not Authorized"
--
-  code: 'X30'
-  description: "The RDFI does not participate in a Check truncation program."
-  reason: "RDFI Not Participant in Check Truncation Program"
--
-  code: 'X34'
-  description: "The RDFI's participation has been limited by a federal or state supervisor."
-  reason: "Limited Participation DFI"
--
-  code: 'X37'
-  description: "The source document to which an ARC, BOC, or POP Entry relates has been presented for payment."
-  reason: "Source Document Presented for Payment"
--
-  code: 'X38'
-  description: "The RDFI determines a stop payment order has been placed on the source document to which the ARC or BOC Entry relates."
-  reason: "Stop Payment on Source Document"
--
-  code: 'X40'
-  description: "This Return Reason Code may only be used to return ENR Entries and is at the Federal Government Agency's sole discretion."
-  reason: "Return of ENR Entry by Federal Government Agency"
--
-  code: 'X42'
-  description: "The Routing Number and the Check Digit included in Field 3 of the Addenda Record is either not a valid number or it does not conform to the Modulus 10 formula."
-  reason: "Routing Number/Check Digit Error"
--
-  code: 'X43'
-  description: "The Receiver's account number included in Field 3 of the Addenda Record must include at least one alphameric character."
-  reason: "Invalid DFI Account Number"
--
-  code: 'X50'
-  description: "The RDFI is located in a state that has not adopted Revised Article 4 of the Uniform Commercial Code (1990 Official Text) and has not revised its customer agreements to allow for Electronic presentment. OR The RDFI is located within a state that requires "
-  reason: "State Law Affecting RCK Acceptance"
--
-  code: 'X51'
-  description: "An RCK Entry considered to be ineligible or improper."
-  reason: "RCK Entry: Related Item Ineligible/Entry Improper"
--
-  code: 'X53'
-  description: "In addition to an RCK Entry, the item to which the RCK Entry relates has also been presented for payment."
-  reason: "Item and RCK Entry Presented for Payment"
--
-  code: 'X81'
-  description: "The IAT Entry is being returned because the Gateway does not have an agreement with either the ODFI or the Gateway's customer to transmit IAT Entries."
-  reason: "Non-Participant in IAT Program"
--
-  code: 'X82'
-  description: "The reference used to identify the Foreign Receiving DFI of an Outbound IAT Entry is invalid."
-  reason: "Invalid Foreign Receiving DFI Identification"
--
-  code: 'X83'
-  description: "The IAT Entry is being returned due to settlement problems in the foreign payment system."
-  reason: "Foreign Receiving DFI Unable to Settle"
--
-  code: 'X84'
-  description: "For Outbound IAT Entries, the Entry has not been processed and is being returned at the Gateway's discretion because either (1) the processing of such Entry may expose the Gateway to excessive risk, or (2) the foreign payment system does support the funct"
-  reason: "Entry Not Processed by Gateway"
--
-  code: 'XA0'
-  description: "Internal Return. Account Access is denied"
-  reason: "Account access is denied"
--
-  code: 'XA1'
-  description: "Internal Return. Account number has illegal characters"
-  reason: "Account number has illegal characters"
--
-  code: 'XA2'
-  description: "Internal Return. Amount over Admin authorized limit"
-  reason: "Amount over Admin authorized limit"
--
-  code: 'XA3'
-  description: "Internal Return. Amount is over the transaction dollar limit set for the SEC Code and account set."
-  reason: "Amount over ACHWorks single transaction limit"
--
-  code: 'XA4'
-  description: "Internal Return. Bank does not participate"
-  reason: "Bank does not participate"
--
-  code: 'XA5'
-  description: "Internal Return. Batch Stopped"
-  reason: "Batch Stopped"
--
-  code: 'XA6'
-  description: "Internal Return. Check Number missing"
-  reason: "Check Number missing"
--
-  code: 'XA7'
-  description: "Internal Return. Credits not allowed for this service code"
-  reason: "Credits not allowed for this service code"
--
-  code: 'XA8'
-  description: "Internal Return. Duplicate item"
-  reason: "Duplicate item"
--
-  code: 'XA9'
-  description: "Internal Return. Internal User Not Authorized for transaction"
-  reason: "ACHWorks User Not Authorized for transaction"
--
-  code: 'XB0'
-  description: "Internal Return. Fee amount over legal limit"
-  reason: "Fee amount over legal limit"
--
-  code: 'XB1'
-  description: "Internal Return. Record contains invalid character(s)"
-  reason: "Record contains invalid character(s)"
--
-  code: 'XB2'
-  description: "Internal Return. Invalid Account Set"
-  reason: "Invalid Account Set"
--
-  code: 'XB3'
-  description: "Internal Return. Invalid Acct Type"
-  reason: "Invalid Acct Type"
--
-  code: 'XB4'
-  description: "Internal Return. Invalid bank transit routing number"
-  reason: "Invalid bank transit routing number"
--
-  code: 'XB5'
-  description: "Internal Return. Invalid entry description"
-  reason: "Invalid entry description"
--
-  code: 'XB6'
-  description: "Internal Return. Invalid Payee"
-  reason: "Invalid Payee"
--
-  code: 'XB7'
-  description: "Internal Return. Invalid Check Date Format"
-  reason: "Invalid Check Date Format"
--
-  code: 'XB8'
-  description: "Internal Return. Invalid Send Date Format"
-  reason: "Invalid Send Date Format"
--
-  code: 'XB9'
-  description: "Internal Return. Invalid Service Code"
-  reason: "Invalid Service Code"
--
-  code: 'XBA'
-  description: "Internal Return. All subsequent activities (debits/credits) blocked"
-  reason: "All subsequent activities (debits/credits) blocked"
--
-  code: 'XBC'
-  description: "Internal Return. Subsequent credits blocked, allow debits only"
-  reason: "Subsequent credits blocked, allow debits only"
--
-  code: 'XBD'
-  description: "Internal Return. Subsequent debits blocked, allow credits only"
-  reason: "Subsequent debits blocked, allow credits only"
--
-  code: 'XBR'
-  description: "Internal Return. Blocks Remove, allow all transactions"
-  reason: "Blocks Remove, allow all transactions"
--
-  code: 'XC0'
-  description: "Internal Return. Invalid Transaction Type"
-  reason: "Invalid Transaction Type"
--
-  code: 'XC1'
-  description: "Internal Return. Item Cancelled"
-  reason: "Item Cancelled"
--
-  code: 'XC2'
-  description: "Internal Return. Item not found"
-  reason: "Item not found"
--
-  code: 'XC3'
-  description: "Internal Return. Maximum Resubmission Exceeded"
-  reason: "Maximum Resubmission Exceeded"
--
-  code: 'XC4'
-  description: "Internal Return. Missing Data"
-  reason: "Missing Data"
--
-  code: 'XC5'
-  description: "Internal Return. Possible Duplicate Exists"
-  reason: "Possible Duplicate Exists"
--
-  code: 'XC6'
-  description: "Internal Return. Post-Dated too far into the future"
-  reason: "Post-Dated too far into the future"
--
-  code: 'XC7'
-  description: "Internal Return. Stale Date"
-  reason: "Stale Date"
--
-  code: 'XC8'
-  description: "Internal Return. Stop Payment requested by Merchant"
-  reason: "Requested Stop Payment"
--
-  code: 'XC9'
-  description: "Internal Return. Stop Request Too Late"
-  reason: "Stop Request Too Late"
--
-  code: 'XD0'
-  description: "Internal Return. Stop Batch Request Too Late"
-  reason: "Stop Batch Request Too Late"
--
-  code: 'XD1'
-  description: "Internal Return. Invalid Length of Transaction line (EFUNDS STYLE)"
-  reason: "Invalid Length of Transaction line (EFUNDS STYLE)"
--
-  code: 'XD2'
-  description: "Internal Return. Invalid Location ID"
-  reason: "Invalid Location ID"
--
-  code: 'XD3'
-  description: "Internal Return. Invalid Amount Format"
-  reason: "Invalid Amount Format"
--
-  code: 'XD4'
-  description: "Internal Return. Missing/Invalid OPCode (Recurrent or Single) for WEB Trans"
-  reason: "Missing/Invalid OPCode (Recurrent or Single) for W"
--
-  code: 'XD5'
-  description: "Internal Return. RDFI is currently not an ACH participant"
-  reason: "RDFI is currently not an ACH participant"
--
-  code: 'XD6'
-  description: "Internal Return. Invalid Company Acct Type."
-  reason: "Invalid Company Acct Type"
--
-  code: 'XD7'
-  description: "Internal Return. RCK transactions are not allowed."
-  reason: "RCK transactions are not allowed"
--
-  code: 'XD8'
-  description: "Internal Return. PPD debits are not allowed."
-  reason: "PPD debits are not allowed"
--
-  code: 'XD9'
-  description: "Internal Return. PPD credits are not allowed."
-  reason: "PPD credits are not allowed"
--
-  code: 'XDA'
-  description: "Internal Return. CCD debits are not allowed."
-  reason: "CCD debits are not allowed"
--
-  code: 'XDB'
-  description: "Internal Return. CCD credits are not allowed."
-  reason: "CCD credits are not allowed"
--
-  code: 'XDC'
-  description: "Internal Return. POS transactions are not allowed."
-  reason: "POS transactions are not allowed"
--
-  code: 'XDD'
-  description: "Internal Return. POP transactions are not allowed."
-  reason: "POP transactions are not allowed"
--
-  code: 'XDE'
-  description: "Internal Return. ARC transactions are not allowed."
-  reason: "ARC transactions are not allowed"
--
-  code: 'XDF'
-  description: "Internal Return. TEL transactions are not allowed."
-  reason: "TEL transactions are not allowed"
--
-  code: 'XDG'
-  description: "Internal Return. WEB transactions are not allowed."
-  reason: "WEB transactions are not allowed"
--
-  code: 'XDH'
-  description: "Internal Return. Merchant exceeded the daily credit limit."
-  reason: "Merchant exceeded the daily credit limit"
--
-  code: 'XDI'
-  description: "Internal Return. Merchant exceeded the daily debit limit."
-  reason: "Merchant exceeded the daily debit limit"
--
-  code: 'XDZ'
-  description: "Internal Return. Zero amount not allowed for this service code."
-  reason: "Zero amount not allowed for this service code"
--
-  code: 'XRB'
-  description: "Internal Return. Not allowed to use FRB number."
-  reason: "Not allowed to use FRB number"
--
-  code: 'XSC'
-  description: "Internal Return. Subscription Cancelled"
-  reason: "Subscription Cancelled"
--
-  code: 'XSR'
-  description: "Internal Return. Subscription Restored"
-  reason: "Subscription Restored"
--
-  code: 'XST'
-  description: "Internal Return. Customer account temporarily suspended because of prior return."
-  reason: "Customer account temporarily suspended."
--
-  code: 'XSZ'
-  description: "Internal Return. Customer account permanently suspended because of prior return."
-  reason: "Customer account permanently suspended."
--
-  code: 'XU1'
-  description: "Internal Return. Invalid user parameter"
-  reason: "Invalid user parameter"
--
-  code: 'XU2'
-  description: "Internal Return. Invalid Company ID parameter"
-  reason: "Invalid Company ID parameter"
--
-  code: 'XV1'
-  description: "Credits in the batch file not authenticated by the VIP Processing system as required."
-  reason: "Credit not Authenticated by VIP System"
--
-  code: 'XZ1'
-  description: "Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction."
-  reason: "NOC violation. Please use corrected account number"
--
-  code: 'XZ2'
-  description: "Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction."
-  reason: "NOC violation. Please use corrected routing number"
--
-  code: 'XZ3'
-  description: "Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction."
-  reason: "NOC violation. Please use corr. acct and routing #"
--
-  code: 'XZ4'
-  description: "Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction."
-  reason: "NOC violation. Please use corr. acct holder name"
--
-  code: 'XZ5'
-  description: "Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction."
-  reason: "NOC violation. Please use corr. acct type (Ck/Sv)"
--
-  code: 'XZ6'
-  description: "Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction."
-  reason: "NOC violation. Please use corr. acct # and  type"
--
-  code: 'XZ7'
-  description: "Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction."
-  reason: "NOC violation. Please use corr acct#, BTRN, type"
--
-  code: 'XZ9'
-  description: "Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction."
-  reason: "NOC violation. Please use corrected Individual ID"
--
-  code: 'XZA'
-  description: "Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction."
-  reason: "NOC violation. Please use corrected Company Name"
--
-  code: 'XZB'
-  description: "Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction."
-  reason: "NOC violation. Please use corrected Company ID"
--
-  code: 'XZC'
-  description: "Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction."
-  reason: "NOC violation. Please use corr. Company Name & ID"
+  reason: Beneficiary/Account Holder (not Rep Payee)Deceased
+-
+  code: X16
+  description: 1) Access to the account is restricted due to specific action taken by the RDFI or by legal action; or (2) OFAC has instructed the RDFI or Gateway to return the Entry.
+  reason: Account Frozen/Entry Returned Per OFAC Instruction
+-
+  code: X20
+  description: ACH Entry to a non-Transaction Account. Account does not accept this type of transaction.
+  reason: Account doesn't accept trans type (Credit/Debit)
+-
+  code: X22
+  description: The Receiver has indicated to the RDFI that the number with which the Originator was identified is not correct.
+  reason: Invalid Individual ID Number
+-
+  code: X26
+  description: Erroneous data or missing data in a mandatory field.
+  reason: Mandatory Field Error
+-
+  code: X28
+  description: The Check digit for a routing number is not valid.
+  reason: Routing Number Check Digit Error
+-
+  code: X29
+  description: The RDFI has been notified by the Receiver(non-consumer) that a specific Entry has not been authorized by the Receiver.
+  reason: Corporate Customer Advises Not Authorized
+-
+  code: X30
+  description: The RDFI does not participate in a Check truncation program.
+  reason: RDFI Not Participant in Check Truncation Program
+-
+  code: X34
+  description: The RDFI's participation has been limited by a federal or state supervisor.
+  reason: Limited Participation DFI
+-
+  code: X37
+  description: The source document to which an ARC, BOC, or POP Entry relates has been presented for payment.
+  reason: Source Document Presented for Payment
+-
+  code: X38
+  description: The RDFI determines a stop payment order has been placed on the source document to which the ARC or BOC Entry relates.
+  reason: Stop Payment on Source Document
+-
+  code: X40
+  description: This Return Reason Code may only be used to return ENR Entries and is at the Federal Government Agency's sole discretion.
+  reason: Return of ENR Entry by Federal Government Agency
+-
+  code: X42
+  description: The Routing Number and the Check Digit included in Field 3 of the Addenda Record is either not a valid number or it does not conform to the Modulus 10 formula.
+  reason: Routing Number/Check Digit Error
+-
+  code: X43
+  description: The Receiver's account number included in Field 3 of the Addenda Record must include at least one alphameric character.
+  reason: Invalid DFI Account Number
+-
+  code: X50
+  description: The RDFI is located in a state that has not adopted Revised Article 4 of the Uniform Commercial Code (1990 Official Text) and has not revised its customer agreements to allow for Electronic presentment. OR The RDFI is located within a state that requires
+  reason: State Law Affecting RCK Acceptance
+-
+  code: X51
+  description: An RCK Entry considered to be ineligible or improper.
+  reason: 'RCK Entry: Related Item Ineligible/Entry Improper'
+-
+  code: X53
+  description: In addition to an RCK Entry, the item to which the RCK Entry relates has also been presented for payment.
+  reason: Item and RCK Entry Presented for Payment
+-
+  code: X81
+  description: The IAT Entry is being returned because the Gateway does not have an agreement with either the ODFI or the Gateway's customer to transmit IAT Entries.
+  reason: Non-Participant in IAT Program
+-
+  code: X82
+  description: The reference used to identify the Foreign Receiving DFI of an Outbound IAT Entry is invalid.
+  reason: Invalid Foreign Receiving DFI Identification
+-
+  code: X83
+  description: The IAT Entry is being returned due to settlement problems in the foreign payment system.
+  reason: Foreign Receiving DFI Unable to Settle
+-
+  code: X84
+  description: For Outbound IAT Entries, the Entry has not been processed and is being returned at the Gateway's discretion because either (1) the processing of such Entry may expose the Gateway to excessive risk, or (2) the foreign payment system does support the funct
+  reason: Entry Not Processed by Gateway
+-
+  code: XA0
+  description: Internal Return. Account Access is denied
+  reason: Account access is denied
+-
+  code: XA1
+  description: Internal Return. Account number has illegal characters
+  reason: Account number has illegal characters
+-
+  code: XA2
+  description: Internal Return. Amount over Admin authorized limit
+  reason: Amount over Admin authorized limit
+-
+  code: XA3
+  description: Internal Return. Amount is over the transaction dollar limit set for the SEC Code and account set.
+  reason: Amount over ACHWorks single transaction limit
+-
+  code: XA4
+  description: Internal Return. Bank does not participate
+  reason: Bank does not participate
+-
+  code: XA5
+  description: Internal Return. Batch Stopped
+  reason: Batch Stopped
+-
+  code: XA6
+  description: Internal Return. Check Number missing
+  reason: Check Number missing
+-
+  code: XA7
+  description: Internal Return. Credits not allowed for this service code
+  reason: Credits not allowed for this service code
+-
+  code: XA8
+  description: Internal Return. Duplicate item
+  reason: Duplicate item
+-
+  code: XA9
+  description: Internal Return. Internal User Not Authorized for transaction
+  reason: ACHWorks User Not Authorized for transaction
+-
+  code: XB0
+  description: Internal Return. Fee amount over legal limit
+  reason: Fee amount over legal limit
+-
+  code: XB1
+  description: Internal Return. Record contains invalid character(s)
+  reason: Record contains invalid character(s)
+-
+  code: XB2
+  description: Internal Return. Invalid Account Set
+  reason: Invalid Account Set
+-
+  code: XB3
+  description: Internal Return. Invalid Acct Type
+  reason: Invalid Acct Type
+-
+  code: XB4
+  description: Internal Return. Invalid bank transit routing number
+  reason: Invalid bank transit routing number
+-
+  code: XB5
+  description: Internal Return. Invalid entry description
+  reason: Invalid entry description
+-
+  code: XB6
+  description: Internal Return. Invalid Payee
+  reason: Invalid Payee
+-
+  code: XB7
+  description: Internal Return. Invalid Check Date Format
+  reason: Invalid Check Date Format
+-
+  code: XB8
+  description: Internal Return. Invalid Send Date Format
+  reason: Invalid Send Date Format
+-
+  code: XB9
+  description: Internal Return. Invalid Service Code
+  reason: Invalid Service Code
+-
+  code: XBA
+  description: Internal Return. All subsequent activities (debits/credits) blocked
+  reason: All subsequent activities (debits/credits) blocked
+-
+  code: XBC
+  description: Internal Return. Subsequent credits blocked, allow debits only
+  reason: Subsequent credits blocked, allow debits only
+-
+  code: XBD
+  description: Internal Return. Subsequent debits blocked, allow credits only
+  reason: Subsequent debits blocked, allow credits only
+-
+  code: XBR
+  description: Internal Return. Blocks Remove, allow all transactions
+  reason: Blocks Remove, allow all transactions
+-
+  code: XC0
+  description: Internal Return. Invalid Transaction Type
+  reason: Invalid Transaction Type
+-
+  code: XC1
+  description: Internal Return. Item Cancelled
+  reason: Item Cancelled
+-
+  code: XC2
+  description: Internal Return. Item not found
+  reason: Item not found
+-
+  code: XC3
+  description: Internal Return. Maximum Resubmission Exceeded
+  reason: Maximum Resubmission Exceeded
+-
+  code: XC4
+  description: Internal Return. Missing Data
+  reason: Missing Data
+-
+  code: XC5
+  description: Internal Return. Possible Duplicate Exists
+  reason: Possible Duplicate Exists
+-
+  code: XC6
+  description: Internal Return. Post-Dated too far into the future
+  reason: Post-Dated too far into the future
+-
+  code: XC7
+  description: Internal Return. Stale Date
+  reason: Stale Date
+-
+  code: XC8
+  description: Internal Return. Stop Payment requested by Merchant
+  reason: Requested Stop Payment
+-
+  code: XC9
+  description: Internal Return. Stop Request Too Late
+  reason: Stop Request Too Late
+-
+  code: XD0
+  description: Internal Return. Stop Batch Request Too Late
+  reason: Stop Batch Request Too Late
+-
+  code: XD1
+  description: Internal Return. Invalid Length of Transaction line (EFUNDS STYLE)
+  reason: Invalid Length of Transaction line (EFUNDS STYLE)
+-
+  code: XD2
+  description: Internal Return. Invalid Location ID
+  reason: Invalid Location ID
+-
+  code: XD3
+  description: Internal Return. Invalid Amount Format
+  reason: Invalid Amount Format
+-
+  code: XD4
+  description: Internal Return. Missing/Invalid OPCode (Recurrent or Single) for WEB Trans
+  reason: Missing/Invalid OPCode (Recurrent or Single) for W
+-
+  code: XD5
+  description: Internal Return. RDFI is currently not an ACH participant
+  reason: RDFI is currently not an ACH participant
+-
+  code: XD6
+  description: Internal Return. Invalid Company Acct Type.
+  reason: Invalid Company Acct Type
+-
+  code: XD7
+  description: Internal Return. RCK transactions are not allowed.
+  reason: RCK transactions are not allowed
+-
+  code: XD8
+  description: Internal Return. PPD debits are not allowed.
+  reason: PPD debits are not allowed
+-
+  code: XD9
+  description: Internal Return. PPD credits are not allowed.
+  reason: PPD credits are not allowed
+-
+  code: XDA
+  description: Internal Return. CCD debits are not allowed.
+  reason: CCD debits are not allowed
+-
+  code: XDB
+  description: Internal Return. CCD credits are not allowed.
+  reason: CCD credits are not allowed
+-
+  code: XDC
+  description: Internal Return. POS transactions are not allowed.
+  reason: POS transactions are not allowed
+-
+  code: XDD
+  description: Internal Return. POP transactions are not allowed.
+  reason: POP transactions are not allowed
+-
+  code: XDE
+  description: Internal Return. ARC transactions are not allowed.
+  reason: ARC transactions are not allowed
+-
+  code: XDF
+  description: Internal Return. TEL transactions are not allowed.
+  reason: TEL transactions are not allowed
+-
+  code: XDG
+  description: Internal Return. WEB transactions are not allowed.
+  reason: WEB transactions are not allowed
+-
+  code: XDH
+  description: Internal Return. Merchant exceeded the daily credit limit.
+  reason: Merchant exceeded the daily credit limit
+-
+  code: XDI
+  description: Internal Return. Merchant exceeded the daily debit limit.
+  reason: Merchant exceeded the daily debit limit
+-
+  code: XDZ
+  description: Internal Return. Zero amount not allowed for this service code.
+  reason: Zero amount not allowed for this service code
+-
+  code: XRB
+  description: Internal Return. Not allowed to use FRB number.
+  reason: Not allowed to use FRB number
+-
+  code: XSC
+  description: Internal Return. Subscription Cancelled
+  reason: Subscription Cancelled
+-
+  code: XSR
+  description: Internal Return. Subscription Restored
+  reason: Subscription Restored
+-
+  code: XST
+  description: Internal Return. Customer account temporarily suspended because of prior return.
+  reason: Customer account temporarily suspended.
+-
+  code: XSZ
+  description: Internal Return. Customer account permanently suspended because of prior return.
+  reason: Customer account permanently suspended.
+-
+  code: XU1
+  description: Internal Return. Invalid user parameter
+  reason: Invalid user parameter
+-
+  code: XU2
+  description: Internal Return. Invalid Company ID parameter
+  reason: Invalid Company ID parameter
+-
+  code: XV1
+  description: Credits in the batch file not authenticated by the VIP Processing system as required.
+  reason: Credit not Authenticated by VIP System
+-
+  code: XZ1
+  description: Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction.
+  reason: NOC violation. Please use corrected account number
+-
+  code: XZ2
+  description: Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction.
+  reason: NOC violation. Please use corrected routing number
+-
+  code: XZ3
+  description: Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction.
+  reason: 'NOC violation. Please use corr. acct and routing #'
+-
+  code: XZ4
+  description: Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction.
+  reason: NOC violation. Please use corr. acct holder name
+-
+  code: XZ5
+  description: Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction.
+  reason: NOC violation. Please use corr. acct type (Ck/Sv)
+-
+  code: XZ6
+  description: Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction.
+  reason: 'NOC violation. Please use corr. acct # and type'
+-
+  code: XZ7
+  description: Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction.
+  reason: NOC violation. Please use corr acct#, BTRN, type
+-
+  code: XZ9
+  description: Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction.
+  reason: NOC violation. Please use corrected Individual ID
+-
+  code: XZA
+  description: Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction.
+  reason: NOC violation. Please use corrected Company Name
+-
+  code: XZB
+  description: Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction.
+  reason: NOC violation. Please use corrected Company ID
+-
+  code: XZC
+  description: Internal Return. Please honor the previous NOC and follow the suggested corrections before submitting the transaction.
+  reason: NOC violation. Please use corr. Company Name & ID
