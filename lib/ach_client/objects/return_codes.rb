@@ -15,7 +15,8 @@ module AchClient
         ReturnCode.new(
           code: code['code'],
           description: code['description'],
-          reason: code['reason']
+          reason: code['reason'],
+          risk_and_enforcement_category: code['risk_and_enforcement_category']
         )
       end
     end
