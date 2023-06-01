@@ -21,6 +21,14 @@ module AchClient
       end
     end
 
+    def self.unauthorized
+      self.all.select(&:unauthorized_return?)
+    end
+
+    def self.administrative
+      self.all.select(&:administrative_return?)
+    end
+
     # Finds the first ReturnCode with the given code, or raises an exception.
     # @param [String] 3 char code identifier for a return code
     # @param [AchClient::ReturnCode] The ReturnCode object with that code
