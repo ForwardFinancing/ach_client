@@ -3,7 +3,7 @@ require 'test_helper'
 class ReturnCodesTest < MiniTest::Test
   def test_unauthorized
     unauthorized_codes = AchClient::ReturnCodes.unauthorized
-    assert(unauthorized_codes.all?{|code| code.unauthorized_return?})
+    assert(unauthorized_codes.all?(&:unauthorized_return?)
   end
 
   def test_administrative
