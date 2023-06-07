@@ -28,13 +28,13 @@ module AchClient
           # N - no, it hasn't settled yet
           AchClient::ProcessingAchResponse.new(
             amount: record[AMOUNT_COLUMN],
-            date: record[DATE_COLUMN]
+            date: Helpers::Utils.icheck_date_format(record[DATE_COLUMN])
           )
         when 'Y'
           # Y - yes, it has settled
           AchClient::SettledAchResponse.new(
             amount: record[AMOUNT_COLUMN],
-            date: record[DATE_COLUMN]
+            date: Helpers::Utils.icheck_date_format(record[DATE_COLUMN])
           )
         else
           # If it starts with R, it is probably a return, in which case the
@@ -44,7 +44,7 @@ module AchClient
           if record[1].start_with?('R')
             AchClient::ReturnedAchResponse.new(
               amount: record[AMOUNT_COLUMN],
-              date: record[DATE_COLUMN],
+              date: Helpers::Utils.icheck_date_format(record[DATE_COLUMN]),
               return_code: AchClient::ReturnCodes.find_by(
                 code: record[STATUS_COLUMN][RETURN_CODE_INDEX]
               )

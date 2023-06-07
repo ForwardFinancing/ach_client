@@ -12,6 +12,15 @@ module AchClient
           end
         end
       end
+
+      def self.icheck_date_format(date_string)
+        return unless date_string
+        begin
+          Date.strptime(date_string, "%m/%d/%Y")
+        rescue Date::Error
+          return date_string
+        end
+      end
     end
   end
 end

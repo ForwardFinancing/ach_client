@@ -14,6 +14,7 @@ class ICheckGateway
         ]
       }
     end
+
     def test_most_recent
       assert_raises(RuntimeError) do
         AchClient::ICheckGateway::AchStatusChecker.most_recent
@@ -105,49 +106,49 @@ class ICheckGateway
           'pending_and_settled' => [
             AchClient::ProcessingAchResponse.new(
               amount: '250.00',
-              date: '9/12/2016'
+              date: Date.parse('12/9/2016')
             ),
             AchClient::SettledAchResponse.new(
               amount: '250.00',
-              date: '9/12/2016'
+              date: Date.parse('12/9/2016')
             )
           ],
           'settled1' => [AchClient::SettledAchResponse.new(
             amount: '906.43',
-            date: '9/6/2016'
+            date: Date.parse('6/9/2016')
           )],
           'accountclosed' => [AchClient::ReturnedAchResponse.new(
             amount: '176.10',
-            date: '9/7/2016',
+            date: Date.parse('7/9/2016'),
             return_code: AchClient::ReturnCodes.find_by(code: 'R08')
           )],
           'nsf' => [
             AchClient::ReturnedAchResponse.new(
               amount: nil,
-              date: '2016-08-10',
+              date: Date.parse('2016-08-10'),
               return_code: AchClient::ReturnCodes.find_by(code: 'R01')
             ),
             AchClient::ReturnedAchResponse.new(
               amount: '178.75',
-              date: '9/6/2016',
+              date: Date.parse('6/9/2016'),
               return_code: AchClient::ReturnCodes.find_by(code: 'R01')
             )
           ],
           'short_late_return' => [
             AchClient::ReturnedAchResponse.new(
               amount: nil,
-              date: '2016-08-10',
+              date: Date.parse('2016-08-10'),
               return_code: AchClient::ReturnCodes.find_by(code: 'R08')
             ),
             AchClient::SettledAchResponse.new(
               amount: '123.45',
-              date: '8/10/2016'
+              date: Date.parse('10/08/2016')
             )
           ],
           'very_late_return' => [
             AchClient::ReturnedAchResponse.new(
               amount: nil,
-              date: '2016-08-11',
+              date: Date.parse('2016-08-11'),
               return_code: AchClient::ReturnCodes.find_by(code: 'R02')
             )
           ]
