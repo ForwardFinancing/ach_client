@@ -25,7 +25,7 @@ module AchClient
       self.transformer.find do |_, v|
         type <= v
       end.try(:first) or raise(
-        "type must be one of #{self.transformer.values.join(', ')}"
+        "type must be one of #{self.transformer.values.uniq.join(', ')}"
       )
     end
 

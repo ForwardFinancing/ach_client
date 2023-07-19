@@ -9,7 +9,9 @@ module AchClient
       def self.transformer
         {
           'S' => AchClient::AccountTypes::Savings,
-          'C' => AchClient::AccountTypes::Checking
+          'C' => AchClient::AccountTypes::Checking,
+          '3' => AchClient::AccountTypes::Savings,
+          '2' => AchClient::AccountTypes::Checking
         }
       end
     end
