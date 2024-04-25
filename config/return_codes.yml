@@ -1,3 +1,4 @@
+
 ---
 -
   code: C01
@@ -462,6 +463,10 @@
   code: X51
   description: An RCK Entry considered to be ineligible or improper.
   reason: 'RCK Entry: Related Item Ineligible/Entry Improper'
+-
+  code: X52
+  description: A stop payment order has been placed on the item to which the RCK Entry relates.
+  reason: Stop Payment on Item
 -
   code: X53
   description: In addition to an RCK Entry, the item to which the RCK Entry relates has also been presented for payment.
