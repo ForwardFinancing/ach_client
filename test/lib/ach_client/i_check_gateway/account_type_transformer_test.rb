@@ -1,6 +1,6 @@
 require 'test_helper'
 class ICheckGateway
-  class AccountTypeTransformerTest < MiniTest::Test
+  class AccountTypeTransformerTest < Minitest::Test
     def test_deserialize_provider_value
       assert_equal(
         AchClient::ICheckGateway::AccountTypeTransformer.deserialize_provider_value('PC'),

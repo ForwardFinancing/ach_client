@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SiliconValleyBank
-  class TransactionTypeTransformerTest < MiniTest::Test
+  class TransactionTypeTransformerTest < Minitest::Test
     def test_deserialize_provider_value
       assert_equal(
         AchClient::Sftp::TransactionTypeTransformer.deserialize_provider_value('2'),

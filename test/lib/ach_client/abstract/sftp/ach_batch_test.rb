@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Abstract
   class Sftp
-    class AchBatchTest < MiniTest::Test
+    class AchBatchTest < Minitest::Test
     end
   end
 end

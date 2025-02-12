@@ -1,6 +1,6 @@
 require 'test_helper'
 class SiliconValleyBank
-  class AccountTypeTransformerTest < MiniTest::Test
+  class AccountTypeTransformerTest < Minitest::Test
     def test_deserialize_provider_value
       assert_equal(
         AchClient::Sftp::AccountTypeTransformer.deserialize_provider_value('2'),

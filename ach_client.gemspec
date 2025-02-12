@@ -40,7 +40,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'net-sftp'
 
   # SOAP client (for AchWorks and ICheckGateway clients)
-  spec.add_dependency 'savon', '~> 2.12.0'
+  spec.add_dependency 'savon', '~> 2'
 
   # Asynchronocity w/out extra infrastucture dependency (database/redis)
   spec.add_dependency 'sucker_punch', '~> 3'
@@ -48,7 +48,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'codeclimate-test-reporter'
   spec.add_development_dependency 'minitest-reporters'
   spec.add_development_dependency 'minitest', '~> 5'
-  spec.add_development_dependency 'mocha', '~> 1'
+  spec.add_development_dependency 'mocha', '~> 2'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rake', '>= 12.3.3'
   spec.add_development_dependency 'simplecov'

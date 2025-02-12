@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SiliconValleyBank
-  class AchStatusCheckerTest < MiniTest::Test
+  class AchStatusCheckerTest < Minitest::Test
     def test_most_recent
       Net::SFTP.stubs(:start).yields(FakeSFTPConnection)
       response = AchClient::SiliconValleyBank::AchStatusChecker.most_recent

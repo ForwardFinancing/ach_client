@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class AchWorks
-  class AchBatchTest < MiniTest::Test
+  class AchBatchTest < Minitest::Test
     def debit
       AchClient::AchWorks::AchTransaction.new(
         account_number: '00002323044',

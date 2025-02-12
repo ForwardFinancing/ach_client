@@ -1,5 +1,5 @@
 class SiliconValleyBank
-  class SftpProviderTest < MiniTest::Test
+  class SftpProviderTest < Minitest::Test
     def test_retrieve_files
       AchClient::Logging.stub(
         :log_provider,

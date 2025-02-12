@@ -1,6 +1,6 @@
 require 'test_helper'
 class SiliconValleyBank
-  class AchTransactionTest < MiniTest::Test
+  class AchTransactionTest < Minitest::Test
     def svb_transaction
       AchClient::SiliconValleyBank::AchTransaction.new(
         account_number: '00002323044',

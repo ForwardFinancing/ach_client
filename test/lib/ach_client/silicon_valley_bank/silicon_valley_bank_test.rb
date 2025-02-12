@@ -1,6 +1,6 @@
 require 'test_helper'
 class SiliconValleyBank
-  class SiliconValleyBankTest < MiniTest::Test
+  class SiliconValleyBankTest < Minitest::Test
     def test_list_files
       Net::SFTP.stubs(:start).yields(FakeSFTPConnection)
       assert_equal(

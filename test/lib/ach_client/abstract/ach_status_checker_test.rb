@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Abstract
-  class AchStatusCheckerTest < MiniTest::Test
+  class AchStatusCheckerTest < Minitest::Test
     def test_abstractlyness
       assert_raises(AbstractMethodError) do
         AchClient::Abstract::AchStatusChecker.most_recent
