@@ -185,8 +185,8 @@ class AchWorks
             LocID: '9505',
             SSS: 'TST'
           },
-          ReturnDateFrom: '2016-08-10T00:00:00.00000+00:00',
-          ReturnDateTo: '2016-08-11T00:00:00.00000+00:00'
+          ReturnDateFrom: '2016-08-10T00:00:00',
+          ReturnDateTo: '2016-08-11T00:00:00'
         }
       )
     end
