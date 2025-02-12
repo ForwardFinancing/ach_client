@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UtilsTest < MiniTest::Test
+class UtilsTest < Minitest::Test
   def test_icheck_date_format
     assert_equal(
       "wonky/date/format",

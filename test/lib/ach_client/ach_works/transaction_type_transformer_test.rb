@@ -1,6 +1,6 @@
 require 'test_helper'
 class AchWorks
-  class TransactionTypeTransformerTest < MiniTest::Test
+  class TransactionTypeTransformerTest < Minitest::Test
     def test_deserialize_provider_value
       assert_equal(
         AchClient::AchWorks::TransactionTypeTransformer.deserialize_provider_value('C'),

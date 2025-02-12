@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Fake
-  class AchBatchTest < MiniTest::Test
+  class AchBatchTest < Minitest::Test
     def test_batch
       assert_equal(
         AchClient::Fake::AchBatch.new(

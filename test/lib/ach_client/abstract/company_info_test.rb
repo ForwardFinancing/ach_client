@@ -1,6 +1,6 @@
 require 'test_helper'
 class Abstract
-  class CompanyInfoTest < MiniTest::Test
+  class CompanyInfoTest < Minitest::Test
     def test_abstractlyness
       assert_raises(AbstractMethodError) do
         AchClient::Abstract::CompanyInfo.build

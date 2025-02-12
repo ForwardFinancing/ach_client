@@ -1,6 +1,6 @@
 require 'test_helper'
 class ICheckGateway
-  class AchStatusCheckerTest < MiniTest::Test
+  class AchStatusCheckerTest < Minitest::Test
     # SOAP APIs all use the same URL, so we must define a custom request
     #   matcher when there is more than one cassette
     def vcr_options
@@ -9,7 +9,9 @@ class ICheckGateway
           lambda do |left_request, right_request|
             left_request.uri == right_request.uri &&
               left_request.headers["Soapaction"] == right_request.headers["Soapaction"] &&
-              left_request.body == right_request.body
+              # At somepoint due to savon updates extra stuff was added to headers that we don't care about
+              Hash.from_xml(right_request.body)["Envelope"]["Body"] ==
+                Hash.from_xml(left_request.body)["Envelope"]["Body"]
           end
         ]
       }

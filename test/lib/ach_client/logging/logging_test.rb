@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LoggingTest < MiniTest::Test
+class LoggingTest < Minitest::Test
   def test_log_provider_assignment
     assert_equal(
       AchClient::Logging.log_provider,

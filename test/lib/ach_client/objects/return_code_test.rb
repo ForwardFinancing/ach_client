@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Objects
-  class ReturnCodeTest < MiniTest::Test
+  class ReturnCodeTest < Minitest::Test
     def test_correction?
       assert(AchClient::ReturnCodes.find_by(code: 'C01').correction?)
       refute(AchClient::ReturnCodes.find_by(code: 'R01').correction?)

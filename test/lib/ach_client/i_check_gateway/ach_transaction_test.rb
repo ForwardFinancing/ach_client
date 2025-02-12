@@ -1,6 +1,6 @@
 require 'test_helper'
 class ICheckGateway
-  class AchTransactionTest < MiniTest::Test
+  class AchTransactionTest < Minitest::Test
     def transaction
       AchClient::ICheckGateway::AchTransaction.new(
         account_number: '115654668777',

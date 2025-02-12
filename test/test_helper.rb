@@ -15,6 +15,7 @@ Timecop.freeze(DateTime.parse('2016-08-11T10:13:05-04:00'))
 require 'sucker_punch/testing/inline'
 
 require 'ach_client'
+require 'ostruct'
 require 'minitest/autorun'
 require 'minitest/mock'
 require 'mocha/minitest'

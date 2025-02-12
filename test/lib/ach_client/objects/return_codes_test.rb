@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ReturnCodesTest < MiniTest::Test
+class ReturnCodesTest < Minitest::Test
   def test_unauthorized
     unauthorized_codes = AchClient::ReturnCodes.unauthorized
     assert(unauthorized_codes.all?(&:unauthorized_return?))

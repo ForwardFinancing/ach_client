@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Fake
-  class AchStatusCheckerTest < MiniTest::Test
+  class AchStatusCheckerTest < Minitest::Test
     def test_poll
       start_date = Date.today - 3.days
       end_date = Date.today

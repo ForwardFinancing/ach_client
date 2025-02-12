@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DollarsToCentsTest < MiniTest::Test
+class DollarsToCentsTest < Minitest::Test
   def test_dollars_to_cents
     assert_equal(
       AchClient::Helpers::DollarsToCents.dollars_to_cents(1),

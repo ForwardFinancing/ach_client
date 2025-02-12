@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class StdoutLogProviderTest < MiniTest::Test
+class StdoutLogProviderTest < Minitest::Test
   def test_that_it_works
     AchClient::Logging.stub(
       :log_provider,

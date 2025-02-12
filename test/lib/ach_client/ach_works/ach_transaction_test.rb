@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class AchWorks
-  class AchTransactionTest < MiniTest::Test
+  class AchTransactionTest < Minitest::Test
     def test_that_it_works
       assert_equal(
         AchClient::AchWorks::AchTransaction.new(

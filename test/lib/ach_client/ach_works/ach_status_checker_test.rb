@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class AchWorks
-  class AchStatusChecker < MiniTest::Test
+  class AchStatusChecker < Minitest::Test
     def status_checker
       AchClient::AchWorks::AchStatusChecker
     end

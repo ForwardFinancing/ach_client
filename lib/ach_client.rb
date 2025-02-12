@@ -5,7 +5,8 @@ require 'sucker_punch'
 
 # Require all of the files in lib
 Dir[Gem::Specification.find_by_name("ach_client").gem_dir + '/lib/**/*.rb'].sort.each do |f|
-  require(f.split('/lib/').last.split('.rb').first)
+  file = f.split('/lib/').last.split('.rb').first
+  require(file) unless file == "ach_client" || file == "ach_client/version"
 end
 
 # Adapter for interacting with various Ach service providers

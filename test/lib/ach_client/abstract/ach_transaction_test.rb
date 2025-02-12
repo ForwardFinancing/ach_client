@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AchTransactionTest < MiniTest::Test
+class AchTransactionTest < Minitest::Test
   def test_abstractfullness
     assert_raises(AbstractMethodError) do
       AchClient::Abstract::AchTransaction.new(
