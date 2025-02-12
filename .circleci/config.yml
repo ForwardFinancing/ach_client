@@ -1,0 +1,29 @@
+version: 2.1
+
+parameters:
+  ruby_version:
+    type: string
+    default: "3.1.3"
+
+jobs:
+  test:
+    docker:
+      - image: ruby:<< pipeline.parameters.ruby_version >>
+
+    steps:
+      - checkout
+      - run: bundle install
+      - run:
+          name: Run all tests
+          environment:
+            TZ: 'America/New_York'
+          command: |
+            bundle exec rake
+      - run:
+          name: Update the ruby-advisory-db and check Gemfile.lock (https://github.com/rubysec/bundler-audit)
+          command: bundle exec bundle-audit check --update
+
+workflows:
+  ci:
+    jobs:
+      - test
