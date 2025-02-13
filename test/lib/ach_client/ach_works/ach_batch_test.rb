@@ -139,8 +139,8 @@ class AchWorks
           CustomerID: 'foo',
           CustomerAcctType: 'C',
           TransAmount: BigDecimal('575.45').to_s,
-          CheckOrTransDate: '2016-08-11T00:00:00.00000+00:00',
-          EffectiveDate: '2016-08-11T00:00:00.00000+00:00',
+          CheckOrTransDate: '2016-08-11T00:00:00',
+          EffectiveDate: '2016-08-11T00:00:00',
           Memo: '????',
           OpCode: 'S',
           AccountSet: '1'
@@ -158,8 +158,8 @@ class AchWorks
           CustomerID: 'foo',
           CustomerAcctType: 'C',
           TransAmount: BigDecimal('575.45').to_s,
-          CheckOrTransDate: '2016-08-11T00:00:00.00000+00:00',
-          EffectiveDate: '2016-08-11T00:00:00.00000+00:00',
+          CheckOrTransDate: '2016-08-11T00:00:00',
+          EffectiveDate: '2016-08-11T00:00:00',
           Memo: '????',
           OpCode: 'S',
           AccountSet: '1'

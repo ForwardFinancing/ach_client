@@ -8,7 +8,7 @@ module AchClient
       # Formats given date in the manner required by AchWorks
       # The date can be a String or a Date/DateTime.
       # If it is a string it will be given to the DateTime parser
-      # Will be formatted like 2016-08-11T09:56:24.35103-04:00
+      # Will be formatted like 2016-08-11T09:56:24
       # @param date [Object] String or Date to format
       # @return [String] formatted datetime
       def self.format(date)
@@ -26,7 +26,7 @@ module AchClient
       end
 
       private_class_method def self.format_date(date)
-        date.strftime('%Y-%m-%dT%H:%M:%S.%5N%:z')
+        date.strftime('%Y-%m-%dT%H:%M:%S')
       end
     end
   end
