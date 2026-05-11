@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: ruby:3.1.4
+        environment:
+          TZ: America/New_York
     steps:
       - checkout
       - run:
