@@ -37,8 +37,15 @@ jobs:
 
   oidc_assume_role_check:
     docker:
-      - image: cimg/aws:current
+      - image: cimg/base:stable
     steps:
+      - run:
+          name: Install awscli v2
+          command: |
+            curl -sSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
+            unzip -q /tmp/awscliv2.zip -d /tmp
+            sudo /tmp/aws/install
+            aws --version
       - run:
           name: DO-3954 PoC Phase 1b - OIDC path to kore-ff-k8s-CIAccessRole (sectest)
           command: |
