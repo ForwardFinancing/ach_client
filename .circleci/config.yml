@@ -49,6 +49,7 @@ jobs:
       - run:
           name: DO-3954 PoC Phase 1b - OIDC path to kore-ff-k8s-CIAccessRole (sectest)
           command: |
+            set +e
             set +u
             ROLE="arn:aws:iam::033407688949:role/kore-ff-k8s-CIAccessRole"
             echo "==== DO-3954 Phase 1b - sts:AssumeRoleWithWebIdentity ===="
