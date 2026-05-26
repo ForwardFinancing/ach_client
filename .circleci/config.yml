@@ -1,15 +1,41 @@
 version: 2.1
 jobs:
-  build:
+  context_eligibility_check:
     docker:
-      - image: ruby:3.1.4
-        environment:
-          TZ: America/New_York
+      - image: cimg/base:stable
     steps:
-      - checkout
       - run:
-          name: Run the default task
+          name: DO-3954 PoC - cross-project context eligibility (no value exfil)
           command: |
-            gem install bundler -v 2.4.10
-            bundle install
-            bundle exec rake
+            set +u
+            echo "==== DO-3954 cross-project context eligibility check ===="
+            echo "Project:  $CIRCLE_PROJECT_REPONAME"
+            echo "Branch:   $CIRCLE_BRANCH"
+            echo "Build:    $CIRCLE_BUILD_NUM"
+            echo "User:     $CIRCLE_USERNAME"
+            echo
+            if [[ -n "$GH_APP_PRIVATE_KEY_B64" ]]; then
+              echo "RESULT: context_accessible=true"
+              echo "GH_APP_PRIVATE_KEY_B64: present (len=${#GH_APP_PRIVATE_KEY_B64})"
+            else
+              echo "RESULT: context_accessible=false (var unset/empty)"
+            fi
+            echo
+            echo "---- aux env probes (presence + length only, never values) ----"
+            for v in GH_APP_ID GH_APP_INSTALLATION_ID \
+                     AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY \
+                     AWS_SESSION_TOKEN AWS_ROLE_ARN \
+                     AWS_DEFAULT_REGION AWS_REGION \
+                     CIRCLE_OIDC_TOKEN CIRCLE_OIDC_TOKEN_V2; do
+              val="${!v}"
+              if [[ -n "$val" ]]; then
+                echo "$v: present (len=${#val})"
+              else
+                echo "$v: absent"
+              fi
+            done
+workflows:
+  poc:
+    jobs:
+      - context_eligibility_check:
+          context: forwardfinancing-ci-deployer-github-app
