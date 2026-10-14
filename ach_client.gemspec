@@ -45,7 +45,6 @@ Gem::Specification.new do |spec|
   # Asynchronocity w/out extra infrastucture dependency (database/redis)
   spec.add_dependency 'sucker_punch', '~> 3'
 
-  spec.add_development_dependency 'codeclimate-test-reporter'
   spec.add_development_dependency 'minitest-reporters'
   spec.add_development_dependency 'minitest', '~> 5'
   spec.add_development_dependency 'mocha', '~> 2'

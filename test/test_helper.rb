@@ -1,7 +1,7 @@
 require_relative './fake_sftp_connection.rb'
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 
-require 'codeclimate-test-reporter'
+require 'simplecov'
 SimpleCov.minimum_coverage 100
 SimpleCov.start do
   add_filter '/test'
@@ -111,7 +111,6 @@ require 'vcr'
 VCR.configure do |config|
   config.cassette_library_dir = 'test/vcrs'
   config.hook_into :webmock
-  config.ignore_hosts 'codeclimate.com'
 end
 
 # Savon makes a request for the WSDL and caches it when the first request is
